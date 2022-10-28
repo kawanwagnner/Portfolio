@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(imagens/background-linear-teste2.png);
+    background-repeat: no-repeat;
+    height: 93.6vh;
+    width: 98.9vw;
+    margin: -10;
+}
+
+#container-photo-cnt {
+    display: flex;
+
+}
+
+#photo-central {
+    background-image: url(imagens/kawan-removebg-preview\ \(1\).png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    width: 45%;
+    height: 80vh;
+    opacity: 70%;
+    display: none;
+}
+
+.container-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px
+}
+
+#container-text-iam {
+    text-align: left;
+    margin: 100px;
+}
+
+.list_navbar  {
+    display: flex;
+    list-style-type: none;
+}
+
+.list_navbar li  a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.list_navbar li  a:hover {
+    background-color: #ff0000;
+    border-radius: 20px;
+    transition: 0.5s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.822);
+}
+
+.color-red {
+    color: #ff0000;
+}
+
+#logo {
+    color: #fff;
+    font-weight: bold;
+    margin: 0px;
+    
+}
+
+#logo:hover {
+    font-style: italic;
+
+}
+
+#titulo {
+    margin: 0 10px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 50px;
+    font-style: italic;
+}
+
+
+h3, h4 {
+    color: #fff;
+    font-style: italic;
+
+}
+
+button {
+    background-color: #ff0000;
+    padding: 10px;
+    border: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 10px;
+}
+
+input {
+    border: 0;
+    width: 73.4%;
+    height: 100%;
+    color: #000;
+}
+
+.btn {
+    background-color: #fff;
+    width:300px ;
+    padding: 2px;
+    box-shadow: 0 0 10px #ff000080;
+    border-radius: 20px;
+    margin-top: 30px ;
+    position: absolute;
+    font-weight: bold;
+}
+
+#subscribe {
+    background-color: #ff0000d2;
+    border-radius: 20px;
+    transition: 0.5s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.922);
+}
