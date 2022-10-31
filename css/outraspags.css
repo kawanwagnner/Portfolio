@@ -69,12 +69,20 @@ body {
 
 }
 
-main {
+button {
+    background-color: #447ff5;
+    padding: 10px;
+    border: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 10px;
+}
+
+#conteudo {
     background-color: #fff;
     text-align: center;
     text-align: justify;
     max-width: 600px;
-    height: 83vh;
+    height: 240%;
     margin: auto;
     border-radius: 10px;
     box-shadow: 0 0 10px;
@@ -84,5 +92,84 @@ main {
 #titulo {
     text-align: center;
     font-style: italic;
-    padding-bottom: 20px;
+    padding: 20px;
+}
+
+.paragraph {
+    text-indent: 20px;
+    font-weight: 300;
+    margin-top: 30px;
+}
+
+#btn-menu {
+    display: none;
+}
+
+@media screen and (max-width: 950px) {
+    body {
+        background: #666 url(../imagens/background-linear-cian.png) no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    #btn-menu {
+    display: block;
+    font-size: 40px;
+    background: none;
+    box-shadow: none;
+    color: #fff;
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    z-index: 2;
+
+    }
+
+    #navbar {
+        display: none;
+
+    }
+
+    #navbar.active {
+        display: block;
+        
+    }
+
+    #navbar.active ul {
+        display: block;
+        background-color: #000;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        color: #fff;
+        min-width: 100vw;
+        height:120vh;
+        z-index: 1;
+        overflow: hidden;
+        
+    }
+
+    #navbar.active ul li {
+        font-size: 180%;
+        text-align: center;
+        margin-top: 20px;
+        line-height: 40px;
+        
+    }
+#subscribe {
+    background: none;
+}
+
+#subscribe:hover {
+    background-color: #447ff5;
+    border-radius: 20px;
+    transition: 0.5s;
+    box-shadow: 0 0 5px #000000d2;
+}
+
+}
+
+@media screen and (max-width: 700px) {
+    #conteudo {
+        border-radius: 0px;
+    }
 }

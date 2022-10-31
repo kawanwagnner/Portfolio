@@ -88,7 +88,7 @@ input {
     width: 73.4%;
     height: 100%;
     color: #000;
-}
+}   
 
 .btn {
     background-color: #fff;
@@ -99,6 +99,14 @@ input {
     margin-top: 30px ;
     position: absolute;
     font-weight: bold;
+}
+
+#redes {
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+    margin: auto;
+    
 }
 
 .subscribe {
@@ -133,7 +141,7 @@ input {
     box-shadow: none;
     color: #fff;
     position: absolute;
-    right: 0;
+    right: 20px;
     top: 25px;
     z-index: 2;
 
@@ -174,15 +182,25 @@ input {
 @media screen and (max-width: 800px) {
         main #container-text-iam {
         position: absolute;
-        font-size: 1.5vw;
         top: 15;
-        right: 0;
+        right: -25%;
         
         }
-
-        #titulo {
-            font-size: 1.5vw;
-        }
 }
+
+@media screen and (max-width: 600px) {
+    main #container-text-iam {
+    position: absolute;
+    top: 15;
+    right: -20px;
+    
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+}
+
+
 
    
