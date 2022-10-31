@@ -6,23 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio: Kawan Wnn.</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 </head>
 
 <body>
     <header>
         <div class="container-navbar">
-            <h1 id="logo">Portfo<span class="color-red">lio</span></h1>
-            <nav class="navbar">
+            <h1 id="logo"><a href="index.html">Portfo<span class="color-red">lio</span></a></h1>
+            <nav id="navbar">
                 <ul class="list_navbar">
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Sobre Mim</a></li>
+                    <li><a href="sobremim.html">Sobre Mim</a></li>
                     <li><a href="#">Projetos</a></li>
                     <li><a href="#">Habilidades</a></li>
                     <li><a href="#">Contato</a></li>
-                    <li><a id="subscribe" href="#">Inscreva-se</a></li>
+                    <li><a class="subscribe" href="#">Inscreva-se</a></li>
                 </ul>
             </nav>
+            <button id="btn-menu"><i class="fa-solid fa-bars"></i></button>
         </div>
     </header>
     <main>
@@ -34,5 +35,5 @@
         </div>
     </main>
 </body>
-
+<script src="menuMobile.js"></script>
 </html>
