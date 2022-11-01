@@ -84,10 +84,12 @@ button {
 }
 
 input {
+    outline: none;
     border: 0;
     width: 73.4%;
     height: 100%;
     color: #000;
+    text-align: center;
 }   
 
 .btn {
@@ -99,21 +101,33 @@ input {
     margin-top: 30px ;
     position: absolute;
     font-weight: bold;
+    
 }
 
-#redes {
-    font-size: 20px;
-    padding: 5px;
-    text-align: center;
-    margin: auto;
-    
+#container-icons {
+    font-size: 25px;
+    margin-left: 8%;
+    color: #c9c9c9;
+    font-weight: bold;
+}
+
+#container-icons i {
+    padding: 10px;
+}
+
+#container-icons i:hover {
+    background-color: #00000070;
+    border-radius: 100%;
+    box-shadow: 0 0 5px #000000a2;
+    transition: 0.5s;
+    padding: 10px;
 }
 
 .subscribe {
     background-color: #447ff5;
     border-radius: 20px;
     transition: 0.5s;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.922);
+    box-shadow: 0 0 5px #000000eb;
 }
 
 #btn-menu {
@@ -177,30 +191,40 @@ input {
         margin: 50px;
         line-height: 50px;
     }
+
+    #container-icons {
+        margin-top: 90px;
+        margin-left: 1%;
+    }
 }
 
 @media screen and (max-width: 800px) {
         main #container-text-iam {
         position: absolute;
-        top: 15;
+        top: 1%;
         right: -25%;
+
         
         }
+        #container-icons {
+        margin-top: 340px;
+        margin-left: 10%;
+        width: 145px;
+        }
+
+     
+
 }
 
 @media screen and (max-width: 600px) {
-    main #container-text-iam {
+    #container-text-iam {
     position: absolute;
     top: 15;
     right: -20px;
-    
+    flex-wrap: wrap;
     }
-}
 
-@media screen and (max-width: 500px) {
-    
 }
-
 
 
    
