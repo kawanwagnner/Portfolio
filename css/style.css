@@ -135,6 +135,14 @@ input {
     
 }
 
+.kawan-500 {
+    display: none;
+    margin-left: 15%;
+    max-width: 30%;
+    margin: -10px 15%;
+    margin-bottom: -90px;
+}
+
 @media screen and (max-width: 1024px) {
     body {
         background: #666 url(../imagens/background-linear-cian.png) no-repeat center center fixed;
@@ -145,7 +153,7 @@ input {
     #container-text-iam {
         margin: auto;
         width: 100%;
-        margin-top:150px;
+        margin-top:200px;
     }
 
     #btn-menu {
@@ -191,6 +199,14 @@ input {
         margin: 50px;
         line-height: 50px;
     }
+
+    .kawan-500 {
+        display: block;
+        position: absolute;
+        margin-top: 200px;
+        z-index: 10;
+    }
+    
 
     #container-icons {
         margin-top: 90px;
