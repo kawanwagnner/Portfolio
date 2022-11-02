@@ -23,12 +23,12 @@ body {
     margin: 100px;
 }
 
-.list_navbar  {
+.list_navbar {
     display: flex;
     list-style-type: none;
 }
 
-.list_navbar li  a {
+.list_navbar li a {
     color: #fff;
     text-decoration: none;
     cursor: pointer;
@@ -36,7 +36,7 @@ body {
     font-weight: bold;
 }
 
-.list_navbar li  a:hover {
+.list_navbar li a:hover {
     background-color: #447ff5;
     margin: 10px;
     border-radius: 20px;
@@ -44,7 +44,7 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.822);
 }
 
-.color-red {
+.color-world {
     color: #447ff5;
 }
 
@@ -69,7 +69,8 @@ body {
 }
 
 
-h3, h4 {
+h3,
+h4 {
     color: #fff;
     font-style: italic;
 
@@ -90,25 +91,25 @@ input {
     height: 100%;
     color: #000;
     text-align: center;
-}   
+}
 
 .btn {
     background-color: #fff;
-    width:300px ;
+    width: 300px;
     padding: 2px;
     box-shadow: 0 0 10px #447ff5;
     border-radius: 20px;
-    margin-top: 30px ;
+    margin-top: 30px;
     position: absolute;
     font-weight: bold;
-    
+
 }
 
 #container-icons {
     font-size: 25px;
     margin-left: 8%;
     color: #c9c9c9;
-    font-weight: bold;
+
 }
 
 #container-icons i {
@@ -132,15 +133,11 @@ input {
 
 #btn-menu {
     display: none;
-    
+
 }
 
 .kawan-500 {
     display: none;
-    margin-left: 15%;
-    max-width: 30%;
-    margin: -10px 15%;
-    margin-bottom: -90px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -151,21 +148,39 @@ input {
     }
 
     #container-text-iam {
-        margin: auto;
-        width: 100%;
-        margin-top:200px;
+        width: 200%;
+        margin: 360px auto;
+    }
+
+    .kawan-500 {
+        display: block;
+        position: absolute;
+        margin: 80px 0px auto auto;
+        margin-left: 10%;
+        z-index: 10;
+        max-width: 300px;
+    }
+
+    #container-icons {
+        margin-top: -280px;
+        margin-left: 15%;
+        color: #fff;
+    }
+
+    .color-world {
+        color: #08338a;
     }
 
     #btn-menu {
-    display: block;
-    font-size: 40px;
-    background: none;
-    box-shadow: none;
-    color: #fff;
-    position: absolute;
-    right: 20px;
-    top: 25px;
-    z-index: 2;
+        display: block;
+        font-size: 40px;
+        background: none;
+        box-shadow: none;
+        color: #fff;
+        position: absolute;
+        right: 20px;
+        top: 25px;
+        z-index: 20;
 
     }
 
@@ -176,7 +191,7 @@ input {
 
     #navbar.active {
         display: block;
-        
+
     }
 
     #navbar.active ul {
@@ -187,10 +202,10 @@ input {
         right: 0px;
         color: #fff;
         min-width: 100vw;
-        height:100vh;
-        z-index: 1;
+        height: 100vh;
+        z-index: 15;
         overflow: hidden;
-        
+
     }
 
     #navbar.active ul li {
@@ -200,47 +215,116 @@ input {
         line-height: 50px;
     }
 
-    .kawan-500 {
-        display: block;
-        position: absolute;
-        margin-top: 200px;
-        z-index: 10;
-    }
-    
-
-    #container-icons {
-        margin-top: 90px;
-        margin-left: 1%;
-    }
 }
 
 @media screen and (max-width: 800px) {
-        main #container-text-iam {
+    #container-text-iam {
+        width: 100%;
+        margin: 390px 0px auto auto;
+    }
+
+    .kawan-500 {
+        display: block;
         position: absolute;
-        top: 1%;
-        right: -25%;
-
-        
-        }
-        #container-icons {
-        margin-top: 340px;
+        margin: 100px -10px auto auto;
         margin-left: 10%;
+        z-index: 10;
+        width: 600px;
+    }
+    #container-icons {
+        margin-top: 75px;
+        margin-left: 15%;
         width: 145px;
-        }
+    }
 
-     
+
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     #container-text-iam {
-    position: absolute;
-    top: 15;
-    right: -20px;
-    flex-wrap: wrap;
+        margin: auto;
+        width: 200%;
+        margin: 320px -30%;
+
+    }
+
+    .kawan-500 {
+        display: block;
+        position: absolute;
+        margin: 80px 0px auto auto;
+        z-index: 10;
+        max-width: 250px;
+    }
+
+    #container-icons {
+        margin-top: -240px;
+        margin-left: -10%;
+        color: #fff;
     }
 
 }
 
+@media screen and (max-width: 580px) {
+    #container-text-iam {
+        width: 200%;
+        margin: 320px -150px;
+        font-size: 1.1rem;
+    }
 
-   
+    #titulo {
+        font-size: 2.6rem;
+        width: 120%;
+    }
+
+    .kawan-500 {
+        display: block;
+        position: absolute;
+        margin: 80px 0px auto auto;
+        margin-left: -70px;
+        z-index: 10;
+        max-width: 250px;
+    }
+
+    #container-icons {
+        margin-top: -240px;
+        margin-left: -50%;
+        color: #fff;
+    }
+
+}
+
+@media screen and (max-width: 410px) {
+    #btn-menu {
+        position: absolute;
+        right: 10px;
+        top: 25px;
+    }
+    
+    #container-text-iam {
+        width: 200%;
+        margin: 320px -180px;
+        font-size: 1.1rem;
+    }
+
+    #titulo {
+        font-size: 2.6rem;
+        width: 120%;
+    }
+
+    .kawan-500 {
+        display: block;
+        position: absolute;
+        margin: 80px 0px auto auto;
+        margin-left: -150px;
+        z-index: 10;
+        max-width: 250px;
+    }
+
+    #container-icons {
+        margin-top: -240px;
+        margin-left: -80%;
+        color: #fff;
+    }
+
+}
