@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Trispace&display=swap');
 
 * {
     margin: 0;
@@ -90,15 +91,34 @@ button {
 }
 
 #titulo {
+    background-color: #075157;
+    color: #fff;
+    font-family: 'Trispace';
     text-align: center;
     font-style: italic;
-    padding: 20px;
+    padding: 5px;
+    border-radius: 30px;
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: 50px;
+    box-shadow: 0 0 5px #4e4d4d;
+}
+
+.subtitulos {
+    background-color: #075157;
+    color: #fff;
+    font-family: 'Trispace';
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #4e4d4d;
+    margin: auto auto;
 }
 
 .paragraph {
     text-indent: 20px;
-    font-weight: 300;
-    margin-top: 30px;
+    font-weight: 500;
+    margin: 30px auto;
+
 }
 
 #btn-menu {
