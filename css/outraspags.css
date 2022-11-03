@@ -83,7 +83,19 @@ button {
     text-align: center;
     text-align: justify;
     max-width: 600px;
-    height: 240%;
+    height: 260%;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 10px;
+    padding: 40px;
+}
+
+#conteudo-pag2 {
+    background-color: #fff;
+    text-align: center;
+    text-align: justify;
+    max-width: 600px;
+    height: 70%;
     margin: auto;
     border-radius: 10px;
     box-shadow: 0 0 10px;
@@ -114,10 +126,28 @@ button {
     margin: auto auto;
 }
 
+h4 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: -30px;
+    margin-bottom: 20px;
+    color: #c0c0c0;
+}
+
 .paragraph {
     text-indent: 20px;
     font-weight: 500;
     margin: 30px auto;
+
+}
+
+.paragraph2 {
+    text-indent: 20px;
+    
+}
+
+.indent p {
+    text-indent: 20px;
 
 }
 
