@@ -177,7 +177,7 @@ button {
 .see-more {
     margin: 20px auto;
     background-color: #3fcad6;
-    
+
 }
 
 .see-more a {
@@ -216,7 +216,6 @@ button {
 
     #navbar.active {
         display: block;
-        
     }
 
     #navbar.active ul {
@@ -227,9 +226,8 @@ button {
         right: 0px;
         color: #fff;
         min-width: 100vw;
-        height:120vh;
+        height:100%;
         z-index: 1;
-        overflow: hidden;
         
     }
 
