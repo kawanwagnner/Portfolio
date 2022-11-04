@@ -83,7 +83,7 @@ button {
     text-align: center;
     text-align: justify;
     max-width: 600px;
-    height: 260%;
+    height: auto;
     margin: auto;
     border-radius: 10px;
     box-shadow: 0 0 10px;
@@ -163,6 +163,7 @@ button {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    
 }
 
 .projeto {
@@ -174,10 +175,14 @@ button {
     width: 100%;
 }
 
+.projeto-3 > img {
+    max-width: 360px;
+}
+
 .see-more {
     margin: 20px auto;
     background-color: #3fcad6;
-
+    display: block;
 }
 
 .see-more a {
@@ -273,5 +278,11 @@ button {
         margin-top: -30px;
         margin-bottom: 20px;
         color: #c0c0c0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .projeto-3 > img {
+        width: 270px;
     }
 }

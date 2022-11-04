@@ -108,15 +108,16 @@ input {
 #container-icons {
     font-size: 25px;
     margin-left: 8%;
+
+}
+
+#container-icons a i {
+    padding: 10px;
     color: #c9c9c9;
 
 }
 
-#container-icons i a {
-    padding: 10px;
-}
-
-#container-icons i a:hover {
+#container-icons i:hover {
     background-color: #00000070;
     border-radius: 100%;
     box-shadow: 0 0 5px #000000a2;
@@ -148,7 +149,7 @@ input {
     }
 
     #container-text-iam {
-        width: 200%;
+        width: 100%;
         margin: 360px auto;
     }
 
@@ -164,7 +165,11 @@ input {
     #container-icons {
         margin-top: -280px;
         margin-left: 15%;
-        color: #fff;
+        
+    }
+
+    #container-icons a i {
+        color: #ffffff;
     }
 
     .color-world {
@@ -217,34 +222,10 @@ input {
 
 }
 
-@media screen and (max-width: 800px) {
-    #container-text-iam {
-        width: 100%;
-        margin: 390px 0px auto auto;
-    }
-
-    .kawan-500 {
-        display: block;
-        position: absolute;
-        margin: 100px -10px auto auto;
-        margin-left: 10%;
-        z-index: 10;
-        width: 600px;
-    }
-    #container-icons {
-        margin-top: 75px;
-        margin-left: 15%;
-        width: 145px;
-    }
-
-
-
-}
-
 @media screen and (max-width: 700px) {
     #container-text-iam {
         margin: auto;
-        width: 200%;
+        width: 130%;
         margin: 320px -30%;
 
     }
@@ -260,7 +241,6 @@ input {
     #container-icons {
         margin-top: -240px;
         margin-left: -10%;
-        color: #fff;
     }
 
 }
@@ -289,12 +269,12 @@ input {
     #container-icons {
         margin-top: -240px;
         margin-left: -50%;
-        color: #fff;
+
     }
 
 }
 
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 460px) {
     #btn-menu {
         position: absolute;
         right: 10px;
@@ -324,7 +304,60 @@ input {
     #container-icons {
         margin-top: -240px;
         margin-left: -80%;
-        color: #fff;
+
     }
 
+}
+
+@media screen and (max-width: 370px) {
+    .btn {
+        background-color: #fff;
+        width: 246px;
+        padding: 2px;
+        box-shadow: 0 0 10px #447ff5;
+        border-radius: 20px;
+        margin-top: 30px;
+        position: absolute;
+        font-weight: bold;
+    
+    }
+
+    button {
+        background-color: #447ff5;
+        padding: 7px;
+        border: 0;
+        border-radius: 20px;
+        box-shadow: 0 0 10px;
+    }
+    
+    input {
+        outline: none;
+        border: 0;
+        width: 70%;
+        height: 100%;
+        color: #000;
+        text-align: center;
+    }
+
+    #container-text-iam {
+        width: 200%;
+        margin: 300px -180px;
+        font-size: 1rem;
+    }
+
+    #titulo {
+        font-size: 2.2rem;
+        width: 120%;
+    }
+
+    #container-icons {
+        margin-top: -230px;
+        margin-left: -120%;
+        font-size: 22px;
+    }
+    
+
+    .kawan-500 {
+        max-width: 230px;
+    }
 }
