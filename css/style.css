@@ -112,11 +112,11 @@ input {
 
 }
 
-#container-icons i {
+#container-icons i a {
     padding: 10px;
 }
 
-#container-icons i:hover {
+#container-icons i a:hover {
     background-color: #00000070;
     border-radius: 100%;
     box-shadow: 0 0 5px #000000a2;

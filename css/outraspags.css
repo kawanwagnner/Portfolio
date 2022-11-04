@@ -188,6 +188,12 @@ button {
     color: #000;
 }
 
+#conatiner-ctt h3 {
+    padding: 10px;
+    text-align: center;
+    
+}
+
 
 
 @media screen and (max-width: 950px) {
