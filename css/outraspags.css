@@ -249,16 +249,17 @@ button {
         line-height: 40px;
         
     }
-#subscribe {
-    background: none;
-}
 
-#subscribe:hover {
+    #subscribe {
+    background: none;
+    }
+
+    #subscribe:hover {
     background-color: #447ff5;
     border-radius: 20px;
     transition: 0.5s;
     box-shadow: 0 0 5px #000000d2;
-}
+    }
 
 }
 

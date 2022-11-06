@@ -196,7 +196,6 @@ input {
 
     #navbar.active {
         display: block;
-
     }
 
     #navbar.active ul {
@@ -207,17 +206,17 @@ input {
         right: 0px;
         color: #fff;
         min-width: 100vw;
-        height: 100vh;
+        height:100%;
         z-index: 15;
-        overflow: hidden;
-
+        
     }
 
     #navbar.active ul li {
-        font-size: 3.5vw;
+        font-size: 180%;
         text-align: center;
-        margin: 50px;
-        line-height: 50px;
+        margin-top: 20px;
+        line-height: 40px;
+        
     }
 
 }
