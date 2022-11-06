@@ -165,7 +165,7 @@ input {
     #container-icons {
         margin-top: -280px;
         margin-left: 15%;
-        
+
     }
 
     #container-icons a i {
@@ -206,9 +206,9 @@ input {
         right: 0px;
         color: #fff;
         min-width: 100vw;
-        height:100%;
+        height: 100%;
         z-index: 15;
-        
+
     }
 
     #navbar.active ul li {
@@ -216,7 +216,7 @@ input {
         text-align: center;
         margin-top: 20px;
         line-height: 40px;
-        
+
     }
 
 }
@@ -268,29 +268,24 @@ input {
 
 }
 
-    @media screen and (max-width: 510px) {
-        #container-text-iam {
-            width: 130%;
-            margin: 320px -60%;
-        }
-    
-        .kawan-500 {
-            margin: 80px -15%;
-        }
-
-        #container-icons {
-            margin-top: -240px;
-            margin-left: auto;
-    
-        }
-        
-        #container-icons {
-        margin-top: -240px;
-        margin-left: -30%;
-
-        }
-    
+@media screen and (max-width: 510px) {
+    #container-text-iam {
+        width: 170%;
+        margin: 380px 0px 0px -170px;
     }
+
+    .kawan-500 {
+        margin: 100px -30%;
+        max-width: 250px;
+    }
+
+    #container-icons {
+        margin-top: 80px;
+        margin-left: -60%;
+
+    }
+
+}
 
 @media screen and (max-width: 460px) {
     #btn-menu {
@@ -298,10 +293,10 @@ input {
         right: 10px;
         top: 25px;
     }
-    
+
     #container-text-iam {
-        width: 200%;
-        margin: 320px -180px;
+        width: 170%;
+        margin: 380px 0px 0px -170px;
         font-size: 1.1rem;
     }
 
@@ -311,13 +306,13 @@ input {
     }
 
     .kawan-500 {
-        margin: 80px -30%;
+        margin: 100px -30%;
         max-width: 250px;
     }
 
     #container-icons {
-        margin-top: -240px;
-        margin-left: -80%;
+        margin-top: 80px;
+        margin-left: -50%;
 
     }
 
@@ -333,7 +328,7 @@ input {
         margin-top: 30px;
         position: absolute;
         font-weight: bold;
-    
+
     }
 
     button {
@@ -343,7 +338,7 @@ input {
         border-radius: 20px;
         box-shadow: 0 0 10px;
     }
-    
+
     input {
         outline: none;
         border: 0;
@@ -354,8 +349,8 @@ input {
     }
 
     #container-text-iam {
-        width: 200%;
-        margin: 300px -180px;
+        width: 190%;
+        margin: 380px 0px 0px -170px;
         font-size: 1rem;
     }
 
@@ -365,14 +360,14 @@ input {
     }
 
     #container-icons {
-        margin-top: -230px;
-        margin-left: -120%;
+        margin-top: 80px;
+        margin-left: -80%;
         font-size: 22px;
     }
-    
+
 
     .kawan-500 {
-        max-width: 230px;
-        margin: 80px -35%;
+        margin: 100px -40%;
+        max-width: 250px;
     }
 }
