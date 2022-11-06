@@ -312,7 +312,7 @@ input {
 @media screen and (max-width: 370px) {
     .btn {
         background-color: #fff;
-        width: 246px;
+        width: 245.9px;
         padding: 2px;
         box-shadow: 0 0 10px #447ff5;
         border-radius: 20px;
