@@ -107,7 +107,7 @@ button {
     font-family: 'Trispace';
     text-align: center;
     font-style: italic;
-    padding: 5px;
+    padding: 10px;
     border-radius: 30px;
     max-width: 300px;
     margin: auto;
@@ -123,6 +123,7 @@ button {
     border-radius: 20px;
     box-shadow: 0 0 5px #4e4d4d;
     margin: auto auto;
+    padding: 10px;
 }
 
 .segregacao {
@@ -279,6 +280,16 @@ button {
         margin-top: -30px;
         margin-bottom: 20px;
         color: #c0c0c0;
+    }
+
+    #container-projetos {
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .projeto, .projeto-3 {
+        margin: 50px auto;
     }
 }
 
