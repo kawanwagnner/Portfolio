@@ -11,6 +11,10 @@ body {
     background-size: cover;
 }
 
+.container_application {
+    margin-bottom: 50px; /* space bottom */
+}
+
 .container-navbar {
     display: flex;
     justify-content: space-between;
@@ -76,33 +80,39 @@ h4 {
 
 }
 
-button {
+/* ---------- button email ------------ */
+#submitData {
     background-color: #447ff5;
     padding: 10px;
     border: 0;
-    border-radius: 20px;
-    box-shadow: 0 0 10px;
+    cursor: pointer;
+    float: right;
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #0000003b;
+    transition: .1s;
 }
 
-input {
-    outline: none;
-    border: 0;
-    width: 73.4%;
-    height: 100%;
-    color: #000;
-    text-align: center;
+#submitData:hover {
+    box-shadow: 0 0 0 #00000000;
 }
 
-.btn {
+#formSubmit{
+    display: flex;
     background-color: #fff;
-    width: 300px;
-    padding: 2px;
-    box-shadow: 0 0 10px #447ff5;
-    border-radius: 20px;
-    margin-top: 30px;
-    position: absolute;
-    font-weight: bold;
+    align-items: center;
+    border-radius: 12px;
+    max-width: 500px;
+    margin-top: 20px;
+}
 
+#formSubmit input {
+    width: 100%;
+    color: #000;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 10px;
 }
 
 #container-icons {
@@ -150,22 +160,11 @@ input {
 
     #container-text-iam {
         width: 100%;
-        margin: 360px auto;
-    }
-
-    .kawan-500 {
-        display: block;
-        position: absolute;
-        margin: 80px 0px auto auto;
-        margin-left: 10%;
-        z-index: 10;
-        max-width: 300px;
+        margin: 130px auto 0 auto;
     }
 
     #container-icons {
-        margin-top: -280px;
-        margin-left: 15%;
-
+        margin: 20px 0;    
     }
 
     #container-icons a i {
@@ -176,10 +175,20 @@ input {
         color: #08338a;
     }
 
+    
+    .kawan-500 {
+        display: block;
+        padding: 0;
+        margin: 0 auto;
+        width: 280px;   
+    }
+
     #btn-menu {
         display: block;
         font-size: 40px;
         background: none;
+        cursor: pointer;
+        border: none;
         box-shadow: none;
         color: #fff;
         position: absolute;
@@ -197,6 +206,7 @@ input {
     #navbar.active {
         display: block;
     }
+    
 
     #navbar.active ul {
         display: block;
@@ -208,7 +218,6 @@ input {
         min-width: 100vw;
         height: 100%;
         z-index: 15;
-
     }
 
     #navbar.active ul li {
@@ -229,14 +238,6 @@ input {
 
     }
 
-    .kawan-500 {
-        display: block;
-        position: absolute;
-        margin: 80px auto auto auto;
-        z-index: 10;
-        max-width: 250px;
-    }
-
     #container-icons {
         margin-top: -240px;
         margin-left: -15%;
@@ -254,10 +255,7 @@ input {
     #titulo {
         font-size: 2.6rem;
         width: 120%;
-    }
-
-    .kawan-500 {
-        margin: 80px -5%;
+        margin: 0;
     }
 
     #container-icons {
@@ -272,11 +270,6 @@ input {
     #container-text-iam {
         width: 170%;
         margin: 380px 0px 0px -170px;
-    }
-
-    .kawan-500 {
-        margin: 100px -30%;
-        max-width: 250px;
     }
 
     #container-icons {
@@ -303,11 +296,6 @@ input {
     #titulo {
         font-size: 2.6rem;
         width: 120%;
-    }
-
-    .kawan-500 {
-        margin: 100px -30%;
-        max-width: 250px;
     }
 
     #container-icons {
@@ -363,11 +351,5 @@ input {
         margin-top: 80px;
         margin-left: -80%;
         font-size: 22px;
-    }
-
-
-    .kawan-500 {
-        margin: 100px -40%;
-        max-width: 250px;
     }
 }
