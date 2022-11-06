@@ -221,57 +221,76 @@ input {
 
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 770px) {
     #container-text-iam {
         margin: auto;
-        width: 130%;
-        margin: 320px -30%;
+        width: 104.6%;
+        margin: 320px -20%;
 
     }
 
     .kawan-500 {
         display: block;
         position: absolute;
-        margin: 80px 0px auto auto;
+        margin: 80px auto auto auto;
         z-index: 10;
         max-width: 250px;
     }
 
     #container-icons {
         margin-top: -240px;
-        margin-left: -10%;
+        margin-left: -15%;
     }
 
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 600px) {
     #container-text-iam {
-        width: 200%;
-        margin: 320px -150px;
+        width: 100%;
+        margin: 320px -35%;
         font-size: 1.1rem;
     }
-    
+
     #titulo {
         font-size: 2.6rem;
         width: 120%;
     }
 
     .kawan-500 {
-        display: block;
-        position: absolute;
-        margin: 80px 0px auto auto;
-        margin-left: -70px;
-        z-index: 10;
-        max-width: 250px;
+        margin: 80px -5%;
     }
 
     #container-icons {
         margin-top: -240px;
-        margin-left: -50%;
+        margin-left: -30%;
 
     }
 
 }
+
+    @media screen and (max-width: 510px) {
+        #container-text-iam {
+            width: 130%;
+            margin: 320px -60%;
+        }
+    
+        .kawan-500 {
+            margin: 80px -15%;
+        }
+
+        #container-icons {
+            margin-top: -240px;
+            margin-left: auto;
+    
+        }
+        
+        #container-icons {
+        margin-top: -240px;
+        margin-left: -30%;
+
+        }
+    
+    }
 
 @media screen and (max-width: 460px) {
     #btn-menu {
@@ -292,11 +311,7 @@ input {
     }
 
     .kawan-500 {
-        display: block;
-        position: absolute;
-        margin: 80px 0px auto auto;
-        margin-left: -150px;
-        z-index: 10;
+        margin: 80px -30%;
         max-width: 250px;
     }
 
@@ -308,7 +323,7 @@ input {
 
 }
 
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 375px) {
     .btn {
         background-color: #fff;
         width: 245.9px;
@@ -358,5 +373,6 @@ input {
 
     .kawan-500 {
         max-width: 230px;
+        margin: 80px -35%;
     }
 }
