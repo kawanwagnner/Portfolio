@@ -101,7 +101,8 @@ h4 {
     display: flex;
     background-color: #fff;
     align-items: center;
-    border-radius: 12px;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #00000057;
     max-width: 500px;
     margin-top: 20px;
 }
