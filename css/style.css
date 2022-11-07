@@ -118,7 +118,7 @@ h4 {
 
 #container-icons {
     font-size: 25px;
-    margin: -90px 15%;
+    margin: -90px 8%;
 
 }
 
@@ -237,7 +237,7 @@ h4 {
 @media screen and (max-width: 850px) {
 
     #container-icons {
-        margin: 0px 5%;
+        margin: 10px 5%;
         
     }
 
@@ -251,7 +251,7 @@ h4 {
 @media screen and (max-width: 750px) {
 
     #container-icons {
-        margin: 0px -5%;
+        margin: 10px -5%;
         
     }
 
@@ -273,7 +273,7 @@ h4 {
     }
     
     #container-icons {
-        margin: 0px -10%;
+        margin: 10px -10%;
         
     }
 
@@ -282,7 +282,7 @@ h4 {
 @media screen and (max-width: 600px) {
 
     #container-icons {
-        margin: 0px -25%;
+        margin: 10px -25%;
         
     }
 
@@ -317,7 +317,7 @@ h4 {
     }
 
     #container-icons {
-        margin: 0px -55%;
+        margin: 10px -55%;
         
     }
 
@@ -347,7 +347,7 @@ h4 {
     }
 
     #container-icons {
-        margin: 0px -50%;
+        margin: 10px -50%;
         
     }
 
