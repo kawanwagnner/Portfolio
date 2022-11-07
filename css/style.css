@@ -101,9 +101,9 @@ h4 {
     display: flex;
     background-color: #fff;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 200px;
     box-shadow: 0 0 5px #00000057;
-    max-width: 500px;
+    max-width: 350px;
     margin-top: 20px;
 }
 
@@ -118,7 +118,7 @@ h4 {
 
 #container-icons {
     font-size: 25px;
-    margin-left: 8%;
+    margin: -90px 15%;
 
 }
 
@@ -160,12 +160,12 @@ h4 {
     }
 
     #container-text-iam {
-        width: 100%;
-        margin: 130px auto 0 auto;
+        width: 130%;
+        margin: 370px 0px 0px 5%;
     }
 
     #container-icons {
-        margin: 20px 0;    
+        margin: 5px 0% -3px 25%;    
     }
 
     #container-icons a i {
@@ -178,9 +178,12 @@ h4 {
 
     
     .kawan-500 {
+        position: absolute;
+        top: 100px;
+        right: 40%;
         display: block;
         padding: 0;
-        margin: 0 auto;
+        margin: -10px auto;
         width: 280px;   
     }
 
@@ -231,57 +234,71 @@ h4 {
 
 }
 
-@media screen and (max-width: 770px) {
-    #container-text-iam {
-        margin: auto;
-        width: 104.6%;
-        margin: 320px -20%;
-
-    }
+@media screen and (max-width: 850px) {
 
     #container-icons {
-        margin-top: -240px;
-        margin-left: -15%;
+        margin: 0px 5%;
+        
+    }
+
+    #container-text-iam {
+        width: 130%;
+        margin: 370px 0px 0px -10%;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+
+    #container-icons {
+        margin: 0px -5%;
+        
+    }
+
+    #container-text-iam {
+        margin: 370px 0px 0px -20%;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+
+    .kawan-500 {
+        right: 20%;
+    }
+
+    #container-text-iam {
+        width: 104.8%;
+        margin: 370px 0px 0px -25%;
+    }
+    
+    #container-icons {
+        margin: 0px -10%;
+        
     }
 
 }
 
 @media screen and (max-width: 600px) {
-    #container-text-iam {
-        width: 100%;
-        margin: 320px -35%;
-        font-size: 1.1rem;
-    }
-
-    #titulo {
-        font-size: 2.6rem;
-        width: 120%;
-        margin: 0;
-    }
 
     #container-icons {
-        margin-top: -240px;
-        margin-left: -30%;
+        margin: 0px -25%;
+        
+    }
+
+    #container-text-iam {
+        width: 127.8%;
+        margin: 400px 0px 0px -40%;
+    }
+
+    .kawan-500 {
+        top: 150px;
 
     }
 
 }
 
-@media screen and (max-width: 510px) {
-    #container-text-iam {
-        width: 170%;
-        margin: 380px 0px 0px -170px;
-    }
-
-    #container-icons {
-        margin-top: 80px;
-        margin-left: -60%;
-
-    }
-
-}
-
-@media screen and (max-width: 460px) {
+@media screen and (max-width: 530px) {
     #btn-menu {
         position: absolute;
         right: 10px;
@@ -289,8 +306,8 @@ h4 {
     }
 
     #container-text-iam {
-        width: 170%;
-        margin: 380px 0px 0px -170px;
+        width: 163.5%;
+        margin: 430px 0px 0px -150px;
         font-size: 1.1rem;
     }
 
@@ -300,9 +317,43 @@ h4 {
     }
 
     #container-icons {
-        margin-top: 80px;
-        margin-left: -50%;
+        margin: 0px -55%;
+        
+    }
 
+    .kawan-500 {
+        top: 150px;
+        right: 25%;
+    }
+
+}
+
+@media screen and (max-width: 450px) {
+    #btn-menu {
+        position: absolute;
+        right: 10px;
+        top: 25px;
+    }
+
+    #container-text-iam {
+        width: 163.5%;
+        margin: 430px 0px 0px -150px;
+        font-size: 1.1rem;
+    }
+
+    #titulo {
+        font-size: 2.6rem;
+        width: 120%;
+    }
+
+    #container-icons {
+        margin: 0px -50%;
+        
+    }
+
+    .kawan-500 {
+        top: 150px;
+        right: 13%;
     }
 
 }
@@ -338,8 +389,8 @@ h4 {
     }
 
     #container-text-iam {
-        width: 190%;
-        margin: 380px 0px 0px -170px;
+        width: 191%;
+        margin: 400px 0px 0px -170px;
         font-size: 1rem;
     }
 
@@ -349,8 +400,24 @@ h4 {
     }
 
     #container-icons {
-        margin-top: 80px;
-        margin-left: -80%;
+        margin: 0px -100%;
         font-size: 22px;
     }
+
+    .kawan-500 {
+        max-width: 250px;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    #container-text-iam {
+        width: 193%;
+        margin: 400px 0px 0px -170px;
+        font-size: 1rem;
+    }
+
+    #container-icons {
+        margin: 0px -150%;
+    }
+
 }
