@@ -194,13 +194,29 @@ button {
     color: #000;
 }
 
-#conatiner-ctt h3 {
+#container-ctt h3 {
     padding: 10px;
     text-align: center;
     
 }
 
+#alinhado {
+    margin-left: -110px;
+}
 
+#alinhado2 {
+    margin-left: -20px;
+}
+
+#container-ctt a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #0c4186;
+}
+
+abbr {
+    text-decoration: none;
+}
 
 @media screen and (max-width: 950px) {
     body {
