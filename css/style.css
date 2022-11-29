@@ -1,10 +1,16 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,400;1,600&display=swap');
+
+/* Global --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bolder;
     margin: 0;
     padding: 0;
 }
+
+/*  Cabeçalho --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 body {
     background: #666 url(../imagens/background-linear-blue.png) no-repeat center center fixed;
@@ -12,7 +18,8 @@ body {
 }
 
 .container_application {
-    margin-bottom: 50px; /* space bottom */
+    margin: 200px 80px; /* space bottom */
+    font-size: 20px;
 }
 
 .container-navbar {
@@ -65,7 +72,7 @@ body {
 }
 
 #titulo {
-    margin: 0 10px;
+    margin: 0 20px;
     font-weight: bold;
     color: #fff;
     font-size: 50px;
@@ -80,7 +87,8 @@ h4 {
 
 }
 
-/* ---------- button email ------------ */
+/* Button E-mail --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
 #submitData {
     background-color: #447ff5;
     padding: 10px;
@@ -115,6 +123,8 @@ h4 {
     outline: none;
     padding: 10px;
 }
+
+/* Body Page --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
 #container-icons {
     font-size: 25px;
@@ -152,6 +162,8 @@ h4 {
     display: none;
 }
 
+/* Responsividade --------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
 @media screen and (max-width: 1024px) {
     body {
         background: #666 url(../imagens/background-linear-cian.png) no-repeat center center fixed;
@@ -180,7 +192,7 @@ h4 {
     .kawan-500 {
         position: absolute;
         top: 100px;
-        right: 40%;
+        right: 30%;
         display: block;
         padding: 0;
         margin: -10px auto;
@@ -256,7 +268,7 @@ h4 {
     }
 
     #container-text-iam {
-        margin: 370px 0px 0px -20%;
+        margin: 370px 0px -50px -20%;
     }
 
 }
