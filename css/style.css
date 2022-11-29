@@ -274,7 +274,7 @@ h4 {
     
     #container-icons {
         margin: 10px -10%;
-        
+        max-width: 200px;
     }
 
 }
@@ -283,7 +283,6 @@ h4 {
 
     #container-icons {
         margin: 10px -25%;
-        
     }
 
     #container-text-iam {
