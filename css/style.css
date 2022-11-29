@@ -318,17 +318,21 @@ h4 {
 
     #container-text-iam {
         width: 163.5%;
-        margin: 430px 0px 0px -150px;
+        margin: 450px 0px 0px -200px;
         font-size: 1.1rem;
+    }
+
+    .text-welcome {
+        width: 300px;
     }
 
     #titulo {
         font-size: 2.6rem;
-        width: 120%;
+        width: 150%;
     }
 
     #container-icons {
-        margin: 10px -55%;
+        margin: 10px -145%;
         
     }
 
