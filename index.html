@@ -6,102 +6,246 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio: Kawan Wnn.</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome; -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+    <!-- CSS Bootstrap; -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- Script Bootstrap;; -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+    <!-- My CSS; -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body id="body">
     <header>
-        <div class="container-navbar">
-            <h1 id="logo"><a href="index.html">Portfo<span class="color-world">lio</span></a></h1>
-            <nav id="navbar">
-                <ul class="list_navbar">
-                    <li><a href="sobremim.html">Sobre Mim</a></li>
-                    <li><a href="projetos.html">Projetos</a></li>
-                    <li><a href="habilidades.html">Habilidades</a></li>
-                    <li><a href="contatos.html">Contatos</a></li>
-                    <li><a class="subscribe" href="https://www.youtube.com/channel/UCgQk62HqpCR1lFV37k3yOaw"
-                            target="_blank">Inscreva-se</a></li>
-                </ul>
-            </nav>
-            <button id="btn-menu"><i class="fa-solid fa-bars"></i></button>
-        </div>
+        <h1 id="logo"><a href="index.html">Port<span class="color-world">folio</span></a></h1>
+        <nav id="navbar">
+            <ul class="list_navbar">
+                <li><a href="#sobre-mim">Sobre Mim</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#tecnologias">Habilidades</a></li>
+                <li><a href="#contatos">Contatos</a></li>
+                <li><a class="subscribe" href="https://www.youtube.com/channel/UCgQk62HqpCR1lFV37k3yOaw"
+                        target="_blank">Inscreva-se</a></li>
+            </ul>
+        </nav>
+        <button id="btn-menu"><i class="fa-solid fa-bars"></i></button>
     </header>
     <main>
-        <section class="container_application">
+        <section id="home">
+            <img src="imagens/Kawan_Wnn._Hack-no-bg.png" alt="Photo" id="photo">
             <div id="container-text-iam">
-                <img class="kawan-500" src="imagens/kawan-500px.png" alt=" Foto do Kawan Wagnner">
-                <h4>Olá! Meu nome é</h4>
+                <h4 class="sub-title hello">Olá! Meu nome é</h4>
                 <h1 id="titulo">Kawan <span class="color-world">Wagnner</span>
-                    <h3>Eu sou um Dev-Front End Jr.</h3>
-                    <div class="form_submit_email">
-                        <form id="formSubmit">
-                            <input 
-                                type="email"
-                                required
-                                placeholder="Envie-me Seu E-mail ==>"
-                                id="email_user"
-                            >
-                            <button type="submit" id="submitData">Enviar</button>
-                        </form>
+                    <h3 class="sub-title iam">& sou <span class="text-typing">Desenvolvedor FrontEnd Jr.</span></h3>
+                    <div id="container-icons">
+                        <a href="https://github.com/kawanwagnner" target="_blank">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="mailto:kawanwagnner.gs@gmail.com" target="_blank">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                            </ahref=>
+                            <a href="https://api.whatsapp.com/send?phone=5511939060203&text=Ol%C3%A1!%20Tudo%20bem%3F"
+                                target="_blank">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                            <a href="https://api.whatsapp.com/send?phone=5511939060203&text=Ol%C3%A1!%20Tudo%20bem%3F"
+                                target="_blank">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
                     </div>
+                    <a href="#" class="btn btn-outline-primary w-md-25 btn-contate">Contate-me</a>
             </div>
-            <div id="container-icons">
-                <a href="https://github.com/kawanwagnner" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="mailto:kawanwagnner.gs@gmail.com" target="_blank"><i
-                        class="fa-solid fa-envelope-open-text"></i></a>
-                <a href="https://api.whatsapp.com/send?phone=5511939060203&text=Ol%C3%A1!%20Tudo%20bem%3F"
-                    target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </section>
+        <section class="container-fluid" id="sobre-mim">
+            <div class="text-center pt-4 py-5">
+                <h1 class="display-4 display-sobremim">Sobre Mim</h1>
+            </div>
+            <div class="container section-two">
+                <img src="imagens/Kawan_Wnn._future.png" alt="Photo" class="photo rounded-5">
+                <p class="paragraphy font-monospace">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis
+                    nesciunt magni
+                    illum perferendis esse dolor voluptate, voluptas odit vel voluptates. Itaque corrupti quos
+                    exercitationem nisi natus minima velit laudantium nesciunt quo libero numquam rerum esse dolor illo
+                    quibusdam consequuntur temporibus excepturi, facere explicabo! Quia debitis voluptas, repudiandae
+                    repellat officia, veritatis illo impedit odit dolorem nostrum doloremque nisi eos. Molestias ullam
+                    non ipsum maiores soluta rem optio harum? Ipsum veritatis eos atque quo sint veniam ratione labore
+                    voluptatibus illum laborum et reprehenderit hic.
+                    <a href="#" class="btn btn-outline-dark d-inline-block btn-cv">Baixar Currículo</a>
+                </p>
             </div>
         </section>
 
+        <section class="container-fluid" id="tecnologias">
+            <div class="text-center pt-4 py-5">
+                <h1 class="display-4 display-tech">Tecnologias</h1>
+            </div>
+            <div class="container d-block">
+                <div class="row g-5">
+
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card rounded-5">
+                            <div class="card-text">
+                                <i class="fa-brands fa-square-js"></i> <br>
+                                JavaScript;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="techs col-12 col-md-4 col-lg-4">
+                        <div class="card rounded-5">
+                            <div class="card-text">
+                                <i class="fa-brands fa-bootstrap"></i> <br>
+                                Bootstrap;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card rounded-5">
+                            <div class="card-text">
+                                <i class="fa-brands fa-html5"></i> <br>
+                                HTML5;
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card mx-auto rounded-5">
+                            <div class="card-text">
+                                <i class="fa-brands fa-css3-alt"></i> <br>
+                                CSS3;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card mx-auto rounded-5">
+                            <div class="card-text">
+                                <i class="fa-brands fa-git-alt"></i> <br>
+                                Git;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card mx-auto rounded-5 mb-5">
+                            <div class="card-text">
+                                <i class="fa-brands fa-github"></i> <br>
+                                GitHub;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="container-fluid" id="projetos">
+            <div class="text-center pt-4 py-5">
+                <h1 class="display-4 display-projetos">Projetos</h1>
+            </div>
+            <div class="container d-block">
+                <div class="row g-5">
+                    
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card rounded-5">
+                            <div class="card-body">
+                                <img src="imagens/p-cordel-2-300.png" alt="cordel" class="w-25">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card rounded-5">
+                            <div class="card-body">
+                                <img src="imagens/p-calculator.png" alt="calculator" class="w-25">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card rounded-5">
+                            <div class="card-body">
+                                <img src="imagens/p-imovi.png" alt="imovi" class="w-25">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card rounded-5">
+                            <div class="card-body">
+                                <img src="imagens/p-login.png" alt="login" class="w-25">
+                            </div>
+                            <div class="card-title">
+                                Bug-Droid
+                            </div>
+                        </div>
+                    </div>
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card rounded-5">
+                            <div class="card-body">
+                                <img src="imagens/p-mostruario.png" alt="mostruario" class="w-25">
+                            </div>
+                            <div class="card-title">
+                                Bug-Droid
+                            </div>
+                        </div>
+                    </div>
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card rounded-5">
+                            <div class="card-body">
+                                <img src="imagens/p-droid-1-300.png" alt="droid" class="w-25">
+                            </div>
+                            <div class="card-title">
+                                Bug-Droid
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+        </section>
+
+        <section class="container-fluid bg-black text-bg-dark py-5" id="contato">
+            <div class="text-center pt-4 py-5">
+                <h1 class="display-4 display-contato">Contato</h1>
+            </div>
+            <div class="container">
+                <div class="row g-2 d-flex align-items-center">
+                    <div class="col-4 s1">
+                        <p>
+                            <i class="fa-solid fa-user"></i> Kawan Wagnner.
+                        </p>
+                        <p>
+                            <i class="fa-solid fa-envelope"></i> E-mail: <a href="mailto:kawanwagnner.gs@gmail.com"
+                                target="_blank">kawanwagnner.gs@gmail.com</a>
+                        </p>
+                        <p>
+                            <i class="fa-brands fa-whatsapp"></i> Celular: <a href="#">(11) 93906-0203</a>
+                        </p>
+                    </div>
+
+                    <div class="col-4 s2">
+                        <p>
+                            <i class="fa-brands fa-github-alt"></i> GitHub: <a href="mailto:kawanwagnner.gs@gmail.com"
+                                target="_blank">kawanwagnner.gs@gmail.com</a>
+                        </p>
+                        <p>
+                            <i class="fa-brands fa-linkedin"></i> LinkedIn: <a href="mailto:kawanwagnner.gs@gmail.com"
+                                target="_blank">kawanwagnner.gs@gmail.com</a>
+                        </p>
+                        <p>
+                            <i class="fa-brands fa-square-whatsapp"></i> WhatsApp: <a href="#">(11) 93906-0203</a>
+                        </p>
+                    </div>
+                </div>
+        </section>
     </main>
+    <footer class="text-center text-bg-primary bg-black">
+        <p>&copy; Criado por <a href="#">Kawan Wnn.</a> | Todos os direitos reservados, 2023.</p>
+    </footer>
 </body>
-<script src="src/js/menuMobile.js"></script>
-<script src="src/js/submitEmail.js"></script>
-
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-    import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-        apiKey: "AIzaSyDCocU-Eh1JmzmYSh3_Fc-tInCWReAaNho",
-        authDomain: "portfolio-email-856f3.firebaseapp.com",
-        databaseURL: "https://portfolio-email-856f3-default-rtdb.firebaseio.com",
-        projectId: "portfolio-email-856f3",
-        storageBucket: "portfolio-email-856f3.appspot.com",
-        messagingSenderId: "464504513405",
-        appId: "1:464504513405:web:fc6410b4b7f4111de06214",
-        measurementId: "G-MLCN37NWP7"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-
-    document.getElementById('formSubmit')
-        .addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            // get email of page
-            const emailUser = document.getElementById('email_user').value;
-
-            try {
-                const docRef = await addDoc(collection(db, "email"), {
-                    email: emailUser, 
-                    id: Math.random()
-                });
-
-                document.getElementById('formSubmit').reset();
-                alert('Enviado com sucesso!')
-                console.log("Document written with ID: ", docRef.id);
-            } catch (e) {
-                console.error("Error adding document: ", e);
-            }
-        })
-
-</script>
+<script src="src/js/scripts.js"></script>
 
 </html>
