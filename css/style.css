@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,900;1,100;1,300;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,700;0,800;1,300;1,700;1,800&display=swap');
 
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
 /* Global; ------------------------------------------------------------------------------------------- */
 
 * {
@@ -16,6 +18,7 @@ html {
 }
 
 #body {
+    overflow-x: hidden;
     position: relative;
     background-color: #ff9100d3;
 }
@@ -80,6 +83,13 @@ header {
     height: 70vh;
 }
 
+.bi-arrow-90deg-up {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    z-index: 1;
+}
+
 #container-text-iam {
     position: relative;
     text-align: left;
@@ -118,7 +128,7 @@ header {
     }
 
     to {
-        width: 370px;
+        width: 230px;
     }
 }
 
@@ -228,29 +238,30 @@ header {
     }
 
     .iam {
-        margin-left: 15%;
-        white-space: nowrap;
         margin: auto;
+        white-space: nowrap;
         display: block;
-
     }
 
     .text-typing {
-        margin-top: 10px;
-        margin-left: 25px;
         display: block;
+        margin-left: 23%;
     }
 
     @keyframes typing {
         from {
-            width: 10px;
+            width: 0px;
         }
-    
+
         to {
-            width: 305px;
+            width: 186px;
         }
     }
-    
+
+    .bi-arrow-90deg-up {
+        bottom: 25px;
+        right: 25px;
+    }
 
 }
 
@@ -279,7 +290,7 @@ header {
 
 #sobre-mim {
     background-color: #fff;
-    padding: 20px;
+    padding-bottom: 100px;
     height: 100%;
 }
 
@@ -301,22 +312,57 @@ header {
     justify-content: center;
 }
 
+.about-typing {
+    color: #051e50;
+    width: 0;
+    padding-left: 10px;
+    border-right: 1px solid #fff;
+    font-weight: bolder;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blinkCursor2 500ms infinite normal, typing2 4s 1s alternate-reverse infinite;
+}
+
+@keyframes typing2 {
+    from {
+        width: 10px;
+    }
+
+    to {
+        width: 296px;
+    }
+}
+
+@keyframes blinkCursor2 {
+    from {
+        border-right: 1px solid #000000;
+    }
+
+    to {
+        border-right: transparent;
+    }
+}
+
 .paragraphy {
     position: relative;
     padding: 20px;
     color: #000;
+    text-indent: 20px;
+    text-align: justify;
 }
 
 .btn-cv {
     position: absolute;
+    padding-left: 0;
     left: 5%;
-    bottom: 10%;
+    bottom: -30%;
 }
 
 .photo {
     width: 350px;
 }
 
+/* Responsive Sobre Mim; */
 @media screen and (max-width: 768px) {
 
     #sobre-mim {
@@ -334,9 +380,29 @@ header {
         margin: auto;
     }
 
+    @keyframes typing2 {
+        from {
+            width: 10px;
+        }
+    
+        to {
+            width: 270px;
+        }
+    }
+
     .paragraphy {
         display: block;
         margin: auto;
+    }
+
+    .btn-cv {
+        position: absolute;
+        left: 20%;
+        bottom: -10%;
+    }
+    
+    .photo {
+        width: 300px;
     }
 }
 
@@ -344,6 +410,7 @@ header {
 
 #tecnologias {
     height: 100%;
+    margin-bottom: 20px;
 }
 
 .display-tech {
@@ -385,10 +452,12 @@ header {
     font-size: 35px;
 }
 
-.card-text:hover>i {
+.card:hover i {
     transform: translateY(-20%);
     transition: all .3s ease;
 }
+
+/* Responsive Tech; */
 
 @media screen and (max-width: 768px) {
     #tecnologias {
@@ -400,8 +469,9 @@ header {
 /* Projetos; ------------------------------------------------------------------------------------------- */
 
 #projetos {
-    height: 140vh;
-    background-color: #fff
+    background-color: #fff;
+    height: 100%;
+    padding-bottom: 80px;
 }
 
 .section-three {
@@ -421,8 +491,14 @@ header {
     padding: 0;
 }
 
-.card>a>img {
-    width: 150px;
+.card-projetos {
+    height: 100%;
+}
+
+.projetos-img {
+    width: 80%;
+    height: auto;
+    border-radius: 20px;
 }
 
 .btn-git {
@@ -438,6 +514,22 @@ header {
     border: 1px solid #051e50;
 }
 
+.card-title::after {
+    content: "___________";
+    color: #000;
+    width: 400px;
+    text-align: center;
+    display: block;
+    margin: -10px auto 10px -40%;
+    font-size: 25px;
+    font-style: italic;
+    font-weight: bold;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+/* Responsive Projetos; */
+
 @media screen and (max-width: 768px) {
     #projetos {
         height: 100%;
@@ -445,7 +537,7 @@ header {
 
 }
 
-/* Footer; ------------------------------------------------------------------------------------------- */
+/* Conato; ------------------------------------------------------------------------------------------- */
 
 #contato p a {
     text-decoration: underline;
@@ -483,6 +575,23 @@ header {
 .s2 {
     padding: 20px;
 }
+
+/* Responsive Contato; */
+
+@media screen and (max-width: 768px) {
+
+    .s1,
+    .s2 {
+        border: none;
+    }
+
+    .s2 {
+        margin-left: -10px;
+    }
+
+}
+
+/* Footer; ------------------------------------------------------------------------------------------- */
 
 footer {
     margin-bottom: -20px;

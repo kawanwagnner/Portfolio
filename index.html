@@ -10,6 +10,9 @@
     <!-- Font Awesome; -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 
+    <!-- Scroll Reveal; -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <!-- CSS Bootstrap; -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -24,7 +27,7 @@
 </head>
 
 <body id="body">
-    <header>
+    <header id="header">
         <h1 id="logo"><a href="index.html">Port<span class="color-world">folio</span></a></h1>
         <nav id="navbar">
             <ul class="list_navbar">
@@ -44,25 +47,26 @@
             <div id="container-text-iam">
                 <h4 class="sub-title hello">Olá! Meu nome é</h4>
                 <h1 id="titulo">Kawan <span class="color-world">Wagnner</span>
-                    <h3 class="sub-title iam">& sou <span class="text-typing">Desenvolvedor FrontEnd Jr.</span></h3>
+                    <h3 class="sub-title iam">& sou <span class="text-typing">Dev FrontEnd Jr.</span></h3>
                     <div id="container-icons">
                         <a href="https://github.com/kawanwagnner" target="_blank">
                             <i class="fa-brands fa-github"></i>
                         </a>
                         <a href="mailto:kawanwagnner.gs@gmail.com" target="_blank">
                             <i class="fa-solid fa-envelope-open-text"></i>
-                            </ahref=>
-                            <a href="https://api.whatsapp.com/send?phone=5511939060203&text=Ol%C3%A1!%20Tudo%20bem%3F"
-                                target="_blank">
-                                <i class="fa-brands fa-whatsapp"></i>
-                            </a>
-                            <a href="https://api.whatsapp.com/send?phone=5511939060203&text=Ol%C3%A1!%20Tudo%20bem%3F"
-                                target="_blank">
-                                <i class="fa-brands fa-linkedin"></i>
-                            </a>
-                    </div>
-                    <a href="#" class="btn btn-outline-primary w-md-25 btn-contate">Contate-me</a>
+                        </ahref=>
+                        <a href="https://api.whatsapp.com/send?phone=5511939060203&text=Ol%C3%A1!%20Tudo%20bem%3F"
+                        target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=5511939060203&text=Ol%C3%A1!%20Tudo%20bem%3F"
+                    target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
             </div>
+            <a href="#" class="btn btn-outline-primary w-md-25 btn-contate">Contate-me</a>
+        </div>
+        <a href="#body"><i class="bi bi-arrow-90deg-up btn btn-outline-dark"></i></a>
         </section>
         <section class="container-fluid" id="sobre-mim">
             <div class="text-center pt-4 py-5">
@@ -70,16 +74,22 @@
             </div>
             <div class="container section-two">
                 <img src="imagens/Kawan_Wnn._future.png" alt="Photo" class="photo rounded-5">
-                <p class="paragraphy font-monospace">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Omnis
-                    nesciunt magni
-                    illum perferendis esse dolor voluptate, voluptas odit vel voluptates. Itaque corrupti quos
-                    exercitationem nisi natus minima velit laudantium nesciunt quo libero numquam rerum esse dolor illo
-                    quibusdam consequuntur temporibus excepturi, facere explicabo! Quia debitis voluptas, repudiandae
-                    repellat officia, veritatis illo impedit odit dolorem nostrum doloremque nisi eos. Molestias ullam
-                    non ipsum maiores soluta rem optio harum? Ipsum veritatis eos atque quo sint veniam ratione labore
-                    voluptatibus illum laborum et reprehenderit hic.
-                    <a href="#" class="btn btn-outline-dark d-inline-block btn-cv">Baixar Currículo</a>
-                </p>
+                <div class="flex-column">
+                    <h4 class="about-typing  d-inline-flex ms-3 mb-0 mt-4">Eu sou Kawan Wagnner.</h4>
+                    <p class="paragraphy font-monospace">
+                        Nascido em 25 de fevereiro de 2006, atualmente sou um desenvolvedor
+                        Front-End Jr.
+                        <span class="mt-2 d-block font-monospace">
+                            Comecei minha trajétoria em 2021, mas infelizmente por motivos pessoais parei e voltei
+                            com força total em janeiro de 2022, e estou estudando desde então.
+                            Estou em constante aprendizado, todos os dias me desenvolvendo um pouco mais, atualmente
+                            minhas linguagens em estudo são o Node.js e o JavaScript. Sendo elas voltadas 100% para o
+                            desenvolvimento
+                            WEB, por enquando é claro, pois futuramente pretendo expandir meus conhecimentos cada vez mais.
+                        </span>
+                        <a href="#" class="btn btn-outline-dark d-inline-block btn-cv">Baixar Currículo</a>
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -150,68 +160,95 @@
             </div>
             <div class="container d-block">
                 <div class="row g-5">
-                    
+
                     <div class="techs col-12 col-md-6 col-lg-4">
-                        <div class="card rounded-5">
-                            <div class="card-body">
-                                <img src="imagens/p-cordel-2-300.png" alt="cordel" class="w-25">
+                        <div class="card card-projetos rounded-5">
+                            <div class="card-img-top">
+                                <img src="imagens/p-cordel-2-300.png" alt="cordel" class="projetos-img">
+                            </div>
+                            <div class="card-title mt-3">
+                                Cordel Moderno
+                            </div>
+                            <div class="card-text font-monospace fs-6">
+                                Projeto criado para aplicação e consolidação do efeito parallax.
                             </div>
                         </div>
                     </div>
                     <div class="techs col-12 col-md-6 col-lg-4">
-                        <div class="card rounded-5">
-                            <div class="card-body">
-                                <img src="imagens/p-calculator.png" alt="calculator" class="w-25">
+                        <div class="card card-projetos rounded-5">
+                            <div class="card-img-top">
+                                <img src="imagens/p-calculator.png" alt="calculator" class="projetos-img">
+                            </div>
+                            <div class="card-title mt-3">
+                                Calculadora
+                            </div>
+                            <div class="card-text font-monospace fs-6">Projeto criado para aplicação e consoliadação de
+                                Lógica em JavaScript.
                             </div>
                         </div>
                     </div>
                     <div class="techs col-12 col-md-6 col-lg-4">
-                        <div class="card rounded-5">
-                            <div class="card-body">
-                                <img src="imagens/p-imovi.png" alt="imovi" class="w-25">
+                        <div class="card card-projetos rounded-5">
+                            <div class="card-img-top">
+                                <img src="imagens/p-imovi.png" alt="imovi" class="projetos-img">
+                            </div>
+                            <div class="card-title mt-3">
+                                iMovi
+                            </div>
+                            <div class="card-text font-monospace fs-6">Totalmente criado para o meu desenvolvimento com
+                                Bootstrap.
                             </div>
                         </div>
                     </div>
 
                     <div class="techs col-12 col-md-6 col-lg-4">
-                        <div class="card rounded-5">
-                            <div class="card-body">
-                                <img src="imagens/p-login.png" alt="login" class="w-25">
+                        <div class="card card-projetos rounded-5">
+                            <div class="card-img-top">
+                                <img src="imagens/p-login.png" alt="login" class="projetos-img">
                             </div>
-                            <div class="card-title">
-                                Bug-Droid
+                            <div class="card-title mt-3">
+                                Formulário
                             </div>
-                        </div>
-                    </div>
-                    <div class="techs col-12 col-md-6 col-lg-4">
-                        <div class="card rounded-5">
-                            <div class="card-body">
-                                <img src="imagens/p-mostruario.png" alt="mostruario" class="w-25">
-                            </div>
-                            <div class="card-title">
-                                Bug-Droid
+                            <div class="card-text font-monospace fs-6">Utilizei o LocalStorage para armazenar as
+                                informações do usuario.
                             </div>
                         </div>
                     </div>
                     <div class="techs col-12 col-md-6 col-lg-4">
-                        <div class="card rounded-5">
-                            <div class="card-body">
-                                <img src="imagens/p-droid-1-300.png" alt="droid" class="w-25">
+                        <div class="card card-projetos rounded-5">
+                            <div class="card-img-top">
+                                <img src="imagens/p-mostruario.png" alt="mostruario" class="projetos-img">
                             </div>
-                            <div class="card-title">
+                            <div class="card-title mt-3">
+                                Kawx_Z
+                            </div>
+                            <div class="card-text font-monospace fs-6">Mostruário criado para minha lojinha de correntes
+                                e acessórios. (Ideialização de Wordpress)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="techs col-12 col-md-6 col-lg-4">
+                        <div class="card card-projetos rounded-5">
+                            <div class="card-img-top">
+                                <img src="imagens/p-droid-1-300.png" alt="droid" class="projetos-img">
+                            </div>
+                            <div class="card-title mt-3">
                                 Bug-Droid
+                            </div>
+                            <div class="card-text font-monospace fs-6">Sendo um dos meus primeiros projetos com HTML e
+                                CSS, foi com esse projeto que desenvolvi uma melhor concepção de layouts.
                             </div>
                         </div>
                     </div>
 
-            </div>
+                </div>
         </section>
 
         <section class="container-fluid bg-black text-bg-dark py-5" id="contato">
             <div class="text-center pt-4 py-5">
                 <h1 class="display-4 display-contato">Contato</h1>
             </div>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row g-2 d-flex align-items-center">
                     <div class="col-4 s1">
                         <p>
