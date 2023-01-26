@@ -210,7 +210,8 @@ header {
     }
 
     #container-text-iam {
-        margin: 120px 20%;
+        width: 100%;
+        margin: 110px 5%;
         display: block;
         text-align: center;
     }
@@ -223,13 +224,13 @@ header {
 
     #container-icons {
         top: 240px;
-        left: 10px;
+        left: 70px;
     }
 
     .btn-contate {
         top: 340px;
         width: 200px;
-        left: 10px;
+        left: 70px;
     }
 
     .hello {
@@ -246,7 +247,7 @@ header {
 
     .text-typing {
         display: block;
-        margin-left: 5%;
+        margin-left: 21%;
     }
 
     @keyframes typing {

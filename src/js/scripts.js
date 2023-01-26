@@ -4,22 +4,28 @@ const btn = document.querySelector('#btn-menu');
 
 btn.addEventListener('click', () => {
     const navbar = document.querySelector('#navbar');
-    const linksNavBar = document.querySelector('#list-navbar a[href^="#"]');
+    const linksNavBar = document.querySelectorAll('li a[href^="#"]');
 
     navbar.classList.toggle('active');
-    if (btn.innerHTML == '<i class="fa-solid fa-bars"></i>') {
-        btn.innerHTML = '<i class="fa-solid fa-bars"></i>';
-        document.body.style.overflowX = 'auto';
-    } else {
+    if (btn.innerHTML == '<i class="fa-solid fa-x"></i>') {
         btn.innerHTML = '<i class="fa-solid fa-bars"></i>';
         document.body.style.overflowX = 'hidden';
+    } else {
+        btn.innerHTML = '<i class="fa-solid fa-x"></i>';
+        document.body.style.overflowX = 'hidden';
     }
-
-    linksNavBar.addEventListener('click', () => {
+    
+    function removeMenu() {
         const navbarActive = document.querySelector('#navbar.active')
         navbarActive.classList.remove('active')
         btn.innerHTML = '<i class="fa-solid fa-bars"></i>'
-    })
+    }
+
+    linksNavBar[0].addEventListener('click', e => removeMenu())
+    linksNavBar[1].addEventListener('click', e => removeMenu())
+    linksNavBar[2].addEventListener('click', e => removeMenu())
+    linksNavBar[3].addEventListener('click', e => removeMenu())
+    linksNavBar[4].addEventListener('click', e => removeMenu())
 })
 
 /* Scroll Reveal; */
