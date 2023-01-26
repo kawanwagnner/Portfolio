@@ -7,19 +7,19 @@ btn.addEventListener('click', () => {
     const linksNavBar = document.querySelector('#list-navbar a[href^="#"]');
 
     navbar.classList.toggle('active');
-    if (btn.innerHTML == '<i class="fa-solid fa-x"></i>') {
+    if (btn.innerHTML == '<i class="fa-solid fa-bars"></i>') {
         btn.innerHTML = '<i class="fa-solid fa-bars"></i>';
         document.body.style.overflowX = 'auto';
     } else {
-        btn.innerHTML = '<i class="fa-solid fa-x"></i>';
+        btn.innerHTML = '<i class="fa-solid fa-bars"></i>';
         document.body.style.overflowX = 'hidden';
-    } 
-    
-    if (linksNavBar.addEventListener('click')) {
+    }
+
+    linksNavBar.addEventListener('click', () => {
         const navbarActive = document.querySelector('#navbar.active')
         navbarActive.classList.remove('active')
         btn.innerHTML = '<i class="fa-solid fa-bars"></i>'
-    }
+    })
 })
 
 /* Scroll Reveal; */
