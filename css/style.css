@@ -539,6 +539,7 @@ header {
 .card:hover i {
     transform: translateY(-20%);
     transition: all .3s ease;
+    color: #fff;
 }
 
 /* Responsive Tech; */
