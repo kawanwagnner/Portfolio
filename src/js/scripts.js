@@ -7,11 +7,11 @@ btn.addEventListener('click', () => {
     const linksNavBar = document.querySelector('#list-navbar a[href^="#"]');
 
     navbar.classList.toggle('active');
-    if (btn.innerHTML == 'X') {
+    if (btn.innerHTML == '<i class="fa-solid fa-x"></i>') {
         btn.innerHTML = '<i class="fa-solid fa-bars"></i>';
         document.body.style.overflowX = 'auto';
     } else {
-        btn.innerHTML = 'X';
+        btn.innerHTML = '<i class="fa-solid fa-x"></i>';
         document.body.style.overflowX = 'hidden';
     } 
     
