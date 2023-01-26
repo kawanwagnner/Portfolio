@@ -32,12 +32,12 @@ header {
     margin: 40px
 }
 
-.list_navbar {
+#list-navbar {
     display: flex;
     list-style-type: none;
 }
 
-.list_navbar li a {
+#list-navbar li a {
     color: #fff;
     text-decoration: none;
     cursor: pointer;
@@ -45,7 +45,7 @@ header {
     font-weight: bold;
 }
 
-.list_navbar li a:hover {
+#list-navbar li a:hover {
     background-color: #0053fa;
     margin: 10px;
     border-radius: 20px;
@@ -86,7 +86,7 @@ header {
 .bi-arrow-90deg-up {
     position: fixed;
     bottom: 40px;
-    right: 40px;
+    right: 45px;
     z-index: 1;
 }
 
@@ -210,7 +210,7 @@ header {
     }
 
     #container-text-iam {
-        margin: 120px auto;
+        margin: 120px 20%;
         display: block;
         text-align: center;
     }
@@ -218,17 +218,18 @@ header {
     h3,
     h4 {
         margin-left: 30px;
+        font-size: 25px;
     }
 
     #container-icons {
         top: 240px;
-        left: 75px;
+        left: 10px;
     }
 
     .btn-contate {
         top: 340px;
         width: 200px;
-        left: 75px;
+        left: 10px;
     }
 
     .hello {
@@ -245,7 +246,7 @@ header {
 
     .text-typing {
         display: block;
-        margin-left: 23%;
+        margin-left: 5%;
     }
 
     @keyframes typing {
@@ -254,7 +255,7 @@ header {
         }
 
         to {
-            width: 186px;
+            width: 200px;
         }
     }
 
@@ -266,19 +267,75 @@ header {
 }
 
 @media screen and (max-width: 992px) {
+
     #btn-menu {
         display: block;
-        background: none;
+        transition: all .3s ease;
+        position: absolute;
+        cursor: pointer;
+        width: 0%;
+        top: 0px;
+        right: 85px;
         border: none;
+        background: none;
         color: #fff;
         font-size: 35px;
-        position: fixed;
-        right: 30px;
-        top: 25px;
+        z-index: 2;
     }
 
     #navbar {
+        transform: translateX(-300%);
         display: none;
+    }
+
+    #navbar.none {
+        transform: translateX(-300%);
+        display: none;
+    }
+
+    #navbar.active {
+        display: block;
+        transform: translateX(-40%);
+        animation: menuInside .5s ease;
+        background-color: #000000;
+        padding: 10px;
+        width: 130vw;
+        height: 120vh;
+        position: absolute;
+        z-index: 1;
+        top: -40px;
+        left: 0;
+    }
+
+    #list-navbar {
+        display: block;
+        text-align: center;
+        margin: 15% 40%;
+    }
+
+    #list-navbar li {
+        display: block;
+        padding: 10px;
+        white-space: nowrap;
+        font-size: 1.5em;
+    }
+
+    #list-navbar li:hover {
+        background-color: #0026ff;
+        width: 350%;
+        border-radius: 20px;
+        padding: 10px;
+        transition: .5s;
+    }
+
+    @keyframes menuInside {
+        from {
+            transform: translateX(-300%);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
     }
 
     #photo {
@@ -299,12 +356,11 @@ header {
     color: #000;
     width: 400px;
     display: block;
+    text-align: center;
     margin: auto;
     font-size: 25px;
     font-style: italic;
     font-weight: bold;
-    box-sizing: border-box;
-    padding: 0;
 }
 
 .section-two {
@@ -384,7 +440,7 @@ header {
         from {
             width: 10px;
         }
-    
+
         to {
             width: 270px;
         }
@@ -400,17 +456,46 @@ header {
         left: 20%;
         bottom: -10%;
     }
-    
+
     .photo {
         width: 300px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .photo {
+        width: 250px;
+        height: auto;
+    }
+
+    .about-typing {
+        font-size: 20px;
+    }
+
+    @keyframes typing2 {
+        from {
+            width: 0px;
+        }
+
+        to {
+            width: 250px;
+        }
+    }
+
+    .display-sobremim {
+        font-size: 25px;
+    }
+
+    .display-sobremim::after {
+        font-size: 20px;
     }
 }
 
 /* Tecnologias; ------------------------------------------------------------------------------------------- */
 
 #tecnologias {
+    background-color: #000;
     height: 100%;
-    margin-bottom: 20px;
 }
 
 .display-tech {
@@ -420,14 +505,13 @@ header {
 .display-tech::after {
     content: "___Que utilizo___";
     color: #fff;
-    width: 200px;
+    width: 400px;
     display: block;
+    text-align: center;
     margin: auto;
     font-size: 25px;
     font-style: italic;
     font-weight: bold;
-    box-sizing: border-box;
-    padding: 0;
 }
 
 .card {
@@ -466,10 +550,18 @@ header {
 
 }
 
+@media screen and (max-width: 576px) {
+    .display-tech::after {
+        font-size: 20px;
+    }
+
+}
+
 /* Projetos; ------------------------------------------------------------------------------------------- */
 
 #projetos {
     background-color: #fff;
+    width: 100%;
     height: 100%;
     padding-bottom: 80px;
 }
@@ -483,12 +575,11 @@ header {
     color: #000;
     width: 400px;
     display: block;
+    text-align: center;
     margin: auto;
     font-size: 25px;
     font-style: italic;
     font-weight: bold;
-    box-sizing: border-box;
-    padding: 0;
 }
 
 .card-projetos {
@@ -514,20 +605,6 @@ header {
     border: 1px solid #051e50;
 }
 
-.card-title::after {
-    content: "___________";
-    color: #000;
-    width: 400px;
-    text-align: center;
-    display: block;
-    margin: -10px auto 10px -40%;
-    font-size: 25px;
-    font-style: italic;
-    font-weight: bold;
-    box-sizing: border-box;
-    padding: 0;
-}
-
 /* Responsive Projetos; */
 
 @media screen and (max-width: 768px) {
@@ -535,6 +612,17 @@ header {
         height: 100%;
     }
 
+}
+
+@media screen and (max-width: 576px) {
+    .card {
+        width: 80%;
+        margin: auto 20px auto 20px;
+    }
+
+    .display-projetos::after {
+        font-size: 15px;
+    }
 }
 
 /* Conato; ------------------------------------------------------------------------------------------- */
@@ -558,12 +646,11 @@ header {
     color: #fff;
     width: 400px;
     display: block;
+    text-align: center;
     margin: auto;
-    font-size: 20px;
+    font-size: 25px;
     font-style: italic;
-    font-weight: 500;
-    box-sizing: border-box;
-    padding: 0;
+    font-weight: bold;
 }
 
 .s1,
@@ -589,6 +676,9 @@ header {
         margin-left: -10px;
     }
 
+    .display-contato::after {
+        font-size: 15px;
+    }
 }
 
 /* Footer; ------------------------------------------------------------------------------------------- */
