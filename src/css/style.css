@@ -20,6 +20,7 @@ html {
 
 #body {
     position: relative;
+    overflow-x: hidden;
     background-color: #ff9100d3;
 }
 
@@ -441,7 +442,7 @@ header {
 .btn-cv {
     position: absolute;
     padding-left: 0;
-    left: 5%;
+    left: 7%;
     bottom: -30%;
     text-indent: 15px;
 }
@@ -794,10 +795,12 @@ header {
 
     .about-more {
         position: absolute;
-        width: 130px;
-        left: 70px;
+        width: 90%;
+        left: 0;
+        right: 0;
         bottom: 0px;
-        margin: 20px 10px;
+        margin: 20px auto;
+        margin-left: 20px;
         display: block;
     }
 }
