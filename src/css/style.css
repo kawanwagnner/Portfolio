@@ -15,7 +15,6 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
 }
 
 #body {
@@ -31,11 +30,14 @@ header {
     justify-content: space-between;
     align-items: center;
     margin: 40px;
+    overflow-x: hidden; 
 }
 
 #list-navbar {
     display: flex;
     list-style-type: none;
+    align-items: center;
+    margin: 10px;
 }
 
 #list-navbar li a {
@@ -80,8 +82,9 @@ header {
 /* Home Page; ------------------------------------------------------------------------------------------- */
 
 #home {
+    overflow-x: hidden;
     width: 90vw;
-    height: 70vh;
+    height: 100vh;
 }
 
 .bi-arrow-90deg-up {
@@ -364,6 +367,7 @@ header {
 
 #sobre-mim {
     background-color: #fff;
+    overflow-x: hidden;
     padding-bottom: 100px;
     height: 100%;
 }
@@ -528,6 +532,7 @@ header {
 #tecnologias {
     background-color: #000;
     height: 100%;
+    overflow-x: hidden;
 }
 
 .display-tech {
@@ -598,6 +603,7 @@ header {
     color: #fff;
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
     padding-bottom: 80px;
 }
 
@@ -673,6 +679,7 @@ header {
     color: #000;
     height: 100%;
     margin-bottom: -10px;
+    overflow-x: hidden;
 }
 
 .display-skills {
@@ -710,7 +717,7 @@ header {
     font-weight: bold;
     padding: 100px;
     width: 100%;
-    height: 400px;
+    height: 500px;
     border-radius: 10px;
 }
 
@@ -723,10 +730,9 @@ header {
 }
 
 .about-more {
-    position: absolute;
-    width: 20%;
-    left: 40%;
-    bottom: 8%;
+    width: 90%;
+    margin: 130px auto;
+    display: block;
 }
 
 .carousel-control-next-icon {
@@ -744,7 +750,7 @@ header {
 @media screen and (max-width: 768px) {
 
     #skills {
-        height: 160vh;
+        height: 100%;
     }
 
     .section-five {
@@ -754,6 +760,12 @@ header {
 
     .section-five div {
         margin-left: -10px;
+    }
+
+    .invisible-container {
+        height: 130vh;
+        width: 100%;
+        opacity: 0;
     }
 
     .slide {
@@ -774,8 +786,8 @@ header {
         font-weight: bold;
         padding: 20px;
         width: 100%;
-        height: 550px;
-        border-radius: 5px;
+        height: 400px;
+        border-radius: 0px;
         margin-left: -50%;
     }
 
@@ -789,13 +801,8 @@ header {
     }
 
     .about-more {
-        position: absolute;
         width: 90%;
-        left: 0;
-        right: 0;
-        bottom: 0px;
         margin: 20px auto;
-        margin-left: 20px;
         display: block;
     }
 }
@@ -803,6 +810,7 @@ header {
 /* Conato; ------------------------------------------------------------------------------------------- */
 
 #contato {
+    overflow-x: hidden;
     background-color: #7a7a7a;
 }
 
@@ -868,6 +876,7 @@ header {
 footer {
     margin-bottom: -20px;
     padding: 5px;
+    overflow-x: hidden;
 }
 
 footer a {
