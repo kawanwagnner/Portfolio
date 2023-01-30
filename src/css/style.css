@@ -250,7 +250,7 @@ header {
     .btn-contate {
         top: 340px;
         width: 200px;
-        left: 70px;
+        left: 75px;
     }
 
     .hello {
@@ -729,7 +729,7 @@ header {
 .about-more {
     position: absolute;
     width: 20%;
-    left: 35%;
+    left: 40%;
     bottom: 8%;
 }
 
@@ -797,7 +797,8 @@ header {
         width: 130px;
         left: 70px;
         bottom: 0px;
-        margin: 20px auto;
+        margin: 20px 10px;
+        display: block;
     }
 }
 
