@@ -45,6 +45,6 @@ sr.reveal('#container-icons', { rotate: {x: 5, y: 20, z: 0}, duration: 2000 });
 
 sr.reveal('#container-text-iam', { rotate: {x: 5, y: 20, z: 0}, duration: 2000 });
 
-sr.reveal('.card', { rotate: {x: 5, y: 20, z: 0}, duration: 2000 });
+sr.reveal('.card', { rotate: {x: 5, y: 20, z: 0}, duration: 1000 });
 
 sr.reveal('#photo', { duration: 2000 });
