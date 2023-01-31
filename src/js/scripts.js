@@ -10,7 +10,7 @@ btn.addEventListener('click', () => {
     if (btn.innerHTML == '<i class="fa-solid fa-x"></i>') {
         btn.innerHTML = '<i class="fa-solid fa-bars"></i>';
         document.body.style.overflowX = 'hidden';
-        btn.style.top = '10px'
+        btn.style.top = '10px';
     } else {
         btn.innerHTML = '<i class="fa-solid fa-x"></i>';
         document.body.style.overflowX = 'hidden';
