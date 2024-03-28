@@ -52,6 +52,36 @@ body {
   color: var(--second-color);
 }
 
+/* Theme Dark Mode */
+body.dark-mode {
+  background-color: #111;
+  color: #fff;
+}
+
+body.dark-mode header {
+  background-color: #111;
+  color: #fff;
+}
+
+body.dark-mode header .nav__link {
+  color: #fff;
+}
+
+body.dark-mode .home__social-icon {
+  color: #fff;
+}
+
+body.dark-mode .nav__logo {
+  color: #fff;
+}
+
+body.dark-mode .nav__toggle {
+  /* background-color: #fff; */
+  color: #fff;
+}
+
+/* END Theme Dark Mode */
+
 h1,
 h2,
 p {
