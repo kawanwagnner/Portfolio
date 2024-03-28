@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/themeDark.css" />
 
     <!-- =====BOX ICONS===== -->
     <link
@@ -12,7 +13,7 @@
       rel="stylesheet"
     />
 
-    <title>Portfolio website complete</title>
+    <title>Portfólio</title>
   </head>
   <body>
     <!--===== HEADER =====-->
@@ -41,6 +42,11 @@
             </li>
           </ul>
         </div>
+
+        <label class="switch">
+          <input type="checkbox" id="darkModeToggle" />
+          <span class="slider"></span>
+        </label>
 
         <div class="nav__toggle" id="nav-toggle">
           <i class="bx bx-menu"></i>
@@ -323,5 +329,8 @@
 
     <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
+
+    <!--===== DARK MODE JS =====-->
+    <script defer src="assets/js/darkMode.js"></script>
   </body>
 </html>
