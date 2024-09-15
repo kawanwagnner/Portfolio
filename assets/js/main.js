@@ -15,7 +15,7 @@ showMenu("nav-toggle", "nav-menu");
 window.onload = function () {
   setTimeout(function () {
     document.getElementById("loading-screen").style.display = "none";
-  }, 3000);
+  }, 1000);
 };
 
 /*==================== REMOVE MENU MOBILE ====================*/
