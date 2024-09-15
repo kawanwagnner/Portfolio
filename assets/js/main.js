@@ -11,6 +11,13 @@ const showMenu = (toggleId, navId) => {
 };
 showMenu("nav-toggle", "nav-menu");
 
+/*==================== Loading ====================*/
+window.onload = function () {
+  setTimeout(function () {
+    document.getElementById("loading-screen").style.display = "none";
+  }, 3000);
+};
+
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll(".nav__link");
 
