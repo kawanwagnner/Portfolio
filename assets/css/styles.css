@@ -84,8 +84,6 @@ body.dark-mode .nav__toggle {
 
 /* END Theme Dark Mode */
 
-
-
 h1,
 h2,
 p {
@@ -605,5 +603,5 @@ img {
 
 .click-here {
   font-size: clamp(16px, 2vw, 24px);
-  color: #fff;
+  color: #999;
 }
