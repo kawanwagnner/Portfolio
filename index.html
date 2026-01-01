@@ -3,6 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfólio de Kawan Wagnner - Desenvolvedor FullStack especializado em React, Node.js, JavaScript, HTML5, CSS3 e Tailwind CSS. Confira meus projetos e entre em contato."
+    />
+    <meta
+      name="keywords"
+      content="desenvolvedor fullstack, react, node.js, javascript, portfolio, web developer, front-end, back-end"
+    />
+    <meta name="author" content="Kawan Wagnner" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Portfólio - Kawan Wagnner | Dev FullStack"
+    />
+    <meta
+      property="og:description"
+      content="Desenvolvedor FullStack especializado em React, Node.js, JavaScript e mais. Confira meus projetos!"
+    />
+    <meta property="og:image" content="assets/img/perfil.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Portfólio - Kawan Wagnner | Dev FullStack"
+    />
+    <meta
+      name="twitter:description"
+      content="Desenvolvedor FullStack especializado em React, Node.js, JavaScript e mais."
+    />
 
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link rel="stylesheet" href="assets/css/themeDark.css" />
@@ -51,6 +83,35 @@
       </div>
     </div>
 
+    <!--===== LANGUAGE MODAL =====-->
+    <div class="language-modal" id="language-modal">
+      <div class="language-modal__overlay"></div>
+      <div class="language-modal__content">
+        <button class="language-modal__close" id="modal-close">
+          <i class="bx bx-x"></i>
+        </button>
+        <div class="language-modal__icon">
+          <i class="bx bx-world"></i>
+        </div>
+        <h2 class="language-modal__title">Escolha seu idioma</h2>
+        <p class="language-modal__subtitle">Choose your language</p>
+        <div class="language-modal__options">
+          <button class="language-modal__btn" id="lang-pt" data-lang="pt">
+            <span class="language-modal__flag">🇧🇷</span>
+            <span class="language-modal__lang">Português</span>
+          </button>
+          <button class="language-modal__btn" id="lang-en" data-lang="en">
+            <span class="language-modal__flag">🇺🇸</span>
+            <span class="language-modal__lang">English</span>
+          </button>
+        </div>
+        <p class="language-modal__cookie-notice">
+          <i class="bx bx-cookie"></i>
+          Sua preferência será salva em cookies para futuras visitas.
+        </p>
+      </div>
+    </div>
+
     <!--===== HEADER =====-->
     <header class="l-header">
       <nav class="nav bd-grid">
@@ -61,19 +122,22 @@
         <div class="nav__menu" id="nav-menu">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="#home" class="nav__link active-link">Home</a>
+              <a href="#home" class="nav__link active-link">Início</a>
             </li>
             <li class="nav__item">
-              <a href="#about" class="nav__link">About</a>
+              <a href="#about" class="nav__link">Sobre</a>
             </li>
             <li class="nav__item">
-              <a href="#skills" class="nav__link">Skills</a>
+              <a href="#skills" class="nav__link">Habilidades</a>
             </li>
             <li class="nav__item">
-              <a href="#works" class="nav__link">Recent Projects</a>
+              <a href="#certifications" class="nav__link">Formações</a>
             </li>
             <li class="nav__item">
-              <a href="#contact" class="nav__link">Contact</a>
+              <a href="#works" class="nav__link">Projetos Recentes</a>
+            </li>
+            <li class="nav__item">
+              <a href="#contact" class="nav__link">Contato</a>
             </li>
           </ul>
         </div>
@@ -94,12 +158,13 @@
       <section class="home bd-grid" id="home">
         <div class="home__data">
           <h1 class="home__title">
-            Hi,<br />I'm <span class="home__title-color">Kawan W.</span><br />
+            Olá,<br />Eu sou <span class="home__title-color">Kawan W.</span
+            ><br />
             Dev FullStack.
           </h1>
 
           <div class="buttons-home">
-            <a href="#contact" class="button">Contact / Info</a
+            <a href="#contact" class="button">Contato / Info</a
             ><a
               href="https://docs.google.com/uc?export=download&id=1C5dPFc172aq_1STLSv6AQlHBJoPx-Fdk"
               class="button"
@@ -164,7 +229,7 @@
 
       <!--===== ABOUT =====-->
       <section class="about section" id="about">
-        <h2 class="section-title">About</h2>
+        <h2 class="section-title">Apresentação</h2>
 
         <div class="about__container bd-grid">
           <div class="about__img">
@@ -174,13 +239,13 @@
           <div>
             <h2 class="about__subtitle">I'm Kawan Wagnner</h2>
             <p class="about__text">
-              Nascido em 25 de fevereiro de 2006, sou um desenvolvedor FullStack.
-              Iniciei minha jornada em 2021 e desde então, estudo
-              constantemente, tenho acumulado experiências em HTM5, CSS3,
-              Bootstrap, JS, React.js, Tailwind CSS, React Native, NODE, GIT e
-              entre outras tecnologias. Estou comprometido com o aprendizado
-              contínuo para me tornar um profissional habilidoso e atualizado em
-              um campo em constante evolução.
+              Sou um desenvolvedor Full Stack com experiência na criação de
+              aplicações web reais usando React, Node.js e tecnologias modernas
+              de frontend. Meu foco é em código limpo, desempenho e soluções
+              escaláveis, sempre buscando criar produtos que resolvam problemas
+              reais e agreguem valor aos usuários. Já trabalhei em sites
+              institucionais, dashboards e sistemas web completos, atuando tanto
+              no desenvolvimento de frontend quanto de backend.
             </p>
           </div>
         </div>
@@ -188,15 +253,15 @@
 
       <!--===== SKILLS =====-->
       <section class="skills section" id="skills">
-        <h2 class="section-title">Skills</h2>
+        <h2 class="section-title">Habilidades</h2>
 
         <div class="skills__container bd-grid">
           <div>
-            <h2 class="skills__subtitle">Profesional Skills</h2>
+            <h2 class="skills__subtitle">Habilidades Profesionales</h2>
             <p class="skills__text">
-              A seguir, apresentarei as tecnologias que utilizo em meus projetos
-              constantemente. Essas habilidades são essenciais para meu
-              desempenho e eficácia como profissional:
+              Estas são as principais tecnologias que utilizo para construir
+              aplicações web modernas, escaláveis e de fácil manutenção,
+              abrangendo tanto o frontend quanto o backend.
             </p>
             <div class="skills__data">
               <div class="skills__names">
@@ -266,10 +331,114 @@
         </div>
       </section>
 
+      <!--===== Formação Acadêmica =====-->
+      <section class="certifications section" id="certifications">
+        <h2 class="section-title">Formação Acadêmica</h2>
+
+        <div class="certifications__container bd-grid">
+          <!-- UFBRA -->
+          <div class="certification__card">
+            <div class="certification__timeline">
+              <div class="certification__icon">
+                <i class="bx bxs-graduation"></i>
+              </div>
+              <span class="certification__line"></span>
+            </div>
+            <div class="certification__content">
+              <span class="certification__date">
+                <i class="bx bx-calendar"></i> Dez 2025 - Jun 2028
+              </span>
+              <h3 class="certification__title">
+                Tecnólogo em Tecnologia da Informação
+              </h3>
+              <h4 class="certification__institution">UFBRA</h4>
+              <p class="certification__description">
+                Tecnólogo em Tecnologia da Informação com foco em
+                desenvolvimento de soluções digitais, integração entre
+                tecnologia e produto, programação orientada a valor, performance
+                e experiência do usuário.
+              </p>
+              <div class="certification__tags">
+                <span class="certification__tag">Tecnologia da informação</span>
+                <span class="certification__tag">Desenvolvimento web</span>
+                <span class="certification__tag"
+                  >Desenvolvimento de software</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- SENAI -->
+          <div class="certification__card">
+            <div class="certification__timeline">
+              <div class="certification__icon">
+                <i class="bx bx-code-alt"></i>
+              </div>
+              <span class="certification__line"></span>
+            </div>
+            <div class="certification__content">
+              <span class="certification__date">
+                <i class="bx bx-calendar"></i> Jun 2023 - Jun 2025
+              </span>
+              <h3 class="certification__title">
+                Técnico em Desenvolvimento de Sistemas
+              </h3>
+              <h4 class="certification__institution">
+                SENAI Cotia - Escola SENAI "Ricardo Lerner"
+              </h4>
+              <p class="certification__description">
+                Formação técnica orientada para o desenvolvimento completo de
+                sistemas, com projetos práticos em lógica, algoritmos,
+                interfaces modernas e arquitetura de software. Experiência em
+                tecnologias Front-end (HTML, CSS, React) e Back-end (Node.js,
+                Express, MySQL).
+              </p>
+              <div class="certification__tags">
+                <span class="certification__tag">JavaScript</span>
+                <span class="certification__tag">React.js</span>
+                <span class="certification__tag">Node.js</span>
+                <span class="certification__tag">MySQL</span>
+                <span class="certification__tag">Git</span>
+                <span class="certification__tag">Scrum</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ensino Médio -->
+          <div class="certification__card">
+            <div class="certification__timeline">
+              <div class="certification__icon">
+                <i class="bx bxs-book-reader"></i>
+              </div>
+            </div>
+            <div class="certification__content">
+              <span class="certification__date">
+                <i class="bx bx-calendar"></i> Mar 2021 - Dez 2023
+              </span>
+              <h3 class="certification__title">
+                Ensino Médio - Desenvolvimento Social
+              </h3>
+              <h4 class="certification__institution">
+                E. E. Maria Augusta de Moraes Neves
+              </h4>
+              <p class="certification__description">
+                Ensino de qualidade excepcional. Atividades e grupos:
+                Itinerários formativos, basquetebol, sensos, palestras, entre
+                outras atividades.
+              </p>
+              <div class="certification__tags">
+                <span class="certification__tag">Trabalho em equipe</span>
+                <span class="certification__tag">Programação</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!--===== WORK =====-->
       <section class="work section" id="works">
         <h2 class="section-title">
-          Recent Projects <br />
+          Projetos Recentes <br />
           <span class="click-here">(Clique para abir o projeto)</span>
         </h2>
 
@@ -332,11 +501,11 @@
 
       <!--===== CONTACT =====-->
       <section class="contact section" id="contact">
-        <h2 class="section-title">Contact</h2>
+        <h2 class="section-title">Contato</h2>
 
         <div class="contact__container bd-grid">
           <form action="" class="contact__form">
-            <input type="text" placeholder="Name" class="contact__input" />
+            <input type="text" placeholder="Nome" class="contact__input" />
             <input type="mail" placeholder="Email" class="contact__input" />
             <textarea
               name=""
@@ -344,7 +513,7 @@
               cols="0"
               rows="10"
               class="contact__input"
-              placeholder="Write here..."
+              placeholder="Escreva aqui..."
             ></textarea>
             <a
               href="mailto:kawanwagnner7@gmail.com"
@@ -359,6 +528,11 @@
         </div>
       </section>
     </main>
+
+    <!--===== SCROLL TO TOP =====-->
+    <a href="#" class="scrolltop" id="scroll-top">
+      <i class="bx bx-chevron-up scrolltop__icon"></i>
+    </a>
 
     <!--===== FOOTER =====-->
     <footer class="footer">
@@ -384,7 +558,7 @@
         ></a>
       </div>
       <p class="footer__copy">
-        &#169; Kawan Wnn. Todos os direitos reservados 2024.
+        &#169; Kawan Wnn. Todos os direitos reservados 2026.
       </p>
     </footer>
 
@@ -396,6 +570,9 @@
 
     <!--===== DARK MODE JS =====-->
     <script defer src="assets/js/darkMode.js"></script>
+
+    <!--===== LANGUAGE JS =====-->
+    <script defer src="assets/js/language.js"></script>
 
     <!-- 100% privacy-first analytics -->
     <script

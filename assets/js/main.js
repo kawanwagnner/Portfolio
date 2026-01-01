@@ -31,8 +31,21 @@ window.onload = function () {
     });
     sr.reveal(".home__social-icon", { interval: 200 });
     sr.reveal(".skills__data, .work__img, .contact__input", { interval: 200 });
+    sr.reveal(".certification__card", { interval: 300, origin: "left" });
   }, 3000);
 };
+
+/*==================== SCROLL TO TOP ====================*/
+const scrollTop = document.getElementById("scroll-top");
+
+const scrollTopFunction = () => {
+  if (window.scrollY >= 560) {
+    scrollTop.classList.add("show-scroll");
+  } else {
+    scrollTop.classList.remove("show-scroll");
+  }
+};
+window.addEventListener("scroll", scrollTopFunction);
 
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll(".nav__link");
