@@ -18,7 +18,7 @@ export const hero = {
   subtitle:
     'A VYSO é uma software house full-stack. Do design ao deploy — sites, apps e interfaces que passam autoridade já no primeiro scroll.',
   primaryCta: 'Ver projetos',
-  secondaryCta: '@wagnner.g',
+  secondaryCta: '@vyso.store',
   splineScene: 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode',
 }
 
@@ -163,7 +163,7 @@ export const contact = {
 }
 
 export const socials = {
-  instagram: 'https://www.instagram.com/wagnner.g/',
+  instagram: 'https://www.instagram.com/vyso.store/',
   github: 'https://github.com/kawanwagnner', // TODO: confirme o usuário/da VYSO
   email: 'mailto:kawanwagnner7@gmail.com',
   whatsapp: '', // TODO: opcional — https://wa.me/55DDDNUMERO
