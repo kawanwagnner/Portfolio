@@ -1,70 +1,109 @@
-import { Instagram, Mail, Github, MessageCircle, ArrowUpRight } from 'lucide-react'
+import { Instagram, Mail, Github, MessageCircle, ArrowUpRight, type LucideIcon } from 'lucide-react'
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
 import { contact, socials } from '@/data/content'
 
-export function Contact() {
-  return (
-    <section id="contato" className="relative mx-auto max-w-6xl px-6 py-28 md:py-36">
-      <Reveal>
-        <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-card px-6 py-20 md:px-16 md:py-28">
-          <div
-            aria-hidden
-            className="ember-glow absolute left-1/2 top-0 -z-10 h-[26rem] w-[42rem] -translate-x-1/2"
-          />
-          <div aria-hidden className="absolute inset-0 -z-10 bg-grid opacity-30" />
+interface Channel {
+  label: string
+  value: string
+  href: string
+  icon: LucideIcon
+}
 
-          <div className="flex flex-col items-center text-center">
+export function Contact() {
+  // Canais secundários (o Instagram é o CTA principal à esquerda).
+  const channels: Channel[] = [
+    { label: 'E-mail', value: contact.email, href: `mailto:${contact.email}`, icon: Mail },
+    socials.github && {
+      label: 'GitHub',
+      value: socials.github.replace(/^https?:\/\//, '').replace(/\/$/, ''),
+      href: socials.github,
+      icon: Github,
+    },
+    socials.whatsapp && {
+      label: 'WhatsApp',
+      value: 'Chamar no WhatsApp',
+      href: socials.whatsapp,
+      icon: MessageCircle,
+    },
+  ].filter(Boolean) as Channel[]
+
+  return (
+    <section id="contato" className="relative overflow-hidden py-28 md:py-36">
+      <div
+        aria-hidden
+        className="ember-glow pointer-events-none absolute -left-32 bottom-0 -z-10 h-[34rem] w-[34rem]"
+      />
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+        {/* Manifesto */}
+        <div>
+          <Reveal>
             <Kicker>{contact.kicker}</Kicker>
-            <h2 className="headline mt-6 max-w-3xl text-4xl sm:text-6xl md:text-7xl">
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h2 className="headline mt-6 max-w-xl text-4xl sm:text-5xl md:text-6xl">
               <AccentText>{contact.heading}</AccentText>
             </h2>
-            <p className="mx-auto mt-5 max-w-lg text-base text-muted-foreground md:text-lg">
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
               {contact.description}
             </p>
-
-            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row">
-              <a
-                href={socials.instagram}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-ember group inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold sm:w-auto"
-              >
-                <Instagram className="h-4 w-4" />
-                {contact.ctaLabel}
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </a>
-              <a
-                href={`mailto:${contact.email}`}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-secondary/40 px-7 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-accent/60 hover:text-accent sm:w-auto"
-              >
-                <Mail className="h-4 w-4" />
-                Enviar e-mail
-              </a>
-            </div>
-
-            <div className="mt-9 flex items-center justify-center gap-3">
-              {socials.github && (
-                <a href={socials.github} target="_blank" rel="noreferrer" aria-label="GitHub"
-                  className="grid h-11 w-11 place-items-center rounded-full border border-border bg-background/50 text-muted-foreground transition-colors hover:text-accent">
-                  <Github className="h-4 w-4" />
-                </a>
-              )}
-              {socials.whatsapp && (
-                <a href={socials.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp"
-                  className="grid h-11 w-11 place-items-center rounded-full border border-border bg-background/50 text-muted-foreground transition-colors hover:text-accent">
-                  <MessageCircle className="h-4 w-4" />
-                </a>
-              )}
-              <a href={`mailto:${contact.email}`} aria-label="E-mail"
-                className="grid h-11 w-11 place-items-center rounded-full border border-border bg-background/50 text-muted-foreground transition-colors hover:text-accent">
-                <Mail className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <a
+              href={socials.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-ember group mt-9 inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold"
+            >
+              <Instagram className="h-4 w-4" />
+              {contact.ctaLabel}
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
+          </Reveal>
         </div>
-      </Reveal>
+
+        {/* Painel de canais */}
+        <Reveal delay={0.1}>
+          <div className="relative overflow-hidden rounded-3xl border border-border bg-card/60 p-2">
+            <span className="pointer-events-none absolute right-5 top-4 font-mono-tag text-[0.7rem] uppercase tracking-widest text-muted-foreground">
+              Canais
+            </span>
+            <ul>
+              {channels.map((c) => (
+                <li key={c.label}>
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith('http') ? '_blank' : undefined}
+                    rel="noreferrer"
+                    className="group relative flex items-center gap-4 overflow-hidden rounded-2xl px-5 py-5 transition-colors"
+                  >
+                    {/* brasa deslizando no hover */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 origin-left scale-x-0 bg-gradient-to-r from-accent/12 to-transparent transition-transform duration-500 ease-out group-hover:scale-x-100"
+                    />
+                    <span className="relative grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-border bg-background/60 text-muted-foreground transition-colors group-hover:border-accent/50 group-hover:text-accent">
+                      <c.icon className="h-5 w-5" />
+                    </span>
+                    <span className="relative min-w-0 flex-1">
+                      <span className="block font-mono-tag text-[0.7rem] uppercase tracking-widest text-muted-foreground">
+                        {c.label}
+                      </span>
+                      <span className="block truncate font-display text-base font-semibold transition-colors group-hover:text-accent md:text-lg">
+                        {c.value}
+                      </span>
+                    </span>
+                    <ArrowUpRight className="relative h-5 w-5 shrink-0 -translate-x-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-accent group-hover:opacity-100" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      </div>
     </section>
   )
 }
