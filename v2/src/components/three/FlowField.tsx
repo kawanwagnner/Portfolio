@@ -338,11 +338,16 @@ export function FlowField({ className }: Props) {
     }
 
     let last = performance.now()
+    // Relógio de ANIMAÇÃO: só avança enquanto está rodando. Ao pausar (scroll
+    // fora da tela) ele congela; ao voltar, continua de onde parou — sem o
+    // salto de tempo que fazia as partículas "explodirem" no retorno.
+    let clock = 0
     let raf = 0
     let running = false
     function tick(now: number) {
       const dt = Math.min((now - last) / 1000, 0.05)
       last = now
+      clock += dt * 1000
       if (targetX > -9000) {
         const lerp = 1 - Math.pow(0.005, dt)
         mouseX += (targetX - mouseX) * lerp
@@ -351,7 +356,7 @@ export function FlowField({ className }: Props) {
         mouseX = -9999
         mouseY = -9999
       }
-      engine.step(now)
+      engine.step(clock)
       raf = requestAnimationFrame(tick)
     }
 
