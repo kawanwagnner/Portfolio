@@ -1,0 +1,309 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Design tokens — mono quente + 1 acento âmbar (cara de estúdio)
+   HSL sem vírgula (usado como hsl(var(--x)))
+   ============================================================ */
+@layer base {
+  :root {
+    /* ---- Paleta EMBER: preto quente + osso + brasa (laranja→vermelho) ---- */
+    --background: 20 13% 5%;
+    --foreground: 38 30% 92%;
+
+    --card: 20 11% 8%;
+    --card-foreground: 38 30% 92%;
+
+    --popover: 20 12% 6%;
+    --popover-foreground: 38 30% 92%;
+
+    /* Acento de marca — brasa */
+    --primary: 22 100% 57%;
+    --primary-foreground: 20 40% 6%;
+
+    --secondary: 20 8% 12%;
+    --secondary-foreground: 38 30% 92%;
+
+    --muted: 20 6% 13%;
+    --muted-foreground: 34 10% 62%;
+
+    --accent: 22 100% 57%;
+    --accent-foreground: 20 40% 6%;
+
+    /* Segunda cor da rampa, usada em gradientes/glow (vermelho-brasa) */
+    --ember: 6 88% 52%;
+
+    --border: 24 8% 15%;
+    --input: 24 8% 15%;
+    --ring: 22 100% 57%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(24 8% 5%);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(30 6% 20%);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent));
+  }
+}
+
+/* ============================================================
+   Utilitários de marca / personalidade
+   ============================================================ */
+@layer utilities {
+  .font-display {
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+  }
+  .font-mono-tag {
+    font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
+  }
+
+  /* Título editorial gigante com tracking apertado */
+  .headline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.4px hsl(38 30% 92% / 0.5);
+  }
+
+  /* Texto com a rampa de marca (brasa) */
+  .text-ember {
+    background-image: linear-gradient(
+      100deg,
+      hsl(38 90% 88%) 0%,
+      hsl(var(--accent)) 45%,
+      hsl(var(--ember)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Glow radial de brasa (fundos de seção) */
+  /* Glow via gradiente radial (suave por natureza) — sem filter: blur(),
+     que é caro de pintar no scroll. O falloff largo mantém o aspecto difuso. */
+  .ember-glow {
+    background: radial-gradient(
+      circle,
+      hsl(var(--accent) / 0.26) 0%,
+      hsl(var(--ember) / 0.12) 38%,
+      transparent 72%
+    );
+  }
+
+  .btn-ember {
+    background-image: linear-gradient(100deg, hsl(var(--accent)), hsl(var(--ember)));
+    color: hsl(var(--primary-foreground));
+    box-shadow: 0 8px 30px -8px hsl(var(--accent) / 0.6);
+  }
+  .btn-ember:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 10px 40px -8px hsl(var(--accent) / 0.8);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(30 6% 15% / 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(30 6% 15% / 0.6) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  /* Barra sólida (sem backdrop-filter). O desfoque de vidro re-computava a
+     cada frame de scroll — era um custo GLOBAL de rolagem. Isto zera. */
+  .glass {
+    background: hsl(24 8% 7% / 0.92);
+  }
+
+  /* Pula a pintura/layout da seção enquanto ela está fora da tela.
+     `contain-intrinsic-size: auto ...` guarda a altura real medida,
+     evitando pulos na barra de rolagem. */
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+
+  /* Igual ao cv-auto, mas com altura reservada menor (faixa do marquee).
+     Pausa a animação/composição da faixa quando ela sai da tela. */
+  .cv-marquee {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 240px;
+  }
+
+  /* Sublinhado animado nos links */
+  .link-underline {
+    position: relative;
+  }
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1.5px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* ============================================================
+   Marquee (ticker cinético)
+   ============================================================ */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.marquee-reverse {
+  animation-direction: reverse;
+}
+.marquee-wrap:hover .marquee {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================================
+   Animações do componente hero-futuristic (21st.dev, WebGPU)
+   ============================================================ */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) skewX(-6deg);
+    filter: blur(6px);
+  }
+  60% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) skewX(0);
+    filter: blur(0);
+  }
+}
+.fade-in {
+  animation: fadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes fadeInSubtitle {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+    letter-spacing: 0.35em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: normal;
+  }
+}
+.fade-in-subtitle {
+  animation: fadeInSubtitle 0.9s ease both;
+}
+
+.explore-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 2.25rem;
+  transform: translateX(-50%);
+  z-index: 70;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.35rem 0.35rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid hsl(0 0% 100% / 0.16);
+  background: hsl(0 0% 100% / 0.04);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeInSubtitle 0.8s ease forwards;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.explore-btn:hover {
+  background: hsl(0 0% 100% / 0.1);
+  border-color: hsl(0 0% 100% / 0.3);
+}
+.explore-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: hsl(0 0% 100% / 0.08);
+}
+.arrow-svg {
+  animation: bounceArrow 1.8s ease-in-out infinite;
+}
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* Loader do SplineScene (fallback do Suspense) */
+.loader {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 3px solid hsl(0 0% 100% / 0.15);
+  border-top-color: hsl(var(--accent));
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
