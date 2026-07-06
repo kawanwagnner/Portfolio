@@ -42,7 +42,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border/60 py-5 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {brand.name} · Software House. Feito com React, TypeScript & Tailwind.
+        © {new Date().getFullYear()} {brand.name} · {brand.role}. Feito com React, TypeScript & Tailwind.
       </div>
     </footer>
   )

@@ -7,16 +7,16 @@
 
 export const brand = {
   name: 'VYSO',
-  role: 'Software House',
+  role: 'Tecnologia com propósito',
   logo: 'V',
 }
 
 export const hero = {
-  status: 'VYSO · Software House',
+  status: 'VYSO · Tecnologia com propósito',
   // A headline é dividida em linhas; a palavra entre *asteriscos* recebe o acento.
-  headlineLines: ['Software que faz', 'sua marca ser', '*levada a sério*.'],
+  headlineLines: ['Transformamos', 'problemas em', '*soluções* que crescem.'],
   subtitle:
-    'A VYSO é uma software house full-stack. Do design ao deploy — sites, apps e interfaces que passam autoridade já no primeiro scroll.',
+    'Marca especializada em criar soluções digitais, automatizar processos e entregar valor real — do entendimento do problema ao resultado no ar.',
   primaryCta: 'Ver projetos',
   secondaryCta: '@vyso.store',
   splineScene: 'https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode',
@@ -24,23 +24,23 @@ export const hero = {
 
 // Ticker cinético abaixo do herói.
 export const marquee = [
-  'Sites de alta conversão',
+  'Soluções digitais',
+  'Automação de processos',
   'Aplicações Web',
-  'React & Node.js',
-  'Interfaces premium',
+  'Sites de alta conversão',
+  'Tecnologia com propósito',
   'Landing pages',
-  'Animações & 3D',
-  'Performance real',
-  'Design que vende',
+  'Entrega que impulsiona',
+  'Design com intenção',
 ]
 
 export const about = {
   kicker: '01 — A VYSO',
   // A palavra entre *asteriscos* recebe o acento.
-  heading: 'A gente não entrega site. Entrega a *primeira impressão* que fecha negócio.',
+  heading: 'Antes do código, existe o *negócio*.',
   paragraphs: [
-    'A VYSO é uma software house enxuta: sem burocracia e sem intermediário. Você fala direto com quem constrói, do primeiro rascunho ao deploy.',
-    'React, Node.js e TypeScript são a base. O diferencial é o acabamento — a animação no lugar certo, a microinteração que dá vida e a performance que segura o usuário. // TODO: ajuste com a visão da VYSO.',
+    'A VYSO transforma problemas reais em soluções digitais que impulsionam negócios. Criamos, automatizamos processos e entregamos valor — sem burocracia e sem intermediário: você fala direto com quem constrói.',
+    'Tecnologia com propósito, design com intenção. Do entendimento do problema ao resultado no ar, cada etapa foca em resolver e gerar crescimento. // TODO: ajuste com a visão da VYSO.',
   ],
   stats: [
     { value: '15+', label: 'Projetos no ar' },
