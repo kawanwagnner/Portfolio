@@ -32,7 +32,7 @@ export function FlowField({ className }: Props) {
     const ctx: CanvasRenderingContext2D = ctx0
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const BG = '14, 12, 11' // casa com --background
+    const BG = '15, 17, 21' // casa com --background (#0F1115)
 
     let W = 0
     let H = 0
@@ -82,6 +82,7 @@ export function FlowField({ className }: Props) {
       let letterTargets: { x: number; y: number }[][] = []
       let cx = 0 // centro (usado no zoom)
       let cy = 0
+      let fontSize = 0 // responsivo (definido no build)
       let t0 = -1
       let lastCycle = -1
 
@@ -96,8 +97,7 @@ export function FlowField({ className }: Props) {
         octx.fillStyle = '#fff'
         octx.textAlign = 'center'
         octx.textBaseline = 'middle'
-        const fontSize = Math.min(H * 0.78, W * 0.5) // maior
-        octx.font = `700 ${fontSize}px "Space Grotesk", Inter, sans-serif`
+        octx.font = `900 ${fontSize}px "Satoshi", sans-serif`
         octx.fillText(char, cx, cy)
 
         const data = octx.getImageData(0, 0, off.width, off.height).data
@@ -133,23 +133,31 @@ export function FlowField({ className }: Props) {
       }
 
       function build() {
-        // posição: à direita e mais pra baixo
-        cx = W * 0.66
+        // Responsivo: em telas largas o "V" fica à direita e menor; em telas
+        // estreitas centraliza (atrás do conteúdo) e ocupa mais largura.
+        const wide = W >= 1100
+        cx = wide ? W * 0.64 : W * 0.5
         cy = H * 0.55
+        fontSize = wide ? Math.min(H * 0.74, W * 0.44) : Math.min(H * 0.62, W * 0.72)
         letterTargets = letters.map((c) => sampleLetter(c))
-        ps = Array.from({ length: N }, (_, i) => ({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          vx: 0,
-          vy: 0,
-          tx: letterTargets[0][i].x,
-          ty: letterTargets[0][i].y,
+        ps = Array.from({ length: N }, (_, i) => {
           // casa de bagunça: posição absoluta espalhada ao redor do centro-direita
-          sx: cx + (Math.random() * 2 - 1) * W * 0.45,
-          sy: cy + (Math.random() * 2 - 1) * H * 0.6,
-          hue: 18 + Math.random() * 28,
-          light: 60 + Math.random() * 20,
-        }))
+          const sx = cx + (Math.random() * 2 - 1) * W * 0.45
+          const sy = cy + (Math.random() * 2 - 1) * H * 0.6
+          return {
+            // começa JÁ na nuvem de bagunça (a=0), sem flash de posições aleatórias
+            x: sx,
+            y: sy,
+            vx: 0,
+            vy: 0,
+            tx: letterTargets[0][i].x,
+            ty: letterTargets[0][i].y,
+            sx,
+            sy,
+            hue: 228 + Math.random() * 28,
+            light: 62 + Math.random() * 20,
+          }
+        })
         t0 = -1
         lastCycle = -1
       }
@@ -243,7 +251,7 @@ export function FlowField({ className }: Props) {
         p.prevY = p.y
         p.life = 0
         p.maxLife = 80 + Math.random() * 240
-        p.hue = 18 + Math.random() * 28
+        p.hue = 228 + Math.random() * 28
         p.sat = 60 + Math.random() * 30
         p.light = 55 + Math.random() * 22
       }
@@ -325,16 +333,29 @@ export function FlowField({ className }: Props) {
     // ======================================================================
     //  Infra compartilhada: resize, loop, pausa fora da tela
     // ======================================================================
+    // Só constrói as partículas depois da fonte pronta (evita reconstruir no
+    // meio da animação — era o que causava a "explosão" ao terminar o load).
+    let fontReady = false
+    let lastW = -1
+    let lastH = -1
+
     function resize() {
+      const w = canvas.clientWidth || 1
+      const h = canvas.clientHeight || 1
+      // Tamanho não mudou → não redimensiona nem reconstrói (o ResizeObserver
+      // dispara redundante no início e reconstruir aqui causava o "bug").
+      if (w === lastW && h === lastH) return
+      lastW = w
+      lastH = h
       dpr = Math.min(window.devicePixelRatio || 1, 2)
-      W = canvas.clientWidth
-      H = canvas.clientHeight
+      W = w
+      H = h
       canvas.width = Math.max(1, Math.floor(W * dpr))
       canvas.height = Math.max(1, Math.floor(H * dpr))
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       ctx.fillStyle = `rgb(${BG})`
       ctx.fillRect(0, 0, W, H)
-      engine.onResize()
+      if (fontReady) engine.onResize()
     }
 
     let last = performance.now()
@@ -362,7 +383,7 @@ export function FlowField({ className }: Props) {
 
     let onScreen = false
     function start() {
-      if (running || reduce) return
+      if (running || reduce || !fontReady) return
       running = true
       last = performance.now()
       raf = requestAnimationFrame(tick)
@@ -377,11 +398,7 @@ export function FlowField({ className }: Props) {
       else stop()
     }
 
-    resize()
-    // Rebuild ao carregar a fonte (a wordmark depende da Space Grotesk).
-    if (MODE === 'shape' && (document as any).fonts?.ready) {
-      ;(document as any).fonts.ready.then(() => resize())
-    }
+    resize() // só dimensiona/limpa o canvas por enquanto (fontReady=false)
 
     const ro = new ResizeObserver(() => resize())
     ro.observe(canvas)
@@ -400,9 +417,19 @@ export function FlowField({ className }: Props) {
     window.addEventListener('resize', refreshRect)
     document.addEventListener('visibilitychange', sync)
 
-    if (reduce) engine.drawStatic()
+    // Espera a fonte (Satoshi) e SÓ ENTÃO constrói e anima — uma única vez.
+    let cancelled = false
+    const fontsReady = (document as any).fonts?.ready ?? Promise.resolve()
+    fontsReady.then(() => {
+      if (cancelled) return
+      fontReady = true
+      engine.onResize() // primeira e única construção, já com a fonte certa
+      if (reduce) engine.drawStatic()
+      else sync()
+    })
 
     return () => {
+      cancelled = true
       stop()
       ro.disconnect()
       io.disconnect()
