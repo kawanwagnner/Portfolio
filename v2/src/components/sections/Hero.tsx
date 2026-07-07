@@ -40,7 +40,7 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative h-svh min-h-[640px] w-full overflow-hidden bg-background">
-      <Spotlight className="-top-40 left-0 md:-top-20 md:left-1/3" fill="hsl(22 100% 60%)" />
+      <Spotlight className="-top-40 left-0 md:-top-20 md:left-1/3" fill="hsl(239 84% 67%)" />
 
       {/* Flow field de partículas (ou fundo estático em aparelho fraco) */}
       <div className="absolute inset-0">

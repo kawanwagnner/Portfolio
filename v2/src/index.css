@@ -8,35 +8,37 @@
    ============================================================ */
 @layer base {
   :root {
-    /* ---- Paleta EMBER: preto quente + osso + brasa (laranja→vermelho) ---- */
-    --background: 20 13% 5%;
-    --foreground: 38 30% 92%;
+    /* ---- Paleta VYSO: dark frio + índigo #6366F1 (brand oficial) ----
+       Obs.: nomes --ember / .btn-ember / .ember-glow foram mantidos por
+       conveniência; os VALORES agora são índigo→violeta. */
+    --background: 220 16% 7%; /* ~#0F1115 */
+    --foreground: 0 0% 98%;
 
-    --card: 20 11% 8%;
-    --card-foreground: 38 30% 92%;
+    --card: 225 12% 11%; /* ~#1A1C22 */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 20 12% 6%;
-    --popover-foreground: 38 30% 92%;
+    --popover: 222 14% 9%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Acento de marca — brasa */
-    --primary: 22 100% 57%;
-    --primary-foreground: 20 40% 6%;
+    /* Acento de marca — índigo #6366F1 */
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 20 8% 12%;
-    --secondary-foreground: 38 30% 92%;
+    --secondary: 225 10% 15%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 20 6% 13%;
-    --muted-foreground: 34 10% 62%;
+    --muted: 225 8% 16%;
+    --muted-foreground: 240 5% 66%; /* ~#A1A1AA */
 
-    --accent: 22 100% 57%;
-    --accent-foreground: 20 40% 6%;
+    --accent: 239 84% 67%;
+    --accent-foreground: 0 0% 100%;
 
-    /* Segunda cor da rampa, usada em gradientes/glow (vermelho-brasa) */
-    --ember: 6 88% 52%;
+    /* Segunda cor da rampa (gradientes/glow) — violeta */
+    --ember: 260 85% 66%;
 
-    --border: 24 8% 15%;
-    --input: 24 8% 15%;
-    --ring: 22 100% 57%;
+    --border: 225 10% 17%;
+    --input: 225 10% 17%;
+    --ring: 239 84% 67%;
 
     --radius: 0.5rem;
   }
@@ -51,7 +53,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
@@ -66,10 +68,10 @@
     width: 9px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(24 8% 5%);
+    background: hsl(220 16% 7%);
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(30 6% 20%);
+    background: hsl(225 8% 24%);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
@@ -82,7 +84,7 @@
    ============================================================ */
 @layer utilities {
   .font-display {
-    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-family: 'Satoshi', sans-serif;
   }
   .font-mono-tag {
     font-family: ui-monospace, 'SFMono-Regular', 'Menlo', monospace;
@@ -90,22 +92,22 @@
 
   /* Título editorial gigante com tracking apertado */
   .headline {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 900;
     letter-spacing: -0.03em;
     line-height: 0.95;
   }
 
   .text-outline {
     color: transparent;
-    -webkit-text-stroke: 1.4px hsl(38 30% 92% / 0.5);
+    -webkit-text-stroke: 1.4px hsl(0 0% 98% / 0.5);
   }
 
-  /* Texto com a rampa de marca (brasa) */
+  /* Texto com a rampa de marca (índigo→violeta) */
   .text-ember {
     background-image: linear-gradient(
       100deg,
-      hsl(38 90% 88%) 0%,
+      hsl(230 60% 94%) 0%,
       hsl(var(--accent)) 45%,
       hsl(var(--ember)) 100%
     );
@@ -136,17 +138,24 @@
     box-shadow: 0 10px 40px -8px hsl(var(--accent) / 0.8);
   }
 
+  /* Anel de brilho índigo (moldura de imagens/cards de destaque) */
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px hsl(var(--accent) / 0.25),
+      0 0 60px -14px hsl(var(--accent) / 0.55);
+  }
+
   .bg-grid {
     background-image:
-      linear-gradient(to right, hsl(30 6% 15% / 0.6) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(30 6% 15% / 0.6) 1px, transparent 1px);
+      linear-gradient(to right, hsl(225 10% 17% / 0.6) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(225 10% 17% / 0.6) 1px, transparent 1px);
     background-size: 64px 64px;
   }
 
   /* Barra sólida (sem backdrop-filter). O desfoque de vidro re-computava a
      cada frame de scroll — era um custo GLOBAL de rolagem. Isto zera. */
   .glass {
-    background: hsl(24 8% 7% / 0.92);
+    background: hsl(222 14% 9% / 0.92);
   }
 
   /* Pula a pintura/layout da seção enquanto ela está fora da tela.
