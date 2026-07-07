@@ -66,7 +66,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       {/* brilho sutil no hover (só transiciona no hover) */}
       <div
         className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-        style={{ boxShadow: '0 0 50px -12px hsl(22 100% 57% / 0.45)' }}
+        style={{ boxShadow: '0 0 50px -12px hsl(239 84% 67% / 0.5)' }}
       />
     </article>
   )
@@ -78,7 +78,7 @@ export function Projects() {
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex flex-col gap-5">
           <Reveal>
-            <Kicker>02 — Projetos</Kicker>
+            <Kicker>03 — Projetos</Kicker>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="headline max-w-2xl text-4xl sm:text-5xl md:text-6xl">

@@ -49,6 +49,16 @@ export const about = {
   ],
 }
 
+export const founder = {
+  kicker: '02 — Founder',
+  // *acento* numa palavra
+  tagline: 'Tecnologia que resolve. Pessoas que *confiam*.',
+  name: 'Kawan Wagnner',
+  role: 'Founder & Software Engineer',
+  bio: 'Por trás da VYSO tem um dev que trata cada projeto como negócio — não só como código. Do problema à solução, com transparência, comunicação e entrega que impulsiona. // TODO: ajuste do jeito Kawan.',
+  photo: '/img/kawan.webp', // 48KB (convertido do PNG 1.8MB, sem perda visível)
+}
+
 export const skills: string[] = [
   'React',
   'TypeScript',
@@ -155,7 +165,7 @@ export const immersive = {
 }
 
 export const contact = {
-  kicker: '04 — Contato',
+  kicker: '05 — Contato',
   heading: 'Tem um projeto? A VYSO *entrega*.',
   description: 'Chama a gente e transforma sua ideia num produto digital de verdade. Resposta rápida.',
   email: 'kawanwagnner7@gmail.com',
@@ -172,6 +182,7 @@ export const socials = {
 export const nav = [
   { label: 'Início', href: '#hero' },
   { label: 'A VYSO', href: '#sobre' },
+  { label: 'Founder', href: '#founder' },
   { label: 'Projetos', href: '#projetos' },
   { label: 'Serviços', href: '#servicos' },
   { label: 'Contato', href: '#contato' },

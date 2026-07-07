@@ -2,6 +2,7 @@ import { Navbar } from '@/components/sections/Navbar'
 import { Hero } from '@/components/sections/Hero'
 import { Marquee } from '@/components/sections/Marquee'
 import { About } from '@/components/sections/About'
+import { Founder } from '@/components/sections/Founder'
 import { Projects } from '@/components/sections/Projects'
 import { Services } from '@/components/sections/Services'
 import { Immersive } from '@/components/sections/Immersive'
@@ -16,6 +17,7 @@ export default function App() {
         <Hero />
         <Marquee />
         <About />
+        <Founder />
         <Projects />
         <Services />
         <Immersive />
