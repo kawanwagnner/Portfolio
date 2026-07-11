@@ -1,9 +1,10 @@
+import { ClientLogo } from '@/components/shared/ClientLogo'
 import { cn } from '@/lib/utils'
 
 /**
  * Moldura de dispositivo pra apresentar print de projeto.
- * Sem `src`, desenha um bloco de marca no lugar — o layout nunca quebra
- * enquanto os prints não chegam.
+ * Sem `src`, desenha a logo do cliente sobre um fundo de marca — o layout
+ * nunca quebra enquanto os prints não chegam.
  */
 type MockupProps = {
   variant?: 'browser' | 'phone'
@@ -11,13 +12,15 @@ type MockupProps = {
   alt: string
   /** Aparece na barra de endereço do browser. */
   url?: string
-  /** Texto do bloco de marca quando não há print. */
+  /** Nome do cliente — vira o rótulo do bloco quando não há print. */
   fallbackLabel?: string
+  /** Logo do cliente exibida dentro do mockup quando não há print. */
+  fallbackLogo?: string
   className?: string
   priority?: boolean
 }
 
-function Placeholder({ label }: { label: string }) {
+function Placeholder({ label, logo }: { label: string; logo?: string }) {
   return (
     <div className="relative grid h-full w-full place-items-center overflow-hidden bg-secondary/40">
       <div
@@ -35,9 +38,13 @@ function Placeholder({ label }: { label: string }) {
           backgroundSize: '48px 48px',
         }}
       />
-      <span className="relative px-6 text-center font-mono-tag text-xs uppercase tracking-[0.25em] text-muted-foreground">
-        {label}
-      </span>
+      {/* w-auto + max-w: dentro do mockup de celular a caixa fixa da logo não cabe */}
+      <div className="relative flex w-full flex-col items-center gap-3 px-5 text-center">
+        <ClientLogo name={label} src={logo} size="md" className="h-auto max-h-14 w-auto max-w-[70%]" />
+        <span className="font-mono-tag text-[0.6rem] uppercase leading-relaxed tracking-[0.2em] text-muted-foreground">
+          {label}
+        </span>
+      </div>
     </div>
   )
 }
@@ -48,6 +55,7 @@ export function Mockup({
   alt,
   url,
   fallbackLabel = 'Print em breve',
+  fallbackLogo,
   className,
   priority,
 }: MockupProps) {
@@ -60,7 +68,7 @@ export function Mockup({
       className="h-full w-full object-cover object-top"
     />
   ) : (
-    <Placeholder label={fallbackLabel} />
+    <Placeholder label={fallbackLabel} logo={fallbackLogo} />
   )
 
   if (variant === 'phone') {

@@ -36,6 +36,7 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
             alt={project.title}
             url={project.live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
             fallbackLabel={project.client}
+            fallbackLogo={project.logo}
             className={cn('mx-auto', project.mockup === 'phone' && 'max-w-[9rem]')}
           />
         </div>
@@ -45,7 +46,10 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <div className="flex items-center gap-3">
           <ClientLogo name={project.client} src={project.logo} size="sm" />
           <div className="min-w-0">
-            <h3 className="truncate font-display text-lg font-bold sm:text-xl">{project.title}</h3>
+            {/* sem truncate: título curto demais pra caber numa linha só no card */}
+            <h3 className="font-display text-lg font-bold leading-tight sm:text-xl">
+              {project.title}
+            </h3>
             <p className="truncate font-mono-tag text-[0.7rem] uppercase tracking-wider text-muted-foreground">
               {project.client}
             </p>
@@ -91,7 +95,7 @@ const TABS = [
 ] as const
 
 export function ProjectGroups() {
-  const [active, setActive] = useState<(typeof TABS)[number]['key']>('all')
+  const [active, setActive] = useState<(typeof TABS)[number]['key']>('browser')
   const tab = TABS.find((t) => t.key === active)!
   const items = projects.filter(tab.match)
 

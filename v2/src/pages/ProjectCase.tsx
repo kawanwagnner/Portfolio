@@ -120,7 +120,8 @@ export default function ProjectCase() {
             src={project.cover}
             alt={`${project.title} — visão geral`}
             url={liveLabel}
-            fallbackLabel={`${project.client} — print em breve`}
+            fallbackLabel={project.client}
+            fallbackLogo={project.logo}
             priority
             className={project.mockup === 'phone' ? 'max-w-[18rem]' : undefined}
           />

@@ -5,11 +5,14 @@ import { cn } from '@/lib/utils'
  * — assim o layout já fica pronto e é só soltar o PNG/SVG em /public/img/logos.
  */
 function initials(name: string) {
-  return name
-    .replace(/[·|].*$/, '') // corta o que vem depois de "·"
-    .split(/\s+/)
-    .filter((w) => w.length > 2 || /^[A-Z0-9]+$/.test(w))
-    .slice(0, 2)
+  const base = name.replace(/[·|].*$/, '').trim() // corta o sufixo: "X · via consultoria" → "X"
+  const words = base.split(/\s+/).filter((w) => !/^(de|da|do|das|dos|e)$/i.test(w))
+
+  // Nome curto que já é uma sigla/marca ("VYSO") → usa inteiro.
+  if (words.length === 1 && words[0].length <= 4) return words[0].toUpperCase()
+
+  return words
+    .slice(0, 3)
     .map((w) => w[0])
     .join('')
     .toUpperCase()
@@ -32,14 +35,23 @@ export function ClientLogo({
     lg: 'h-16 w-16 text-lg rounded-2xl',
   }[size]
 
+  // Logo de verdade, sem fundo. A caixa é fixa (altura E largura) porque cada
+  // marca tem proporção diferente — wordmark larga x emblema alto:
+  // sem limitar os dois lados, uma delas domina o card e empurra o título.
   if (src) {
+    const tile = {
+      sm: 'h-8 w-16',
+      md: 'h-10 w-24',
+      lg: 'h-14 w-32',
+    }[size]
+
     return (
       <img
         src={src}
         alt={`Logo ${name}`}
         loading="lazy"
         decoding="async"
-        className={cn('object-contain', box, 'bg-secondary/50 p-1.5', className)}
+        className={cn('shrink-0 object-contain object-center', tile, className)}
       />
     )
   }
