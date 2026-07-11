@@ -4,17 +4,23 @@ import { useEffect, useRef } from 'react'
  * Fundo de partículas do herói (canvas 2D, leve e interativo).
  *
  * 🔧 MODE controla o visual:
- *   - 'shape'     → as partículas formam o texto SHAPE_TEXT (ex.: "V") e se
- *                   espalham quando o cursor chega perto, reagrupando depois.
+ *   - 'shape'     → as partículas formam as formas de SHAPES (a marca + letras) e
+ *                   se espalham quando o cursor chega perto, reagrupando depois.
  *   - 'scattered' → flow field espalhado (rollback do visual anterior).
  *
  * Adaptado do flow field de avathiery.com, na paleta ember da VYSO.
  * Pausa fora da tela / aba oculta e respeita prefers-reduced-motion.
  */
 const MODE: 'shape' | 'scattered' = 'shape'
-// No modo shape, as partículas formam UMA letra por ciclo, percorrendo o texto.
-// Ex.: 'VYSO' → V, Y, S, O, V... Use uma só letra (ex.: 'V') pra não ciclar.
-const SHAPE_TEXT = 'VYSO'
+// No modo shape, as partículas formam UMA forma por ciclo, percorrendo a lista.
+// 'logo' = a marca oficial (o V vetorial); o resto são letras da Satoshi.
+// Use ['logo'] pra ficar só na marca, sem ciclar.
+const SHAPES: readonly string[] = ['logo', 'Y', 'S', 'O']
+
+/** Mesmo path do public/logo.svg (viewBox 265×289) — o "V" oficial da marca. */
+const LOGO_PATH = 'M0 0L75 2L171 211L138 289Z M192 0L265 2L187 174L151 97Z'
+const LOGO_W = 265
+const LOGO_H = 289
 
 interface Props {
   className?: string
@@ -75,8 +81,8 @@ export function FlowField({ className }: Props) {
         hue: number
         light: number
       }
-      const letters = [...SHAPE_TEXT]
-      const N = 1400 // partículas (mesma quantidade pra todas as letras)
+      const letters = [...SHAPES]
+      const N = 1400 // partículas (mesma quantidade pra todas as formas)
       const FREQ = 0.001 // ~6.3s por letra (forma + bagunça)
       let ps: SP[] = []
       let letterTargets: { x: number; y: number }[][] = []
@@ -86,7 +92,7 @@ export function FlowField({ className }: Props) {
       let t0 = -1
       let lastCycle = -1
 
-      // Amostra uma letra e normaliza pra EXATAMENTE N pontos.
+      // Amostra uma forma (a marca ou uma letra) e normaliza pra EXATAMENTE N pontos.
       function sampleLetter(char: string): { x: number; y: number }[] {
         const off = document.createElement('canvas')
         off.width = Math.max(1, Math.floor(W))
@@ -95,10 +101,22 @@ export function FlowField({ className }: Props) {
         if (!octx) return Array.from({ length: N }, () => ({ x: cx, y: cy }))
         octx.clearRect(0, 0, W, H)
         octx.fillStyle = '#fff'
-        octx.textAlign = 'center'
-        octx.textBaseline = 'middle'
-        octx.font = `900 ${fontSize}px "Satoshi", sans-serif`
-        octx.fillText(char, cx, cy)
+
+        if (char === 'logo') {
+          // Marca oficial: escala o path pra ocupar a mesma altura visual das
+          // letras (a caixa alta da Satoshi fica em ~72% do fontSize).
+          const scale = (fontSize * 0.78) / LOGO_H
+          octx.save()
+          octx.translate(cx - (LOGO_W * scale) / 2, cy - (LOGO_H * scale) / 2)
+          octx.scale(scale, scale)
+          octx.fill(new Path2D(LOGO_PATH))
+          octx.restore()
+        } else {
+          octx.textAlign = 'center'
+          octx.textBaseline = 'middle'
+          octx.font = `900 ${fontSize}px "Satoshi", sans-serif`
+          octx.fillText(char, cx, cy)
+        }
 
         const data = octx.getImageData(0, 0, off.width, off.height).data
         const pts: { x: number; y: number }[] = []

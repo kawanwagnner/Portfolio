@@ -61,9 +61,13 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="mb-7 flex items-center gap-3 font-mono-tag text-xs uppercase tracking-[0.2em] text-muted-foreground"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+          <span className="relative flex h-3 w-3 text-accent">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className="absolute inset-0 h-full w-full animate-ping opacity-75">
+              <path d="M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0Z" />
+            </svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden className="relative h-full w-full">
+              <path d="M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0Z" />
+            </svg>
           </span>
           {hero.status}
         </motion.div>
