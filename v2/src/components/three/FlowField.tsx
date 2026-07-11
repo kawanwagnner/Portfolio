@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { LOGO_PATH, LOGO_H, LOGO_W } from '@/lib/brand'
 
 /**
  * Fundo de partículas do herói (canvas 2D, leve e interativo).
@@ -16,11 +17,6 @@ const MODE: 'shape' | 'scattered' = 'shape'
 // 'logo' = a marca oficial (o V vetorial); o resto são letras da Satoshi.
 // Use ['logo'] pra ficar só na marca, sem ciclar.
 const SHAPES: readonly string[] = ['logo', 'Y', 'S', 'O']
-
-/** Mesmo path do public/logo.svg (viewBox 265×289) — o "V" oficial da marca. */
-const LOGO_PATH = 'M0 0L75 2L171 211L138 289Z M192 0L265 2L187 174L151 97Z'
-const LOGO_W = 265
-const LOGO_H = 289
 
 interface Props {
   className?: string

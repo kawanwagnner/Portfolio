@@ -1,3 +1,4 @@
+import { LOGO_PATH, LOGO_W, LOGO_H } from '@/lib/brand'
 import { cn } from '@/lib/utils'
 
 /**
@@ -9,13 +10,13 @@ import { cn } from '@/lib/utils'
 export function Logo({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 265 289"
+      viewBox={`0 0 ${LOGO_W} ${LOGO_H}`}
       fill="currentColor"
       role="img"
       aria-label="VYSO"
       className={cn('h-5 w-auto', className)}
     >
-      <path d="M0 0L75 2L171 211L138 289Z M192 0L265 2L187 174L151 97Z" />
+      <path d={LOGO_PATH} />
     </svg>
   )
 }

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Navbar } from '@/components/sections/Navbar'
 import { Footer } from '@/components/sections/Footer'
+import { Preloader } from '@/components/shared/Preloader'
 import Home from '@/pages/Home'
 import ProjectsIndex from '@/pages/ProjectsIndex'
 import ProjectCase from '@/pages/ProjectCase'
@@ -30,6 +31,7 @@ function ScrollManager() {
 export default function App() {
   return (
     <BrowserRouter>
+      <Preloader />
       <ScrollManager />
       <div className="relative min-h-svh bg-background">
         <Navbar />
