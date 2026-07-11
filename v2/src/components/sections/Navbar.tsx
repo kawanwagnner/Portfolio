@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, Instagram } from 'lucide-react'
+import { Logo } from '@/components/shared/Logo'
 import { brand, nav, socials } from '@/data/content'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24)
@@ -15,8 +19,13 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  /** Âncoras (#sobre, #contato…) só existem na home — fora dela, volta pra home no hash. */
   const handleNav = (href: string) => {
     setOpen(false)
+    if (pathname !== '/') {
+      navigate(`/${href}`)
+      return
+    }
     document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
   }
 
@@ -43,11 +52,9 @@ export function Navbar() {
             e.preventDefault()
             handleNav('#hero')
           }}
-          className="flex items-center gap-2 font-display text-lg font-bold tracking-tight"
+          className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-sm font-bold text-primary-foreground">
-            {brand.logo}
-          </span>
+          <Logo className="h-7 text-accent" />
           <span className="hidden sm:inline">{brand.name.split(' ')[0]}</span>
         </a>
 

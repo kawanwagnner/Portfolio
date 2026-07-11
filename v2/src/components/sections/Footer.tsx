@@ -1,26 +1,26 @@
+import { Link } from 'react-router-dom'
 import { Instagram, Github, Mail } from 'lucide-react'
+import { Logo } from '@/components/shared/Logo'
 import { brand, socials, nav } from '@/data/content'
 
 export function Footer() {
   return (
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-10 md:flex-row md:justify-between">
-        <div className="flex items-center gap-2 font-display font-bold">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-sm text-primary-foreground">
-            {brand.logo}
-          </span>
+        <div className="flex items-center gap-2.5 font-display font-bold">
+          <Logo className="h-7 text-accent" />
           {brand.name}
         </div>
 
         <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
           {nav.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              to={`/${item.href}`}
               className="transition-colors hover:text-foreground"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -42,7 +42,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border/60 py-5 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {brand.name} · {brand.role}. Feito com React, TypeScript & Tailwind.
+        {brand.name} · CNPJ: 64.561.405/0001-81 · {brand.role}. <br /> © {new Date().getFullYear()} Todos os direitos reservados.
       </div>
     </footer>
   )
