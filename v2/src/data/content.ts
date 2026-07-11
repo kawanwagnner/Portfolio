@@ -40,7 +40,7 @@ export const about = {
   heading: 'Antes do código, existe o *negócio*.',
   paragraphs: [
     'A VYSO transforma problemas reais em soluções digitais que impulsionam negócios. Criamos, automatizamos processos e entregamos valor — sem burocracia e sem intermediário: você fala direto com quem constrói.',
-    'Tecnologia com propósito, design com intenção. Do entendimento do problema ao resultado no ar, cada etapa foca em resolver e gerar crescimento. // TODO: ajuste com a visão da VYSO.',
+    'Tecnologia com propósito e design com intenção. Do entendimento do problema ao resultado no ar, cada etapa foca em resolver e gerar crescimento.',
   ],
   stats: [
     { value: '15+', label: 'Projetos no ar' },
@@ -55,19 +55,25 @@ export const founder = {
   tagline: 'Tecnologia que resolve. Pessoas que *confiam*.',
   name: 'Kawan Wagnner',
   role: 'Founder & Software Engineer',
-  bio: 'Por trás da VYSO tem um dev que trata cada projeto como negócio — não só como código. Do problema à solução, com transparência, comunicação e entrega que impulsiona. // TODO: ajuste do jeito Kawan.',
+  bio: 'Por trás da VYSO tem um dev que trata cada projeto como negócio — não só como código. Entendendo o problema, planejando a solução e construindo algo que realmente faça sentido.',
   photo: '/img/kawan.webp', // 48KB (convertido do PNG 1.8MB, sem perda visível)
 }
 
+// O que a VYSO usa pra entregar — front, back, mobile, banco e infra,
+// mais o que os cases mostram: agentes de IA e integração entre sistemas.
 export const skills: string[] = [
-  'React',
   'TypeScript',
-  'Node.js',
+  'React',
+  'React Native',
   'Next.js',
+  'Node.js',
+  'NestJS',
+  'PostgreSQL',
+  'Docker',
   'Tailwind CSS',
-  'JavaScript',
-  'HTML5',
-  'Git',
+  'Agentes de IA',
+  'Integrações & APIs',
+  'Automação de processos',
 ]
 
 /**
@@ -133,7 +139,7 @@ export const projects: Project[] = [
       'Do catálogo ao pós-venda: o cliente monta a solicitação, recebe a proposta e acompanha a própria obra por 1 ano.',
     intro:
       'Uma plataforma que pega o cliente no momento em que ele está olhando o produto e não larga mais: solicitação, negociação no WhatsApp, proposta, pagamento e acompanhamento da obra — tudo num fluxo só, sem planilha e sem cliente perdido no meio do caminho.',
-    logo: '', // TODO: '/img/logos/al-modular.png'
+    logo: '/img/logos/al-modular.png',
     mockup: 'phone',
     tags: ['React', 'WhatsApp', 'E-mail'],
     services: ['Produto & fluxo', 'Aplicação web', 'Design UI/UX', 'Integrações'],
@@ -195,7 +201,7 @@ export const projects: Project[] = [
       'A vitrine digital de uma fabricante de esquadrias sob medida — autoridade na frente, orçamento a um clique.',
     intro:
       'O site institucional da AL Modular: o lugar onde quem procura esquadria sob medida encontra a empresa, entende o que ela faz e sai de lá com uma conversa aberta no WhatsApp.',
-    logo: '', // TODO: '/img/logos/al-modular.png'
+    logo: '/img/logos/al-modular.png',
     mockup: 'browser',
     tags: ['React', 'Institucional', 'SEO'],
     services: ['Site institucional', 'Design UI/UX', 'Deploy & domínio'],
@@ -244,9 +250,8 @@ export const projects: Project[] = [
       'Site de uma ONG que trabalha com crianças — feito pra transformar quem se emociona em quem doa.',
     intro:
       'A Associação Nova História acredita que toda criança merece amor, oportunidade e a chance de chegar no seu potencial. O site existe pra que quem se identifica com essa causa consiga ajudar sem atrito.',
-    logo: '', // TODO: '/img/logos/nova-historia.png'
+    logo: '/img/logos/ong-nova-historia.png',
     mockup: 'browser',
-    cover: '/img/ong.png',
     tags: ['React', 'Social', 'Doações'],
     services: ['Site institucional', 'Design UI/UX', 'Deploy'],
     stack: ['React', 'TypeScript', 'Tailwind CSS'],
@@ -301,9 +306,8 @@ export const projects: Project[] = [
       'Site de uma empresa de facilities e segurança patrimonial: autoridade, portfólio de serviços e orçamento sem fricção.',
     intro:
       'A VG atua com manutenção predial, segurança patrimonial, limpeza, controle de acesso e gestão de facilities. O site precisava fazer o que um vendedor faz numa reunião: mostrar competência e sair com o orçamento marcado.',
-    logo: '', // TODO: '/img/logos/vg.png'
+    logo: '/img/logos/vg.png',
     mockup: 'browser',
-    cover: '/img/seguranca.png',
     tags: ['React', 'Institucional', 'Conversão'],
     services: ['Site institucional', 'Design UI/UX', 'Deploy'],
     stack: ['React', 'TypeScript', 'Tailwind CSS'],
