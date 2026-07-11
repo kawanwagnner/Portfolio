@@ -93,31 +93,26 @@ export interface CaseStep {
   description: string
 }
 
-export interface Project {
-  slug: string
+/**
+ * O corpo de um case: o que a página de projeto mostra.
+ * Um cliente pode ter mais de um sistema (ex.: o instituto social tem o
+ * painel e a integração) — nesse caso cada sistema é uma parte, e a página
+ * do case mostra uma aba por parte, em vez de virar dois cards repetidos.
+ */
+export interface CasePart {
+  /** Nome do sistema. Vira o rótulo da aba quando o projeto tem mais de uma parte. */
   title: string
-  client: string
-  year: string
-  /** Etiqueta curta do tipo de trabalho — aparece no card e no topo do case. */
   category: string
-  /** Frase do card e do índice de projetos. */
-  summary: string
-  /** Parágrafo de abertura da página do case. */
+  /** Parágrafo de abertura. */
   intro: string
-  /** Logo do cliente (PNG/SVG em /public/img/logos). Sem logo → monograma da marca. */
-  logo?: string
-  /** Moldura do mockup: janela de browser ou celular. */
-  mockup?: 'browser' | 'phone'
-  cover?: string
-  gallery?: string[]
-  /** Tags curtas do card. */
-  tags: string[]
   services: string[]
   stack: string[]
   live?: string
   repo?: string
-  /** Destaque ocupa 2 colunas no grid da home. */
-  featured?: boolean
+  /** Moldura do mockup: janela de browser ou celular. */
+  mockup?: 'browser' | 'phone'
+  cover?: string
+  gallery?: string[]
   objective: string[]
   challenge: string[]
   solution: string[]
@@ -126,6 +121,34 @@ export interface Project {
   process: CaseStep[]
   /** Números do case. Mantenha só o que for verdade. */
   results: CaseMetric[]
+}
+
+/**
+ * Projeto = o que aparece no card. Sistema único: escreva o case direto aqui
+ * (os campos de CasePart são os mesmos). Mais de um sistema: use `parts`.
+ */
+export interface Project extends Partial<CasePart> {
+  slug: string
+  title: string
+  client: string
+  year: string
+  /** Etiqueta curta do tipo de trabalho — aparece no card. */
+  category: string
+  /** Frase do card e do índice de projetos. */
+  summary: string
+  /** Logo do cliente (PNG/SVG em /public/img/logos). Sem logo → monograma da marca. */
+  logo?: string
+  /** Tags curtas do card. */
+  tags: string[]
+  /** Destaque ocupa 2 colunas no grid da home. */
+  featured?: boolean
+  /** Dois ou mais sistemas pro mesmo cliente → uma aba por sistema no case. */
+  parts?: CasePart[]
+}
+
+/** As partes de um case. Projeto de sistema único = ele mesmo, como parte única. */
+export function getCaseParts(project: Project): CasePart[] {
+  return project.parts?.length ? project.parts : [project as CasePart]
 }
 
 export const projects: Project[] = [
@@ -399,93 +422,96 @@ export const projects: Project[] = [
     results: [{ value: '24/7', label: 'atendimento sem fila e sem horário' }],
   },
   {
-    slug: 'instituto-social-painel',
-    title: 'Painel de Frequência',
+    // Dois sistemas pro mesmo cliente → um card só, com aba por sistema no case.
+    slug: 'instituto-social',
+    title: 'Painel & Integração',
     client: 'Instituto social · via consultoria',
     year: '2026',
-    category: 'Aplicação Web',
+    category: 'Aplicação Web & Integração',
     summary:
-      'Interface de acompanhamento das ausências dos educandos — a evasão vira número visível antes de virar problema.',
-    intro:
-      'Uma interface para o instituto acompanhar a frequência dos educandos. Falta não é só um dado de chamada: é o primeiro sinal de que um jovem está saindo do programa — e o instituto precisava enxergar esse sinal a tempo.',
+      'Dois sistemas para o instituto: o painel que acompanha a frequência dos educandos e a ponte entre o ERP e o CRM no financeiro.',
     logo: '',
     mockup: 'browser',
-    tags: ['React', 'Dashboard', 'Social'],
-    services: ['Aplicação web', 'Design UI/UX', 'Dashboard'],
-    stack: ['React', 'TypeScript', 'Tailwind CSS'], // TODO: confirme (tinha backend? qual banco?)
-    objective: [
-      'Dar ao time do instituto uma visão clara de quem está faltando, quanto e desde quando — sem depender de planilha e memória.',
-      'Permitir agir cedo: identificar o educando em risco de evasão enquanto ainda dá pra trazer de volta.',
-    ],
-    challenge: [
-      'Controle de presença em projeto social costuma morar em papel e planilha. O dado existe, mas ninguém consegue olhar pro conjunto e ver o padrão — e quando o padrão aparece, o educando já saiu.',
-      // TODO: Kawan — como era antes? (papel? planilha? sistema?) e quem usava?
-    ],
-    solution: [
-      'Uma interface que consolida as ausências e mostra o que importa de relance: quem faltou, com que frequência, e quem está entrando na zona de risco.',
-      // TODO: Kawan — detalha as telas/funcionalidades: registro de presença, filtros, alertas, relatórios?
-    ],
-    process: [
+    tags: ['React', 'Integração', 'Social'],
+    parts: [
       {
-        title: 'Entendimento do processo',
-        description:
-          'Como o instituto registrava presença e o que o time precisava enxergar pra agir.', // TODO
+        title: 'Painel de Frequência',
+        category: 'Aplicação Web',
+        intro:
+          'Uma interface para o instituto acompanhar a frequência dos educandos. Falta não é só um dado de chamada: é o primeiro sinal de que um jovem está saindo do programa — e o instituto precisava enxergar esse sinal a tempo.',
+        mockup: 'browser',
+        services: ['Aplicação web', 'Design UI/UX', 'Dashboard'],
+        stack: ['React', 'TypeScript', 'Tailwind CSS'], // TODO: confirme (tinha backend? qual banco?)
+        objective: [
+          'Dar ao time do instituto uma visão clara de quem está faltando, quanto e desde quando — sem depender de planilha e memória.',
+          'Permitir agir cedo: identificar o educando em risco de evasão enquanto ainda dá pra trazer de volta.',
+        ],
+        challenge: [
+          'Controle de presença em projeto social costuma morar em papel e planilha. O dado existe, mas ninguém consegue olhar pro conjunto e ver o padrão — e quando o padrão aparece, o educando já saiu.',
+          // TODO: Kawan — como era antes? (papel? planilha? sistema?) e quem usava?
+        ],
+        solution: [
+          'Uma interface que consolida as ausências e mostra o que importa de relance: quem faltou, com que frequência, e quem está entrando na zona de risco.',
+          // TODO: Kawan — detalha as telas/funcionalidades: registro de presença, filtros, alertas, relatórios?
+        ],
+        process: [
+          {
+            title: 'Entendimento do processo',
+            description:
+              'Como o instituto registrava presença e o que o time precisava enxergar pra agir.', // TODO
+          },
+          {
+            title: 'Desenho da interface',
+            description:
+              'Priorizar o sinal (ausência recorrente) sobre o ruído (a chamada do dia).', // TODO
+          },
+          {
+            title: 'Construção',
+            description:
+              'Painel responsivo, pensado pra ser usado no dia a dia por quem está em campo.', // TODO
+          },
+        ],
+        // TODO: Kawan — nº de educandos acompanhados, unidades, queda de evasão…
+        results: [{ value: 'Evasão', label: 'sinalizada antes de acontecer' }],
       },
       {
-        title: 'Desenho da interface',
-        description: 'Priorizar o sinal (ausência recorrente) sobre o ruído (a chamada do dia).', // TODO
-      },
-      {
-        title: 'Construção',
-        description: 'Painel responsivo, pensado pra ser usado no dia a dia por quem está em campo.', // TODO
-      },
-    ],
-    // TODO: Kawan — nº de educandos acompanhados, unidades, queda de evasão…
-    results: [{ value: 'Evasão', label: 'sinalizada antes de acontecer' }],
-  },
-  {
-    slug: 'totvs-salesforce',
-    title: 'Integração TOTVS ↔ Salesforce',
-    client: 'Instituto social · via consultoria',
-    year: '2026',
-    category: 'Integração de sistemas',
-    summary:
-      'Ponte entre o ERP e o CRM no módulo financeiro — dois sistemas que não se falavam, agora falando sozinhos.',
-    intro:
-      'Uma integração entre o TOTVS (ERP) e o Salesforce (CRM) no módulo financeiro: o dado nasce num sistema e chega no outro sem ninguém digitar de novo.',
-    logo: '',
-    mockup: 'browser',
-    tags: ['Integração', 'TOTVS', 'Salesforce'],
-    services: ['Integração de sistemas', 'Automação de processos'],
-    stack: ['Node.js', 'REST API'], // TODO: confirme (middleware? webhook? job agendado? Apex?)
-    objective: [
-      'Eliminar a digitação dupla entre ERP e CRM no financeiro — a fonte clássica de erro, retrabalho e divergência de número.',
-      'Fazer os dois sistemas enxergarem a mesma verdade, sem depender de alguém lembrar de atualizar os dois.',
-    ],
-    challenge: [
-      'ERP e CRM guardam pedaços diferentes da mesma operação. Quando não conversam, alguém vira a integração: exporta, confere, redigita. É lento, é caro e erra.',
-      // TODO: Kawan — qual era a dor concreta? (fechamento demorado? divergência de valores? equipe redigitando?)
-    ],
-    solution: [
-      'Uma camada de integração que sincroniza os dados do módulo financeiro entre os dois sistemas, com mapeamento de campos e tratamento de erro — quando algo não bate, isso aparece em vez de passar batido.',
-      // TODO: Kawan — o que sincroniza exatamente (títulos, faturas, pagamentos, clientes)? Em que direção? De quanto em quanto tempo?
-    ],
-    process: [
-      {
-        title: 'Mapeamento dos dados',
-        description: 'Entender o que existe de cada lado e como os campos se correspondem.', // TODO
-      },
-      {
-        title: 'Construção da ponte',
-        description: 'Sincronização entre TOTVS e Salesforce, com tratamento de falha e log.', // TODO
-      },
-      {
-        title: 'Homologação',
-        description: 'Validação com o time financeiro até o número bater dos dois lados.', // TODO
+        title: 'Integração TOTVS ↔ Salesforce',
+        category: 'Integração de sistemas',
+        intro:
+          'Uma integração entre o TOTVS (ERP) e o Salesforce (CRM) no módulo financeiro: o dado nasce num sistema e chega no outro sem ninguém digitar de novo.',
+        mockup: 'browser',
+        services: ['Integração de sistemas', 'Automação de processos'],
+        stack: ['Node.js', 'REST API'], // TODO: confirme (middleware? webhook? job agendado? Apex?)
+        objective: [
+          'Eliminar a digitação dupla entre ERP e CRM no financeiro — a fonte clássica de erro, retrabalho e divergência de número.',
+          'Fazer os dois sistemas enxergarem a mesma verdade, sem depender de alguém lembrar de atualizar os dois.',
+        ],
+        challenge: [
+          'ERP e CRM guardam pedaços diferentes da mesma operação. Quando não conversam, alguém vira a integração: exporta, confere, redigita. É lento, é caro e erra.',
+          // TODO: Kawan — qual era a dor concreta? (fechamento demorado? divergência de valores? equipe redigitando?)
+        ],
+        solution: [
+          'Uma camada de integração que sincroniza os dados do módulo financeiro entre os dois sistemas, com mapeamento de campos e tratamento de erro — quando algo não bate, isso aparece em vez de passar batido.',
+          // TODO: Kawan — o que sincroniza exatamente (títulos, faturas, pagamentos, clientes)? Em que direção? De quanto em quanto tempo?
+        ],
+        process: [
+          {
+            title: 'Mapeamento dos dados',
+            description: 'Entender o que existe de cada lado e como os campos se correspondem.', // TODO
+          },
+          {
+            title: 'Construção da ponte',
+            description: 'Sincronização entre TOTVS e Salesforce, com tratamento de falha e log.', // TODO
+          },
+          {
+            title: 'Homologação',
+            description: 'Validação com o time financeiro até o número bater dos dois lados.', // TODO
+          },
+        ],
+        // TODO: Kawan — horas economizadas por mês, nº de registros sincronizados, redução de erro…
+        results: [{ value: 'Zero', label: 'digitação dupla entre ERP e CRM' }],
       },
     ],
-    // TODO: Kawan — horas economizadas por mês, nº de registros sincronizados, redução de erro…
-    results: [{ value: 'Zero', label: 'digitação dupla entre ERP e CRM' }],
   },
 ]
 

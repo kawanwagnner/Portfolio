@@ -7,10 +7,16 @@ import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
 import { Mockup } from '@/components/shared/Mockup'
 import { ClientLogo } from '@/components/shared/ClientLogo'
-import { projects, projectsSection, type Project } from '@/data/content'
+import { projects, projectsSection, getCaseParts, type Project } from '@/data/content'
 import { cn } from '@/lib/utils'
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
+  // Projeto com várias partes guarda print/link dentro delas — o card usa a primeira.
+  const parts = getCaseParts(project)
+  const lead = parts[0]
+  const cover = project.cover ?? lead.cover
+  const live = project.live ?? lead.live
+
   return (
     <Link
       to={`/projetos/${project.slug}`}
@@ -32,9 +38,9 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         <div className="relative mx-auto transition duration-500 group-hover:-translate-y-1 group-hover:scale-[1.02]">
           <Mockup
             variant={project.mockup ?? 'browser'}
-            src={project.cover}
+            src={cover}
             alt={project.title}
-            url={project.live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+            url={live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
             fallbackLabel={project.client}
             fallbackLogo={project.logo}
             className={cn('mx-auto', project.mockup === 'phone' && 'max-w-[9rem]')}
@@ -69,10 +75,17 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           ))}
         </div>
 
-        <span className="link-underline mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-semibold text-accent">
-          {projectsSection.ctaLabel}
-          <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </span>
+        <div className="mt-auto flex items-center justify-between gap-3 pt-2">
+          <span className="link-underline inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+            {projectsSection.ctaLabel}
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </span>
+          {parts.length > 1 && (
+            <span className="font-mono-tag text-[0.65rem] uppercase tracking-wider text-muted-foreground">
+              {parts.length} sistemas
+            </span>
+          )}
+        </div>
       </div>
 
       <div
