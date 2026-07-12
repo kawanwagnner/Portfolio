@@ -14,11 +14,12 @@ Transformo problemas reais de negócio em software que fica no ar: sites que con
 |---|---|
 | **App de Orçamentos & Obra** — AL Modular Esquadrias | Do catálogo ao pós-venda: o cliente solicita, recebe a proposta, paga e acompanha a própria obra por 1 ano |
 | **AL Modular Esquadrias** | Site institucional de fabricante de esquadrias sob medida — [almodularesquadrias.com.br](https://www.almodularesquadrias.com.br/) |
-| **Agente de IA para atendimento** | Agente conversacional para uma operação de telecom — via consultoria |
-| **Painel de Frequência** — via consultoria | Acompanhamento das ausências dos educandos: a evasão vira sinal visível antes de virar problema |
-| **Integração TOTVS ↔ Salesforce** | Ponte entre ERP e CRM no módulo financeiro — fim da digitação dupla |
 | **ONG Nova História** | Site de uma ONG que trabalha com crianças, feito pra converter emoção em doação — [ver site](https://ong-nova-historia.vercel.app/) |
 | **VG Facilities** | Site de empresa de facilities e segurança patrimonial — [ver site](https://vg-facilities.vercel.app/) |
+| **Agente de IA para atendimento** | Agente conversacional para uma operação de telecom — entregue via consultoria |
+| **Painel & Integração** | Acompanhamento de frequência num instituto social e ponte ERP ↔ CRM no financeiro — entregue via consultoria |
+
+> Projetos entregues via consultoria aparecem sem identificação do cliente final, por sigilo contratual.
 
 ### Este repositório
 

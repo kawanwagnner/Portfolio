@@ -95,9 +95,9 @@ export interface CaseStep {
 
 /**
  * O corpo de um case: o que a página de projeto mostra.
- * Um cliente pode ter mais de um sistema (ex.: o instituto social tem o
- * painel e a integração) — nesse caso cada sistema é uma parte, e a página
- * do case mostra uma aba por parte, em vez de virar dois cards repetidos.
+ * Um cliente pode ter mais de um sistema (ex.: a AL Modular tem o site e o app)
+ * — nesse caso cada sistema é uma parte, e a página do case mostra uma aba por
+ * parte, em vez de virar dois cards repetidos com a mesma logo.
  */
 export interface CasePart {
   /** Nome do sistema. Vira o rótulo da aba quando o projeto tem mais de uma parte. */
@@ -389,6 +389,14 @@ export const projects: Project[] = [
       { value: 'WhatsApp', label: 'orçamento a um toque, em toda a página' },
     ],
   },
+  // ⚠️ PROJETOS VIA CONSULTORIA (contrato PJ) — SEM IDENTIFICAR O CLIENTE FINAL.
+  //
+  // A cláusula 8.1 do contrato proíbe revelar informações acessadas na prestação,
+  // e a 9.1 dá a propriedade do resultado à contratante. O sigilo vale durante a
+  // vigência + 2 anos. Então: sem nome de cliente, sem logo, sem print, sem código.
+  // Só o problema e a capacidade técnica.
+  //
+  // Só volte a nomear se a consultoria autorizar POR ESCRITO.
   {
     slug: 'agente-ia-telecom',
     title: 'Agente de IA para atendimento',
@@ -396,10 +404,9 @@ export const projects: Project[] = [
     year: '2026',
     category: 'Agente de IA',
     summary:
-      'Um agente conversacional para uma operação de telecom — atendimento que responde na hora, sem fila.',
+      'Um agente conversacional que atende na hora, sem fila — e escala pro humano só quando realmente precisa.',
     intro:
       'Um agente de IA para uma operação de telecom: em vez de um menu de robô que empurra o cliente pra um humano, um agente que entende o que foi pedido e resolve.',
-    logo: '',
     mockup: 'phone',
     tags: ['IA', 'Automação', 'Atendimento'],
     services: ['Agente de IA', 'Automação de atendimento', 'Integração'],
@@ -414,7 +421,7 @@ export const projects: Project[] = [
     ],
     solution: [
       'Um agente que interpreta o pedido em linguagem natural, responde na hora e escala pro humano só quando realmente precisa.',
-      // TODO: Kawan — descreve o que o bot faz de fato, passo a passo. É aqui que o case ganha peso.
+      // TODO: Kawan — descreve o que o bot faz, sem expor regra de negócio do cliente.
     ],
     process: [
       {
@@ -431,19 +438,19 @@ export const projects: Project[] = [
         description: 'Agente em produção, atendendo dentro do canal que a operação já usava.', // TODO
       },
     ],
-    // TODO: Kawan — números aqui (atendimentos/mês, % resolvido sem humano, tempo de resposta) valem ouro.
+    // TODO: Kawan — números só se forem genéricos o bastante pra não identificar o cliente.
     results: [{ value: '24/7', label: 'atendimento sem fila e sem horário' }],
   },
   {
     // Dois sistemas pro mesmo cliente → um card só, com aba por sistema no case.
+    // Também via consultoria: cliente não identificado (ver aviso acima).
     slug: 'instituto-social',
     title: 'Painel & Integração',
     client: 'Instituto social · via consultoria',
     year: '2026',
     category: 'Aplicação Web & Integração',
     summary:
-      'Dois sistemas para o instituto: o painel que acompanha a frequência dos educandos e a ponte entre o ERP e o CRM no financeiro.',
-    logo: '',
+      'Dois sistemas para um instituto social: o painel que acompanha a frequência dos educandos e a ponte entre o ERP e o CRM no financeiro.',
     mockup: 'browser',
     tags: ['React', 'Integração', 'Social'],
     parts: [

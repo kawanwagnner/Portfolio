@@ -144,14 +144,21 @@ O site deixou de ser página única: agora tem **rotas** (`react-router-dom`).
 - **Logos**: `components/shared/ClientLogo.tsx` — sem arquivo, cai num monograma com as iniciais do cliente.
 - `vercel.json` com rewrite pra SPA (senão `/projetos/x` dá 404 no refresh).
 
-**Pra completar:** prints em `public/img/` (campo `cover`/`gallery`) e logos em `public/img/logos/` (campo `logo`). Os `// TODO` no `content.ts` marcam o que falta de conteúdo real (nos cases via consultoria).
+**Pra completar:** prints em `public/img/` (campo `cover`/`gallery`) e logos em `public/img/logos/` (campo `logo`). Os `// TODO` no `content.ts` marcam o que falta de conteúdo real.
+
+> ⚠️ **Projetos via consultoria (contrato PJ) ficam ANÔNIMOS.** O contrato proíbe
+> revelar informações acessadas na prestação (cláusula 8.1) e dá a propriedade do
+> resultado à contratante (9.1) — sigilo durante a vigência **+ 2 anos**. Então, nesses
+> cases: sem nome de cliente, sem logo, sem print, sem código. Só o problema e a
+> solução, em termos genéricos. Só volte a nomear com autorização **por escrito**.
 
 ---
 
 ## ✅ Pendências / próximos passos
 
 - [ ] **Prints e logos dos projetos** → `public/img/` e `public/img/logos/`.
-- [ ] **Preencher os `// TODO` dos cases** dos cases entregues via consultoria.
+- [ ] **Preencher os `// TODO` dos cases** anônimos (agente de IA e painel/integração) — sem identificar o cliente.
+- [ ] Pedir à consultoria autorização **por escrito** pra citar os clientes. Se vier, dá pra repor nome e logo.
 - [ ] Confirmar/ajustar **usuário do GitHub** (`socials.github`) e adicionar **WhatsApp** (`socials.whatsapp`) se quiser.
 - [ ] Revisar textos marcados com `// TODO` em `content.ts` (sobre, founder).
 - [ ] Conferir **enquadramento da foto** do founder (card 4/5) em telas diferentes.
