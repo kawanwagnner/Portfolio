@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowUpRight, Github } from 'lucide-react'
 import { Reveal } from '@/components/shared/Reveal'
@@ -42,17 +42,32 @@ function Block({ label, title, paragraphs }: { label: string; title: string; par
 
 export default function ProjectCase() {
   const { slug } = useParams()
+  const [search, setSearch] = useSearchParams()
   const project = getProject(slug)
   const [activePart, setActivePart] = useState(0)
 
-  // trocar de projeto volta pra primeira aba
-  useEffect(() => setActivePart(0), [slug])
+  // Abre na aba pedida pela URL (?sistema=app) — é assim que o card de um
+  // sistema específico, vindo do filtro Mobile/Desktop, cai no lugar certo.
+  const wanted = search.get('sistema')
+  useEffect(() => {
+    const parts = project ? getCaseParts(project) : []
+    const i = parts.findIndex((p) => p.slug === wanted)
+    setActivePart(i >= 0 ? i : 0)
+  }, [slug, wanted, project])
 
   if (!project) return <Navigate to="/projetos" replace />
 
   const parts = getCaseParts(project)
   const part = parts[activePart] ?? parts[0]
   const multi = parts.length > 1
+
+  /** Clicar na aba reflete na URL — o link continua compartilhável. */
+  const selectPart = (i: number) => {
+    setActivePart(i)
+    const s = parts[i]?.slug
+    if (s) setSearch({ sistema: s }, { replace: true })
+    else setSearch({}, { replace: true })
+  }
 
   const others = projects.filter((p) => p.slug !== project.slug).slice(0, 3)
   const liveLabel = part.live?.replace(/^https?:\/\//, '').replace(/\/$/, '')
@@ -98,7 +113,7 @@ export default function ProjectCase() {
                     key={p.title}
                     role="tab"
                     aria-selected={selected}
-                    onClick={() => setActivePart(i)}
+                    onClick={() => selectPart(i)}
                     className={cn(
                       'relative rounded-full px-4 py-2.5 text-sm font-medium transition-colors sm:px-5 sm:py-2',
                       selected
