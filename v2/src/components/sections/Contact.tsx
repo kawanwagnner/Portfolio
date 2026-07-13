@@ -2,7 +2,7 @@ import { Instagram, Mail, Github, MessageCircle, ArrowUpRight, type LucideIcon }
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
-import { contact, socials } from '@/data/content'
+import { contact, socials, whatsapp } from '@/data/content'
 
 interface Channel {
   label: string
@@ -12,20 +12,15 @@ interface Channel {
 }
 
 export function Contact() {
-  // Canais secundários (o Instagram é o CTA principal à esquerda).
+  // Canais secundários (o WhatsApp é o CTA principal à esquerda).
   const channels: Channel[] = [
+    { label: 'Instagram', value: '@vyso.store', href: socials.instagram, icon: Instagram },
     { label: 'E-mail', value: contact.email, href: `mailto:${contact.email}`, icon: Mail },
     socials.github && {
       label: 'GitHub',
       value: socials.github.replace(/^https?:\/\//, '').replace(/\/$/, ''),
       href: socials.github,
       icon: Github,
-    },
-    socials.whatsapp && {
-      label: 'WhatsApp',
-      value: 'Chamar no WhatsApp',
-      href: socials.whatsapp,
-      icon: MessageCircle,
     },
   ].filter(Boolean) as Channel[]
 
@@ -53,15 +48,20 @@ export function Contact() {
           </Reveal>
           <Reveal delay={0.15}>
             <a
-              href={socials.instagram}
+              href={socials.whatsapp}
               target="_blank"
               rel="noreferrer"
               className="btn-ember group mt-9 inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold"
             >
-              <Instagram className="h-4 w-4" />
+              <MessageCircle className="h-4 w-4" />
               {contact.ctaLabel}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="mt-4 font-mono-tag text-xs uppercase tracking-widest text-muted-foreground">
+              {whatsapp.display}
+            </p>
           </Reveal>
         </div>
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Instagram, Github, Mail } from 'lucide-react'
+import { Instagram, Github, Mail, MessageCircle } from 'lucide-react'
 import { Logo } from '@/components/shared/Logo'
 import { brand, socials, nav } from '@/data/content'
 
@@ -25,6 +25,12 @@ export function Footer() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {socials.whatsapp && (
+            <a href={socials.whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp"
+              className="grid h-9 w-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-accent">
+              <MessageCircle className="h-4 w-4" />
+            </a>
+          )}
           <a href={socials.instagram} target="_blank" rel="noreferrer" aria-label="Instagram"
             className="grid h-9 w-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:text-accent">
             <Instagram className="h-4 w-4" />

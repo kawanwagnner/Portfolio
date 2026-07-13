@@ -389,156 +389,13 @@ export const projects: Project[] = [
       { value: 'WhatsApp', label: 'orçamento a um toque, em toda a página' },
     ],
   },
-  // ⚠️ PROJETOS VIA CONSULTORIA (contrato PJ) — SEM IDENTIFICAR O CLIENTE FINAL.
+  // Os projetos entregues via consultoria (contrato PJ) NÃO entram aqui.
   //
-  // A cláusula 8.1 do contrato proíbe revelar informações acessadas na prestação,
-  // e a 9.1 dá a propriedade do resultado à contratante. O sigilo vale durante a
-  // vigência + 2 anos. Então: sem nome de cliente, sem logo, sem print, sem código.
-  // Só o problema e a capacidade técnica.
+  // O contrato proíbe revelar informações acessadas na prestação (cláusula 8.1) e
+  // dá a propriedade do resultado à contratante (9.1) — sigilo durante a vigência
+  // + 2 anos. Sem nome de cliente, sem logo, sem print, sem código.
   //
-  // Só volte a nomear se a consultoria autorizar POR ESCRITO.
-  {
-    slug: 'agente-ia-telecom',
-    title: 'Agente de IA para atendimento',
-    client: 'Operação de telecom · via consultoria',
-    year: '2026',
-    category: 'Agente de IA',
-    summary:
-      'Um agente conversacional que atende na hora, sem fila — e escala pro humano só quando realmente precisa.',
-    intro:
-      'Um agente de IA para uma operação de telecom: em vez de um menu de robô que empurra o cliente pra um humano, um agente que entende o que foi pedido e resolve.',
-    mockup: 'phone',
-    tags: ['IA', 'Automação', 'Atendimento'],
-    services: ['Agente de IA', 'Automação de atendimento', 'Integração'],
-    stack: ['Node.js', 'TypeScript'], // TODO: confirme a stack real (LLM usado, canal, banco)
-    objective: [
-      'Tirar da equipe o volume de atendimento repetitivo e devolver esse tempo pro que exige gente de verdade.',
-      // TODO: Kawan — qual era o objetivo do bot? (vendas, suporte técnico, 2ª via, agendamento?)
-    ],
-    challenge: [
-      'Operação de telecom vive de volume: muita pergunta repetida, pico de demanda concentrado e cliente sem paciência pra fila.',
-      // TODO: Kawan — qual era a dor concreta? (tempo de espera, custo de atendente, horário limitado?)
-    ],
-    solution: [
-      'Um agente que interpreta o pedido em linguagem natural, responde na hora e escala pro humano só quando realmente precisa.',
-      // TODO: Kawan — descreve o que o bot faz, sem expor regra de negócio do cliente.
-    ],
-    process: [
-      {
-        title: 'Mapeamento do atendimento',
-        description:
-          'Entender o que o cliente pergunta de verdade — e o que dava pra resolver sem gente no meio.', // TODO
-      },
-      {
-        title: 'Construção do agente',
-        description: 'Fluxo de conversa, base de conhecimento e regras de escalonamento pro humano.', // TODO
-      },
-      {
-        title: 'Operação',
-        description: 'Agente em produção, atendendo dentro do canal que a operação já usava.', // TODO
-      },
-    ],
-    // TODO: Kawan — números só se forem genéricos o bastante pra não identificar o cliente.
-    results: [{ value: '24/7', label: 'atendimento sem fila e sem horário' }],
-  },
-  {
-    // Dois sistemas pro mesmo cliente → um card só, com aba por sistema no case.
-    // Também via consultoria: cliente não identificado (ver aviso acima).
-    slug: 'instituto-social',
-    title: 'Painel & Integração',
-    client: 'Instituto social · via consultoria',
-    year: '2026',
-    category: 'Aplicação Web & Integração',
-    summary:
-      'Dois sistemas para um instituto social: o painel que acompanha a frequência dos educandos e a ponte entre o ERP e o CRM no financeiro.',
-    mockup: 'browser',
-    tags: ['React', 'Integração', 'Social'],
-    parts: [
-      {
-        slug: 'painel',
-        title: 'Painel de Frequência',
-        category: 'Aplicação Web',
-        summary:
-          'Interface de acompanhamento das ausências dos educandos — a evasão vira número visível antes de virar problema.',
-        intro:
-          'Uma interface para o instituto acompanhar a frequência dos educandos. Falta não é só um dado de chamada: é o primeiro sinal de que um jovem está saindo do programa — e o instituto precisava enxergar esse sinal a tempo.',
-        mockup: 'browser',
-        services: ['Aplicação web', 'Design UI/UX', 'Dashboard'],
-        stack: ['React', 'TypeScript', 'Tailwind CSS'], // TODO: confirme (tinha backend? qual banco?)
-        objective: [
-          'Dar ao time do instituto uma visão clara de quem está faltando, quanto e desde quando — sem depender de planilha e memória.',
-          'Permitir agir cedo: identificar o educando em risco de evasão enquanto ainda dá pra trazer de volta.',
-        ],
-        challenge: [
-          'Controle de presença em projeto social costuma morar em papel e planilha. O dado existe, mas ninguém consegue olhar pro conjunto e ver o padrão — e quando o padrão aparece, o educando já saiu.',
-          // TODO: Kawan — como era antes? (papel? planilha? sistema?) e quem usava?
-        ],
-        solution: [
-          'Uma interface que consolida as ausências e mostra o que importa de relance: quem faltou, com que frequência, e quem está entrando na zona de risco.',
-          // TODO: Kawan — detalha as telas/funcionalidades: registro de presença, filtros, alertas, relatórios?
-        ],
-        process: [
-          {
-            title: 'Entendimento do processo',
-            description:
-              'Como o instituto registrava presença e o que o time precisava enxergar pra agir.', // TODO
-          },
-          {
-            title: 'Desenho da interface',
-            description:
-              'Priorizar o sinal (ausência recorrente) sobre o ruído (a chamada do dia).', // TODO
-          },
-          {
-            title: 'Construção',
-            description:
-              'Painel responsivo, pensado pra ser usado no dia a dia por quem está em campo.', // TODO
-          },
-        ],
-        // TODO: Kawan — nº de educandos acompanhados, unidades, queda de evasão…
-        results: [{ value: 'Evasão', label: 'sinalizada antes de acontecer' }],
-      },
-      {
-        slug: 'integracao',
-        title: 'Integração TOTVS ↔ Salesforce',
-        category: 'Integração de sistemas',
-        summary:
-          'Ponte entre o ERP e o CRM no módulo financeiro — dois sistemas que não se falavam, agora falando sozinhos.',
-        intro:
-          'Uma integração entre o TOTVS (ERP) e o Salesforce (CRM) no módulo financeiro: o dado nasce num sistema e chega no outro sem ninguém digitar de novo.',
-        mockup: 'browser',
-        services: ['Integração de sistemas', 'Automação de processos'],
-        stack: ['Node.js', 'REST API'], // TODO: confirme (middleware? webhook? job agendado? Apex?)
-        objective: [
-          'Eliminar a digitação dupla entre ERP e CRM no financeiro — a fonte clássica de erro, retrabalho e divergência de número.',
-          'Fazer os dois sistemas enxergarem a mesma verdade, sem depender de alguém lembrar de atualizar os dois.',
-        ],
-        challenge: [
-          'ERP e CRM guardam pedaços diferentes da mesma operação. Quando não conversam, alguém vira a integração: exporta, confere, redigita. É lento, é caro e erra.',
-          // TODO: Kawan — qual era a dor concreta? (fechamento demorado? divergência de valores? equipe redigitando?)
-        ],
-        solution: [
-          'Uma camada de integração que sincroniza os dados do módulo financeiro entre os dois sistemas, com mapeamento de campos e tratamento de erro — quando algo não bate, isso aparece em vez de passar batido.',
-          // TODO: Kawan — o que sincroniza exatamente (títulos, faturas, pagamentos, clientes)? Em que direção? De quanto em quanto tempo?
-        ],
-        process: [
-          {
-            title: 'Mapeamento dos dados',
-            description: 'Entender o que existe de cada lado e como os campos se correspondem.', // TODO
-          },
-          {
-            title: 'Construção da ponte',
-            description: 'Sincronização entre TOTVS e Salesforce, com tratamento de falha e log.', // TODO
-          },
-          {
-            title: 'Homologação',
-            description: 'Validação com o time financeiro até o número bater dos dois lados.', // TODO
-          },
-        ],
-        // TODO: Kawan — horas economizadas por mês, nº de registros sincronizados, redução de erro…
-        results: [{ value: 'Zero', label: 'digitação dupla entre ERP e CRM' }],
-      },
-    ],
-  },
+  // Só dá pra publicar com autorização POR ESCRITO da consultoria.
 ]
 
 export const projectsSection = {
@@ -593,14 +450,29 @@ export const contact = {
   heading: 'Tem um projeto? A VYSO *entrega*.',
   description: 'Chama a gente e transforma sua ideia num produto digital de verdade. Resposta rápida.',
   email: 'kawanwagnner7@gmail.com',
-  ctaLabel: 'Chamar no Instagram',
+  // O CTA principal é o WhatsApp: quem quer contratar quer falar, não seguir.
+  ctaLabel: 'Chamar no WhatsApp',
+}
+
+/**
+ * WhatsApp — o `wa.me` já é o link universal: quem tem o WhatsApp normal abre
+ * nele, quem tem o Business abre no Business, e quem tem os dois é o próprio
+ * celular que pergunta qual usar. Site nenhum consegue detectar app instalado
+ * (o navegador não expõe isso) — e nem precisa: o sistema resolve.
+ */
+export const whatsapp = {
+  number: '5511989220824', // internacional, só dígitos
+  display: '(11) 98922-0824',
+  // Mensagem já digitada pro cliente — tira o atrito do "e agora, o que eu escrevo?"
+  message:
+    'Oi, Kawan! Cheguei pelo site da VYSO 👋\n\nTenho um projeto em mente e queria entender como a gente pode tirar do papel.',
 }
 
 export const socials = {
   instagram: 'https://www.instagram.com/vyso.store/',
-  github: 'https://github.com/kawanwagnner', // TODO: confirme o usuário/da VYSO
+  github: 'https://github.com/kawanwagnner',
   email: 'mailto:kawanwagnner7@gmail.com',
-  whatsapp: '', // TODO: opcional — https://wa.me/55DDDNUMERO
+  whatsapp: `https://wa.me/${whatsapp.number}?text=${encodeURIComponent(whatsapp.message)}`,
 }
 
 export const nav = [

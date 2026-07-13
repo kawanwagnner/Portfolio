@@ -16,10 +16,8 @@ Transformo problemas reais de negócio em software que fica no ar: sites que con
 | **AL Modular Esquadrias** | Site institucional de fabricante de esquadrias sob medida — [almodularesquadrias.com.br](https://www.almodularesquadrias.com.br/) |
 | **ONG Nova História** | Site de uma ONG que trabalha com crianças, feito pra converter emoção em doação — [ver site](https://ong-nova-historia.vercel.app/) |
 | **VG Facilities** | Site de empresa de facilities e segurança patrimonial — [ver site](https://vg-facilities.vercel.app/) |
-| **Agente de IA para atendimento** | Agente conversacional para uma operação de telecom — entregue via consultoria |
-| **Painel & Integração** | Acompanhamento de frequência num instituto social e ponte ERP ↔ CRM no financeiro — entregue via consultoria |
 
-> Projetos entregues via consultoria aparecem sem identificação do cliente final, por sigilo contratual.
+> Projetos entregues via consultoria não são listados, por sigilo contratual.
 
 ### Este repositório
 
