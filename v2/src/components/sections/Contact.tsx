@@ -37,7 +37,13 @@ export function Contact() {
         aria-hidden
         className="ember-glow pointer-events-none absolute -left-32 bottom-0 -z-10 h-[34rem] w-[34rem]"
       />
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
+      {/*
+        `[&>*]:min-w-0` nas colunas: item de grid nasce com `min-width: auto`, ou
+        seja, se recusa a encolher abaixo do próprio conteúdo. Sem isso o e-mail
+        longo empurrava o painel de canais pra fora da tela no celular, em vez de
+        deixar o texto se ajustar dentro dele.
+      */}
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 [&>*]:min-w-0 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
         {/* Manifesto */}
         <div>
           <Reveal>
@@ -99,7 +105,9 @@ export function Contact() {
                       <span className="block font-mono-tag text-[0.7rem] uppercase tracking-widest text-muted-foreground">
                         {c.label}
                       </span>
-                      <span className="block truncate font-display text-base font-semibold transition-colors group-hover:text-accent md:text-lg">
+                      {/* Quebra em vez de truncar: reticências num e-mail ou
+                          num @ escondem justamente o que a pessoa veio copiar. */}
+                      <span className="block break-words font-display text-base font-semibold transition-colors group-hover:text-accent md:text-lg">
                         {c.value}
                       </span>
                     </span>

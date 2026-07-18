@@ -8,7 +8,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react'
-import { useDragScroll } from '@/hooks/useDragScroll'
+import { useDragScroll, cardPositions, nearestIndex } from '@/hooks/useDragScroll'
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
@@ -184,13 +184,17 @@ export function Support() {
     return () => window.removeEventListener('resize', syncArrows)
   }, [])
 
-  /** Avança/volta exatamente um card (largura + gap), não uma tela inteira. */
+  /** Avança/volta exatamente um card, alinhando na posição de snap dele. */
   const scrollByCard = (dir: -1 | 1) => {
     const el = trackRef.current
     if (!el) return
-    const card = el.firstElementChild as HTMLElement | null
-    const step = card ? card.offsetWidth + 20 : el.clientWidth * 0.8 // 20px = gap-5
-    el.scrollBy({ left: dir * step, behavior: reduce ? 'auto' : 'smooth' })
+    const positions = cardPositions(el)
+    if (!positions.length) return
+    const idx = Math.max(
+      0,
+      Math.min(positions.length - 1, nearestIndex(positions, el.scrollLeft) + dir)
+    )
+    el.scrollTo({ left: positions[idx], behavior: reduce ? 'auto' : 'smooth' })
   }
 
   return (
