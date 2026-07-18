@@ -4,7 +4,7 @@ import { ArrowUpRight, ArrowDown } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { AccentText } from '@/components/shared/AccentText'
 import { FlowField } from '@/components/three/FlowField'
-import { useIsLowPower } from '@/hooks/useIsLowPower'
+import { useDeviceTier } from '@/hooks/useIsLowPower'
 import { hero, brand, socials } from '@/data/content'
 
 function scrollTo(id: string) {
@@ -25,26 +25,31 @@ function StaticBg() {
 }
 
 export function Hero() {
-  const low = useIsLowPower()
+  const tier = useDeviceTier()
   // Monta o flow field só depois do primeiro paint (LCP limpo).
   const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    if (low) return
+    if (tier === 'static') return
     const ric =
       (window as any).requestIdleCallback || ((cb: () => void) => window.setTimeout(cb, 200))
     const cic = (window as any).cancelIdleCallback || window.clearTimeout
     const id = ric(() => setReady(true))
     return () => cic(id)
-  }, [low])
+  }, [tier])
 
   return (
     <section id="hero" className="relative h-svh min-h-[640px] w-full overflow-hidden bg-background">
       <Spotlight className="-top-40 left-0 md:-top-20 md:left-1/3" fill="hsl(239 84% 67%)" />
 
-      {/* Flow field de partículas (ou fundo estático em aparelho fraco) */}
+      {/* Flow field de partículas — densidade reduzida em celular, e fundo
+          estático só em hardware realmente fraco (≤2 núcleos). */}
       <div className="absolute inset-0">
-        {!low && ready ? <FlowField className="h-full w-full" /> : <StaticBg />}
+        {tier !== 'static' && ready ? (
+          <FlowField className="h-full w-full" density={tier === 'lite' ? 0.45 : 1} />
+        ) : (
+          <StaticBg />
+        )}
       </div>
 
       {/* Scrims pra legibilidade do texto */}

@@ -20,9 +20,15 @@ const SHAPES: readonly string[] = ['logo', 'Y', 'S', 'O']
 
 interface Props {
   className?: string
+  /**
+   * Multiplicador de densidade (1 = cheio). Em celular mandamos ~0.45: o
+   * gargalo lá é taxa de preenchimento, não CPU — menos partículas e menos
+   * pixels é o que mantém o scroll liso.
+   */
+  density?: number
 }
 
-export function FlowField({ className }: Props) {
+export function FlowField({ className, density = 1 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -78,7 +84,9 @@ export function FlowField({ className }: Props) {
         light: number
       }
       const letters = [...SHAPES]
-      const N = 1400 // partículas (mesma quantidade pra todas as formas)
+      // Partículas (mesma quantidade pra todas as formas). O piso evita que a
+      // forma vire um punhado de pontos soltos e deixe de ser legível.
+      const N = Math.max(400, Math.round(1400 * density))
       const FREQ = 0.001 // ~6.3s por letra (forma + bagunça)
       let ps: SP[] = []
       let letterTargets: { x: number; y: number }[][] = []
@@ -116,7 +124,9 @@ export function FlowField({ className }: Props) {
 
         const data = octx.getImageData(0, 0, off.width, off.height).data
         const pts: { x: number; y: number }[] = []
-        const step = 10 // gap entre partículas
+        // Gap entre partículas. Cresce quando a densidade cai, senão sobrariam
+        // poucos pontos candidatos pra N e a forma repetiria posições.
+        const step = Math.max(6, Math.round(10 / Math.sqrt(density)))
         for (let y = 0; y < H; y += step) {
           for (let x = 0; x < W; x += step) {
             if (data[(y * off.width + x) * 4 + 3] > 128) pts.push({ x, y })
@@ -361,7 +371,11 @@ export function FlowField({ className }: Props) {
       if (w === lastW && h === lastH) return
       lastW = w
       lastH = h
-      dpr = Math.min(window.devicePixelRatio || 1, 2)
+      // Celular costuma ter DPR 2.5–3. Limitar a 1.5 na versão leve corta ~44%
+      // dos pixels contra o teto de 2 — e é o que mais pesa aqui, já que cada
+      // frame repinta o canvas inteiro em modo 'lighter'. Num fundo de
+      // partículas desfocadas, a perda de nitidez não se percebe.
+      dpr = Math.min(window.devicePixelRatio || 1, density < 1 ? 1.5 : 2)
       W = w
       H = h
       canvas.width = Math.max(1, Math.floor(W * dpr))
@@ -453,7 +467,7 @@ export function FlowField({ className }: Props) {
       window.removeEventListener('resize', refreshRect)
       document.removeEventListener('visibilitychange', sync)
     }
-  }, [])
+  }, [density])
 
   return <canvas ref={canvasRef} className={className} />
 }
