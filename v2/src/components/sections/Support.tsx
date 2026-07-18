@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
-import { useReducedMotion } from 'framer-motion'
-import { Check, X, MessageCircle, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion'
+import {
+  Check,
+  X,
+  MessageCircle,
+  ArrowUpRight,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react'
 import { useDragScroll } from '@/hooks/useDragScroll'
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
@@ -229,12 +237,33 @@ export function Support() {
           role="region"
           aria-label="Planos de suporte"
           tabIndex={0}
-          className="no-scrollbar drag-scroll -mx-6 mt-14 flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto scroll-px-6 px-6 pb-4"
+          className="no-scrollbar drag-scroll -mx-6 mt-14 flex snap-x snap-proximity items-stretch gap-5 overflow-x-auto overscroll-x-contain scroll-px-6 px-6 pb-4 lg:snap-mandatory"
         >
           {supportPlans.map((plan, i) => (
             <PlanCard key={plan.id} plan={plan} index={i} />
           ))}
         </div>
+
+        {/*
+          Dica de arrasto — só abaixo de lg, onde as setas não aparecem e o
+          card espiando na borda sozinho não estava sendo lido como "tem mais".
+          Some assim que a pessoa rola: já descobriu, virou ruído.
+        */}
+        {!canPrev && (
+          <div className="mt-5 flex items-center gap-2.5 lg:hidden">
+            <span className="font-mono-tag text-[0.7rem] uppercase tracking-widest text-muted-foreground">
+              Arraste para ver os {supportPlans.length} planos
+            </span>
+            <motion.span
+              aria-hidden
+              className="text-accent"
+              animate={reduce ? undefined : { x: [0, 7, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            >
+              <ArrowRight className="h-4 w-4" />
+            </motion.span>
+          </div>
+        )}
 
         <Reveal delay={0.2}>
           <p className="mt-9 max-w-2xl font-mono-tag text-xs leading-relaxed text-muted-foreground">
