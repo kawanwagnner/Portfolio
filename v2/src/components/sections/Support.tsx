@@ -5,7 +5,6 @@ import {
   X,
   MessageCircle,
   ArrowUpRight,
-  ArrowRight,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react'
@@ -231,39 +230,41 @@ export function Support() {
           primeiro card do texto da seção; `scroll-px-6` faz o snap parar na
           mesma margem em vez de colar o card na borda.
         */}
-        <div
-          ref={trackRef}
-          onScroll={syncArrows}
-          role="region"
-          aria-label="Planos de suporte"
-          tabIndex={0}
-          className="no-scrollbar drag-scroll -mx-6 mt-14 flex snap-x snap-proximity items-stretch gap-5 overflow-x-auto overscroll-x-contain scroll-px-6 px-6 pb-4 lg:snap-mandatory"
-        >
-          {supportPlans.map((plan, i) => (
-            <PlanCard key={plan.id} plan={plan} index={i} />
-          ))}
-        </div>
-
-        {/*
-          Dica de arrasto — só abaixo de lg, onde as setas não aparecem e o
-          card espiando na borda sozinho não estava sendo lido como "tem mais".
-          Some assim que a pessoa rola: já descobriu, virou ruído.
-        */}
-        {!canPrev && (
-          <div className="mt-5 flex items-center gap-2.5 lg:hidden">
-            <span className="font-mono-tag text-[0.7rem] uppercase tracking-widest text-muted-foreground">
-              Arraste para ver os {supportPlans.length} planos
-            </span>
-            <motion.span
-              aria-hidden
-              className="text-accent"
-              animate={reduce ? undefined : { x: [0, 7, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <ArrowRight className="h-4 w-4" />
-            </motion.span>
+        {/* Wrapper relativo só pra ancorar a dica de arrasto na borda do card. */}
+        <div className="relative mt-14">
+          <div
+            ref={trackRef}
+            onScroll={syncArrows}
+            role="region"
+            aria-label="Planos de suporte"
+            tabIndex={0}
+            className="no-scrollbar drag-scroll -mx-6 flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 px-6 pb-4"
+          >
+            {supportPlans.map((plan, i) => (
+              <PlanCard key={plan.id} plan={plan} index={i} />
+            ))}
           </div>
-        )}
+
+          {/*
+            Dica de arrasto colada na borda direita do card — é ali que o olho
+            bate procurando "tem mais coisa?". Só abaixo de lg, onde as setas
+            não existem. Some no primeiro scroll e não intercepta o gesto.
+          */}
+          {!canPrev && (
+            <div
+              aria-hidden
+              className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 lg:hidden"
+            >
+              <motion.span
+                className="grid h-12 w-12 place-items-center rounded-full border border-accent/40 bg-background/90 text-accent shadow-xl"
+                animate={reduce ? undefined : { x: [0, -7, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <ChevronRight className="h-6 w-6" />
+              </motion.span>
+            </div>
+          )}
+        </div>
 
         <Reveal delay={0.2}>
           <p className="mt-9 max-w-2xl font-mono-tag text-xs leading-relaxed text-muted-foreground">

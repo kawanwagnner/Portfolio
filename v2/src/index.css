@@ -172,6 +172,11 @@
      selecionável, que é o comportamento que se espera de um card. */
   .drag-scroll {
     cursor: grab;
+    /* O navegador fica responsável SÓ pelo eixo vertical. Sem isso, ao rolar a
+       página no celular o gesto era capturado pelo scroller horizontal e a
+       rolagem travava dentro do carrossel. O arrasto lateral no toque passa a
+       ser feito à mão pelo useDragScroll, que lê os pointer events. */
+    touch-action: pan-y;
   }
   .drag-scroll.is-dragging {
     cursor: grabbing;
