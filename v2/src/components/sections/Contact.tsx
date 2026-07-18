@@ -12,8 +12,15 @@ interface Channel {
 }
 
 export function Contact() {
-  // Canais secundários (o WhatsApp é o CTA principal à esquerda).
+  // O WhatsApp abre a lista mesmo sendo o CTA principal à esquerda: quem varre
+  // o painel de canais procurando um contato espera achar o número aqui.
   const channels: Channel[] = [
+    {
+      label: 'WhatsApp',
+      value: whatsapp.display,
+      href: socials.whatsapp,
+      icon: MessageCircle,
+    },
     { label: 'Instagram', value: '@vyso.store', href: socials.instagram, icon: Instagram },
     { label: 'E-mail', value: contact.email, href: `mailto:${contact.email}`, icon: Mail },
     socials.github && {

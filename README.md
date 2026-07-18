@@ -39,6 +39,6 @@ npm run build     # gera v2/dist
 
 ### Contato
 
-- 📫 kawanwagnner7@gmail.com
+- 📫 kawanwagnner.gs@gmail.com
 - 💼 [LinkedIn](https://www.linkedin.com/in/kawan-wagnner-296594236/)
 - 📷 [@vyso.store](https://www.instagram.com/vyso.store/)

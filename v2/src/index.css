@@ -158,6 +158,26 @@
     background: hsl(222 14% 9% / 0.92);
   }
 
+  /* Carrossel: esconde a barra sem tirar o scroll (o gesto e o teclado seguem
+     funcionando — quem indica que dá pra arrastar é o card seguinte espiando). */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Arrastar-para-rolar (useDragScroll): o cursor conta o gesto. O
+     `user-select` só cai durante o arrasto — fora dele o texto segue
+     selecionável, que é o comportamento que se espera de um card. */
+  .drag-scroll {
+    cursor: grab;
+  }
+  .drag-scroll.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+  }
+
   /* Pula a pintura/layout da seção enquanto ela está fora da tela.
      `contain-intrinsic-size: auto ...` guarda a altura real medida,
      evitando pulos na barra de rolagem. */
