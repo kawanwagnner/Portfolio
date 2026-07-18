@@ -250,19 +250,22 @@ export function Support() {
             bate procurando "tem mais coisa?". Só abaixo de lg, onde as setas
             não existem. Some no primeiro scroll e não intercepta o gesto.
           */}
-          {!canPrev && (
-            <div
-              aria-hidden
-              className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 lg:hidden"
+          {canNext && (
+            <button
+              type="button"
+              onClick={() => scrollByCard(1)}
+              aria-label="Ver o próximo plano"
+              className="absolute right-0 top-1/2 grid h-14 w-14 -translate-y-1/2 place-items-center text-accent lg:hidden"
             >
               <motion.span
-                className="grid h-12 w-12 place-items-center rounded-full border border-accent/40 bg-background/90 text-accent shadow-xl"
-                animate={reduce ? undefined : { x: [0, -7, 0] }}
+                // O vaivém só antes do primeiro scroll: ali ele é dica. Depois
+                // que a pessoa entendeu, vira botão e ficar pulsando é ruído.
+                animate={reduce || canPrev ? undefined : { x: [0, 7, 0] }}
                 transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <ChevronRight className="h-6 w-6" />
+                <ChevronRight className="h-7 w-7" />
               </motion.span>
-            </div>
+            </button>
           )}
         </div>
 
