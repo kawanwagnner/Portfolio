@@ -119,7 +119,8 @@ proposta → pagamento → linha do tempo da obra continua valendo inteiro.
 
 - `tsc --noEmit -p v2/tsconfig.json` → **exit 0**
 - `npm run build` no `v2/` → **passa**
-- **Nada foi commitado nem publicado.** As alterações estão só na working tree.
+- **Commitado e publicado** em `69cd4ac` (`feat(v2): AL vira dois cases —
+  e-commerce B2C e app B2B`), direto na `main`. Falta a validação no ar (ver 6.1).
 
 ---
 
@@ -164,9 +165,14 @@ mudar, o case desatualiza.
 
 ### 🔴 Bloqueia a publicação
 
-**6.1. Commit + push + validação no ar**
-Nada subiu. Os cases novos não existem no `vyso.store` ainda — o site publicado
-continua mostrando o card antigo com "Site institucional".
+**6.1. Validação no ar**
+O código subiu (commit `69cd4ac`, push na `main`) e o deploy do `vyso.store` sai
+daí. Falta conferir no site publicado:
+
+- card da **AL Modular** com as duas abas (Loja · Painel de gestão), e sem a
+  antiga aba "Site institucional"
+- card da **AL Esquadrias** aparecendo no filtro **Mobile**
+- `/projetos/al-modular?sistema=loja` e `?sistema=painel` abrindo na aba certa
 
 ### 🟠 Enfraquece o case (resolver antes de usar pra divulgação)
 
@@ -229,9 +235,8 @@ ver com o portfólio, mas estão em produção:
 
 1. **Revisar os textos dos cases.** Foram escritos a partir do que dava pra ver
    de fora — pode ter dor real do cliente que deixaria o `challenge` mais forte.
-2. **Commit e push.** Depois validar no `vyso.store`: card da AL Modular com as
-   duas abas, card da AL Esquadrias aparecendo no filtro **Mobile**, e as URLs
-   `/projetos/al-modular?sistema=loja` e `?sistema=painel` abrindo na aba certa.
+2. ~~Commit e push.~~ **Feito** (`69cd4ac`). Falta **validar no `vyso.store`** —
+   o checklist está em 6.1.
 3. **Tirar os prints** e ligar em `cover` / `gallery`.
 4. **Voltar aqui quando tiver número real** e trocar os `results`.
 
