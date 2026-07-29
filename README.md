@@ -12,8 +12,8 @@ Transformo problemas reais de negócio em software que fica no ar: sites que con
 
 | Projeto | O que é |
 |---|---|
-| **App de Orçamentos & Obra** — AL Modular Esquadrias | Do catálogo ao pós-venda: o cliente solicita, recebe a proposta, paga e acompanha a própria obra por 1 ano |
-| **AL Modular Esquadrias** | Site institucional de fabricante de esquadrias sob medida — [almodularesquadrias.com.br](https://www.almodularesquadrias.com.br/) |
+| **AL Modular Esquadrias** | E-commerce de esquadrias de alumínio (B2C): catálogo com variações, carrinho, Pix e cartão em 12x, mais o painel de gestão da loja — [almodularesquadrias.com.br](https://www.almodularesquadrias.com.br/) |
+| **AL Esquadrias** | App B2B de catálogo e acompanhamento de obra: o cliente solicita, recebe a proposta, paga e acompanha a própria obra por 1 ano |
 | **ONG Nova História** | Site de uma ONG que trabalha com crianças, feito pra converter emoção em doação — [ver site](https://ong-nova-historia.vercel.app/) |
 | **VG Facilities** | Site de empresa de facilities e segurança patrimonial — [ver site](https://vg-facilities.vercel.app/) |
 

@@ -40,7 +40,7 @@ export function ProjectCard({
   const mockup = part ? part.mockup : project.mockup ?? lead.mockup
   const cover = part ? part.cover : project.cover ?? lead.cover
   const live = part ? part.live : project.live ?? lead.live
-  // aba direto na URL: /projetos/al-modular?sistema=app
+  // aba direto na URL: /projetos/al-modular?sistema=loja
   const href = part?.slug
     ? `/projetos/${project.slug}?sistema=${part.slug}`
     : `/projetos/${project.slug}`
@@ -126,9 +126,9 @@ export function ProjectCard({
 /**
  * Projetos filtrados por plataforma em abas: Todos · Desktop/Web · Mobile.
  *
- * O filtro olha as PARTES, não o projeto: a AL Modular tem um site (web) e um
- * app (mobile) no mesmo case — em "Todos" ela é um card só (com as abas lá
- * dentro), mas em Mobile aparece o app sozinho, e em Desktop/Web o site sozinho.
+ * O filtro olha as PARTES, não o projeto: a AL Modular tem a loja e o painel de
+ * gestão no mesmo case — em "Todos" ela é um card só (com as abas lá dentro),
+ * mas em Desktop/Web cada sistema aparece como card próprio.
  * Clicar num card de sistema já abre o case na aba dele.
  *
  * O índice do card (01, 02…) é o global do content.ts — não muda com o filtro.

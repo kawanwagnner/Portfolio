@@ -46,7 +46,7 @@ export default function ProjectCase() {
   const project = getProject(slug)
   const [activePart, setActivePart] = useState(0)
 
-  // Abre na aba pedida pela URL (?sistema=app) — é assim que o card de um
+  // Abre na aba pedida pela URL (?sistema=loja) — é assim que o card de um
   // sistema específico, vindo do filtro Mobile/Desktop, cai no lugar certo.
   const wanted = search.get('sistema')
   useEffect(() => {

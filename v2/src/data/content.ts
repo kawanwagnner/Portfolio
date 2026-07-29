@@ -95,9 +95,9 @@ export interface CaseStep {
 
 /**
  * O corpo de um case: o que a página de projeto mostra.
- * Um cliente pode ter mais de um sistema (ex.: a AL Modular tem o site e o app)
- * — nesse caso cada sistema é uma parte, e a página do case mostra uma aba por
- * parte, em vez de virar dois cards repetidos com a mesma logo.
+ * Um cliente pode ter mais de um sistema (ex.: a AL Modular tem a loja e o
+ * painel de gestão) — nesse caso cada sistema é uma parte, e a página do case
+ * mostra uma aba por parte, em vez de virar dois cards repetidos com a mesma logo.
  */
 export interface CasePart {
   /** Nome do sistema. Vira o rótulo da aba quando o projeto tem mais de uma parte. */
@@ -157,132 +157,235 @@ export function getCaseParts(project: Project): CasePart[] {
 
 export const projects: Project[] = [
   {
-    // Dois sistemas pro mesmo cliente → um card com aba por sistema.
+    // Frente B2C do grupo: produto padronizado, preço na tela, o cliente fecha
+    // sozinho. O irmão B2B (sob medida, com vendedor) é o case `al-esquadrias`.
+    //
+    // Dois sistemas no mesmo produto → um card com aba por sistema.
     // No filtro Mobile/Desktop cada parte volta a aparecer como card próprio.
     slug: "al-modular",
     title: "AL Modular Esquadrias",
     client: "AL Modular Esquadrias",
     year: "2026",
-    category: "Site & Aplicação Web",
+    category: "E-commerce",
     summary:
-      "Dois sistemas: o site institucional da fabricante e o app que leva o cliente do catálogo ao acompanhamento da obra.",
+      "A loja online de esquadrias de alumínio do grupo: catálogo com variações, carrinho, Pix e cartão em 12x — e o painel que a equipe usa pra tocar a operação.",
     logo: "/img/logos/al-modular.png",
     mockup: "browser",
-    tags: ["React", "WhatsApp", "Institucional"],
+    tags: ["React", "E-commerce", "Pagamentos"],
     featured: true,
     parts: [
       {
-        slug: "app",
-        title: "App de Orçamentos & Obra",
-        category: "Aplicação Web",
+        slug: "loja",
+        title: "Loja",
+        category: "E-commerce",
         summary:
-          "Do catálogo ao pós-venda: o cliente monta a solicitação, recebe a proposta e acompanha a própria obra por 1 ano.",
+          "Esquadria de alumínio vendida como qualquer produto de e-commerce: escolhe o modelo, escolhe a cor, calcula o frete e paga no Pix ou em 12x.",
         intro:
-          "Uma plataforma que pega o cliente no momento em que ele está olhando o produto e não larga mais: solicitação, negociação no WhatsApp, proposta, pagamento e acompanhamento da obra — tudo num fluxo só, sem planilha e sem cliente perdido no meio do caminho.",
-        mockup: "phone",
+          "A AL Modular é a filial B2C do grupo — a frente que vende produto pronto, pra quem não quer projeto sob medida nem negociação. O site é uma loja completa: catálogo por categoria, busca, variação de tamanho e acabamento, carrinho, frete por CEP e checkout com Pix e cartão.",
+        mockup: "browser",
         services: [
           "Produto & fluxo",
-          "Aplicação web",
+          "E-commerce",
           "Design UI/UX",
           "Integrações",
         ],
-        stack: ["React", "TypeScript", "Node.js", "Tailwind CSS"],
-        live: "https://share.google/MUIMGq52pSqslkgzW", // TODO: trocar pelo domínio final do app
+        stack: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "NestJS",
+          "Prisma",
+          "PostgreSQL",
+          "Mercado Pago",
+        ],
+        live: "https://www.almodularesquadrias.com.br/",
         objective: [
-          "Dar à AL Modular um canal próprio onde o cliente escolhe o produto, pede orçamento e fecha — sem depender de ida e volta manual do vendedor pra montar cada proposta.",
-          "E, depois da venda, resolver o problema que ninguém resolve: o cliente que fica no escuro esperando a obra andar. O app abre essa caixa-preta e mostra em que etapa a obra dele está.",
+          "Abrir um canal de venda direta pro consumidor final: produto padronizado, preço na tela, compra fechada sozinho — sem depender de vendedor pra cada pedido.",
+          "Tirar da operação o trabalho manual de responder preço, prazo e frete um a um, e devolver isso pro cliente em forma de página de produto.",
         ],
         challenge: [
-          "Esquadria sob medida não se vende num carrinho de compras. O preço depende de medição, de projeto, de negociação — quem fecha é o vendedor, no WhatsApp. Qualquer tentativa de automatizar isso do começo ao fim ia empurrar o cliente pra fora do jeito que ele já compra.",
-          'O segundo problema vem depois do "sim": entre o pagamento e a instalação passam semanas de medição, fabricação e agendamento. Nesse vácuo o cliente liga, cobra, desconfia — e o vendedor vira central de atendimento.',
+          "Esquadria não é camiseta. Cada produto existe em dezenas de combinações de medida, número de módulos e acabamento — e cada combinação tem preço próprio. Colocar isso num catálogo sem transformar a escolha num formulário de engenharia era o ponto mais difícil.",
+          "E tem o frete: peça grande, pesada e frágil. O preço só fecha quando o CEP entra na conta, então o cliente precisa descobrir isso antes do checkout — não depois, quando já criou expectativa.",
         ],
         solution: [
-          'Em vez de brigar com o WhatsApp, o app usa o WhatsApp como parte do fluxo. O cliente navega no catálogo, monta a solicitação e clica em "Solicitar" — cai direto na conversa com o vendedor, com o pedido já formatado. O vendedor atende, negocia como sempre negociou, e gera um link de proposta que manda ali mesmo.',
-          "O cliente clica no link e volta pro app já no passo seguinte, com a proposta liberada: ele vê, confere, aprova e segue pro pagamento — que pode acontecer dentro do app ou por fora, do jeito que a AL preferir.",
-          "Fechado o negócio, o admin libera o acompanhamento e a obra vira uma linha do tempo: medição inicial, agendamento, fabricação, instalação. Cada mudança de status dispara um e-mail automático pro cliente — ele fica sabendo antes de precisar perguntar.",
+          "A página de produto resolve a complexidade em duas escolhas visuais: modelo/tamanho e cor/acabamento. O cliente clica, o preço reage — o que era tabela de fabricante virou seleção de dois cliques.",
+          "Preço mostrado nas duas moedas que o brasileiro entende: à vista no Pix e parcelado em até 12x sem juros no cartão. E o frete é calculado por CEP na própria página do produto, antes de qualquer cadastro.",
+          "Depois da compra o cliente não fica sem resposta: conta própria, rastreamento de pedido em página dedicada e o WhatsApp da empresa sempre a um toque, pra quando a dúvida não couber na página.",
         ],
         highlights: [
-          "Catálogo que vira solicitação de orçamento em um clique",
-          "Handoff pro WhatsApp com o pedido já montado",
-          "Link de proposta gerado pelo vendedor devolve o cliente ao app no passo certo",
-          "Aprovação da proposta e pagamento (dentro do app ou externo)",
-          "Acompanhamento da obra por até 1 ano, liberado por permissão do admin",
-          "E-mail automático pro cliente a cada mudança de status",
+          "Catálogo por categoria: janelas, janelas de correr, portas, portas camarão e vitrô basculante",
+          "Variação de modelo/tamanho e cor/acabamento, com o preço reagindo à escolha",
+          "Checkout no Mercado Pago: Pix à vista e cartão em até 12x sem juros",
+          "Cálculo de frete por CEP direto na página do produto",
+          "Conta do cliente e rastreamento de pedidos",
+          "Busca, especificações técnicas e as páginas que uma loja precisa ter: privacidade, trocas e devoluções, termos de uso",
         ],
         process: [
           {
-            title: "Entendimento do funil real",
+            title: "Modelagem do catálogo",
             description:
-              "Mapeei como a AL já vendia — quem fala com o cliente, onde a negociação acontece, o que trava. O app foi desenhado em volta desse funil, não contra ele.",
+              "Antes da tela, a estrutura: o que é produto, o que é variação e o que é especificação. Sem isso definido, catálogo de esquadria vira lista infinita de itens quase iguais.",
           },
           {
-            title: "Desenho do fluxo em etapas",
+            title: "Página de produto e checkout",
             description:
-              "Cada estado do cliente (solicitou, tem proposta, aprovou, pagou, obra em andamento) virou um passo com regra clara de liberação — controlada pelo vendedor ou pelo admin.",
+              "Desenho da escolha (modelo, acabamento, quantidade), do preço nas duas formas de pagamento e do frete por CEP — tudo antes do cliente precisar se cadastrar.",
           },
           {
-            title: "Construção e integrações",
+            title: "No ar, em domínio próprio",
             description:
-              "Catálogo, área do cliente, painel de gestão de status e as duas pontas que sustentam o fluxo: o redirecionamento pro WhatsApp e o disparo de e-mail a cada atualização.",
+              "Deploy em almodularesquadrias.com.br, com as páginas de política, os selos e o CNPJ no rodapé — o básico que faz uma loja nova parecer confiável.",
           },
         ],
-        // TODO: Kawan — troque por números reais quando o app rodar um ciclo completo.
+        // TODO: Kawan — quando a loja rodar um mês cheio, troque por números reais
+        // (pedidos, ticket médio, conversão). Métrica de faturamento vende o case.
         results: [
-          { value: "1 ano", label: "de acompanhamento pós-venda" },
-          {
-            value: "5 etapas",
-            label: "do catálogo ao pós-venda, num fluxo só",
-          },
-          { value: "100%", label: "das atualizações avisadas por e-mail" },
+          { value: "5 categorias", label: "de esquadria no catálogo" },
+          { value: "12x", label: "sem juros no cartão, ou à vista no Pix" },
+          { value: "CEP", label: "frete calculado antes do checkout" },
         ],
       },
       {
-        slug: "site",
-        title: "Site institucional",
-        category: "Site institucional",
+        slug: "painel",
+        title: "Painel de gestão",
+        category: "Painel administrativo",
         summary:
-          "A vitrine digital de uma fabricante de esquadrias sob medida — autoridade na frente, orçamento a um clique.",
+          "O lado de dentro da loja: produtos, pedidos, cupons, orçamentos e carrinho abandonado — com o faturamento na primeira tela.",
         intro:
-          "O site institucional da AL Modular: o lugar onde quem procura esquadria sob medida encontra a empresa, entende o que ela faz e sai de lá com uma conversa aberta no WhatsApp.",
+          "Uma loja só funciona se quem está atrás dela consegue tocá-la sem depender de dev. O painel da AL Modular é onde a equipe cadastra produto, acompanha pedido, cria cupom e enxerga o dinheiro entrando.",
         mockup: "browser",
-        services: ["Site institucional", "Design UI/UX", "Deploy & domínio"],
-        stack: ["React", "TypeScript", "Tailwind CSS"],
-        live: "https://www.almodularesquadrias.com.br/",
+        services: [
+          "Painel administrativo",
+          "Produto & fluxo",
+          "Design UI/UX",
+        ],
+        stack: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "NestJS",
+          "Prisma",
+          "PostgreSQL",
+        ],
         objective: [
-          "Dar à AL Modular uma presença digital própria, num domínio próprio — não mais um perfil de rede social como único endereço.",
-          "Transformar visita em contato: quem chega no site precisa sair dele falando com a empresa.",
+          "Deixar a operação inteira na mão da equipe: cadastrar, editar, despachar e faturar sem abrir código nem chamar o dev.",
+          "Dar visão de negócio, não só lista de registros — quanto entrou, quantos pedidos, em que status cada um está.",
         ],
         challenge: [
-          "Esquadria é uma compra de confiança: o cliente está colocando o produto na casa dele, e escolhe pelo que a empresa transmite. Sem site, a AL disputava atenção no mesmo lugar que todo mundo — e sem controle do que era mostrado.",
-          // TODO: Kawan — se teve dor específica (ex.: dependia só do Instagram, sem catálogo, sem ser achada no Google), escreve aqui.
+          "Painel de e-commerce vira depósito de tabela: dez menus, mil colunas e ninguém sabe o que olhar primeiro. O risco aqui era entregar poder e tirar clareza.",
+          "E a operação da AL não é só carrinho: o pedido sob medida também cai aqui antes de virar proposta. O painel precisava caber os dois mundos sem virar dois produtos.",
         ],
         solution: [
-          "Um site direto, rápido e com hierarquia clara: o que a AL faz, como faz e por que confiar — e um caminho curto pro orçamento em qualquer ponto da página.",
-          "Visual alinhado ao produto: sóbrio, limpo e com o produto em destaque, do jeito que uma fabricante de esquadria precisa se apresentar.",
+          "A primeira tela responde as quatro perguntas que importam antes de qualquer clique: quantos usuários, quantos produtos, quantos pedidos e quanto entrou. Abaixo, vendas dos últimos 6 meses e a distribuição dos pedidos por status.",
+          "O resto é operação do dia a dia: produtos e categorias, pedidos com ciclo de status, cupons de desconto e a fila de orçamentos — o canal por onde o pedido sob medida entra.",
+          "E uma tela que a maioria das lojas pequenas não tem: carrinho abandonado. Quem chegou perto de comprar e desistiu fica listado — é venda já paga em tráfego, que só precisa de um empurrão.",
+        ],
+        highlights: [
+          "Dashboard com usuários, produtos, pedidos e receita total",
+          "Gráfico de vendas dos últimos 6 meses e pedidos por status",
+          "Gestão de produtos, categorias e variações",
+          "Pedidos com ciclo completo: pendente, confirmado, enviado, entregue, cancelado",
+          "Cupons de desconto",
+          "Fila de orçamentos pros pedidos sob medida",
+          "Carrinho abandonado: quem quase comprou fica visível",
+          "Gestão de usuários e central de notificações",
         ],
         process: [
           {
-            title: "Conteúdo e hierarquia",
+            title: "O que a equipe olha primeiro",
             description:
-              "Definimos o que precisava aparecer primeiro pra alguém que nunca ouviu falar da empresa — e o que era ruído.",
+              "Mapeei a rotina de quem toca a loja pra decidir o que merece a primeira tela — e o que pode viver dois cliques adiante.",
           },
           {
-            title: "Design e construção",
+            title: "Dashboard antes de tabela",
             description:
-              "Interface responsiva, leve e com o CTA de orçamento sempre ao alcance.",
+              "Números de negócio no topo, gráficos no meio, listas embaixo. Quem abre o painel entende a semana antes de precisar filtrar qualquer coisa.",
           },
           {
-            title: "No ar",
+            title: "Áreas de operação",
             description:
-              "Deploy em domínio próprio (almodularesquadrias.com.br), pronto pra receber tráfego.",
+              "Cada rotina virou uma área própria: catálogo, pedidos, cupons, orçamentos, carrinho abandonado e usuários — com o ciclo de status do pedido amarrando tudo.",
           },
         ],
-        // TODO: Kawan — números reais aqui (visitas, orçamentos vindos do site) fazem esse case saltar.
         results: [
-          { value: "Domínio próprio", label: "presença que é da empresa" },
-          { value: "1 clique", label: "da página ao WhatsApp" },
+          { value: "8 áreas", label: "de gestão num painel só" },
+          { value: "5 status", label: "no ciclo de vida do pedido" },
+          { value: "6 meses", label: "de vendas visíveis na abertura" },
         ],
       },
+    ],
+  },
+  {
+    // Frente B2B do grupo: sob medida, com vendedor no meio do funil.
+    // Cliente diferente da AL Modular (`al-modular`), que é a filial B2C.
+    slug: "al-esquadrias",
+    title: "AL Esquadrias",
+    client: "AL Esquadrias",
+    year: "2026",
+    category: "App Mobile",
+    summary:
+      "O app B2B do grupo: catálogo de produtos e acompanhamento de obra na mão do cliente, do orçamento à instalação.",
+    // TODO: Kawan — logo emprestada da filial. Quando a AL Esquadrias tiver a
+    // dela, é só jogar o arquivo em /public/img/logos/ e apontar aqui.
+    logo: "/img/logos/al-modular.png",
+    mockup: "phone",
+    tags: ["React Native", "WhatsApp", "B2B"],
+    intro:
+      "A AL Esquadrias é a frente B2B do grupo: esquadria sob medida, com projeto, medição e negociação. O app pega o cliente no catálogo, leva até a proposta e — o que quase ninguém faz — continua com ele depois da venda, mostrando em que etapa a obra está.",
+    services: [
+      "Produto & fluxo",
+      "App mobile",
+      "Design UI/UX",
+      "Integrações",
+    ],
+    stack: ["React Native", "TypeScript", "Node.js"],
+    live: "https://share.google/MUIMGq52pSqslkgzW", // TODO: trocar pelo domínio final do app
+    objective: [
+      "Dar à AL Esquadrias um canal próprio onde o cliente vê o catálogo, monta a solicitação e pede orçamento — sem depender de ida e volta manual do vendedor pra montar cada proposta.",
+      "E, depois da venda, resolver o problema que ninguém resolve: o cliente que fica no escuro esperando a obra andar. O app abre essa caixa-preta e mostra em que etapa a obra dele está.",
+    ],
+    challenge: [
+      "Esquadria sob medida não se vende num carrinho de compras — isso é o que a AL Modular faz com o produto padronizado. Aqui o preço depende de medição, de projeto, de negociação, e quem fecha é o vendedor, no WhatsApp. Automatizar do começo ao fim ia empurrar o cliente pra fora do jeito que ele já compra.",
+      'O segundo problema vem depois do "sim": entre o pagamento e a instalação passam semanas de medição, fabricação e agendamento. Nesse vácuo o cliente liga, cobra, desconfia — e o vendedor vira central de atendimento.',
+    ],
+    solution: [
+      'Em vez de brigar com o WhatsApp, o app usa o WhatsApp como parte do fluxo. O cliente navega no catálogo, monta a solicitação e clica em "Solicitar" — cai direto na conversa com o vendedor, com o pedido já formatado. O vendedor atende, negocia como sempre negociou, e gera um link de proposta que manda ali mesmo.',
+      "O cliente clica no link e volta pro app já no passo seguinte, com a proposta liberada: ele vê, confere, aprova e segue pro pagamento — que pode acontecer dentro do app ou por fora, do jeito que a AL preferir.",
+      "Fechado o negócio, o admin libera o acompanhamento e a obra vira uma linha do tempo: medição inicial, agendamento, fabricação, instalação. Cada mudança de status dispara um e-mail automático pro cliente — ele fica sabendo antes de precisar perguntar.",
+    ],
+    highlights: [
+      "Catálogo de produtos que vira solicitação de orçamento em um clique",
+      "Handoff pro WhatsApp com o pedido já montado",
+      "Link de proposta gerado pelo vendedor devolve o cliente ao app no passo certo",
+      "Aprovação da proposta e pagamento (dentro do app ou externo)",
+      "Acompanhamento da obra por até 1 ano, liberado por permissão do admin",
+      "E-mail automático pro cliente a cada mudança de status",
+    ],
+    process: [
+      {
+        title: "Entendimento do funil real",
+        description:
+          "Mapeei como a AL Esquadrias já vendia — quem fala com o cliente, onde a negociação acontece, o que trava. O app foi desenhado em volta desse funil, não contra ele.",
+      },
+      {
+        title: "Desenho do fluxo em etapas",
+        description:
+          "Cada estado do cliente (solicitou, tem proposta, aprovou, pagou, obra em andamento) virou um passo com regra clara de liberação — controlada pelo vendedor ou pelo admin.",
+      },
+      {
+        title: "Construção e integrações",
+        description:
+          "Catálogo, área do cliente, painel de gestão de status e as duas pontas que sustentam o fluxo: o redirecionamento pro WhatsApp e o disparo de e-mail a cada atualização.",
+      },
+    ],
+    // TODO: Kawan — troque por números reais quando o app rodar um ciclo completo.
+    results: [
+      { value: "1 ano", label: "de acompanhamento pós-venda" },
+      {
+        value: "5 etapas",
+        label: "do catálogo ao pós-venda, num fluxo só",
+      },
+      { value: "100%", label: "das atualizações avisadas por e-mail" },
     ],
   },
   {
