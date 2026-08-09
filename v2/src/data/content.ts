@@ -17,7 +17,7 @@ export const hero = {
   // A headline diz O QUE se compra aqui. "Soluções que crescem" cabia em banco,
   // consultoria e seguradora; quem chega da bio do Instagram precisa saber em
   // dois segundos se veio ao lugar certo.
-  headlineLines: ["Sites, lojas e", "sistemas que", "*trabalham* por você."],
+  headlineLines: ["Sites, apps e", "sistemas que", "*trabalham* por você."],
   subtitle:
     "Do site institucional à loja completa e ao sistema que roda seu processo por dentro. Você fala direto com quem constrói — sem agência e sem intermediário.",
   // O CTA forte do herói é a conversa (`whatsapp.cta`). "Ver projetos" fica

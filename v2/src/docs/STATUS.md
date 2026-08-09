@@ -57,16 +57,25 @@ Tudo editável em: **`src/data/content.ts`** (textos, projetos, serviços, links
 
 ## 🗂️ Estrutura das seções (ordem na página)
 
-1. **Navbar** — barra sólida (sem backdrop-blur por performance), menu mobile, botão "Seguir".
-2. **Hero** — flow field de partículas que formam **V → Y → S → O** em loop, com zoom in/out. Headline "Transformamos problemas em soluções que crescem."
+> **Ordem de venda: prova antes de discurso.** Quem chega da bio do Instagram dá
+> poucos segundos ao site. A ordem antiga (A VYSO → Founder → Projetos) gastava
+> as três primeiras telas em institucional e só mostrava trabalho depois de 3,5
+> telas de rolagem. Mexeu na ordem em `pages/Home.tsx`? Renumere os kickers em
+> `data/content.ts` (e o de Serviços, que é literal no próprio componente).
+
+1. **Navbar** — barra sólida (sem backdrop-blur por performance), menu mobile, botão fixo **"Vamos conversar?" (WhatsApp)**; Instagram virou ícone.
+2. **Hero** — flow field de partículas que formam **V → Y → S → O** em loop, com zoom in/out. Headline "Sites, lojas e sistemas que trabalham por você." CTA forte = WhatsApp; "Ver projetos" é o secundário.
 3. **Marquee** — ticker inclinado (-3°), pausa fora da tela.
-4. **About** (`01 — A VYSO`) — manifesto tipográfico "Antes do código, existe o negócio." + stats + skills.
-5. **Founder** (`02 — Founder`) — Kawan Wagnner, "Founder & Software Engineer", tagline "Tecnologia que resolve. Pessoas que confiam.", foto `kawan.webp`.
-6. **Projects** (`03 — Projetos`) — grid com hover CSS (lift + glow). ⚠️ dados placeholder.
-7. **Services** (`04 — Serviços`) — lista editorial com hover deslizante.
-8. **Immersive** — seção de impacto 100% CSS (leve).
-9. **Contact** (`05 — Contato`) — layout 2 colunas: manifesto + painel de canais (E-mail/GitHub).
+4. **Projects** (`01 — Projetos`) — grid com filtro Todos/Desktop/Mobile e hover CSS (lift + glow).
+5. **Services** (`02 — Serviços`) — lista editorial com hover deslizante.
+6. **Support** (`03 — Suporte`) — planos de manutenção em carrossel, com Payment Link do Stripe.
+7. **About** (`04 — A VYSO`) — manifesto tipográfico "Antes do código, existe o negócio." + stats + skills.
+8. **Founder** (`05 — Founder`) — Kawan Wagnner, "Founder & Software Engineer", tagline "Tecnologia que resolve. Pessoas que confiam.", foto `kawan.webp`.
+9. **Contact** (`06 — Contato`) — layout 2 colunas: manifesto + painel de canais (WhatsApp/Instagram/E-mail/GitHub).
 10. **Footer** — logo, nav, redes, CNPJ, copyright.
+11. **WhatsAppFab** — botão flutuante de WhatsApp, só abaixo de `sm` e só depois do herói (fora da home também: fica no `App.tsx`).
+
+**Fora da home:** `Immersive` ("Feito para impressionar") — ~590px que só afirmavam qualidade, e o CTA apenas rolava até o contato. O componente segue em `components/sections/Immersive.tsx`; pra voltar, descomente a linha em `pages/Home.tsx`.
 
 ---
 
@@ -108,6 +117,7 @@ Métricas medidas (produção): **LCP 0.44s, CLS 0.00, INP 136ms** — tudo verd
 
 - Branch: `main`. **15 commits, tudo local (sem push).**
 - **Pontos de rollback:**
+  - Tag `v2-antes-ajustes-venda` → estado publicado antes da reordenação, do WhatsApp como CTA e do enxugamento do ritmo. Cada um desses ajustes é um commit separado, então dá pra reverter um sem derrubar os outros (`git revert <sha>`).
   - Tag `v2-flowfield-scattered` → estado do flow field espalhado original.
   - Toggle `MODE = 'scattered'` no `FlowField.tsx` → volta o espalhado sem git.
   - Histórico completo versionado (dá pra voltar a qualquer estado, inclusive a paleta ember/laranja anterior ao rebrand).
