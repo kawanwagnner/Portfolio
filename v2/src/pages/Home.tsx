@@ -8,16 +8,28 @@ import { Support } from '@/components/sections/Support'
 import { Immersive } from '@/components/sections/Immersive'
 import { Contact } from '@/components/sections/Contact'
 
+/**
+ * Ordem de venda: prova antes de discurso.
+ *
+ * Quem chega da bio do Instagram dá poucos segundos ao site — nesse tempo ele
+ * precisa ver TRABALHO, não manifesto. Por isso os projetos vêm logo depois do
+ * herói, seguidos do que a VYSO vende (serviços) e de quanto custa (suporte).
+ * Só então entra o institucional (A VYSO / Founder), que fecha a confiança de
+ * quem já se interessou — em vez de gastar as primeiras telas de quem ainda não.
+ *
+ * Os números dos kickers (01 —, 02 — …) seguem esta ordem: mexeu aqui, renumere
+ * em `data/content.ts` (e o de Serviços, que é literal no próprio componente).
+ */
 export default function Home() {
   return (
     <>
       <Hero />
       <Marquee />
-      <About />
-      <Founder />
       <Projects />
       <Services />
       <Support />
+      <About />
+      <Founder />
       <Immersive />
       <Contact />
     </>

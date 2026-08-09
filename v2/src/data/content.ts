@@ -35,7 +35,7 @@ export const marquee = [
 ];
 
 export const about = {
-  kicker: "01 — A VYSO",
+  kicker: "04 — A VYSO",
   // A palavra entre *asteriscos* recebe o acento.
   heading: "Antes do código, existe o *negócio*.",
   paragraphs: [
@@ -50,7 +50,7 @@ export const about = {
 };
 
 export const founder = {
-  kicker: "02 — Founder",
+  kicker: "05 — Founder",
   // *acento* numa palavra
   tagline: "Tecnologia que resolve. Pessoas que *confiam*.",
   name: "Kawan Wagnner",
@@ -513,7 +513,7 @@ export const projects: Project[] = [
 ];
 
 export const projectsSection = {
-  kicker: "03 — Projetos",
+  kicker: "01 — Projetos",
   heading: "Trabalho que *fala por mim*.",
   description:
     "Do problema ao produto no ar. Entra em cada case pra ver como foi.",
@@ -613,7 +613,7 @@ export const supportFeatures = [
 export type SupportFeatureId = (typeof supportFeatures)[number]["id"];
 
 export const supportSection = {
-  kicker: "05 — Suporte",
+  kicker: "03 — Suporte",
   heading: "Site no ar é *manutenção*, não sorte.",
   description:
     "Seu site monitorado, atualizado e com ajustes contínuos por um valor fixo no mês. Precisa de mais que manutenção? A gente conversa e monta o escopo junto.",
@@ -764,12 +764,13 @@ export const socials = {
   whatsapp: whatsappLink(whatsapp.message),
 };
 
+/** Mesma ordem das seções na home (ver `pages/Home.tsx`): produto primeiro. */
 export const nav = [
   { label: "Início", href: "#hero" },
-  { label: "A VYSO", href: "#sobre" },
-  { label: "Founder", href: "#founder" },
   { label: "Projetos", href: "#projetos" },
   { label: "Serviços", href: "#servicos" },
   { label: "Suporte", href: "#suporte" },
+  { label: "A VYSO", href: "#sobre" },
+  { label: "Founder", href: "#founder" },
   { label: "Contato", href: "#contato" },
 ];

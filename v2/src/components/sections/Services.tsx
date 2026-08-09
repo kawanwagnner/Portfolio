@@ -54,7 +54,7 @@ export function Services() {
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-5">
           <Reveal>
-            <Kicker>04 — Serviços</Kicker>
+            <Kicker>02 — Serviços</Kicker>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="headline max-w-3xl text-4xl sm:text-5xl md:text-6xl">
