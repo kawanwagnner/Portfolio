@@ -198,7 +198,7 @@ export function Support() {
   }
 
   return (
-    <section id="suporte" className="relative overflow-hidden py-28 md:py-36">
+    <section id="suporte" className="relative overflow-hidden py-20 md:py-24">
       <div aria-hidden className="ember-glow absolute -left-40 top-24 -z-10 h-[32rem] w-[32rem]" />
       <div className="mx-auto max-w-[90rem] px-6">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">

@@ -5,7 +5,6 @@ import { Founder } from '@/components/sections/Founder'
 import { Projects } from '@/components/sections/Projects'
 import { Services } from '@/components/sections/Services'
 import { Support } from '@/components/sections/Support'
-import { Immersive } from '@/components/sections/Immersive'
 import { Contact } from '@/components/sections/Contact'
 
 /**
@@ -30,7 +29,10 @@ export default function Home() {
       <Support />
       <About />
       <Founder />
-      <Immersive />
+      {/* <Immersive /> — fora da home: ~590px que só afirmavam "somos bons", e o
+          CTA dela apenas rolava até o contato, que já vem logo abaixo. O
+          componente segue em components/sections/Immersive.tsx; pra trazer de
+          volta é só descomentar. */}
       <Contact />
     </>
   )

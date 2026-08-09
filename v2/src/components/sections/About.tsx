@@ -6,7 +6,7 @@ import { about, skills } from '@/data/content'
 
 export function About() {
   return (
-    <section id="sobre" className="relative mx-auto max-w-6xl px-6 py-28 md:py-36">
+    <section id="sobre" className="relative mx-auto max-w-6xl px-6 py-20 md:py-24">
       <Reveal>
         <Kicker>{about.kicker}</Kicker>
       </Reveal>

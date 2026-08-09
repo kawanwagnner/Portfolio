@@ -49,7 +49,7 @@ function ServiceRow({ service, index }: { service: Service; index: number }) {
 
 export function Services() {
   return (
-    <section id="servicos" className="relative overflow-hidden py-28 md:py-36">
+    <section id="servicos" className="relative overflow-hidden py-20 md:py-24">
       <div aria-hidden className="ember-glow absolute -right-40 top-16 -z-10 h-[30rem] w-[30rem]" />
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-5">

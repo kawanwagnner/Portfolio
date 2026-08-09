@@ -32,7 +32,7 @@ export function Contact() {
   ].filter(Boolean) as Channel[]
 
   return (
-    <section id="contato" className="relative overflow-hidden py-28 md:py-36">
+    <section id="contato" className="relative overflow-hidden py-20 md:py-24">
       <div
         aria-hidden
         className="ember-glow pointer-events-none absolute -left-32 bottom-0 -z-10 h-[34rem] w-[34rem]"

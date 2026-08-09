@@ -242,7 +242,7 @@ export function ProjectGroups() {
 
 export function Projects() {
   return (
-    <section id="projetos" className="relative mx-auto max-w-6xl px-6 py-28 md:py-36">
+    <section id="projetos" className="relative mx-auto max-w-6xl px-6 py-20 md:py-24">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex flex-col gap-5">
           <Reveal>
