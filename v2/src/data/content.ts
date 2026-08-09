@@ -14,9 +14,12 @@ export const brand = {
 export const hero = {
   status: "VYSO · Tecnologia com propósito",
   // A headline é dividida em linhas; a palavra entre *asteriscos* recebe o acento.
-  headlineLines: ["Transformamos", "problemas em", "*soluções* que crescem."],
+  // A headline diz O QUE se compra aqui. "Soluções que crescem" cabia em banco,
+  // consultoria e seguradora; quem chega da bio do Instagram precisa saber em
+  // dois segundos se veio ao lugar certo.
+  headlineLines: ["Sites, lojas e", "sistemas que", "*trabalham* por você."],
   subtitle:
-    "Marca especializada em criar soluções digitais, automatizar processos e entregar valor real — do entendimento do problema ao resultado no ar.",
+    "Do site institucional à loja completa e ao sistema que roda seu processo por dentro. Você fala direto com quem constrói — sem agência e sem intermediário.",
   // O CTA forte do herói é a conversa (`whatsapp.cta`). "Ver projetos" fica
   // como caminho secundário — a seção de projetos é a próxima, logo abaixo.
   primaryCta: "Ver projetos",
