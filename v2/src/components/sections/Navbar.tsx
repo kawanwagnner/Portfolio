@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X, Instagram } from 'lucide-react'
+import { Menu, X, Instagram, MessageCircle } from 'lucide-react'
 import { Logo } from '@/components/shared/Logo'
-import { brand, nav, socials } from '@/data/content'
+import { brand, nav, socials, whatsapp } from '@/data/content'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
@@ -77,14 +77,26 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          {/* O botão sempre visível da página é a conversa, não o "seguir": o
+              visitante já vem do Instagram. O perfil continua a um clique, mas
+              como ícone — quem quer seguir procura, quem quer contratar não. */}
           <a
             href={socials.instagram}
             target="_blank"
             rel="noreferrer"
-            className="btn-ember hidden items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all sm:inline-flex"
+            aria-label="Instagram da VYSO"
+            className="hidden h-9 w-9 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-accent sm:grid"
           >
             <Instagram className="h-4 w-4" />
-            Seguir
+          </a>
+          <a
+            href={socials.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-ember hidden items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all sm:inline-flex"
+          >
+            <MessageCircle className="h-4 w-4" />
+            {whatsapp.cta}
           </a>
           <button
             aria-label="Menu"
@@ -120,10 +132,19 @@ export function Navbar() {
               </a>
             ))}
             <a
-              href={socials.instagram}
+              href={socials.whatsapp}
               target="_blank"
               rel="noreferrer"
               className="btn-ember mt-1 flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold"
+            >
+              <MessageCircle className="h-4 w-4" />
+              {whatsapp.cta}
+            </a>
+            <a
+              href={socials.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-1 flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary/60"
             >
               <Instagram className="h-4 w-4" />
               Seguir no Instagram

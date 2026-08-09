@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { Navbar } from '@/components/sections/Navbar'
 import { Footer } from '@/components/sections/Footer'
+import { WhatsAppFab } from '@/components/shared/WhatsAppFab'
 import Home from '@/pages/Home'
 import ProjectsIndex from '@/pages/ProjectsIndex'
 import ProjectCase from '@/pages/ProjectCase'
@@ -42,6 +43,7 @@ export default function App() {
           </Routes>
         </main>
         <Footer />
+        <WhatsAppFab />
       </div>
     </BrowserRouter>
   )

@@ -17,8 +17,9 @@ export const hero = {
   headlineLines: ["Transformamos", "problemas em", "*soluções* que crescem."],
   subtitle:
     "Marca especializada em criar soluções digitais, automatizar processos e entregar valor real — do entendimento do problema ao resultado no ar.",
+  // O CTA forte do herói é a conversa (`whatsapp.cta`). "Ver projetos" fica
+  // como caminho secundário — a seção de projetos é a próxima, logo abaixo.
   primaryCta: "Ver projetos",
-  secondaryCta: "@vyso.store",
   splineScene: "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode",
 };
 
@@ -748,6 +749,12 @@ export const contact = {
 export const whatsapp = {
   number: "5511989220824", // internacional, só dígitos
   display: "(11) 98922-0824",
+  /**
+   * Rótulo do CTA de WhatsApp em todo o site (navbar, herói, botão flutuante).
+   * O tráfego vem do Instagram — devolver a pessoa pra lá é um loop. O que
+   * converte é a conversa, então o botão mais visível da página é este.
+   */
+  cta: "Vamos conversar?",
   // Mensagem já digitada pro cliente — tira o atrito do "e agora, o que eu escrevo?"
   message:
     "Oi, Kawan! Cheguei pelo site da VYSO 👋\n\nTenho um projeto em mente e queria entender como a gente pode tirar do papel.",

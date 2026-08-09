@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowUpRight, ArrowDown } from 'lucide-react'
+import { ArrowUpRight, ArrowDown, MessageCircle } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { AccentText } from '@/components/shared/AccentText'
 import { FlowField } from '@/components/three/FlowField'
 import { useDeviceTier } from '@/hooks/useIsLowPower'
-import { hero, brand, socials } from '@/data/content'
+import { hero, brand, socials, whatsapp } from '@/data/content'
 
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -110,22 +110,26 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.35 + hero.headlineLines.length * 0.12 }}
           className="pointer-events-auto mt-9 flex flex-wrap items-center gap-4"
         >
+          {/* O botão forte é a conversa: quem chega aqui já veio do Instagram,
+              mandar de volta pra lá é um loop. Ver projetos vira o secundário —
+              a seção de projetos é a próxima da página. */}
+          <a
+            href={socials.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-ember group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all"
+          >
+            <MessageCircle className="h-4 w-4" />
+            {whatsapp.cta}
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
           <button
             onClick={() => scrollTo('projetos')}
-            className="btn-ember group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all"
+            className="link-underline group inline-flex items-center gap-1.5 text-sm font-semibold text-foreground"
           >
             {hero.primaryCta}
             <ArrowDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" />
           </button>
-          <a
-            href={socials.instagram}
-            target="_blank"
-            rel="noreferrer"
-            className="link-underline inline-flex items-center gap-1.5 text-sm font-semibold text-foreground"
-          >
-            {hero.secondaryCta}
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
         </motion.div>
       </div>
 
