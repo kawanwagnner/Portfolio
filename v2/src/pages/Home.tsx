@@ -3,6 +3,7 @@ import { Marquee } from '@/components/sections/Marquee'
 import { About } from '@/components/sections/About'
 import { Founder } from '@/components/sections/Founder'
 import { Projects } from '@/components/sections/Projects'
+import { Products } from '@/components/sections/Products'
 import { Services } from '@/components/sections/Services'
 import { Support } from '@/components/sections/Support'
 import { Contact } from '@/components/sections/Contact'
@@ -16,6 +17,10 @@ import { Contact } from '@/components/sections/Contact'
  * Só então entra o institucional (A VYSO / Founder), que fecha a confiança de
  * quem já se interessou — em vez de gastar as primeiras telas de quem ainda não.
  *
+ * Produtos vem logo depois dos cases pelo mesmo motivo: quem acabou de ver que
+ * a casa entrega é quem está pronto pra ouvir que existe algo pronto pra usar
+ * hoje, sem orçamento. Serviço é sob medida; produto é assinatura.
+ *
  * Os números dos kickers (01 —, 02 — …) seguem esta ordem: mexeu aqui, renumere
  * em `data/content.ts` (e o de Serviços, que é literal no próprio componente).
  */
@@ -25,6 +30,7 @@ export default function Home() {
       <Hero />
       <Marquee />
       <Projects />
+      <Products />
       <Services />
       <Support />
       <About />

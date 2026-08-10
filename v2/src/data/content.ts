@@ -39,7 +39,7 @@ export const marquee = [
 ];
 
 export const about = {
-  kicker: "04 — A VYSO",
+  kicker: "05 — A VYSO",
   // A palavra entre *asteriscos* recebe o acento.
   heading: "Antes do código, existe o *negócio*.",
   paragraphs: [
@@ -54,7 +54,7 @@ export const about = {
 };
 
 export const founder = {
-  kicker: "05 — Founder",
+  kicker: "06 — Founder",
   // *acento* numa palavra
   tagline: "Tecnologia que resolve. Pessoas que *confiam*.",
   name: "Kawan Wagnner",
@@ -187,6 +187,7 @@ export const projects: Project[] = [
         intro:
           "A AL Modular é a filial B2C do grupo — a frente que vende produto pronto, pra quem não quer projeto sob medida nem negociação. O site é uma loja completa: catálogo por categoria, busca, variação de tamanho e acabamento, carrinho, frete por CEP e checkout com Pix e cartão.",
         mockup: "browser",
+        cover: "/img/cases/al-modular-loja.webp",
         services: [
           "Produto & fluxo",
           "E-commerce",
@@ -404,6 +405,7 @@ export const projects: Project[] = [
       "A Associação Nova História acredita que toda criança merece amor, oportunidade e a chance de chegar no seu potencial. O site existe pra que quem se identifica com essa causa consiga ajudar sem atrito.",
     logo: "/img/logos/ong-nova-historia.png",
     mockup: "browser",
+    cover: "/img/cases/ong-nova-historia.webp",
     tags: ["React", "Social", "Doações"],
     services: ["Site institucional", "Design UI/UX", "Deploy"],
     stack: ["React", "TypeScript", "Tailwind CSS"],
@@ -461,6 +463,7 @@ export const projects: Project[] = [
       "A VG atua com manutenção predial, segurança patrimonial, limpeza, controle de acesso e gestão de facilities. O site precisava fazer o que um vendedor faz numa reunião: mostrar competência e sair com o orçamento marcado.",
     logo: "/img/logos/vg.png",
     mockup: "browser",
+    cover: "/img/cases/vg-facilities.webp",
     tags: ["React", "Institucional", "Conversão"],
     services: ["Site institucional", "Design UI/UX", "Deploy"],
     stack: ["React", "TypeScript", "Tailwind CSS"],
@@ -507,6 +510,190 @@ export const projects: Project[] = [
       { value: "WhatsApp", label: "orçamento a um toque, em toda a página" },
     ],
   },
+  {
+    slug: "kfm-descartaveis",
+    title: "KFM Descartáveis",
+    client: "KFM Descartáveis · Jardim Sul, São Paulo",
+    year: "2026",
+    category: "Catálogo & Painel",
+    summary:
+      "Catálogo de 44 produtos em 7 setores que o dono edita sozinho — e de onde o pedido sai escrito, direto no WhatsApp.",
+    intro:
+      "A KFM vende embalagens, descartáveis, limpeza, sacolas, utilidades e festa pra lojistas de São Paulo. O pedido sempre passou pelo WhatsApp, mas atravessado por um problema: o cliente não sabia o que a loja tinha. O site virou o catálogo que responde isso antes da conversa começar.",
+    mockup: "browser",
+    cover: "/img/cases/kfm-web.webp",
+    tags: ["React", "Catálogo", "WhatsApp"],
+    services: [
+      "Catálogo digital",
+      "Painel administrativo",
+      "Design UI/UX",
+      "Deploy",
+    ],
+    stack: ["React", "TypeScript", "Tailwind CSS"],
+    live: "https://kfm-web.vercel.app/",
+    objective: [
+      "Tirar o catálogo do álbum de fotos do celular e colocar num link que o lojista manda pra qualquer cliente.",
+      "Fazer o pedido chegar identificado: com o nome do produto escrito, sem a rodada de \"tem esse aqui?\" antes de fechar.",
+      "Entregar a edição do conteúdo pro dono — produto, preço, setor e dado da loja mudando sem depender de dev.",
+    ],
+    challenge: [
+      "Catálogo grande é fácil de publicar e difícil de navegar: 44 produtos em 7 setores viram um monte indistinto se a busca não entender como o cliente fala.",
+      "O público compra pelo celular, muitas vezes em aparelho fraco e rede ruim — carregar tudo de uma vez mataria a página antes dela abrir.",
+      "Nem todo produto tem preço fixo. Sumir com esses itens esconderia estoque; mostrar preço errado queimaria a venda.",
+    ],
+    solution: [
+      "Catálogo organizado por setor, com contador de produtos em cada aba e busca que entende sinônimo — cada produto carrega as palavras que o cliente usa de verdade, então \"saco de lixo\" acha mesmo escrito diferente. Buscou dentro de um setor e não achou? O site avisa em qual setor aquilo mora.",
+      "Carregamento de 24 em 24 produtos com \"ver mais\": a primeira tela abre rápido até no celular fraco, e o resto vem sob demanda.",
+      "WhatsApp em toda parte, sempre com a mensagem pronta: no produto sai \"Pedir [nome] no WhatsApp\", no botão geral sai pedido de orçamento. Produto sem preço cadastrado assume isso na cara e convida a chamar.",
+      "Painel completo pro dono: produto (foto em nuvem, setor, unidade, preço, descrição, palavras-chave), setores (nome, ícone, descrição) e dados da loja (WhatsApp, endereço, horário, Instagram, aviso de entrega). Destaque sobe o produto no catálogo; desmarcar \"visível\" tira do ar sem apagar — o jeito certo de tratar falta de estoque.",
+    ],
+    highlights: [
+      "Busca com sinônimos e sugestão de setor",
+      "Paginação de 24 em 24 — abre rápido no celular fraco",
+      "Pedido no WhatsApp já escrito com o nome do produto",
+      "Link direto do setor: segurar o dedo 2s gera e compartilha",
+      "Entrada do painel escondida atrás de 5 cliques na logo",
+      "Bloqueio por 1h e e-mail de alerta após tentativas de senha",
+      'Produto oculto sem ser apagado — o "acabou o estoque" resolvido',
+    ],
+    process: [
+      {
+        title: "Mapa do estoque",
+        description:
+          "Entender o que a loja vende e como o cliente pede: daí saíram os 7 setores e as palavras-chave da busca.",
+      },
+      {
+        title: "Catálogo antes de institucional",
+        description:
+          "A página abre pelo produto, não pela história da loja — quem chega veio comprar.",
+      },
+      {
+        title: "Painel pro dono",
+        description:
+          "Cadastro, setores e dados da loja na mão dele, com foto em nuvem e alteração refletindo no site na hora.",
+      },
+    ],
+    results: [
+      { value: "44 produtos", label: "organizados em 7 setores" },
+      { value: "24 por vez", label: "carregamento pensado pra rede ruim" },
+      { value: "0 dev", label: "pra mudar preço, produto ou horário" },
+    ],
+  },
+  {
+    slug: "travel-buena-vista",
+    title: "Travel Buena Vista",
+    client: "Travel Buena Vista · São Paulo, SP",
+    year: "2026",
+    category: "Site & Captação",
+    summary:
+      "Agência de viagens desde 2011: o site conta o jeito de atender e termina em pedido de orçamento.",
+    intro:
+      "A Travel Buena Vista monta roteiro sob medida e acompanha o cliente antes, durante e depois da viagem — tem quem viaje com eles pelo terceiro ano seguido. O site precisava vender exatamente isso: não o pacote mais barato, mas a pessoa do outro lado.",
+    mockup: "browser",
+    cover: "/img/cases/travel-buena-vista.webp",
+    tags: ["React", "Institucional", "Conversão"],
+    services: ["Site institucional", "Design UI/UX", "Deploy"],
+    stack: ["React", "TypeScript", "Tailwind CSS"],
+    live: "https://travel-buena-vista.vercel.app/",
+    objective: [
+      "Dar à agência um endereço próprio, fora do feed, onde a história de 2011 pra cá cabe inteira.",
+      "Transformar visita em orçamento pedido — por formulário ou WhatsApp, o que o cliente preferir.",
+    ],
+    challenge: [
+      "Agência de viagem compete com plataforma de passagem, que ganha no preço e na escala. O argumento da TBV é o oposto: atendimento de perto. Isso não aparece numa tabela de preço — precisa ser mostrado.",
+      "O catálogo é largo demais pra caber numa página: oito continentes, seis serviços, pacote, cruzeiro, aéreo e hospedagem. Sem hierarquia, vira lista.",
+    ],
+    solution: [
+      "A página abre pelo jeito de atender e só depois abre o leque: destinos em carrossel por continente, serviços numerados de 01 a 06, cada um explicando uma decisão real de viagem (estrutura, localização ou sossego? conexão barata na tela ou cara na viagem?).",
+      "Depoimentos de clientes reais, com nome e destino, posicionados depois da oferta — onde a dúvida \"será que funciona mesmo?\" aparece na leitura.",
+      "Fechamento em dois caminhos: formulário curto de orçamento com promessa de resposta no mesmo dia útil, e WhatsApp pra quem não quer preencher nada.",
+    ],
+    highlights: [
+      "8 continentes em carrossel navegável",
+      "6 serviços explicados por decisão, não por catálogo",
+      "Depoimentos reais com destino e avaliação",
+      "Orçamento por formulário ou WhatsApp",
+    ],
+    process: [
+      {
+        title: "O que a agência vende de verdade",
+        description:
+          "O diferencial não era preço nem destino: era o acompanhamento. A página foi construída em cima disso.",
+      },
+      {
+        title: "Hierarquia do catálogo",
+        description:
+          "Jeito de atender → destinos → serviços → prova → orçamento. Cada bloco preparando o próximo.",
+      },
+      {
+        title: "Construção e deploy",
+        description:
+          "Site responsivo, com carrossel de destinos e formulário de orçamento integrado.",
+      },
+    ],
+    // TODO: Kawan — quantos orçamentos o site trouxe? Esse número vale mais que os dois abaixo.
+    results: [
+      { value: "Desde 2011", label: "de estrada apresentados com prova" },
+      { value: "2 caminhos", label: "pro orçamento: formulário ou WhatsApp" },
+    ],
+  },
+  {
+    slug: "barbearia-imperador",
+    title: "Barbearia Imperador",
+    client: "Barbearia Imperador · Mooca, São Paulo",
+    year: "2026",
+    category: "Site & Agendamento",
+    summary:
+      "24 serviços com preço e duração na tela, 4 planos de assinatura e agendamento a um toque.",
+    intro:
+      "A Imperador é barbearia clássica no coração da Mooca. A tabela de preço vivia no papel e no boca a boca, e os planos mensais — a parte que gera receita recorrente — não tinham onde ser explicados. O site resolveu as duas coisas na mesma página.",
+    mockup: "browser",
+    cover: "/img/cases/barbearia-imperador.webp",
+    tags: ["React", "Serviços", "Assinatura"],
+    services: ["Site institucional", "Design UI/UX", "Deploy"],
+    stack: ["React", "TypeScript", "Tailwind CSS"],
+    live: "https://barbearia-imperador-mooca.vercel.app/",
+    objective: [
+      "Colocar preço e duração de cada serviço na tela — a pergunta que mais chega antes de qualquer agendamento.",
+      "Dar aos planos mensais uma vitrine própria: é o produto que troca corte avulso por receita recorrente.",
+    ],
+    challenge: [
+      "24 serviços numa página viram um paredão de texto. Quem quer só a barba não deveria rolar por corte, luzes e limpeza de pele até achar.",
+      "Quatro planos com regras parecidas (ilimitado, mas de seg a qui, mediante agendamento) confundem se forem só uma tabela — e plano mal explicado não é assinado.",
+    ],
+    solution: [
+      "Serviços com filtro por categoria — Cabelo, Barba, Estética, Combos — cada aba com o contador do que tem dentro, e cada card mostrando duração e preço antes do botão de agendar.",
+      "Planos como blocos comparáveis, do mais simples ao completo, com o recomendado marcado e as regras (dias de atendimento, validade de 30 dias) escritas onde a dúvida nasce, não no rodapé.",
+      "O clássico como identidade visual: paleta escura, tipografia forte e a Mooca como endereço afirmado — quem procura barbearia procura a mais perto, e o bairro é argumento.",
+    ],
+    highlights: [
+      "24 serviços filtráveis por categoria, com preço e tempo",
+      "4 planos mensais + adicional Premium comparáveis lado a lado",
+      "Agendamento a um toque em cada serviço",
+      "Galeria do espaço e endereço em destaque",
+    ],
+    process: [
+      {
+        title: "Tabela antes de discurso",
+        description:
+          "A pergunta real de quem chega é preço e horário. O site responde isso antes de contar a história da casa.",
+      },
+      {
+        title: "Plano como produto",
+        description:
+          "Os quatro planos ganharam bloco próprio, ordem de leitura e regras explícitas — pra serem assinados, não interpretados.",
+      },
+      {
+        title: "Construção e deploy",
+        description:
+          "Site responsivo, com filtro de serviços e agendamento ligado em cada card.",
+      },
+    ],
+    results: [
+      { value: "24 serviços", label: "com preço e duração na tela" },
+      { value: "4 planos", label: "de assinatura com regra clara" },
+    ],
+  },
   // Os projetos entregues via consultoria (contrato PJ) NÃO entram aqui.
   //
   // O contrato proíbe revelar informações acessadas na prestação (cláusula 8.1) e
@@ -527,6 +714,121 @@ export const projectsSection = {
 export function getProject(slug?: string) {
   return projects.find((p) => p.slug === slug);
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Produtos — o que a VYSO vende pronto                                      */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Produto ≠ projeto. Projeto é trabalho sob medida, entregue e encerrado;
+ * produto é da VYSO, fica no ar e cobra assinatura. Por isso a seção é
+ * separada e vem logo depois dos cases: o visitante acabou de ver que a casa
+ * entrega, então é a hora de mostrar o que dá pra ter hoje, sem orçamento.
+ */
+export interface ProductPlan {
+  name: string;
+  price: string;
+  /** Linha miúda embaixo do preço ("/mês", "para sempre"). */
+  period?: string;
+  description?: string;
+  features: string[];
+  /** Destaca o plano no grid. Use em no máximo um. */
+  featured?: boolean;
+}
+
+export interface Product {
+  slug: string;
+  name: string;
+  /** A promessa em uma linha. `*trecho*` sai em cor de destaque. */
+  tagline: string;
+  summary: string;
+  /** Selo acima do nome — oferta, teste grátis, status. */
+  badge?: string;
+  /** Nichos que o produto atende; viram chips. */
+  audience: string[];
+  highlights: { title: string; description: string }[];
+  cover?: string;
+  plans: ProductPlan[];
+  cta: { label: string; href: string };
+}
+
+export const productsSection = {
+  kicker: "02 — Produtos",
+  heading: "O que a VYSO *vende pronto*.",
+  description:
+    "Fora o sob medida, tem produto próprio no ar — assinatura, sem projeto e sem orçamento.",
+};
+
+export const products: Product[] = [
+  {
+    slug: "vyso-catalogo",
+    name: "VYSO Catálogo",
+    tagline: "Sua loja inteira em *um link só*.",
+    summary:
+      "Monte seu catálogo, mande o link e o pedido cai no seu WhatsApp já dizendo qual produto o cliente quer. Sem site caro, sem app, sem complicação.",
+    badge: "7 dias com tudo do Pro, sem cartão",
+    audience: [
+      "Padaria",
+      "Doceria",
+      "Brechó",
+      "Pet shop",
+      "Hortifruti",
+      "Adega",
+      "Floricultura",
+      "Barbearia",
+      "Cafeteria",
+    ],
+    cover: "/img/cases/vyso-catalogo.webp",
+    highlights: [
+      {
+        title: 'Some o "tem esse aqui?"',
+        description:
+          "O cliente vê foto e preço antes de chamar. A conversa já começa no fechamento.",
+      },
+      {
+        title: "O pedido chega identificado",
+        description:
+          'A mensagem vem com o produto e o link. Você atende sem perguntar "qual deles?".',
+      },
+      {
+        title: "Seu catálogo é só seu",
+        description:
+          "Cada loja é isolada. Ninguém vê seus produtos, seus preços nem seus contatos.",
+      },
+    ],
+    plans: [
+      {
+        name: "Grátis",
+        price: "R$ 0",
+        period: "para sempre, sem prazo",
+        features: [
+          "Até 10 produtos",
+          "Catálogo com busca e setores",
+          "Botão de WhatsApp em tudo",
+          'Rodapé "feito com vyso.app"',
+        ],
+      },
+      {
+        name: "Pro",
+        price: "R$ 49",
+        period: "/mês, no cartão",
+        description: "Todo cadastro começa com 7 dias de Pro liberados.",
+        featured: true,
+        features: [
+          "Produtos ilimitados",
+          "Sem marca da plataforma",
+          "Cor da sua marca no catálogo",
+          "Relatório de conversas geradas",
+          "Suporte no WhatsApp",
+        ],
+      },
+    ],
+    cta: {
+      label: "Criar catálogo grátis",
+      href: "https://vyso-catalogo-web.vercel.app/",
+    },
+  },
+];
 
 export interface Service {
   title: string;
@@ -617,7 +919,7 @@ export const supportFeatures = [
 export type SupportFeatureId = (typeof supportFeatures)[number]["id"];
 
 export const supportSection = {
-  kicker: "03 — Suporte",
+  kicker: "04 — Suporte",
   heading: "Site no ar é *manutenção*, não sorte.",
   description:
     "Seu site monitorado, atualizado e com ajustes contínuos por um valor fixo no mês. Precisa de mais que manutenção? A gente conversa e monta o escopo junto.",
@@ -734,7 +1036,7 @@ export const immersive = {
 };
 
 export const contact = {
-  kicker: "06 — Contato",
+  kicker: "07 — Contato",
   heading: "Tem um projeto? A VYSO *entrega*.",
   description:
     "Chama a gente e transforma sua ideia num produto digital de verdade. Resposta rápida.",
@@ -778,6 +1080,7 @@ export const socials = {
 export const nav = [
   { label: "Início", href: "#hero" },
   { label: "Projetos", href: "#projetos" },
+  { label: "Produtos", href: "#produtos" },
   { label: "Serviços", href: "#servicos" },
   { label: "Suporte", href: "#suporte" },
   { label: "A VYSO", href: "#sobre" },
