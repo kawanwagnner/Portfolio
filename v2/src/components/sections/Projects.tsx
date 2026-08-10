@@ -54,17 +54,12 @@ export function ProjectCard({
         {String(index + 1).padStart(2, '0')}
       </span>
 
-      {/* Palco do mockup. No celular a moldura é 9:19 — no tamanho em que a tela
-          fica legível (igual à página do case) ela teria o dobro da altura de um
-          mockup de browser, e como o grid iguala a altura da linha, os cards
-          vizinhos ganhavam um vão vazio enorme. Altura travada na do browser e o
-          aparelho sangra pra baixo, como se seguisse atrás do texto. */}
-      <div
-        className={cn(
-          'relative overflow-hidden px-6 pb-2 pt-12',
-          mockup === 'phone' && 'h-[18.5rem] pb-0'
-        )}
-      >
+      {/* Palco do mockup. É ele que cresce (flex-1) quando o grid estica a linha,
+          então a sobra vira respiro em volta da imagem — e não um vão no meio do
+          texto. Aparelho 9:19 é quase o dobro da altura de um browser 16:10: o
+          celular fica menor que na página do case pra não estourar a linha, mas
+          aparece inteiro. */}
+      <div className="relative flex flex-1 items-center overflow-hidden px-6 pb-2 pt-12">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -72,7 +67,7 @@ export function ProjectCard({
               'radial-gradient(70% 60% at 50% 0%, hsl(239 84% 67% / 0.14), transparent 70%)',
           }}
         />
-        <div className="relative mx-auto transition duration-500 group-hover:-translate-y-1 group-hover:scale-[1.02]">
+        <div className="relative mx-auto w-full transition duration-500 group-hover:-translate-y-1 group-hover:scale-[1.02]">
           <Mockup
             variant={mockup ?? 'browser'}
             src={cover}
@@ -80,12 +75,15 @@ export function ProjectCard({
             url={live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
             fallbackLabel={project.client}
             fallbackLogo={project.logo}
-            className={cn('mx-auto', mockup === 'phone' && 'max-w-[18rem]')}
+            className={cn('mx-auto', mockup === 'phone' && 'max-w-[11rem]')}
           />
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 p-6">
+      {/* Sem flex-1: quem absorve a altura extra da linha é o palco do mockup,
+          então o bloco de texto encosta no rodapé do card e os "Ver o case"
+          ficam alinhados entre os cards, mesmo com resumos de tamanhos diferentes. */}
+      <div className="flex flex-col gap-3 p-6">
         <div className="flex items-center gap-3">
           <ClientLogo name={project.client} src={project.logo} size="sm" />
           <div className="min-w-0">
