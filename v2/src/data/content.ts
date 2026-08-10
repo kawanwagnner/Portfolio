@@ -1081,12 +1081,19 @@ export const socials = {
 
 /** Mesma ordem das seções na home (ver `pages/Home.tsx`): produto primeiro. */
 export const nav = [
+  // `barra` = aparece na navbar do desktop, que tem largura contada. Sem a
+  // marca, o item só entra no rodapé e no menu do celular, que são listas e
+  // não disputam espaço: "Início" é o que o logo já faz, e A VYSO / Founder
+  // são institucionais — quem chega quer ver trabalho, preço e contato.
   { label: "Início", href: "#hero" },
-  { label: "Projetos", href: "#projetos" },
-  { label: "Produtos", href: "#produtos" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "Suporte", href: "#suporte" },
+  { label: "Projetos", href: "#projetos", barra: true },
+  { label: "Produtos", href: "#produtos", barra: true },
+  { label: "Serviços", href: "#servicos", barra: true },
+  { label: "Suporte", href: "#suporte", barra: true },
   { label: "A VYSO", href: "#sobre" },
   { label: "Founder", href: "#founder" },
-  { label: "Contato", href: "#contato" },
+  { label: "Contato", href: "#contato", barra: true },
 ];
+
+/** Só o que cabe (e vende) na barra fixa do desktop. */
+export const navBarra = nav.filter((item) => item.barra);

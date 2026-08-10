@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Menu, X, Instagram, MessageCircle } from 'lucide-react'
 import { Logo } from '@/components/shared/Logo'
-import { brand, nav, socials, whatsapp } from '@/data/content'
+import { brand, nav, navBarra, socials, whatsapp } from '@/data/content'
 import { cn } from '@/lib/utils'
 
 export function Navbar() {
@@ -58,9 +58,10 @@ export function Navbar() {
           <span className="hidden sm:inline">{brand.name.split(' ')[0]}</span>
         </a>
 
-        {/* Desktop */}
+        {/* Desktop: só os itens de venda — o menu inteiro fica no rodapé e no
+            drawer do celular, que são listas verticais e comportam. */}
         <ul className="hidden items-center gap-1 md:flex">
-          {nav.map((item) => (
+          {navBarra.map((item) => (
             <li key={item.href}>
               <a
                 href={item.href}

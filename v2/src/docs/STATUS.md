@@ -63,7 +63,7 @@ Tudo editável em: **`src/data/content.ts`** (textos, projetos, serviços, links
 > telas de rolagem. Mexeu na ordem em `pages/Home.tsx`? Renumere os kickers em
 > `data/content.ts` (e o de Serviços, que é literal no próprio componente).
 
-1. **Navbar** — barra sólida (sem backdrop-blur por performance), menu mobile, botão fixo **"Vamos conversar?" (WhatsApp)**; Instagram virou ícone.
+1. **Navbar** — barra sólida (sem backdrop-blur por performance), menu mobile, botão fixo **"Vamos conversar?" (WhatsApp)**; Instagram virou ícone. A barra do desktop mostra só os itens marcados com `barra: true` no `nav` (Projetos · Produtos · Serviços · Suporte · Contato) — a lista inteira ficou grande demais lá em cima. Rodapé e menu do celular seguem com tudo: são listas verticais e não disputam espaço.
 2. **Hero** — flow field de partículas que formam **V → Y → S → O** em loop, com zoom in/out. Headline "Sites, apps e sistemas que trabalham por você." CTA forte = WhatsApp; "Ver projetos" é o secundário.
 3. **Marquee** — ticker inclinado (-3°), pausa fora da tela.
 4. **Projects** (`01 — Projetos`) — grid com filtro Todos/Desktop/Mobile e hover CSS (lift + glow).
