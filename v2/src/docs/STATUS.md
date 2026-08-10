@@ -1,15 +1,15 @@
 # VYSO — Site V2 · Status & Histórico
 
-> Onde paramos e tudo que já foi feito. Atualizado em 2026-07-07.
+> Onde paramos e tudo que já foi feito. Atualizado em 2026-08-10.
 
 ---
 
 ## 📌 Onde paramos
 
 - Site **V2 da VYSO** funcionando de ponta a ponta, buildando limpo (`npm run build` ✓, `typecheck` ✓).
-- **15 commits** organizados na branch `main` — **tudo local, ainda SEM `git push`**.
-- Última coisa feita: rebrand oficial (índigo + Satoshi) + seção de Founder com a foto do Kawan otimizada.
-- **Próximo passo sugerido:** revisar conteúdo real (projetos/links), decidir deploy e dar `git push`.
+- Branch `main` **publicada** (`git push` em dia) — o que está commitado está no ar.
+- Última coisa feita: **seção de Produtos** (VYSO Catálogo) + **3 cases novos** (KFM, Travel Buena Vista, Barbearia Imperador) + capas de verdade nos cards, tiradas dos sites no ar.
+- **Próximo passo sugerido:** logos dos 3 clientes novos e os números reais de resultado (ver pendências no fim).
 
 ---
 
@@ -67,11 +67,17 @@ Tudo editável em: **`src/data/content.ts`** (textos, projetos, serviços, links
 2. **Hero** — flow field de partículas que formam **V → Y → S → O** em loop, com zoom in/out. Headline "Sites, apps e sistemas que trabalham por você." CTA forte = WhatsApp; "Ver projetos" é o secundário.
 3. **Marquee** — ticker inclinado (-3°), pausa fora da tela.
 4. **Projects** (`01 — Projetos`) — grid com filtro Todos/Desktop/Mobile e hover CSS (lift + glow).
-5. **Services** (`02 — Serviços`) — lista editorial com hover deslizante.
-6. **Support** (`03 — Suporte`) — planos de manutenção em carrossel, com Payment Link do Stripe.
-7. **About** (`04 — A VYSO`) — manifesto tipográfico "Antes do código, existe o negócio." + stats + skills.
-8. **Founder** (`05 — Founder`) — Kawan Wagnner, "Founder & Software Engineer", tagline "Tecnologia que resolve. Pessoas que confiam.", foto `kawan.webp`.
-9. **Contact** (`06 — Contato`) — layout 2 colunas: manifesto + painel de canais (WhatsApp/Instagram/E-mail/GitHub).
+5. **Products** (`02 — Produtos`) — vitrine do produto próprio da VYSO (hoje só o Catálogo): promessa + mockup, "por que vale", nichos e planos. Layout de destaque único; entrou um segundo produto, o `products.map` já vira grid.
+6. **Services** (`03 — Serviços`) — lista editorial com hover deslizante.
+7. **Support** (`04 — Suporte`) — planos de manutenção em carrossel, com Payment Link do Stripe.
+8. **About** (`05 — A VYSO`) — manifesto tipográfico "Antes do código, existe o negócio." + stats + skills.
+9. **Founder** (`06 — Founder`) — Kawan Wagnner, "Founder & Software Engineer", tagline "Tecnologia que resolve. Pessoas que confiam.", foto `kawan.webp`.
+10. **Contact** (`07 — Contato`) — layout 2 colunas: manifesto + painel de canais (WhatsApp/Instagram/E-mail/GitHub).
+
+> **Produto ≠ projeto.** Projeto é trabalho sob medida, entregue e encerrado;
+> produto é da VYSO, fica no ar e cobra assinatura. Produtos vem logo depois dos
+> cases porque quem acabou de ver que a casa entrega é quem está pronto pra ouvir
+> que existe algo pronto pra usar hoje, sem orçamento.
 10. **Footer** — logo, nav, redes, CNPJ, copyright.
 11. **WhatsAppFab** — botão flutuante de WhatsApp, só abaixo de `sm` e só depois do herói (fora da home também: fica no `App.tsx`).
 
@@ -115,7 +121,7 @@ Métricas medidas (produção): **LCP 0.44s, CLS 0.00, INP 136ms** — tudo verd
 
 ## 🌿 Git & rollback
 
-- Branch: `main`. **15 commits, tudo local (sem push).**
+- Branch: `main`, publicada no GitHub.
 - **Pontos de rollback:**
   - Tag `v2-antes-ajustes-venda` → estado publicado antes da reordenação, do WhatsApp como CTA e do enxugamento do ritmo. Cada um desses ajustes é um commit separado, então dá pra reverter um sem derrubar os outros (`git revert <sha>`).
   - Tag `v2-flowfield-scattered` → estado do flow field espalhado original.
@@ -154,7 +160,24 @@ O site deixou de ser página única: agora tem **rotas** (`react-router-dom`).
 - **Logos**: `components/shared/ClientLogo.tsx` — sem arquivo, cai num monograma com as iniciais do cliente.
 - `vercel.json` com rewrite pra SPA (senão `/projetos/x` dá 404 no refresh).
 
-**Pra completar:** prints em `public/img/` (campo `cover`/`gallery`) e logos em `public/img/logos/` (campo `logo`). Os `// TODO` no `content.ts` marcam o que falta de conteúdo real.
+**Pra completar:** logos em `public/img/logos/` (campo `logo`) — faltam KFM, Travel Buena Vista e Barbearia Imperador, que hoje caem no monograma. Os `// TODO` no `content.ts` marcam o que falta de conteúdo real.
+
+---
+
+## 📸 Prints: como tirar (`v2/scripts/`)
+
+Os prints de capa saem do site no ar, via Playwright — nada de recorte na mão.
+
+```bash
+node scripts/shots.mjs           # todas as capas → public/img/cases/*.webp
+node scripts/shots.mjs vg        # só os alvos cujo nome casa com "vg"
+node scripts/dump.mjs <url>      # texto renderizado da página (os sites são SPA)
+node scripts/preview-shot.mjs produtos 1440 1900   # confere uma seção no preview local
+```
+
+- **`shots.mjs`** — alvos no topo do arquivo. Já sai em **WebP** (1600px, qualidade 80): PNG @2x saía com megabytes e derrubaria o LCP. Campo `dismiss` clica no botão do banner de cookie antes da foto.
+- **`preview-shot.mjs`** — exige `npm run preview` rodando. **A altura do viewport importa:** os blocos animam por scroll (`Reveal`), e o que nunca entrou na tela sai transparente no print. Passe altura maior que a seção. Saída em `v2/.shots/` (git-ignorada).
+- Duas telas **não** dá pra capturar de fora: o **painel da AL** (atrás de login) e o **app da AL Esquadrias** (o `live` é um `share.google/...`, que cai em captcha do Google — trocar pela URL real do app).
 
 > ⚠️ **Projetos via consultoria (contrato PJ) ficam FORA do site.** O contrato proíbe
 > revelar informações acessadas na prestação (cláusula 8.1) e dá a propriedade do
@@ -167,8 +190,9 @@ O site deixou de ser página única: agora tem **rotas** (`react-router-dom`).
 
 ## ✅ Pendências / próximos passos
 
-- [ ] **Prints e logos dos projetos** → `public/img/` e `public/img/logos/`.
-- [ ] **Adicionar os outros trabalhos do Kawan** (os que não são da consultoria) — hoje o site tem 3 projetos.
+- [ ] **Logos** de KFM, Travel Buena Vista e Barbearia Imperador → `public/img/logos/` (hoje caem no monograma).
+- [ ] **URL real do app da AL Esquadrias** — o `live` ainda é um link `share.google/...`, que não abre nem rende print.
+- [ ] Números reais nos `results` de Travel Buena Vista e VG (quantos orçamentos o site trouxe) — marcados com `// TODO`.
 - [ ] Pedir à consultoria autorização **por escrito** pra citar os clientes. Só com ela dá pra repor aqueles cases.
 - [ ] Confirmar/ajustar **usuário do GitHub** (`socials.github`) e adicionar **WhatsApp** (`socials.whatsapp`) se quiser.
 - [ ] Revisar textos marcados com `// TODO` em `content.ts` (sobre, founder).
