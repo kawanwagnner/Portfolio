@@ -8,8 +8,9 @@
 
 - Site **V2 da VYSO** funcionando de ponta a ponta, buildando limpo (`npm run build` ✓, `typecheck` ✓).
 - Branch `main` **publicada** (`git push` em dia) — o que está commitado está no ar.
-- Última coisa feita: **seção de Produtos** (VYSO Catálogo) + **3 cases novos** (KFM, Travel Buena Vista, Barbearia Imperador) + capas de verdade nos cards, tiradas dos sites no ar.
-- **Próximo passo sugerido:** logos dos 3 clientes novos e os números reais de resultado (ver pendências no fim).
+- Última coisa feita: **grid de projetos parou de estourar a tela no celular** — faltava `grid-cols-1` na base, e a coluna implícita `auto` crescia até o min-content do card (o print mandava no tamanho), deixando a página arrastável pro lado. Detalhe em *Armadilhas conhecidas*.
+- Antes disso: capas do **painel da AL** e do **app da AL Esquadrias**, celular no card da home no tamanho certo, e **um card por cliente em qualquer filtro** na home.
+- **Próximo passo sugerido:** logo da Travel Buena Vista e os números reais de resultado (ver pendências no fim).
 
 ---
 
@@ -78,10 +79,37 @@ Tudo editável em: **`src/data/content.ts`** (textos, projetos, serviços, links
 > produto é da VYSO, fica no ar e cobra assinatura. Produtos vem logo depois dos
 > cases porque quem acabou de ver que a casa entrega é quem está pronto pra ouvir
 > que existe algo pronto pra usar hoje, sem orçamento.
-10. **Footer** — logo, nav, redes, CNPJ, copyright.
-11. **WhatsAppFab** — botão flutuante de WhatsApp, só abaixo de `sm` e só depois do herói (fora da home também: fica no `App.tsx`).
+11. **Footer** — logo, nav, redes, CNPJ, copyright.
+12. **WhatsAppFab** — botão flutuante de WhatsApp, só abaixo de `sm` e só depois do herói (fora da home também: fica no `App.tsx`).
 
 **Fora da home:** `Immersive` ("Feito para impressionar") — ~590px que só afirmavam qualidade, e o CTA apenas rolava até o contato. O componente segue em `components/sections/Immersive.tsx`; pra voltar, descomente a linha em `pages/Home.tsx`.
+
+---
+
+## ⚠️ Armadilhas conhecidas (não repita)
+
+**Grid sem `grid-cols-1` estoura a tela no celular.** `grid w-full sm:grid-cols-2`
+não declara coluna nenhuma abaixo do `sm`: o navegador cria uma coluna implícita
+`auto`, e coluna `auto` cresce até o **min-content** dos itens — no card de projeto
+quem manda no min-content é o print. Deu card de 395px numa tela de 380px e a
+página inteira ficava arrastável pro lado. `grid-cols-*` do Tailwind é
+`minmax(0, 1fr)`, e é o `minmax(0,…)` que trava a coluna no tamanho da tela:
+**sempre declare a coluna base**, mesmo que seja uma só (`Projects.tsx`, o grid do
+`ProjectGroups`). Vale a mesma regra pra qualquer filho de flex/grid que segure
+conteúdo largo — daí o `min-w-0` espalhado pelos cards.
+
+**Como conferir overflow lateral:** compare `document.documentElement.scrollWidth`
+com `clientWidth` em 390px e 330px de largura. `body { overflow-x: hidden }` (está
+no `index.css`) esconde o sintoma no desktop mas **não** impede o arrasto no
+celular — não confie nele como conserto. Cuidado ao medir dentro de um iframe ou
+aba em segundo plano: o `requestAnimationFrame` congela, o framer-motion trava no
+meio da animação e aparece "overflow" que não existe de verdade.
+
+**Estado responsivo conferido em produção** (2026-08-10, larguras 390px e 330px):
+home, `/projetos` (nas três abas) e os 7 cases com `scrollWidth == clientWidth`.
+Na home aparecem elementos mais largos que a tela — o spotlight do herói e o
+marquee em `w-[112%]` —, mas são decorativos e vivem dentro de `overflow-hidden`:
+estão certos assim, não "conserte".
 
 ---
 
@@ -122,6 +150,7 @@ Métricas medidas (produção): **LCP 0.44s, CLS 0.00, INP 136ms** — tudo verd
 ## 🌿 Git & rollback
 
 - Branch: `main`, publicada no GitHub.
+- **Deploy: Vercel**, automático a cada push no `main` → **https://vyso.store**. Não existe passo manual: commitou e empurrou, subiu. Valide sempre no domínio de produção, não só no `preview` local.
 - **Pontos de rollback:**
   - Tag `v2-antes-ajustes-venda` → estado publicado antes da reordenação, do WhatsApp como CTA e do enxugamento do ritmo. Cada um desses ajustes é um commit separado, então dá pra reverter um sem derrubar os outros (`git revert <sha>`).
   - Tag `v2-flowfield-scattered` → estado do flow field espalhado original.
@@ -201,7 +230,6 @@ node scripts/preview-shot.mjs produtos 1440 1900          # confere uma seção 
 - [ ] Confirmar/ajustar **usuário do GitHub** (`socials.github`) e adicionar **WhatsApp** (`socials.whatsapp`) se quiser.
 - [ ] Revisar textos marcados com `// TODO` em `content.ts` (sobre, founder).
 - [ ] Conferir **enquadramento da foto** do founder (card 4/5) em telas diferentes.
-- [ ] Decidir **deploy** (Vercel / Netlify / GitHub Pages) e fazer **`git push`**.
 - [ ] (Opcional) Remover deps não usadas (three/spline) pra enxugar o `package.json`.
 - [ ] (Opcional) Seção de depoimentos / "casos reais" (o brand board sugere).
 
