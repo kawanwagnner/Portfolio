@@ -78,7 +78,7 @@ export function Hero() {
         </motion.div>
 
         {/* headline */}
-        <h1 className="headline text-5xl leading-[0.95] sm:text-6xl md:text-7xl xl:text-8xl">
+        <h1 className="headline text-4xl leading-[0.95] sm:text-5xl md:text-6xl xl:text-7xl">
           {hero.headlineLines.map((line, i) => (
             <span key={i} className="block overflow-hidden">
               <motion.span
