@@ -66,7 +66,7 @@ Tudo editável em: **`src/data/content.ts`** (textos, projetos, serviços, links
 1. **Navbar** — barra sólida (sem backdrop-blur por performance), menu mobile, botão fixo **"Vamos conversar?" (WhatsApp)**; Instagram virou ícone. A barra do desktop mostra só os itens marcados com `barra: true` no `nav` (Projetos · Produtos · Serviços · Suporte · Contato) — a lista inteira ficou grande demais lá em cima. Rodapé e menu do celular seguem com tudo: são listas verticais e não disputam espaço.
 2. **Hero** — flow field de partículas que formam **V → Y → S → O** em loop, com zoom in/out. Headline "Sites, apps e sistemas que trabalham por você." CTA forte = WhatsApp; "Ver projetos" é o secundário.
 3. **Marquee** — ticker inclinado (-3°), pausa fora da tela.
-4. **Projects** (`01 — Projetos`) — grid com filtro Todos/Desktop/Mobile e hover CSS (lift + glow).
+4. **Projects** (`01 — Projetos`) — grid com filtro Todos/Desktop/Mobile e hover CSS (lift + glow). Abre em "Todos". **Na home é sempre um card por cliente** (`<ProjectGroups fatiar={false} />`): a AL Modular tem loja + painel, e fatiar em dois cards lia como projeto repetido. Em `/projetos`, que é o catálogo inteiro, os filtros de plataforma continuam mostrando um card por sistema.
 5. **Products** (`02 — Produtos`) — vitrine do produto próprio da VYSO (hoje só o Catálogo): promessa + mockup, "por que vale", nichos e planos. Layout de destaque único; entrou um segundo produto, o `products.map` já vira grid.
 6. **Services** (`03 — Serviços`) — lista editorial com hover deslizante.
 7. **Support** (`04 — Suporte`) — planos de manutenção em carrossel, com Payment Link do Stripe.

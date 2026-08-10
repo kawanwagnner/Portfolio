@@ -146,7 +146,7 @@ const TABS = [
   { key: 'phone', label: 'Mobile', short: 'Mobile' },
 ] as const
 
-function entriesFor(tab: (typeof TABS)[number]['key']): Entry[] {
+function entriesFor(tab: (typeof TABS)[number]['key'], fatiar: boolean): Entry[] {
   if (tab === 'all') return projects.map((project) => ({ project }))
 
   const matches = PLATFORM[tab]
@@ -155,18 +155,24 @@ function entriesFor(tab: (typeof TABS)[number]['key']): Entry[] {
     const hits = parts.filter(matches)
     if (hits.length === 0) return []
     // Projeto de sistema único: card normal. Vários sistemas: um card por parte.
-    if (parts.length === 1) return [{ project }]
+    if (!fatiar || parts.length === 1) return [{ project }]
     return hits.map((part) => ({ project, part }))
   })
 }
 
-export function ProjectGroups() {
+/**
+ * `fatiar` = em Desktop/Web e Mobile, um case de vários sistemas vira um card
+ * por sistema. Vale na página /projetos, que é o catálogo inteiro; na home não,
+ * porque lá o card é vitrine de cliente — a AL virando dois cards lê como
+ * projeto repetido, não como dois sistemas.
+ */
+export function ProjectGroups({ fatiar = true }: { fatiar?: boolean } = {}) {
   // Abre em "Todos": é a visão em que cada cliente aparece uma vez só. Abrindo
   // em Desktop/Web, a primeira coisa que o visitante via era a AL fatiada em
   // dois cards (loja e painel), com cara de projeto repetido. Fatiar continua
   // valendo — só que agora quando ele escolhe o filtro.
   const [active, setActive] = useState<(typeof TABS)[number]['key']>('all')
-  const items = entriesFor(active)
+  const items = entriesFor(active, fatiar)
 
   return (
     <div className="mt-12 flex flex-col gap-10">
@@ -179,7 +185,7 @@ export function ProjectGroups() {
           className="grid w-full grid-cols-3 gap-1 rounded-full border border-border bg-card p-1.5 sm:flex sm:w-fit sm:items-center"
         >
           {TABS.map((t) => {
-            const count = entriesFor(t.key).length
+            const count = entriesFor(t.key, fatiar).length
             const selected = t.key === active
             return (
               <button
@@ -265,7 +271,8 @@ export function Projects() {
         </Reveal>
       </div>
 
-      <ProjectGroups />
+      {/* Na home o card é vitrine de cliente: um card por projeto, sempre. */}
+      <ProjectGroups fatiar={false} />
     </section>
   )
 }
