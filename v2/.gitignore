@@ -21,3 +21,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# prints de conferencia de layout (scripts/preview-shot.mjs)
+.shots
