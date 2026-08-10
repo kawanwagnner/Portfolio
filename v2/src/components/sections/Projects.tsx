@@ -161,7 +161,11 @@ function entriesFor(tab: (typeof TABS)[number]['key']): Entry[] {
 }
 
 export function ProjectGroups() {
-  const [active, setActive] = useState<(typeof TABS)[number]['key']>('browser')
+  // Abre em "Todos": é a visão em que cada cliente aparece uma vez só. Abrindo
+  // em Desktop/Web, a primeira coisa que o visitante via era a AL fatiada em
+  // dois cards (loja e painel), com cara de projeto repetido. Fatiar continua
+  // valendo — só que agora quando ele escolhe o filtro.
+  const [active, setActive] = useState<(typeof TABS)[number]['key']>('all')
   const items = entriesFor(active)
 
   return (
