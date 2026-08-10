@@ -71,11 +71,6 @@ export function Contact() {
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </Reveal>
-          <Reveal delay={0.2}>
-            <p className="mt-4 font-mono-tag text-xs uppercase tracking-widest text-muted-foreground">
-              {whatsapp.display}
-            </p>
-          </Reveal>
         </div>
 
         {/* Painel de canais */}
