@@ -520,6 +520,8 @@ export const projects: Project[] = [
       "Catálogo de 44 produtos em 7 setores que o dono edita sozinho — e de onde o pedido sai escrito, direto no WhatsApp.",
     intro:
       "A KFM vende embalagens, descartáveis, limpeza, sacolas, utilidades e festa pra lojistas de São Paulo. O pedido sempre passou pelo WhatsApp, mas atravessado por um problema: o cliente não sabia o que a loja tinha. O site virou o catálogo que responde isso antes da conversa começar.",
+    // Logo tirada do SVG do próprio site, com o texto clareado pro card dark.
+    logo: "/img/logos/kfm.webp",
     mockup: "browser",
     cover: "/img/cases/kfm-web.webp",
     tags: ["React", "Catálogo", "WhatsApp"],
@@ -647,6 +649,7 @@ export const projects: Project[] = [
       "24 serviços com preço e duração na tela, 4 planos de assinatura e agendamento a um toque.",
     intro:
       "A Imperador é barbearia clássica no coração da Mooca. A tabela de preço vivia no papel e no boca a boca, e os planos mensais — a parte que gera receita recorrente — não tinham onde ser explicados. O site resolveu as duas coisas na mesma página.",
+    logo: "/img/logos/barbearia-imperador.webp",
     mockup: "browser",
     cover: "/img/cases/barbearia-imperador.webp",
     tags: ["React", "Serviços", "Assinatura"],

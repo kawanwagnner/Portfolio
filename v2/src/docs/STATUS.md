@@ -160,7 +160,7 @@ O site deixou de ser página única: agora tem **rotas** (`react-router-dom`).
 - **Logos**: `components/shared/ClientLogo.tsx` — sem arquivo, cai num monograma com as iniciais do cliente.
 - `vercel.json` com rewrite pra SPA (senão `/projetos/x` dá 404 no refresh).
 
-**Pra completar:** logos em `public/img/logos/` (campo `logo`) — faltam KFM, Travel Buena Vista e Barbearia Imperador, que hoje caem no monograma. Os `// TODO` no `content.ts` marcam o que falta de conteúdo real.
+**Pra completar:** logo da Travel Buena Vista em `public/img/logos/` (campo `logo`) — é a única que ainda cai no monograma. Os `// TODO` no `content.ts` marcam o que falta de conteúdo real.
 
 ---
 
@@ -172,10 +172,14 @@ Os prints de capa saem do site no ar, via Playwright — nada de recorte na mão
 node scripts/shots.mjs           # todas as capas → public/img/cases/*.webp
 node scripts/shots.mjs vg        # só os alvos cujo nome casa com "vg"
 node scripts/dump.mjs <url>      # texto renderizado da página (os sites são SPA)
-node scripts/preview-shot.mjs produtos 1440 1900   # confere uma seção no preview local
+node scripts/find-logo.mjs <url> # acha o arquivo da logo no topo do site do cliente
+node scripts/cutout.mjs in.jpeg public/img/logos/x.webp   # tira o fundo chapado da logo
+node scripts/preview-shot.mjs produtos 1440 1900          # confere uma seção no preview
 ```
 
 - **`shots.mjs`** — alvos no topo do arquivo. Já sai em **WebP** (1600px, qualidade 80): PNG @2x saía com megabytes e derrubaria o LCP. Campo `dismiss` clica no botão do banner de cookie antes da foto.
+- **`cutout.mjs`** — logo de cliente costuma chegar em JPEG num quadrado preto, e quadrado aparece no card. O corte é flood fill a partir das bordas: some só o fundo **conectado à borda**, então o preto de dentro do emblema não vira buraco. `--branco` pra fundo claro.
+- **`find-logo.mjs`** — a logo do KFM era SVG inline, não arquivo: foi extraída do próprio site, com o texto `#121215` clareado pra `#F4F4F5` (senão sumiria no card dark) e re-renderizada na fonte da marca. A Travel Buena Vista **não tem logo em imagem** — o topo dela é texto puro, então ela segue no monograma até chegar um arquivo.
 - **`preview-shot.mjs`** — exige `npm run preview` rodando. **A altura do viewport importa:** os blocos animam por scroll (`Reveal`), e o que nunca entrou na tela sai transparente no print. Passe altura maior que a seção. Saída em `v2/.shots/` (git-ignorada).
 - Duas telas **não** dá pra capturar de fora: o **painel da AL** (atrás de login) e o **app da AL Esquadrias** (o `live` é um `share.google/...`, que cai em captcha do Google — trocar pela URL real do app).
 
@@ -190,7 +194,7 @@ node scripts/preview-shot.mjs produtos 1440 1900   # confere uma seção no prev
 
 ## ✅ Pendências / próximos passos
 
-- [ ] **Logos** de KFM, Travel Buena Vista e Barbearia Imperador → `public/img/logos/` (hoje caem no monograma).
+- [ ] **Logo da Travel Buena Vista** → `public/img/logos/` (hoje cai no monograma `TBV`; o site dela não tem arquivo de logo pra extrair). KFM e Barbearia já entraram.
 - [ ] **URL real do app da AL Esquadrias** — o `live` ainda é um link `share.google/...`, que não abre nem rende print.
 - [ ] Números reais nos `results` de Travel Buena Vista e VG (quantos orçamentos o site trouxe) — marcados com `// TODO`.
 - [ ] Pedir à consultoria autorização **por escrito** pra citar os clientes. Só com ela dá pra repor aqueles cases.
