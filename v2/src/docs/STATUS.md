@@ -181,7 +181,7 @@ node scripts/preview-shot.mjs produtos 1440 1900          # confere uma seção 
 - **`cutout.mjs`** — logo de cliente costuma chegar em JPEG num quadrado preto, e quadrado aparece no card. O corte é flood fill a partir das bordas: some só o fundo **conectado à borda**, então o preto de dentro do emblema não vira buraco. `--branco` pra fundo claro.
 - **`find-logo.mjs`** — a logo do KFM era SVG inline, não arquivo: foi extraída do próprio site, com o texto `#121215` clareado pra `#F4F4F5` (senão sumiria no card dark) e re-renderizada na fonte da marca. A Travel Buena Vista **não tem logo em imagem** — o topo dela é texto puro, então ela segue no monograma até chegar um arquivo.
 - **`preview-shot.mjs`** — exige `npm run preview` rodando. **A altura do viewport importa:** os blocos animam por scroll (`Reveal`), e o que nunca entrou na tela sai transparente no print. Passe altura maior que a seção. Saída em `v2/.shots/` (git-ignorada).
-- Duas telas **não** dá pra capturar de fora: o **painel da AL** (atrás de login) e o **app da AL Esquadrias** (o `live` é um `share.google/...`, que cai em captcha do Google — trocar pela URL real do app).
+- Duas telas **não** dá pra capturar de fora: o **painel da AL** (atrás de login — a capa dele veio de print mandado à mão, tela de Produtos) e o **app da AL Esquadrias** (o `live` é um `share.google/...`, que cai em captcha do Google — trocar pela URL real do app).
 
 > ⚠️ **Projetos via consultoria (contrato PJ) ficam FORA do site.** O contrato proíbe
 > revelar informações acessadas na prestação (cláusula 8.1) e dá a propriedade do

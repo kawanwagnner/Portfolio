@@ -259,6 +259,9 @@ export const projects: Project[] = [
         intro:
           "Uma loja só funciona se quem está atrás dela consegue tocá-la sem depender de dev. O painel da AL Modular é onde a equipe cadastra produto, acompanha pedido, cria cupom e enxerga o dinheiro entrando.",
         mockup: "browser",
+        // Print mandado pelo Kawan: o painel está atrás de login, não dá pra
+        // capturar de fora com o scripts/shots.mjs.
+        cover: "/img/cases/al-modular-painel.webp",
         services: [
           "Painel administrativo",
           "Produto & fluxo",
