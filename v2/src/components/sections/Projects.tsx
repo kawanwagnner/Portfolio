@@ -54,8 +54,17 @@ export function ProjectCard({
         {String(index + 1).padStart(2, '0')}
       </span>
 
-      {/* palco do mockup */}
-      <div className="relative overflow-hidden px-6 pb-2 pt-12">
+      {/* Palco do mockup. No celular a moldura é 9:19 — no tamanho em que a tela
+          fica legível (igual à página do case) ela teria o dobro da altura de um
+          mockup de browser, e como o grid iguala a altura da linha, os cards
+          vizinhos ganhavam um vão vazio enorme. Altura travada na do browser e o
+          aparelho sangra pra baixo, como se seguisse atrás do texto. */}
+      <div
+        className={cn(
+          'relative overflow-hidden px-6 pb-2 pt-12',
+          mockup === 'phone' && 'h-[18.5rem] pb-0'
+        )}
+      >
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -71,7 +80,7 @@ export function ProjectCard({
             url={live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
             fallbackLabel={project.client}
             fallbackLogo={project.logo}
-            className={cn('mx-auto', mockup === 'phone' && 'max-w-[9rem]')}
+            className={cn('mx-auto', mockup === 'phone' && 'max-w-[18rem]')}
           />
         </div>
       </div>
