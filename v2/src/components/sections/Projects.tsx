@@ -231,10 +231,14 @@ export function ProjectGroups({ fatiar = true }: { fatiar?: boolean } = {}) {
         </div>
       </Reveal>
 
-      {/* grid */}
+      {/* grid.
+          grid-cols-1 explícito: sem ele a coluna implícita fica `auto` e estica até o
+          min-content do card (o print manda no tamanho), estourando a tela no celular —
+          dava pra arrastar a página pro lado. grid-cols-* do Tailwind é minmax(0,1fr),
+          e é o minmax(0,…) que segura a coluna dentro da tela. */}
       <motion.div
         layout
-        className="mx-auto grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        className="mx-auto grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
         role="tabpanel"
       >
         <AnimatePresence mode="popLayout">
