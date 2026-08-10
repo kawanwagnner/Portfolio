@@ -337,6 +337,8 @@ export const projects: Project[] = [
     // dela, é só jogar o arquivo em /public/img/logos/ e apontar aqui.
     logo: "/img/logos/al-modular.png",
     mockup: "phone",
+    // Print mandado pelo Kawan: é app, não tem URL pra capturar com o shots.mjs.
+    cover: "/img/cases/al-esquadrias.webp",
     tags: ["React Native", "WhatsApp", "B2B"],
     intro:
       "A AL Esquadrias é a frente B2B do grupo: esquadria sob medida, com projeto, medição e negociação. O app pega o cliente no catálogo, leva até a proposta e — o que quase ninguém faz — continua com ele depois da venda, mostrando em que etapa a obra está.",
