@@ -2,7 +2,7 @@ import { marquee } from '@/data/content'
 import { useInView } from '@/hooks/useInView'
 
 /**
- * Ticker cinético inclinado (esquerda mais baixa → direita subindo).
+ * Ticker cinético horizontal (faixa reta, sem inclinação).
  * A animação PAUSA quando a faixa sai da tela — senão ela roda pra sempre
  * e come o compositor mesmo enquanto você está em outra seção.
  */
@@ -15,8 +15,8 @@ export function Marquee() {
       ref={ref}
       className="relative flex items-center overflow-hidden pb-2 pt-20 md:pb-3 md:pt-32"
     >
-      {/* Banda um pouco mais larga que a viewport e rotacionada -3° */}
-      <div className="marquee-wrap relative w-[112%] -translate-x-[6%] -rotate-3 border-y border-border bg-card/50 py-5 md:py-6">
+      {/* Banda reta, ocupando a largura toda da viewport */}
+      <div className="marquee-wrap relative w-full border-y border-border bg-card/50 py-5 md:py-6">
         <div
           className="marquee gap-8 pr-8"
           style={{ animationPlayState: inView ? 'running' : 'paused' }}
