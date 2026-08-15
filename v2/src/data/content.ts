@@ -399,6 +399,122 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "barbearia-imperador",
+    title: "Barbearia Imperador",
+    client: "Barbearia Imperador · Mooca, São Paulo",
+    year: "2026",
+    category: "Site & Agendamento",
+    summary:
+      "24 serviços com preço e duração na tela, 4 planos de assinatura e agendamento a um toque.",
+    intro:
+      "A Imperador é barbearia clássica no coração da Mooca. A tabela de preço vivia no papel e no boca a boca, e os planos mensais — a parte que gera receita recorrente — não tinham onde ser explicados. O site resolveu as duas coisas na mesma página.",
+    logo: "/img/logos/barbearia-imperador.webp",
+    mockup: "browser",
+    cover: "/img/cases/barbearia-imperador.webp",
+    tags: ["React", "Serviços", "Assinatura"],
+    services: ["Site institucional", "Design UI/UX", "Deploy"],
+    stack: ["React", "TypeScript", "Tailwind CSS"],
+    live: "https://barbearia-imperador-mooca.vercel.app/",
+    objective: [
+      "Colocar preço e duração de cada serviço na tela — a pergunta que mais chega antes de qualquer agendamento.",
+      "Dar aos planos mensais uma vitrine própria: é o produto que troca corte avulso por receita recorrente.",
+    ],
+    challenge: [
+      "24 serviços numa página viram um paredão de texto. Quem quer só a barba não deveria rolar por corte, luzes e limpeza de pele até achar.",
+      "Quatro planos com regras parecidas (ilimitado, mas de seg a qui, mediante agendamento) confundem se forem só uma tabela — e plano mal explicado não é assinado.",
+    ],
+    solution: [
+      "Serviços com filtro por categoria — Cabelo, Barba, Estética, Combos — cada aba com o contador do que tem dentro, e cada card mostrando duração e preço antes do botão de agendar.",
+      "Planos como blocos comparáveis, do mais simples ao completo, com o recomendado marcado e as regras (dias de atendimento, validade de 30 dias) escritas onde a dúvida nasce, não no rodapé.",
+      "O clássico como identidade visual: paleta escura, tipografia forte e a Mooca como endereço afirmado — quem procura barbearia procura a mais perto, e o bairro é argumento.",
+    ],
+    highlights: [
+      "24 serviços filtráveis por categoria, com preço e tempo",
+      "4 planos mensais + adicional Premium comparáveis lado a lado",
+      "Agendamento a um toque em cada serviço",
+      "Galeria do espaço e endereço em destaque",
+    ],
+    process: [
+      {
+        title: "Tabela antes de discurso",
+        description:
+          "A pergunta real de quem chega é preço e horário. O site responde isso antes de contar a história da casa.",
+      },
+      {
+        title: "Plano como produto",
+        description:
+          "Os quatro planos ganharam bloco próprio, ordem de leitura e regras explícitas — pra serem assinados, não interpretados.",
+      },
+      {
+        title: "Construção e deploy",
+        description:
+          "Site responsivo, com filtro de serviços e agendamento ligado em cada card.",
+      },
+    ],
+    results: [
+      { value: "24 serviços", label: "com preço e duração na tela" },
+      { value: "4 planos", label: "de assinatura com regra clara" },
+    ],
+  },
+  {
+    slug: "travel-buena-vista",
+    title: "Travel Buena Vista",
+    client: "Travel Buena Vista · São Paulo, SP",
+    year: "2026",
+    category: "Site & Captação",
+    summary:
+      "Agência de viagens desde 2011: o site conta o jeito de atender e termina em pedido de orçamento.",
+    intro:
+      "A Travel Buena Vista monta roteiro sob medida e acompanha o cliente antes, durante e depois da viagem — tem quem viaje com eles pelo terceiro ano seguido. O site precisava vender exatamente isso: não o pacote mais barato, mas a pessoa do outro lado.",
+    mockup: "browser",
+    cover: "/img/cases/travel-buena-vista.webp",
+    tags: ["React", "Institucional", "Conversão"],
+    services: ["Site institucional", "Design UI/UX", "Deploy"],
+    stack: ["React", "TypeScript", "Tailwind CSS"],
+    live: "https://travel-buena-vista.vercel.app/",
+    objective: [
+      "Dar à agência um endereço próprio, fora do feed, onde a história de 2011 pra cá cabe inteira.",
+      "Transformar visita em orçamento pedido — por formulário ou WhatsApp, o que o cliente preferir.",
+    ],
+    challenge: [
+      "Agência de viagem compete com plataforma de passagem, que ganha no preço e na escala. O argumento da TBV é o oposto: atendimento de perto. Isso não aparece numa tabela de preço — precisa ser mostrado.",
+      "O catálogo é largo demais pra caber numa página: oito continentes, seis serviços, pacote, cruzeiro, aéreo e hospedagem. Sem hierarquia, vira lista.",
+    ],
+    solution: [
+      "A página abre pelo jeito de atender e só depois abre o leque: destinos em carrossel por continente, serviços numerados de 01 a 06, cada um explicando uma decisão real de viagem (estrutura, localização ou sossego? conexão barata na tela ou cara na viagem?).",
+      "Depoimentos de clientes reais, com nome e destino, posicionados depois da oferta — onde a dúvida \"será que funciona mesmo?\" aparece na leitura.",
+      "Fechamento em dois caminhos: formulário curto de orçamento com promessa de resposta no mesmo dia útil, e WhatsApp pra quem não quer preencher nada.",
+    ],
+    highlights: [
+      "8 continentes em carrossel navegável",
+      "6 serviços explicados por decisão, não por catálogo",
+      "Depoimentos reais com destino e avaliação",
+      "Orçamento por formulário ou WhatsApp",
+    ],
+    process: [
+      {
+        title: "O que a agência vende de verdade",
+        description:
+          "O diferencial não era preço nem destino: era o acompanhamento. A página foi construída em cima disso.",
+      },
+      {
+        title: "Hierarquia do catálogo",
+        description:
+          "Jeito de atender → destinos → serviços → prova → orçamento. Cada bloco preparando o próximo.",
+      },
+      {
+        title: "Construção e deploy",
+        description:
+          "Site responsivo, com carrossel de destinos e formulário de orçamento integrado.",
+      },
+    ],
+    // TODO: Kawan — quantos orçamentos o site trouxe? Esse número vale mais que os dois abaixo.
+    results: [
+      { value: "Desde 2011", label: "de estrada apresentados com prova" },
+      { value: "2 caminhos", label: "pro orçamento: formulário ou WhatsApp" },
+    ],
+  },
+  {
     slug: "ong-nova-historia",
     title: "ONG Nova História",
     client: "Associação Nova História",
@@ -454,65 +570,6 @@ export const projects: Project[] = [
     results: [
       { value: "PIX", label: "doação em poucos toques" },
       { value: "4 pilares", label: "da causa apresentados com clareza" },
-    ],
-  },
-  {
-    slug: "vg-facilities",
-    title: "VG Facilities",
-    client: "VG Prevenções · São Paulo, SP",
-    year: "2026",
-    category: "Site institucional",
-    summary:
-      "Site de uma empresa de facilities e segurança patrimonial: autoridade, portfólio de serviços e orçamento sem fricção.",
-    intro:
-      "A VG atua com manutenção predial, segurança patrimonial, limpeza, controle de acesso e gestão de facilities. O site precisava fazer o que um vendedor faz numa reunião: mostrar competência e sair com o orçamento marcado.",
-    logo: "/img/logos/vg.png",
-    mockup: "browser",
-    cover: "/img/cases/vg-facilities.webp",
-    tags: ["React", "Institucional", "Conversão"],
-    services: ["Site institucional", "Design UI/UX", "Deploy"],
-    stack: ["React", "TypeScript", "Tailwind CSS"],
-    live: "https://vg-facilities.vercel.app/",
-    objective: [
-      "Posicionar a VG como empresa séria diante de quem contrata facilities — síndicos, gestores prediais, lojistas — que decidem por confiança e comparação.",
-      "Fazer o site trabalhar como canal de captação: cada visita deve terminar num pedido de orçamento.",
-    ],
-    challenge: [
-      "Facilities é um mercado de licitação informal: o cliente pede orçamento pra três, quatro empresas e escolhe pela que parece mais preparada. Quem não tem presença digital não entra nem na lista.",
-      "E é um leque grande de serviços — manutenção, segurança, limpeza, portaria, paisagismo. Jogar tudo na cara do visitante confunde; esconder faz perder contrato.",
-    ],
-    solution: [
-      "Organizei o leque em blocos de serviço legíveis, cada um explicado no idioma de quem contrata: o que é, pra quem serve, o que resolve.",
-      "A prova vem em seguida — depoimentos, portfólio de clientes e um FAQ que mata as objeções que o vendedor ouviria na reunião (documentação, qualificação da equipe, abrangência).",
-      "E o orçamento fica sempre a um toque: WhatsApp e formulário disponíveis do topo ao rodapé.",
-    ],
-    highlights: [
-      "Serviços organizados em blocos escaneáveis",
-      "Depoimentos e portfólio como prova social",
-      "FAQ que antecipa as objeções da venda",
-      "WhatsApp e formulário de orçamento em toda a página",
-    ],
-    process: [
-      {
-        title: "Mapa dos serviços",
-        description:
-          "Separar oito frentes de atuação em blocos que o visitante consiga ler em segundos, sem se perder.",
-      },
-      {
-        title: "Argumento de autoridade",
-        description:
-          "Depoimentos, clientes e FAQ posicionados exatamente onde a dúvida aparece na leitura.",
-      },
-      {
-        title: "Construção e deploy",
-        description:
-          "Site responsivo, rápido e no ar, com os canais de contato integrados.",
-      },
-    ],
-    // TODO: Kawan — se souber quantos orçamentos o site trouxe, esse número vale mais que tudo aqui.
-    results: [
-      { value: "8 serviços", label: "organizados em blocos claros" },
-      { value: "WhatsApp", label: "orçamento a um toque, em toda a página" },
     ],
   },
   {
@@ -587,119 +644,62 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: "travel-buena-vista",
-    title: "Travel Buena Vista",
-    client: "Travel Buena Vista · São Paulo, SP",
+    slug: "vg-facilities",
+    title: "VG Facilities",
+    client: "VG Prevenções · São Paulo, SP",
     year: "2026",
-    category: "Site & Captação",
+    category: "Site institucional",
     summary:
-      "Agência de viagens desde 2011: o site conta o jeito de atender e termina em pedido de orçamento.",
+      "Site de uma empresa de facilities e segurança patrimonial: autoridade, portfólio de serviços e orçamento sem fricção.",
     intro:
-      "A Travel Buena Vista monta roteiro sob medida e acompanha o cliente antes, durante e depois da viagem — tem quem viaje com eles pelo terceiro ano seguido. O site precisava vender exatamente isso: não o pacote mais barato, mas a pessoa do outro lado.",
+      "A VG atua com manutenção predial, segurança patrimonial, limpeza, controle de acesso e gestão de facilities. O site precisava fazer o que um vendedor faz numa reunião: mostrar competência e sair com o orçamento marcado.",
+    logo: "/img/logos/vg.png",
     mockup: "browser",
-    cover: "/img/cases/travel-buena-vista.webp",
+    cover: "/img/cases/vg-facilities.webp",
     tags: ["React", "Institucional", "Conversão"],
     services: ["Site institucional", "Design UI/UX", "Deploy"],
     stack: ["React", "TypeScript", "Tailwind CSS"],
-    live: "https://travel-buena-vista.vercel.app/",
+    live: "https://vg-facilities.vercel.app/",
     objective: [
-      "Dar à agência um endereço próprio, fora do feed, onde a história de 2011 pra cá cabe inteira.",
-      "Transformar visita em orçamento pedido — por formulário ou WhatsApp, o que o cliente preferir.",
+      "Posicionar a VG como empresa séria diante de quem contrata facilities — síndicos, gestores prediais, lojistas — que decidem por confiança e comparação.",
+      "Fazer o site trabalhar como canal de captação: cada visita deve terminar num pedido de orçamento.",
     ],
     challenge: [
-      "Agência de viagem compete com plataforma de passagem, que ganha no preço e na escala. O argumento da TBV é o oposto: atendimento de perto. Isso não aparece numa tabela de preço — precisa ser mostrado.",
-      "O catálogo é largo demais pra caber numa página: oito continentes, seis serviços, pacote, cruzeiro, aéreo e hospedagem. Sem hierarquia, vira lista.",
+      "Facilities é um mercado de licitação informal: o cliente pede orçamento pra três, quatro empresas e escolhe pela que parece mais preparada. Quem não tem presença digital não entra nem na lista.",
+      "E é um leque grande de serviços — manutenção, segurança, limpeza, portaria, paisagismo. Jogar tudo na cara do visitante confunde; esconder faz perder contrato.",
     ],
     solution: [
-      "A página abre pelo jeito de atender e só depois abre o leque: destinos em carrossel por continente, serviços numerados de 01 a 06, cada um explicando uma decisão real de viagem (estrutura, localização ou sossego? conexão barata na tela ou cara na viagem?).",
-      "Depoimentos de clientes reais, com nome e destino, posicionados depois da oferta — onde a dúvida \"será que funciona mesmo?\" aparece na leitura.",
-      "Fechamento em dois caminhos: formulário curto de orçamento com promessa de resposta no mesmo dia útil, e WhatsApp pra quem não quer preencher nada.",
+      "Organizei o leque em blocos de serviço legíveis, cada um explicado no idioma de quem contrata: o que é, pra quem serve, o que resolve.",
+      "A prova vem em seguida — depoimentos, portfólio de clientes e um FAQ que mata as objeções que o vendedor ouviria na reunião (documentação, qualificação da equipe, abrangência).",
+      "E o orçamento fica sempre a um toque: WhatsApp e formulário disponíveis do topo ao rodapé.",
     ],
     highlights: [
-      "8 continentes em carrossel navegável",
-      "6 serviços explicados por decisão, não por catálogo",
-      "Depoimentos reais com destino e avaliação",
-      "Orçamento por formulário ou WhatsApp",
+      "Serviços organizados em blocos escaneáveis",
+      "Depoimentos e portfólio como prova social",
+      "FAQ que antecipa as objeções da venda",
+      "WhatsApp e formulário de orçamento em toda a página",
     ],
     process: [
       {
-        title: "O que a agência vende de verdade",
+        title: "Mapa dos serviços",
         description:
-          "O diferencial não era preço nem destino: era o acompanhamento. A página foi construída em cima disso.",
+          "Separar oito frentes de atuação em blocos que o visitante consiga ler em segundos, sem se perder.",
       },
       {
-        title: "Hierarquia do catálogo",
+        title: "Argumento de autoridade",
         description:
-          "Jeito de atender → destinos → serviços → prova → orçamento. Cada bloco preparando o próximo.",
+          "Depoimentos, clientes e FAQ posicionados exatamente onde a dúvida aparece na leitura.",
       },
       {
         title: "Construção e deploy",
         description:
-          "Site responsivo, com carrossel de destinos e formulário de orçamento integrado.",
+          "Site responsivo, rápido e no ar, com os canais de contato integrados.",
       },
     ],
-    // TODO: Kawan — quantos orçamentos o site trouxe? Esse número vale mais que os dois abaixo.
+    // TODO: Kawan — se souber quantos orçamentos o site trouxe, esse número vale mais que tudo aqui.
     results: [
-      { value: "Desde 2011", label: "de estrada apresentados com prova" },
-      { value: "2 caminhos", label: "pro orçamento: formulário ou WhatsApp" },
-    ],
-  },
-  {
-    slug: "barbearia-imperador",
-    title: "Barbearia Imperador",
-    client: "Barbearia Imperador · Mooca, São Paulo",
-    year: "2026",
-    category: "Site & Agendamento",
-    summary:
-      "24 serviços com preço e duração na tela, 4 planos de assinatura e agendamento a um toque.",
-    intro:
-      "A Imperador é barbearia clássica no coração da Mooca. A tabela de preço vivia no papel e no boca a boca, e os planos mensais — a parte que gera receita recorrente — não tinham onde ser explicados. O site resolveu as duas coisas na mesma página.",
-    logo: "/img/logos/barbearia-imperador.webp",
-    mockup: "browser",
-    cover: "/img/cases/barbearia-imperador.webp",
-    tags: ["React", "Serviços", "Assinatura"],
-    services: ["Site institucional", "Design UI/UX", "Deploy"],
-    stack: ["React", "TypeScript", "Tailwind CSS"],
-    live: "https://barbearia-imperador-mooca.vercel.app/",
-    objective: [
-      "Colocar preço e duração de cada serviço na tela — a pergunta que mais chega antes de qualquer agendamento.",
-      "Dar aos planos mensais uma vitrine própria: é o produto que troca corte avulso por receita recorrente.",
-    ],
-    challenge: [
-      "24 serviços numa página viram um paredão de texto. Quem quer só a barba não deveria rolar por corte, luzes e limpeza de pele até achar.",
-      "Quatro planos com regras parecidas (ilimitado, mas de seg a qui, mediante agendamento) confundem se forem só uma tabela — e plano mal explicado não é assinado.",
-    ],
-    solution: [
-      "Serviços com filtro por categoria — Cabelo, Barba, Estética, Combos — cada aba com o contador do que tem dentro, e cada card mostrando duração e preço antes do botão de agendar.",
-      "Planos como blocos comparáveis, do mais simples ao completo, com o recomendado marcado e as regras (dias de atendimento, validade de 30 dias) escritas onde a dúvida nasce, não no rodapé.",
-      "O clássico como identidade visual: paleta escura, tipografia forte e a Mooca como endereço afirmado — quem procura barbearia procura a mais perto, e o bairro é argumento.",
-    ],
-    highlights: [
-      "24 serviços filtráveis por categoria, com preço e tempo",
-      "4 planos mensais + adicional Premium comparáveis lado a lado",
-      "Agendamento a um toque em cada serviço",
-      "Galeria do espaço e endereço em destaque",
-    ],
-    process: [
-      {
-        title: "Tabela antes de discurso",
-        description:
-          "A pergunta real de quem chega é preço e horário. O site responde isso antes de contar a história da casa.",
-      },
-      {
-        title: "Plano como produto",
-        description:
-          "Os quatro planos ganharam bloco próprio, ordem de leitura e regras explícitas — pra serem assinados, não interpretados.",
-      },
-      {
-        title: "Construção e deploy",
-        description:
-          "Site responsivo, com filtro de serviços e agendamento ligado em cada card.",
-      },
-    ],
-    results: [
-      { value: "24 serviços", label: "com preço e duração na tela" },
-      { value: "4 planos", label: "de assinatura com regra clara" },
+      { value: "8 serviços", label: "organizados em blocos claros" },
+      { value: "WhatsApp", label: "orçamento a um toque, em toda a página" },
     ],
   },
   // Os projetos entregues via consultoria (contrato PJ) NÃO entram aqui.

@@ -21,12 +21,17 @@ Transformo problemas reais de negócio em software que fica no ar: sites que con
 
 ### Este repositório
 
-O site da VYSO. Duas gerações convivem aqui:
+O site da VYSO. **A versão oficial é a `v2/`** — é ela que está no ar e é nela
+que as mudanças acontecem.
 
 ```
-v2/   ← site atual (React + TypeScript + Vite + Tailwind) — é o que vai pro ar
+v2/   ← SITE OFICIAL (React + TypeScript + Vite + Tailwind) — é o que vai pro ar
 v1/   ← primeira versão (HTML/CSS/JS puro), arquivada
 ```
+
+Houve uma `v3/` — proposta de outra direção visual e de texto, feita em
+11/08/2026 e descartada porque o Kawan não curtiu. Nunca foi publicada e foi
+apagada em 15/08/2026. Se alguém falar dela, é isso: não existe mais.
 
 O deploy serve o `v2/`. Pra rodar local:
 

@@ -1,6 +1,13 @@
 # VYSO — Site V2 · Status & Histórico
 
-> Onde paramos e tudo que já foi feito. Atualizado em 2026-08-10.
+> Onde paramos e tudo que já foi feito. Atualizado em 2026-08-15.
+
+> ✅ **Esta V2 é o site oficial da VYSO** — é ela que está no ar em vyso.store e
+> é aqui que as mudanças acontecem. Não existe versão paralela.
+>
+> Houve uma `v3/` na raiz — experimento de redesign (outra paleta, outro texto,
+> outra apresentação dos projetos) feito em 11/08/2026 e **descartado, o Kawan
+> não curtiu.** Nunca foi publicada e foi apagada em 15/08/2026.
 
 ---
 
@@ -8,7 +15,8 @@
 
 - Site **V2 da VYSO** funcionando de ponta a ponta, buildando limpo (`npm run build` ✓, `typecheck` ✓).
 - Branch `main` **publicada** (`git push` em dia) — o que está commitado está no ar.
-- Última coisa feita: **grid de projetos parou de estourar a tela no celular** — faltava `grid-cols-1` na base, e a coluna implícita `auto` crescia até o min-content do card (o print mandava no tamanho), deixando a página arrastável pro lado. Detalhe em *Armadilhas conhecidas*.
+- Última coisa feita: **nova ordem dos projetos** — Barbearia Imperador e Travel Buena Vista subiram pro topo (posições 3 e 4), VG Facilities foi pro fim da lista. A ordem sai direto do array `projects` em `src/data/content.ts`; a dupla AL Modular + AL Esquadrias segue na frente porque a AL Modular é `featured` (ocupa 2 colunas do grid).
+- Antes disso: **grid de projetos parou de estourar a tela no celular** — faltava `grid-cols-1` na base, e a coluna implícita `auto` crescia até o min-content do card (o print mandava no tamanho), deixando a página arrastável pro lado. Detalhe em *Armadilhas conhecidas*.
 - Antes disso: capas do **painel da AL** e do **app da AL Esquadrias**, celular no card da home no tamanho certo, e **um card por cliente em qualquer filtro** na home.
 - **Próximo passo sugerido:** logo da Travel Buena Vista e os números reais de resultado (ver pendências no fim).
 
