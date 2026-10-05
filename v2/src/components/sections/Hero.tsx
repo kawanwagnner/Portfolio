@@ -46,7 +46,7 @@ export function Hero() {
     <section id="hero" className="relative overflow-hidden bg-background pb-16 pt-24 md:pb-24 md:pt-36">
       <div aria-hidden className="ember-glow absolute -right-40 top-10 -z-0 h-[36rem] w-[36rem]" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
         {/* ── Texto ─────────────────────────────────────────── */}
         <div className="flex flex-col items-start gap-6">
           <motion.div
@@ -60,9 +60,9 @@ export function Hero() {
               alt={founder.name}
               width={36}
               height={36}
-              className="h-9 w-9 rounded-full object-cover"
+              className="h-8 w-8 rounded-full object-cover sm:h-9 sm:w-9"
             />
-            <span className="text-sm leading-tight">
+            <span className="whitespace-nowrap text-[13px] leading-tight sm:text-sm">
               <span className="font-semibold text-foreground">{founder.name}</span>
               <span className="text-muted-foreground"> · fundador da VYSO</span>
             </span>
@@ -92,7 +92,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.18, ease }}
-            className="flex flex-col gap-2"
+            className="hidden flex-col gap-2 sm:flex"
           >
             {OFFER.map((item) => (
               <li key={item} className="flex items-center gap-2.5 whitespace-nowrap text-[0.95rem] text-foreground/85">
@@ -112,7 +112,7 @@ export function Hero() {
               href={socials.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="btn-ember group inline-flex justify-center items-center gap-2 rounded-full px-7 py-3.5 text-[0.95rem] font-semibold"
+              className="btn-ember group inline-flex justify-center items-center gap-2 rounded-full px-7 py-3.5 text-[0.95rem] font-semibold whitespace-nowrap max-[359px]:px-4 max-[359px]:text-[0.85rem]"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Pedir orçamento no WhatsApp
@@ -130,24 +130,26 @@ export function Hero() {
         </div>
 
         {/* ── Prova: prints reais, cada um abre o case ─────────── */}
-        {/* order-first: no celular a prova vem antes do texto, que é a ordem de
-            leitura (vê o trabalho, depois lê quem fez). No lg volta pra direita. */}
+        {/* No celular a prova vem DEPOIS do texto: a primeira tela precisa ter
+            quem é, o que faz e o botão do WhatsApp sem rolar (print em cima
+            empurrava tudo pra baixo e ficava colado no menu). Logo abaixo, os
+            três prints em leque. No lg a colagem volta pra direita. */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease }}
-          className="relative order-first mx-auto w-full max-w-xl lg:order-none lg:max-w-none"
+          className="relative mx-auto w-full max-w-xl lg:max-w-none"
         >
-          <div className="relative sm:aspect-[5/4]">
+          <div className="relative h-[13.5rem] min-[400px]:h-[15rem] sm:h-auto sm:aspect-[5/4]">
             {showcase.map((p, i) => {
               const lead = getCaseParts(p)[0]
               // trás pra frente: o primeiro do SHOWCASE fica por cima
-              // No celular só o primeiro, grande: três prints em 340px viravam
-              // um amontoado com etiqueta cortada. A colagem é do sm pra cima.
+              // Celular: leque, a loja no centro e as outras duas inclinadas atrás,
+              // só a do centro com etiqueta. sm pra cima: a colagem de sempre.
               const layer = [
-                'relative block w-full sm:absolute sm:left-0 sm:top-[18%] sm:z-30 sm:w-[78%]',
-                'hidden sm:block absolute right-0 top-0 z-20 w-[62%] opacity-95',
-                'hidden sm:block absolute right-[4%] bottom-0 z-10 w-[56%] opacity-90',
+                'absolute left-1/2 top-3 z-30 w-[70%] -translate-x-1/2 sm:left-0 sm:top-[18%] sm:w-[78%] sm:translate-x-0',
+                'absolute left-0 top-9 z-20 w-[52%] -rotate-6 opacity-90 sm:left-auto sm:right-0 sm:top-0 sm:w-[62%] sm:rotate-0 sm:opacity-95',
+                'absolute right-0 top-9 z-10 w-[52%] rotate-6 opacity-90 sm:right-[4%] sm:top-auto sm:bottom-0 sm:w-[56%] sm:rotate-0',
               ][i]
               return (
                 <Link
@@ -167,7 +169,7 @@ export function Hero() {
                       priority={i === 0}
                     />
                   </div>
-                  <span className="absolute -bottom-3 left-4 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-sm transition-colors group-hover:border-accent/50 group-hover:text-accent">
+                  <span className={`${i > 0 ? 'hidden sm:block' : ''} absolute -bottom-3 left-4 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-sm transition-colors group-hover:border-accent/50 group-hover:text-accent`}>
                     {p.title}
                   </span>
                 </Link>

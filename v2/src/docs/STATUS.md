@@ -288,3 +288,6 @@ node scripts/preview-shot.mjs produtos 1440 1900          # confere uma seção 
 - **Depoimentos só com o print/vídeo**, sem legenda embaixo (texto fica no `alt`). Passos do "Indicou, ganhou" com linha de progresso animada (horizontal no computador, vertical no celular).
 - Selo do cartão da foto do Founder usa a logo do menu, sem fundo. Números da seção Sobre: 15+ projetos, 4+ anos codando, 4,5k seguidores no Instagram (@vyso.store tinha 4.538 em 05/10/2026). O botão do Instagram no Founder mostra o número também.
 - `og-image.jpg` refeita com o herói novo em tema claro.
+
+- **Hero no celular** (05/10/2026, tarde): texto primeiro (chip, título, parágrafo, botões em largura total) e os três prints em leque logo abaixo, a loja no centro e as outras inclinadas atrás. A lista de benefícios aparece só do `sm` pra cima (no celular ela já está na primeira pergunta do FAQ). Botão do WhatsApp sem quebra de linha até 320px.
+- **Cards de projeto**: área da imagem com altura fixa (`h-[25.5rem]`) em todo card, desktop e carrossel; o mockup de celular fica no tamanho original (`max-w-[11rem]`). Não diminua o celular pra igualar altura: o Kawan quer o modelo como era.

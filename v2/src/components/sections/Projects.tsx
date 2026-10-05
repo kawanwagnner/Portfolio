@@ -62,7 +62,11 @@ export function ProjectCard({
           texto. Aparelho 9:19 é quase o dobro da altura de um browser 16:10: o
           celular fica menor que na página do case pra não estourar a linha, mas
           aparece inteiro. */}
-      <div className={cn('relative flex items-center overflow-hidden px-6 pb-2 pt-12', compacto ? 'h-64 flex-none sm:h-auto sm:flex-1' : 'flex-1')}>
+      {/* Área da imagem com altura FIXA em todo card: a do celular no tamanho
+          original (11rem) define a medida, e os prints de navegador ficam centrados
+          nela. Assim o card do app não sai mais alto que os outros e o modelo do
+          aparelho não muda. */}
+      <div className="relative flex h-[25.5rem] flex-none items-center overflow-hidden px-6 pb-2 pt-12">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -78,10 +82,7 @@ export function ProjectCard({
             url={live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
             fallbackLabel={project.client}
             fallbackLogo={project.logo}
-            // Celular 9:19 com 6.75rem de largura dá a mesma altura do browser 16:10 do
-            // card ao lado (~230px). Com 11rem ele ficava 120px mais alto e esticava a
-            // linha inteira da grade.
-            className={cn('mx-auto', mockup === 'phone' && 'max-w-[6.5rem] sm:max-w-[6.75rem]')}
+            className={cn('mx-auto', mockup === 'phone' && 'max-w-[11rem]')}
           />
         </div>
       </div>
@@ -256,7 +257,7 @@ export function ProjectGroups({
         className={cn(
           'mx-auto w-full gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3',
           carrosselNoCelular
-            ? 'no-scrollbar -mx-6 flex w-auto items-start sm:items-stretch snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-2 sm:mx-auto sm:w-full sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0'
+            ? 'no-scrollbar -mx-6 flex w-auto snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-2 sm:mx-auto sm:w-full sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0'
             : 'grid grid-cols-1'
         )}
         role="tabpanel"
