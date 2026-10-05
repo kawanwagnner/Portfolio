@@ -2,8 +2,11 @@ import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
 import { ProjectGroups } from '@/components/sections/Projects'
+import { PROJECTS_DESCRIPTION, PROJECTS_TITLE, useSeo } from '@/lib/seo'
 
 export default function ProjectsIndex() {
+  useSeo({ title: PROJECTS_TITLE, description: PROJECTS_DESCRIPTION, path: '/projetos' })
+
   return (
     <section className="mx-auto max-w-6xl px-6 pb-28 pt-32 md:pt-40">
       <div className="flex flex-col gap-5">

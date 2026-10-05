@@ -1,21 +1,75 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="VYSO — marca especializada em criar soluções digitais, automatizar processos e entregar valor. Tecnologia com propósito, do problema ao resultado."
-    />
-    <meta name="author" content="VYSO" />
+    <!--
+      Metas padrão (home). O build reescreve título, descrição, canonical e
+      Open Graph em cada rota (plugin seoPages no vite.config.ts), porque quem
+      gera prévia de link (WhatsApp, Instagram, LinkedIn) não roda JavaScript.
+      Fonte única dos textos: src/lib/seo-pages.ts.
+    -->
+    <title>VYSO | Sites, lojas virtuais e sistemas sob medida</title>
+    <meta name="description" content="A VYSO cria sites, lojas virtuais, apps e sistemas sob medida para pequenos e médios negócios. Você fala direto com quem constrói, sem agência e sem intermediário. Projetos reais, do problema ao resultado." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Kawan Wagnner" />
+    <meta name="theme-color" content="#0b0b12" />
+    <link rel="canonical" href="https://vyso.store/" />
 
-    <!-- Open Graph -->
+    <!-- Open Graph / prévia de link -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="VYSO — Tecnologia com propósito" />
-    <meta
-      property="og:description"
-      content="Soluções digitais, automação de processos e entrega que impulsiona negócios. Do problema ao resultado."
-    />
+    <meta property="og:site_name" content="VYSO" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://vyso.store/" />
+    <meta property="og:title" content="VYSO | Sites, lojas virtuais e sistemas sob medida" />
+    <meta property="og:description" content="A VYSO cria sites, lojas virtuais, apps e sistemas sob medida para pequenos e médios negócios. Você fala direto com quem constrói, sem agência e sem intermediário. Projetos reais, do problema ao resultado." />
+    <meta property="og:image" content="https://vyso.store/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="VYSO: sites, lojas virtuais e sistemas sob medida" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="VYSO | Sites, lojas virtuais e sistemas sob medida" />
+    <meta name="twitter:description" content="A VYSO cria sites, lojas virtuais, apps e sistemas sob medida para pequenos e médios negócios. Você fala direto com quem constrói, sem agência e sem intermediário. Projetos reais, do problema ao resultado." />
+    <meta name="twitter:image" content="https://vyso.store/og-image.jpg" />
+
+    <!-- Quem é a VYSO, pro Google montar o painel da marca -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://vyso.store/#org",
+            "name": "VYSO",
+            "url": "https://vyso.store/",
+            "logo": "https://vyso.store/logo.svg",
+            "image": "https://vyso.store/og-image.jpg",
+            "description": "Sites, lojas virtuais, apps e sistemas sob medida para pequenos e médios negócios.",
+            "telephone": "+55 11 98922-0824",
+            "areaServed": "BR",
+            "address": { "@type": "PostalAddress", "addressLocality": "São Paulo", "addressRegion": "SP", "addressCountry": "BR" },
+            "founder": { "@id": "https://vyso.store/#kawan" },
+            "sameAs": ["https://www.instagram.com/vyso.store/", "https://github.com/kawanwagnner"]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://vyso.store/#kawan",
+            "name": "Kawan Wagnner",
+            "jobTitle": "Founder & Software Engineer",
+            "worksFor": { "@id": "https://vyso.store/#org" },
+            "url": "https://vyso.store/#founder"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://vyso.store/#site",
+            "url": "https://vyso.store/",
+            "name": "VYSO",
+            "inLanguage": "pt-BR",
+            "publisher": { "@id": "https://vyso.store/#org" }
+          }
+        ]
+      }
+    </script>
 
     <!-- Fonte oficial da marca: Satoshi (Fontshare) -->
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
@@ -30,7 +84,6 @@
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-16 -16 297 321'><path fill='%236366F1' d='M0 0L75 2L171 211L138 289Z M192 0L265 2L187 174L151 97Z'/></svg>"
     />
 
-    <title>VYSO — Tecnologia com propósito</title>
   </head>
   <body>
     <div id="root"></div>

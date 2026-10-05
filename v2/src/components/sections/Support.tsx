@@ -129,7 +129,7 @@ function PlanCard({ plan, index }: { plan: SupportPlan; index: number }) {
               rel="noreferrer"
               className="mt-3.5 block text-center font-mono-tag text-[0.7rem] uppercase tracking-widest text-muted-foreground underline-offset-4 transition-colors hover:text-accent hover:underline"
             >
-              Já sou cliente — assinar direto
+              Já sou cliente? Assine direto
             </a>
           )}
         </div>

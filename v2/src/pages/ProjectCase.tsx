@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, Navigate, useParams, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowUpRight, Github } from 'lucide-react'
+import { ArrowLeft, ArrowUpRight, Github, Globe } from 'lucide-react'
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { Mockup } from '@/components/shared/Mockup'
@@ -9,6 +9,7 @@ import { ClientLogo } from '@/components/shared/ClientLogo'
 import { ProjectCard } from '@/components/sections/Projects'
 import { getProject, getCaseParts, projects, contact } from '@/data/content'
 import { cn } from '@/lib/utils'
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, projectSeo, useSeo } from '@/lib/seo'
 
 function Meta({ label, value }: { label: string; value: string }) {
   return (
@@ -45,6 +46,8 @@ export default function ProjectCase() {
   const [search, setSearch] = useSearchParams()
   const project = getProject(slug)
   const [activePart, setActivePart] = useState(0)
+  // antes do return antecipado: hook não pode ficar condicional
+  useSeo(project ? projectSeo(project) : { title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION, path: '/projetos' })
 
   // Abre na aba pedida pela URL (?sistema=loja) — é assim que o card de um
   // sistema específico, vindo do filtro Mobile/Desktop, cai no lugar certo.
@@ -140,7 +143,17 @@ export default function ProjectCase() {
           <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground">{part.intro}</p>
 
           <div className="flex flex-wrap items-center gap-3">
-            {part.live && (
+            {part.live && part.liveLocked ? (
+              /* Endereço só em texto, de propósito: ver `liveLocked` no content.ts.
+                 select-all deixa copiar com um clique, que é o esforço pedido. */
+              <span
+                title="Endereço do projeto"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 font-mono-tag text-sm text-muted-foreground select-all"
+              >
+                <Globe className="h-4 w-4 shrink-0" />
+                {liveLabel}
+              </span>
+            ) : part.live ? (
               <a
                 href={part.live}
                 target="_blank"
@@ -149,7 +162,7 @@ export default function ProjectCase() {
               >
                 Ver no ar <ArrowUpRight className="h-4 w-4" />
               </a>
-            )}
+            ) : null}
             {part.repo && (
               <a
                 href={part.repo}
@@ -187,7 +200,7 @@ export default function ProjectCase() {
             <Mockup
               variant={part.mockup ?? 'browser'}
               src={part.cover}
-              alt={`${part.title} — visão geral`}
+              alt={`${part.title}: visão geral`}
               url={liveLabel}
               fallbackLabel={project.client}
               fallbackLogo={project.logo}
@@ -289,7 +302,7 @@ export default function ProjectCase() {
                   <Mockup
                     variant={part.mockup ?? 'browser'}
                     src={img}
-                    alt={`${part.title} — tela ${i + 1}`}
+                    alt={`${part.title}, tela ${i + 1}`}
                     url={liveLabel}
                   />
                 </Reveal>

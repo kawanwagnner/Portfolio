@@ -76,7 +76,8 @@ Tudo editável em: **`src/data/content.ts`** (textos, projetos, serviços, links
 2. **Hero** — flow field de partículas que formam **V → Y → S → O** em loop, com zoom in/out. Headline "Sites, apps e sistemas que trabalham por você." CTA forte = WhatsApp; "Ver projetos" é o secundário.
 3. **Marquee** — ticker inclinado (-3°), pausa fora da tela.
 4. **Projects** (`01 — Projetos`) — grid com filtro Todos/Desktop/Mobile e hover CSS (lift + glow). Abre em "Todos". **Na home é sempre um card por cliente** (`<ProjectGroups fatiar={false} />`): a AL Modular tem loja + painel, e fatiar em dois cards lia como projeto repetido. Em `/projetos`, que é o catálogo inteiro, os filtros de plataforma continuam mostrando um card por sistema.
-5. **Products** (`02 — Produtos`) — vitrine do produto próprio da VYSO (hoje só o Catálogo): promessa + mockup, "por que vale", nichos e planos. Layout de destaque único; entrou um segundo produto, o `products.map` já vira grid.
+5. **Products** (`02 — Produtos`) — vitrine do produto próprio da VYSO (hoje só a **loja vyso.com.br**; o VYSO Catálogo saiu do ar em 05/10/2026 e foi removido daqui e do Railway): promessa + mockup, "por que vale" e chips do que tem na loja. `plans` é opcional e só existe pra produto de assinatura; sem ele o grid de preços some e os chips ocupam a linha. Layout de destaque único; entrou um segundo produto, o `products.map` já vira grid. A loja também é o **primeiro case** da lista de projetos (`vyso-loja`).
+   - **Link "Ver no ar" travado**: `liveLocked: true` numa parte do case mostra o endereço só em texto (pill com ícone de globo, `select-all`), sem botão nem link. Usado na loja da AL Modular, que está no ar sem produto cadastrado: clique levaria a uma vitrine vazia, que lê como erro. O card e o mockup continuam mostrando a URL na barra, como sempre.
 6. **Services** (`03 — Serviços`) — lista editorial com hover deslizante.
 7. **Support** (`04 — Suporte`) — planos de manutenção em carrossel, com Payment Link do Stripe.
 8. **About** (`05 — A VYSO`) — manifesto tipográfico "Antes do código, existe o negócio." + stats + skills.
@@ -247,3 +248,13 @@ node scripts/preview-shot.mjs produtos 1440 1900          # confere uma seção 
 
 - Instagram de divulgação: https://www.instagram.com/vyso.store/
 - Brand board oficial da VYSO (índigo + Satoshi) — base do visual atual.
+
+## 05/10/2026: SEO, título por seção, navbar e WhatsApp
+
+- **Sem travessão nem hífen de ligação no texto do site.** Regra do Kawan ("é muito cara de IA"). Kickers viraram `01 / Projetos`. Vale pra todo texto novo, inclusive título de aba e meta.
+- **SEO em `src/lib/seo-pages.ts`** (dados, sem React) e `src/lib/seo.ts` (hooks). Cada página chama `useSeo()`; a home ainda chama `useSectionTitle()`, que troca só o `document.title` conforme a seção no meio da tela (`SECTION_TITLES`).
+- **HTML por rota no build**: o plugin `seoPages` do `vite.config.ts` grava `dist/<rota>/index.html` com título, descrição, canonical e Open Graph próprios, mais `sitemap.xml` e `robots.txt`. Motivo: WhatsApp, Instagram e LinkedIn não rodam JS. Case novo entra no sitemap sozinho.
+- `index.html` tem JSON-LD (ProfessionalService + Person + WebSite). `public/og-image.jpg` é o herói em 1200×630, sem navbar e sem o botão flutuante (script em `.shots/check.mjs`, que é gitignored; refazer se o herói mudar).
+- **Navbar** some ao rolar pra baixo e volta ao rolar pra cima (limiar de 8px, sempre visível nos primeiros 80px, travada com o menu do celular aberto).
+- **WhatsApp flutuante** sempre na tela, em qualquer largura, verde oficial. Antes era só celular e só depois do herói.
+- Pendente: **Search Console** (verificar vyso.store e mandar o sitemap) e trocar a foto do Founder pela nova que o Kawan mandou no chat (o arquivo não chegou ao disco).

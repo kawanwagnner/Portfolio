@@ -8,12 +8,28 @@ import { cn } from '@/lib/utils'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [hidden, setHidden] = useState(false)
   const [open, setOpen] = useState(false)
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
+  /**
+   * Rolou pra baixo, a barra sai do caminho; rolou pra cima, ela volta.
+   * Quem desce está lendo e quer a tela inteira; quem sobe está procurando
+   * outra seção, e é aí que o menu ajuda. O limiar de 8px ignora o tremor do
+   * trackpad, e perto do topo ela fica sempre visível. O WhatsApp não depende
+   * disso: o botão flutuante segue fixo o tempo todo.
+   */
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    let lastY = window.scrollY
+    const onScroll = () => {
+      const y = window.scrollY
+      setScrolled(y > 24)
+      if (y < 80) setHidden(false)
+      else if (y > lastY + 8) setHidden(true)
+      else if (y < lastY - 8) setHidden(false)
+      if (Math.abs(y - lastY) > 8) lastY = y
+    }
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -32,8 +48,9 @@ export function Navbar() {
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      // menu do celular aberto segura a barra na tela
+      animate={hidden && !open ? { y: '-110%', opacity: 1 } : { y: 0, opacity: 1 }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         'fixed inset-x-0 top-0 z-[100] transition-all duration-300',
         scrolled ? 'py-3' : 'py-5'

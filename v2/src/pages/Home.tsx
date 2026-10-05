@@ -7,6 +7,10 @@ import { Products } from '@/components/sections/Products'
 import { Services } from '@/components/sections/Services'
 import { Support } from '@/components/sections/Support'
 import { Contact } from '@/components/sections/Contact'
+import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, useSectionTitle, useSeo } from '@/lib/seo'
+
+/** Fora do componente: o hook observa de novo se a referência mudar. */
+const SECTION_IDS = ['hero', 'projetos', 'produtos', 'servicos', 'suporte', 'sobre', 'founder', 'contato']
 
 /**
  * Ordem de venda: prova antes de discurso.
@@ -25,6 +29,9 @@ import { Contact } from '@/components/sections/Contact'
  * em `data/content.ts` (e o de Serviços, que é literal no próprio componente).
  */
 export default function Home() {
+  useSeo({ title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION, path: '/' })
+  useSectionTitle(SECTION_IDS)
+
   return (
     <>
       <Hero />

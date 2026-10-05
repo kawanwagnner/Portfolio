@@ -100,7 +100,7 @@ function ProductBlock({ product }: { product: Product }) {
             variant="browser"
             src={product.cover}
             alt={`Tela do ${product.name}`}
-            url="vyso.app"
+            url={product.mockupUrl}
             fallbackLabel={product.name}
           />
         </Reveal>
@@ -119,12 +119,18 @@ function ProductBlock({ product }: { product: Product }) {
       </div>
 
       {/* planos + pra quem serve */}
-      {/* items-start: a coluna dos nichos é curta, centralizar deixava ela boiando */}
-      <div className="grid gap-8 lg:grid-cols-[1fr_1.15fr] lg:items-start">
+      {/* items-start: a coluna dos chips é curta, centralizar deixava ela boiando.
+          Sem planos (loja, não assinatura) os chips ocupam a linha inteira. */}
+      <div
+        className={cn(
+          'grid gap-8 lg:items-start',
+          product.plans?.length && 'lg:grid-cols-[1fr_1.15fr]'
+        )}
+      >
         <Reveal>
           <div className="flex flex-col gap-4">
             <span className="font-mono-tag text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              Feito pra quem vende pelo WhatsApp
+              {product.audienceLabel}
             </span>
             <div className="flex flex-wrap gap-2">
               {product.audience.map((a) => (
@@ -139,22 +145,26 @@ function ProductBlock({ product }: { product: Product }) {
           </div>
         </Reveal>
 
-        <Reveal delay={0.08}>
-          <div className="grid gap-5 sm:grid-cols-2">
-            {product.plans.map((p) => (
-              <PlanCard key={p.name} plan={p} />
-            ))}
-          </div>
-        </Reveal>
+        {product.plans?.length ? (
+          <Reveal delay={0.08}>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {product.plans.map((p) => (
+                <PlanCard key={p.name} plan={p} />
+              ))}
+            </div>
+          </Reveal>
+        ) : null}
       </div>
     </div>
   )
 }
 
 /**
- * Vitrine do produto próprio da VYSO. Hoje é um só (o Catálogo), então o layout
- * é de destaque único — promessa grande, mockup ao lado, planos embaixo. Entrou
- * um segundo produto? Vira grid: o `products.map` já está aqui.
+ * Vitrine do produto próprio da VYSO. Hoje é um só (a loja vyso.com.br), então
+ * o layout é de destaque único — promessa grande, mockup ao lado, o que tem na
+ * loja embaixo. Produto de assinatura traz `plans` e ganha o grid de preços ao
+ * lado dos chips. Entrou um segundo produto? Vira grid: o `products.map` já
+ * está aqui.
  */
 export function Products() {
   return (

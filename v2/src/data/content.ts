@@ -19,7 +19,7 @@ export const hero = {
   // dois segundos se veio ao lugar certo.
   headlineLines: ["Sites, apps e", "sistemas que", "*trabalham* por você."],
   subtitle:
-    "Do site institucional à loja completa e ao sistema que roda seu processo por dentro. Você fala direto com quem constrói — sem agência e sem intermediário.",
+    "Do site institucional à loja completa e ao sistema que roda seu processo por dentro. Você fala direto com quem constrói, sem agência e sem intermediário.",
   // O CTA forte do herói é a conversa (`whatsapp.cta`). "Ver projetos" fica
   // como caminho secundário — a seção de projetos é a próxima, logo abaixo.
   primaryCta: "Ver projetos",
@@ -39,11 +39,11 @@ export const marquee = [
 ];
 
 export const about = {
-  kicker: "05 — A VYSO",
+  kicker: "05 / A VYSO",
   // A palavra entre *asteriscos* recebe o acento.
   heading: "Antes do código, existe o *negócio*.",
   paragraphs: [
-    "A VYSO transforma problemas reais em soluções digitais que impulsionam negócios. Criamos, automatizamos processos e entregamos valor — sem burocracia e sem intermediário: você fala direto com quem constrói.",
+    "A VYSO transforma problemas reais em soluções digitais que impulsionam negócios. Criamos, automatizamos processos e entregamos valor, sem burocracia e sem intermediário. Você fala direto com quem constrói.",
     "Tecnologia com propósito e design com intenção. Do entendimento do problema ao resultado no ar, cada etapa foca em resolver e gerar crescimento.",
   ],
   stats: [
@@ -54,12 +54,12 @@ export const about = {
 };
 
 export const founder = {
-  kicker: "06 — Founder",
+  kicker: "06 / Founder",
   // *acento* numa palavra
   tagline: "Tecnologia que resolve. Pessoas que *confiam*.",
   name: "Kawan Wagnner",
   role: "Founder & Software Engineer",
-  bio: "Por trás da VYSO tem um dev que trata cada projeto como negócio — não só como código. Entendendo o problema, planejando a solução e construindo algo que realmente faça sentido.",
+  bio: "Por trás da VYSO tem um dev que trata cada projeto como negócio, não só como código. Entendendo o problema, planejando a solução e construindo algo que realmente faça sentido.",
   photo: "/img/kawan.webp", // 48KB (convertido do PNG 1.8MB, sem perda visível)
 };
 
@@ -116,6 +116,13 @@ export interface CasePart {
   services: string[];
   stack: string[];
   live?: string;
+  /**
+   * Mostra a URL de `live` só como texto, sem botão nem link. Pra site que
+   * está no ar mas parado (sem produto, sem uso): quem quiser ver vai ter que
+   * copiar o endereço, e quem só está passando não cai numa loja vazia achando
+   * que o projeto quebrou.
+   */
+  liveLocked?: boolean;
   repo?: string;
   /** Moldura do mockup: janela de browser ou celular. */
   mockup?: "browser" | "phone";
@@ -161,6 +168,87 @@ export function getCaseParts(project: Project): CasePart[] {
 
 export const projects: Project[] = [
   {
+    // Loja própria da VYSO. Fica em primeiro porque é o case em que a casa é
+    // o cliente: tudo que a gente promete pra loja de terceiro está rodando
+    // aqui, com dinheiro de verdade entrando.
+    slug: "vyso-loja",
+    title: "VYSO Loja",
+    client: "VYSO",
+    year: "2026",
+    category: "E-commerce",
+    summary:
+      "A loja própria da marca: roupas e acessórios com frete grátis, Pix na hora e cartão em 12x. Carrinho, checkout, trocas, recuperação de venda e painel, tudo código da casa.",
+    intro:
+      "A VYSO não vende só software: vende roupa. A loja em vyso.com.br é um e-commerce completo construído do zero, do catálogo ao estorno, e é onde cada decisão de produto é testada com cliente real antes de virar recomendação pra alguém.",
+    mockup: "browser",
+    cover: "/img/cases/vyso-loja.webp",
+    tags: ["React", "NestJS", "E-commerce"],
+    featured: true,
+    services: [
+      "Produto & fluxo",
+      "E-commerce",
+      "Design UI/UX",
+      "Integrações",
+      "Painel administrativo",
+    ],
+    stack: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "NestJS",
+      "Prisma",
+      "PostgreSQL",
+      "Mercado Pago",
+      "Cloudflare R2",
+    ],
+    live: "https://vyso.com.br/",
+    objective: [
+      "Ter uma loja da própria marca que venda sozinha, 24h, sem depender de marketplace nem de atendimento manual pra fechar pedido.",
+      "Usar o negócio próprio como laboratório: cada recurso de e-commerce que a VYSO oferece a cliente precisa existir aqui primeiro, com venda real.",
+    ],
+    challenge: [
+      "Loja pequena não pode errar no caixa. Clique duplo em finalizar, Pix que vence, cartão recusado, webhook que chega fora de ordem: tudo isso precisa virar exatamente um pedido com exatamente um pagamento, sem a equipe conferir na mão.",
+      "E o pós-venda custa mais que a venda. Troca, devolução e reembolso em loja de roupa são rotina, não exceção, e precisavam de um fluxo que o cliente resolve sozinho e o dono aprova em um clique.",
+    ],
+    solution: [
+      "O servidor decide tudo: o carrinho vive no banco, inclusive pra quem não tem conta, e o pedido nasce dele, nunca do que o navegador manda. O pagamento tem trava por pedido, reaproveita o Pix válido e reconcilia pelo webhook do Mercado Pago, com um robô conferindo pendências a cada cinco minutos.",
+      "Quem chegou perto de comprar e saiu recebe lembrete por e-mail em cadência crescente, com descadastro de um clique. A home e a página de produto recomendam com base no que a pessoa viu, buscou e colocou no carrinho, sem guardar nada dela no servidor.",
+      "Devolução é uma página: pedido, e-mail, código de confirmação e fotos. O admin aprova, escolhe o canal e gera a etiqueta reversa pelo Melhor Envio ou manda o QR pelo WhatsApp. Reembolso total ou parcial sai do próprio painel.",
+    ],
+    highlights: [
+      "Cinco categorias: roupas femininas, masculinas, acessórios, calçados e presentes",
+      "Checkout no Mercado Pago: Pix à vista e cartão em até 12x, com estorno pelo painel",
+      "Carrinho no servidor pra conta e convidado, com fusão ao entrar",
+      "Recuperação de carrinho abandonado por e-mail e recomendações por interesse",
+      "Avaliações com selo de compra verificada",
+      "Devoluções com prazo, fotos, etiqueta reversa e reembolso no mesmo fluxo",
+      "Rastreio do pedido por número ou por e-mail com código",
+      "Painel com produtos, pedidos, cupons, devoluções e preço de custo atualizado todo dia",
+    ],
+    process: [
+      {
+        title: "Caixa antes de vitrine",
+        description:
+          "A primeira semana foi pagamento: um pedido, um pagamento, sob qualquer sequência de cliques e webhooks. Vitrine bonita com caixa frágil é prejuízo com cara de site.",
+      },
+      {
+        title: "Pós-venda como produto",
+        description:
+          "Troca, devolução, estorno e rastreio desenhados como telas do cliente, não como tarefa do dono. O painel só aprova.",
+      },
+      {
+        title: "Carga e ar",
+        description:
+          "Teste de carga com cem compradores simultâneos antes do domínio próprio entrar no ar, pra saber o limite antes do cliente descobrir.",
+      },
+    ],
+    results: [
+      { value: "0 erros", label: "em teste de carga com 100 compradores simultâneos" },
+      { value: "61 ms", label: "de resposta da API no p95, sob carga" },
+      { value: "12x", label: "no cartão, ou Pix na hora, com frete grátis" },
+    ],
+  },
+  {
     // Frente B2C do grupo: produto padronizado, preço na tela, o cliente fecha
     // sozinho. O irmão B2B (sob medida, com vendedor) é o case `al-esquadrias`.
     //
@@ -172,7 +260,7 @@ export const projects: Project[] = [
     year: "2026",
     category: "E-commerce",
     summary:
-      "A loja online de esquadrias de alumínio do grupo: catálogo com variações, carrinho, Pix e cartão em 12x — e o painel que a equipe usa pra tocar a operação.",
+      "A loja online de esquadrias de alumínio do grupo: catálogo com variações, carrinho, Pix e cartão em 12x, além do painel que a equipe usa pra tocar a operação.",
     logo: "/img/logos/al-modular.png",
     mockup: "browser",
     tags: ["React", "E-commerce", "Pagamentos"],
@@ -185,7 +273,7 @@ export const projects: Project[] = [
         summary:
           "Esquadria de alumínio vendida como qualquer produto de e-commerce: escolhe o modelo, escolhe a cor, calcula o frete e paga no Pix ou em 12x.",
         intro:
-          "A AL Modular é a filial B2C do grupo — a frente que vende produto pronto, pra quem não quer projeto sob medida nem negociação. O site é uma loja completa: catálogo por categoria, busca, variação de tamanho e acabamento, carrinho, frete por CEP e checkout com Pix e cartão.",
+          "A AL Modular é a filial B2C do grupo, a frente que vende produto pronto, pra quem não quer projeto sob medida nem negociação. O site é uma loja completa: catálogo por categoria, busca, variação de tamanho e acabamento, carrinho, frete por CEP e checkout com Pix e cartão.",
         mockup: "browser",
         cover: "/img/cases/al-modular-loja.webp",
         services: [
@@ -204,16 +292,19 @@ export const projects: Project[] = [
           "Mercado Pago",
         ],
         live: "https://www.almodularesquadrias.com.br/",
+        // A loja está no ar mas sem produto cadastrado: link clicável levaria
+        // o visitante a uma vitrine vazia, que lê como erro. Só o endereço.
+        liveLocked: true,
         objective: [
-          "Abrir um canal de venda direta pro consumidor final: produto padronizado, preço na tela, compra fechada sozinho — sem depender de vendedor pra cada pedido.",
+          "Abrir um canal de venda direta pro consumidor final: produto padronizado, preço na tela, compra fechada sozinho, sem depender de vendedor pra cada pedido.",
           "Tirar da operação o trabalho manual de responder preço, prazo e frete um a um, e devolver isso pro cliente em forma de página de produto.",
         ],
         challenge: [
-          "Esquadria não é camiseta. Cada produto existe em dezenas de combinações de medida, número de módulos e acabamento — e cada combinação tem preço próprio. Colocar isso num catálogo sem transformar a escolha num formulário de engenharia era o ponto mais difícil.",
-          "E tem o frete: peça grande, pesada e frágil. O preço só fecha quando o CEP entra na conta, então o cliente precisa descobrir isso antes do checkout — não depois, quando já criou expectativa.",
+          "Esquadria não é camiseta. Cada produto existe em dezenas de combinações de medida, número de módulos e acabamento, e cada combinação tem preço próprio. Colocar isso num catálogo sem transformar a escolha num formulário de engenharia era o ponto mais difícil.",
+          "E tem o frete: peça grande, pesada e frágil. O preço só fecha quando o CEP entra na conta, então o cliente precisa descobrir isso antes do checkout, não depois, quando já criou expectativa.",
         ],
         solution: [
-          "A página de produto resolve a complexidade em duas escolhas visuais: modelo/tamanho e cor/acabamento. O cliente clica, o preço reage — o que era tabela de fabricante virou seleção de dois cliques.",
+          "A página de produto resolve a complexidade em duas escolhas visuais: modelo/tamanho e cor/acabamento. O cliente clica, o preço reage. O que era tabela de fabricante virou seleção de dois cliques.",
           "Preço mostrado nas duas moedas que o brasileiro entende: à vista no Pix e parcelado em até 12x sem juros no cartão. E o frete é calculado por CEP na própria página do produto, antes de qualquer cadastro.",
           "Depois da compra o cliente não fica sem resposta: conta própria, rastreamento de pedido em página dedicada e o WhatsApp da empresa sempre a um toque, pra quando a dúvida não couber na página.",
         ],
@@ -234,12 +325,12 @@ export const projects: Project[] = [
           {
             title: "Página de produto e checkout",
             description:
-              "Desenho da escolha (modelo, acabamento, quantidade), do preço nas duas formas de pagamento e do frete por CEP — tudo antes do cliente precisar se cadastrar.",
+              "Desenho da escolha (modelo, acabamento, quantidade), do preço nas duas formas de pagamento e do frete por CEP, tudo antes do cliente precisar se cadastrar.",
           },
           {
             title: "No ar, em domínio próprio",
             description:
-              "Deploy em almodularesquadrias.com.br, com as páginas de política, os selos e o CNPJ no rodapé — o básico que faz uma loja nova parecer confiável.",
+              "Deploy em almodularesquadrias.com.br, com as páginas de política, os selos e o CNPJ no rodapé: o básico que faz uma loja nova parecer confiável.",
           },
         ],
         // TODO: Kawan — quando a loja rodar um mês cheio, troque por números reais
@@ -255,7 +346,7 @@ export const projects: Project[] = [
         title: "Painel de gestão",
         category: "Painel administrativo",
         summary:
-          "O lado de dentro da loja: produtos, pedidos, cupons, orçamentos e carrinho abandonado — com o faturamento na primeira tela.",
+          "O lado de dentro da loja: produtos, pedidos, cupons, orçamentos e carrinho abandonado, com o faturamento na primeira tela.",
         intro:
           "Uma loja só funciona se quem está atrás dela consegue tocá-la sem depender de dev. O painel da AL Modular é onde a equipe cadastra produto, acompanha pedido, cria cupom e enxerga o dinheiro entrando.",
         mockup: "browser",
@@ -277,7 +368,7 @@ export const projects: Project[] = [
         ],
         objective: [
           "Deixar a operação inteira na mão da equipe: cadastrar, editar, despachar e faturar sem abrir código nem chamar o dev.",
-          "Dar visão de negócio, não só lista de registros — quanto entrou, quantos pedidos, em que status cada um está.",
+          "Dar visão de negócio, não só lista de registros: quanto entrou, quantos pedidos, em que status cada um está.",
         ],
         challenge: [
           "Painel de e-commerce vira depósito de tabela: dez menus, mil colunas e ninguém sabe o que olhar primeiro. O risco aqui era entregar poder e tirar clareza.",
@@ -285,8 +376,8 @@ export const projects: Project[] = [
         ],
         solution: [
           "A primeira tela responde as quatro perguntas que importam antes de qualquer clique: quantos usuários, quantos produtos, quantos pedidos e quanto entrou. Abaixo, vendas dos últimos 6 meses e a distribuição dos pedidos por status.",
-          "O resto é operação do dia a dia: produtos e categorias, pedidos com ciclo de status, cupons de desconto e a fila de orçamentos — o canal por onde o pedido sob medida entra.",
-          "E uma tela que a maioria das lojas pequenas não tem: carrinho abandonado. Quem chegou perto de comprar e desistiu fica listado — é venda já paga em tráfego, que só precisa de um empurrão.",
+          "O resto é operação do dia a dia: produtos e categorias, pedidos com ciclo de status, cupons de desconto e a fila de orçamentos, que é o canal por onde o pedido sob medida entra.",
+          "E uma tela que a maioria das lojas pequenas não tem: carrinho abandonado. Quem chegou perto de comprar e desistiu fica listado. É venda já paga em tráfego, que só precisa de um empurrão.",
         ],
         highlights: [
           "Dashboard com usuários, produtos, pedidos e receita total",
@@ -302,7 +393,7 @@ export const projects: Project[] = [
           {
             title: "O que a equipe olha primeiro",
             description:
-              "Mapeei a rotina de quem toca a loja pra decidir o que merece a primeira tela — e o que pode viver dois cliques adiante.",
+              "Mapeei a rotina de quem toca a loja pra decidir o que merece a primeira tela e o que pode viver dois cliques adiante.",
           },
           {
             title: "Dashboard antes de tabela",
@@ -312,7 +403,7 @@ export const projects: Project[] = [
           {
             title: "Áreas de operação",
             description:
-              "Cada rotina virou uma área própria: catálogo, pedidos, cupons, orçamentos, carrinho abandonado e usuários — com o ciclo de status do pedido amarrando tudo.",
+              "Cada rotina virou uma área própria: catálogo, pedidos, cupons, orçamentos, carrinho abandonado e usuários, com o ciclo de status do pedido amarrando tudo.",
           },
         ],
         results: [
@@ -341,7 +432,7 @@ export const projects: Project[] = [
     cover: "/img/cases/al-esquadrias.webp",
     tags: ["React Native", "WhatsApp", "B2B"],
     intro:
-      "A AL Esquadrias é a frente B2B do grupo: esquadria sob medida, com projeto, medição e negociação. O app pega o cliente no catálogo, leva até a proposta e — o que quase ninguém faz — continua com ele depois da venda, mostrando em que etapa a obra está.",
+      "A AL Esquadrias é a frente B2B do grupo: esquadria sob medida, com projeto, medição e negociação. O app pega o cliente no catálogo, leva até a proposta e, o que quase ninguém faz, continua com ele depois da venda, mostrando em que etapa a obra está.",
     services: [
       "Produto & fluxo",
       "App mobile",
@@ -351,17 +442,17 @@ export const projects: Project[] = [
     stack: ["React Native", "TypeScript", "Node.js"],
     live: "https://share.google/MUIMGq52pSqslkgzW", // TODO: trocar pelo domínio final do app
     objective: [
-      "Dar à AL Esquadrias um canal próprio onde o cliente vê o catálogo, monta a solicitação e pede orçamento — sem depender de ida e volta manual do vendedor pra montar cada proposta.",
+      "Dar à AL Esquadrias um canal próprio onde o cliente vê o catálogo, monta a solicitação e pede orçamento, sem depender de ida e volta manual do vendedor pra montar cada proposta.",
       "E, depois da venda, resolver o problema que ninguém resolve: o cliente que fica no escuro esperando a obra andar. O app abre essa caixa-preta e mostra em que etapa a obra dele está.",
     ],
     challenge: [
-      "Esquadria sob medida não se vende num carrinho de compras — isso é o que a AL Modular faz com o produto padronizado. Aqui o preço depende de medição, de projeto, de negociação, e quem fecha é o vendedor, no WhatsApp. Automatizar do começo ao fim ia empurrar o cliente pra fora do jeito que ele já compra.",
-      'O segundo problema vem depois do "sim": entre o pagamento e a instalação passam semanas de medição, fabricação e agendamento. Nesse vácuo o cliente liga, cobra, desconfia — e o vendedor vira central de atendimento.',
+      "Esquadria sob medida não se vende num carrinho de compras. Isso é o que a AL Modular faz com o produto padronizado. Aqui o preço depende de medição, de projeto, de negociação, e quem fecha é o vendedor, no WhatsApp. Automatizar do começo ao fim ia empurrar o cliente pra fora do jeito que ele já compra.",
+      'O segundo problema vem depois do "sim": entre o pagamento e a instalação passam semanas de medição, fabricação e agendamento. Nesse vácuo o cliente liga, cobra, desconfia, e o vendedor vira central de atendimento.',
     ],
     solution: [
-      'Em vez de brigar com o WhatsApp, o app usa o WhatsApp como parte do fluxo. O cliente navega no catálogo, monta a solicitação e clica em "Solicitar" — cai direto na conversa com o vendedor, com o pedido já formatado. O vendedor atende, negocia como sempre negociou, e gera um link de proposta que manda ali mesmo.',
-      "O cliente clica no link e volta pro app já no passo seguinte, com a proposta liberada: ele vê, confere, aprova e segue pro pagamento — que pode acontecer dentro do app ou por fora, do jeito que a AL preferir.",
-      "Fechado o negócio, o admin libera o acompanhamento e a obra vira uma linha do tempo: medição inicial, agendamento, fabricação, instalação. Cada mudança de status dispara um e-mail automático pro cliente — ele fica sabendo antes de precisar perguntar.",
+      'Em vez de brigar com o WhatsApp, o app usa o WhatsApp como parte do fluxo. O cliente navega no catálogo, monta a solicitação e clica em "Solicitar" e cai direto na conversa com o vendedor, com o pedido já formatado. O vendedor atende, negocia como sempre negociou, e gera um link de proposta que manda ali mesmo.',
+      "O cliente clica no link e volta pro app já no passo seguinte, com a proposta liberada: ele vê, confere, aprova e segue pro pagamento, que pode acontecer dentro do app ou por fora, do jeito que a AL preferir.",
+      "Fechado o negócio, o admin libera o acompanhamento e a obra vira uma linha do tempo: medição inicial, agendamento, fabricação, instalação. Cada mudança de status dispara um e-mail automático pro cliente, que fica sabendo antes de precisar perguntar.",
     ],
     highlights: [
       "Catálogo de produtos que vira solicitação de orçamento em um clique",
@@ -375,12 +466,12 @@ export const projects: Project[] = [
       {
         title: "Entendimento do funil real",
         description:
-          "Mapeei como a AL Esquadrias já vendia — quem fala com o cliente, onde a negociação acontece, o que trava. O app foi desenhado em volta desse funil, não contra ele.",
+          "Mapeei como a AL Esquadrias já vendia: quem fala com o cliente, onde a negociação acontece, o que trava. O app foi desenhado em volta desse funil, não contra ele.",
       },
       {
         title: "Desenho do fluxo em etapas",
         description:
-          "Cada estado do cliente (solicitou, tem proposta, aprovou, pagou, obra em andamento) virou um passo com regra clara de liberação — controlada pelo vendedor ou pelo admin.",
+          "Cada estado do cliente (solicitou, tem proposta, aprovou, pagou, obra em andamento) virou um passo com regra clara de liberação, controlada pelo vendedor ou pelo admin.",
       },
       {
         title: "Construção e integrações",
@@ -407,7 +498,7 @@ export const projects: Project[] = [
     summary:
       "24 serviços com preço e duração na tela, 4 planos de assinatura e agendamento a um toque.",
     intro:
-      "A Imperador é barbearia clássica no coração da Mooca. A tabela de preço vivia no papel e no boca a boca, e os planos mensais — a parte que gera receita recorrente — não tinham onde ser explicados. O site resolveu as duas coisas na mesma página.",
+      "A Imperador é barbearia clássica no coração da Mooca. A tabela de preço vivia no papel e no boca a boca, e os planos mensais, a parte que gera receita recorrente, não tinham onde ser explicados. O site resolveu as duas coisas na mesma página.",
     logo: "/img/logos/barbearia-imperador.webp",
     mockup: "browser",
     cover: "/img/cases/barbearia-imperador.webp",
@@ -416,17 +507,17 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Tailwind CSS"],
     live: "https://barbearia-imperador-mooca.vercel.app/",
     objective: [
-      "Colocar preço e duração de cada serviço na tela — a pergunta que mais chega antes de qualquer agendamento.",
+      "Colocar preço e duração de cada serviço na tela, a pergunta que mais chega antes de qualquer agendamento.",
       "Dar aos planos mensais uma vitrine própria: é o produto que troca corte avulso por receita recorrente.",
     ],
     challenge: [
       "24 serviços numa página viram um paredão de texto. Quem quer só a barba não deveria rolar por corte, luzes e limpeza de pele até achar.",
-      "Quatro planos com regras parecidas (ilimitado, mas de seg a qui, mediante agendamento) confundem se forem só uma tabela — e plano mal explicado não é assinado.",
+      "Quatro planos com regras parecidas (ilimitado, mas de seg a qui, mediante agendamento) confundem se forem só uma tabela, e plano mal explicado não é assinado.",
     ],
     solution: [
-      "Serviços com filtro por categoria — Cabelo, Barba, Estética, Combos — cada aba com o contador do que tem dentro, e cada card mostrando duração e preço antes do botão de agendar.",
+      "Serviços com filtro por categoria (Cabelo, Barba, Estética, Combos), cada aba com o contador do que tem dentro, e cada card mostrando duração e preço antes do botão de agendar.",
       "Planos como blocos comparáveis, do mais simples ao completo, com o recomendado marcado e as regras (dias de atendimento, validade de 30 dias) escritas onde a dúvida nasce, não no rodapé.",
-      "O clássico como identidade visual: paleta escura, tipografia forte e a Mooca como endereço afirmado — quem procura barbearia procura a mais perto, e o bairro é argumento.",
+      "O clássico como identidade visual: paleta escura, tipografia forte e a Mooca como endereço afirmado: quem procura barbearia procura a mais perto, e o bairro é argumento.",
     ],
     highlights: [
       "24 serviços filtráveis por categoria, com preço e tempo",
@@ -443,7 +534,7 @@ export const projects: Project[] = [
       {
         title: "Plano como produto",
         description:
-          "Os quatro planos ganharam bloco próprio, ordem de leitura e regras explícitas — pra serem assinados, não interpretados.",
+          "Os quatro planos ganharam bloco próprio, ordem de leitura e regras explícitas, pra serem assinados, não interpretados.",
       },
       {
         title: "Construção e deploy",
@@ -465,7 +556,7 @@ export const projects: Project[] = [
     summary:
       "Agência de viagens desde 2011: o site conta o jeito de atender e termina em pedido de orçamento.",
     intro:
-      "A Travel Buena Vista monta roteiro sob medida e acompanha o cliente antes, durante e depois da viagem — tem quem viaje com eles pelo terceiro ano seguido. O site precisava vender exatamente isso: não o pacote mais barato, mas a pessoa do outro lado.",
+      "A Travel Buena Vista monta roteiro sob medida e acompanha o cliente antes, durante e depois da viagem. Tem quem viaje com eles pelo terceiro ano seguido. O site precisava vender exatamente isso: não o pacote mais barato, mas a pessoa do outro lado.",
     mockup: "browser",
     cover: "/img/cases/travel-buena-vista.webp",
     tags: ["React", "Institucional", "Conversão"],
@@ -474,15 +565,15 @@ export const projects: Project[] = [
     live: "https://travel-buena-vista.vercel.app/",
     objective: [
       "Dar à agência um endereço próprio, fora do feed, onde a história de 2011 pra cá cabe inteira.",
-      "Transformar visita em orçamento pedido — por formulário ou WhatsApp, o que o cliente preferir.",
+      "Transformar visita em orçamento pedido, por formulário ou WhatsApp, o que o cliente preferir.",
     ],
     challenge: [
-      "Agência de viagem compete com plataforma de passagem, que ganha no preço e na escala. O argumento da TBV é o oposto: atendimento de perto. Isso não aparece numa tabela de preço — precisa ser mostrado.",
+      "Agência de viagem compete com plataforma de passagem, que ganha no preço e na escala. O argumento da TBV é o oposto: atendimento de perto. Isso não aparece numa tabela de preço, precisa ser mostrado.",
       "O catálogo é largo demais pra caber numa página: oito continentes, seis serviços, pacote, cruzeiro, aéreo e hospedagem. Sem hierarquia, vira lista.",
     ],
     solution: [
       "A página abre pelo jeito de atender e só depois abre o leque: destinos em carrossel por continente, serviços numerados de 01 a 06, cada um explicando uma decisão real de viagem (estrutura, localização ou sossego? conexão barata na tela ou cara na viagem?).",
-      "Depoimentos de clientes reais, com nome e destino, posicionados depois da oferta — onde a dúvida \"será que funciona mesmo?\" aparece na leitura.",
+      "Depoimentos de clientes reais, com nome e destino, posicionados depois da oferta, onde a dúvida \"será que funciona mesmo?\" aparece na leitura.",
       "Fechamento em dois caminhos: formulário curto de orçamento com promessa de resposta no mesmo dia útil, e WhatsApp pra quem não quer preencher nada.",
     ],
     highlights: [
@@ -521,7 +612,7 @@ export const projects: Project[] = [
     year: "2026",
     category: "Site & Doações",
     summary:
-      "Site de uma ONG que trabalha com crianças — feito pra transformar quem se emociona em quem doa.",
+      "Site de uma ONG que trabalha com crianças, feito pra transformar quem se emociona em quem doa.",
     intro:
       "A Associação Nova História acredita que toda criança merece amor, oportunidade e a chance de chegar no seu potencial. O site existe pra que quem se identifica com essa causa consiga ajudar sem atrito.",
     logo: "/img/logos/ong-nova-historia.png",
@@ -532,23 +623,23 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Tailwind CSS"],
     live: "https://ong-nova-historia.vercel.app/",
     objective: [
-      "Dar à ONG um endereço digital sério, que passe credibilidade — o pré-requisito pra alguém confiar dinheiro a uma instituição.",
+      "Dar à ONG um endereço digital sério, que passe credibilidade, o pré-requisito pra alguém confiar dinheiro a uma instituição.",
       'Encurtar ao máximo a distância entre "quero ajudar" e a doação de fato acontecer.',
     ],
     challenge: [
       "ONG vive de confiança e de doação recorrente, e ambas dependem de duas coisas que quase nenhuma tem: um lugar que explique a causa com clareza e um caminho de doação que não faça a pessoa desistir no meio.",
-      "A comunicação estava espalhada em redes sociais, onde o alcance é de quem já segue — e onde não dá pra contar a história inteira.",
+      "A comunicação estava espalhada em redes sociais, onde o alcance é de quem já segue, e onde não dá pra contar a história inteira.",
     ],
     solution: [
-      "Um site que abre pela causa (as crianças, os pilares da instituição) e só depois pede — na ordem certa de quem quer convencer, não de quem quer arrecadar.",
+      "Um site que abre pela causa (as crianças, os pilares da instituição) e só depois pede, na ordem certa de quem quer convencer, não de quem quer arrecadar.",
       "Doação por PIX exposta sem burocracia, com o botão de doar acessível de qualquer ponto do site, e canal direto de contato por WhatsApp e formulário pra quem quer conversar antes.",
-      "Blog alimentado pelo conteúdo do Instagram, pra que quem chega veja que a instituição está viva e trabalhando — prova social é o que sustenta a confiança.",
+      "Blog alimentado pelo conteúdo do Instagram, pra que quem chega veja que a instituição está viva e trabalhando. Prova social é o que sustenta a confiança.",
     ],
     highlights: [
       'Botão "Doar Agora" e PIX em destaque',
       "Blog com as publicações da instituição",
       "Contato direto por WhatsApp e formulário",
-      "CNPJ e dados públicos visíveis — transparência é conversão",
+      "CNPJ e dados públicos visíveis: transparência é conversão",
     ],
     process: [
       {
@@ -559,7 +650,7 @@ export const projects: Project[] = [
       {
         title: "Narrativa antes do pedido",
         description:
-          "A página foi montada como um argumento — causa, pilares, prova — e só então a doação.",
+          "A página foi montada como um argumento (causa, pilares, prova) e só então a doação.",
       },
       {
         title: "Construção e publicação",
@@ -579,7 +670,7 @@ export const projects: Project[] = [
     year: "2026",
     category: "Catálogo & Painel",
     summary:
-      "Catálogo de 44 produtos em 7 setores que o dono edita sozinho — e de onde o pedido sai escrito, direto no WhatsApp.",
+      "Catálogo de 44 produtos em 7 setores que o dono edita sozinho, e de onde o pedido sai escrito, direto no WhatsApp.",
     intro:
       "A KFM vende embalagens, descartáveis, limpeza, sacolas, utilidades e festa pra lojistas de São Paulo. O pedido sempre passou pelo WhatsApp, mas atravessado por um problema: o cliente não sabia o que a loja tinha. O site virou o catálogo que responde isso antes da conversa começar.",
     // Logo tirada do SVG do próprio site, com o texto clareado pro card dark.
@@ -598,27 +689,27 @@ export const projects: Project[] = [
     objective: [
       "Tirar o catálogo do álbum de fotos do celular e colocar num link que o lojista manda pra qualquer cliente.",
       "Fazer o pedido chegar identificado: com o nome do produto escrito, sem a rodada de \"tem esse aqui?\" antes de fechar.",
-      "Entregar a edição do conteúdo pro dono — produto, preço, setor e dado da loja mudando sem depender de dev.",
+      "Entregar a edição do conteúdo pro dono: produto, preço, setor e dado da loja mudando sem depender de dev.",
     ],
     challenge: [
       "Catálogo grande é fácil de publicar e difícil de navegar: 44 produtos em 7 setores viram um monte indistinto se a busca não entender como o cliente fala.",
-      "O público compra pelo celular, muitas vezes em aparelho fraco e rede ruim — carregar tudo de uma vez mataria a página antes dela abrir.",
+      "O público compra pelo celular, muitas vezes em aparelho fraco e rede ruim, e carregar tudo de uma vez mataria a página antes dela abrir.",
       "Nem todo produto tem preço fixo. Sumir com esses itens esconderia estoque; mostrar preço errado queimaria a venda.",
     ],
     solution: [
-      "Catálogo organizado por setor, com contador de produtos em cada aba e busca que entende sinônimo — cada produto carrega as palavras que o cliente usa de verdade, então \"saco de lixo\" acha mesmo escrito diferente. Buscou dentro de um setor e não achou? O site avisa em qual setor aquilo mora.",
+      "Catálogo organizado por setor, com contador de produtos em cada aba e busca que entende sinônimo: cada produto carrega as palavras que o cliente usa de verdade, então \"saco de lixo\" acha mesmo escrito diferente. Buscou dentro de um setor e não achou? O site avisa em qual setor aquilo mora.",
       "Carregamento de 24 em 24 produtos com \"ver mais\": a primeira tela abre rápido até no celular fraco, e o resto vem sob demanda.",
       "WhatsApp em toda parte, sempre com a mensagem pronta: no produto sai \"Pedir [nome] no WhatsApp\", no botão geral sai pedido de orçamento. Produto sem preço cadastrado assume isso na cara e convida a chamar.",
-      "Painel completo pro dono: produto (foto em nuvem, setor, unidade, preço, descrição, palavras-chave), setores (nome, ícone, descrição) e dados da loja (WhatsApp, endereço, horário, Instagram, aviso de entrega). Destaque sobe o produto no catálogo; desmarcar \"visível\" tira do ar sem apagar — o jeito certo de tratar falta de estoque.",
+      "Painel completo pro dono: produto (foto em nuvem, setor, unidade, preço, descrição, palavras-chave), setores (nome, ícone, descrição) e dados da loja (WhatsApp, endereço, horário, Instagram, aviso de entrega). Destaque sobe o produto no catálogo; desmarcar \"visível\" tira do ar sem apagar, que é o jeito certo de tratar falta de estoque.",
     ],
     highlights: [
       "Busca com sinônimos e sugestão de setor",
-      "Paginação de 24 em 24 — abre rápido no celular fraco",
+      "Paginação de 24 em 24, que abre rápido no celular fraco",
       "Pedido no WhatsApp já escrito com o nome do produto",
       "Link direto do setor: segurar o dedo 2s gera e compartilha",
       "Entrada do painel escondida atrás de 5 cliques na logo",
       "Bloqueio por 1h e e-mail de alerta após tentativas de senha",
-      'Produto oculto sem ser apagado — o "acabou o estoque" resolvido',
+      'Produto oculto sem ser apagado: o "acabou o estoque" resolvido',
     ],
     process: [
       {
@@ -629,7 +720,7 @@ export const projects: Project[] = [
       {
         title: "Catálogo antes de institucional",
         description:
-          "A página abre pelo produto, não pela história da loja — quem chega veio comprar.",
+          "A página abre pelo produto, não pela história da loja, porque quem chega veio comprar.",
       },
       {
         title: "Painel pro dono",
@@ -661,16 +752,16 @@ export const projects: Project[] = [
     stack: ["React", "TypeScript", "Tailwind CSS"],
     live: "https://vg-facilities.vercel.app/",
     objective: [
-      "Posicionar a VG como empresa séria diante de quem contrata facilities — síndicos, gestores prediais, lojistas — que decidem por confiança e comparação.",
+      "Posicionar a VG como empresa séria diante de quem contrata facilities (síndicos, gestores prediais, lojistas), que decidem por confiança e comparação.",
       "Fazer o site trabalhar como canal de captação: cada visita deve terminar num pedido de orçamento.",
     ],
     challenge: [
       "Facilities é um mercado de licitação informal: o cliente pede orçamento pra três, quatro empresas e escolhe pela que parece mais preparada. Quem não tem presença digital não entra nem na lista.",
-      "E é um leque grande de serviços — manutenção, segurança, limpeza, portaria, paisagismo. Jogar tudo na cara do visitante confunde; esconder faz perder contrato.",
+      "E é um leque grande de serviços: manutenção, segurança, limpeza, portaria, paisagismo. Jogar tudo na cara do visitante confunde; esconder faz perder contrato.",
     ],
     solution: [
       "Organizei o leque em blocos de serviço legíveis, cada um explicado no idioma de quem contrata: o que é, pra quem serve, o que resolve.",
-      "A prova vem em seguida — depoimentos, portfólio de clientes e um FAQ que mata as objeções que o vendedor ouviria na reunião (documentação, qualificação da equipe, abrangência).",
+      "A prova vem em seguida: depoimentos, portfólio de clientes e um FAQ que mata as objeções que o vendedor ouviria na reunião (documentação, qualificação da equipe, abrangência).",
       "E o orçamento fica sempre a um toque: WhatsApp e formulário disponíveis do topo ao rodapé.",
     ],
     highlights: [
@@ -712,7 +803,7 @@ export const projects: Project[] = [
 ];
 
 export const projectsSection = {
-  kicker: "01 — Projetos",
+  kicker: "01 / Projetos",
   heading: "Trabalho que *fala por mim*.",
   description:
     "Do problema ao produto no ar. Entra em cada case pra ver como foi.",
@@ -752,88 +843,58 @@ export interface Product {
   summary: string;
   /** Selo acima do nome — oferta, teste grátis, status. */
   badge?: string;
-  /** Nichos que o produto atende; viram chips. */
+  /** Rótulo em cima dos chips de `audience`. */
+  audienceLabel: string;
+  /** Nichos que o produto atende, ou o que ele oferece; viram chips. */
   audience: string[];
   highlights: { title: string; description: string }[];
   cover?: string;
-  plans: ProductPlan[];
+  /** Domínio exibido na barra do mockup de navegador. */
+  mockupUrl: string;
+  /** Só pra produto de assinatura. Loja e afins não têm plano: omite e o grid some. */
+  plans?: ProductPlan[];
   cta: { label: string; href: string };
 }
 
 export const productsSection = {
-  kicker: "02 — Produtos",
+  kicker: "02 / Produtos",
   heading: "O que a VYSO *vende pronto*.",
   description:
-    "Fora o sob medida, tem produto próprio no ar — assinatura, sem projeto e sem orçamento.",
+    "Fora o sob medida, a VYSO toca negócio próprio. A loja roda no mesmo código que a gente entrega pra cliente.",
 };
 
 export const products: Product[] = [
   {
-    slug: "vyso-catalogo",
-    name: "VYSO Catálogo",
-    tagline: "Sua loja inteira em *um link só*.",
+    slug: "vyso-loja",
+    name: "VYSO · vyso.com.br",
+    tagline: "Seu estilo, *sem esforço*.",
     summary:
-      "Monte seu catálogo, mande o link e o pedido cai no seu WhatsApp já dizendo qual produto o cliente quer. Sem site caro, sem app, sem complicação.",
-    badge: "7 dias com tudo do Pro, sem cartão",
-    audience: [
-      "Padaria",
-      "Doceria",
-      "Brechó",
-      "Pet shop",
-      "Hortifruti",
-      "Adega",
-      "Floricultura",
-      "Barbearia",
-      "Cafeteria",
-    ],
-    cover: "/img/cases/vyso-catalogo.webp",
+      "Roupas e acessórios que combinam entre si, com frete grátis para todo o Brasil, Pix na hora e até 12x no cartão. Loja própria da VYSO, do catálogo ao estorno.",
+    badge: "Frete grátis para todo o Brasil",
+    audienceLabel: "O que tem na loja",
+    audience: ["Roupas femininas", "Roupas masculinas", "Acessórios", "Calçados", "Presentes"],
+    cover: "/img/cases/vyso-loja.webp",
+    mockupUrl: "vyso.com.br",
     highlights: [
       {
-        title: 'Some o "tem esse aqui?"',
+        title: "Peças que combinam entre si",
         description:
-          "O cliente vê foto e preço antes de chamar. A conversa já começa no fechamento.",
+          "Básico bem feito: pega qualquer uma, veste com qualquer outra. Montar o look deixa de ser decisão.",
       },
       {
-        title: "O pedido chega identificado",
+        title: "Pix na hora, cartão em até 12x",
         description:
-          'A mensagem vem com o produto e o link. Você atende sem perguntar "qual deles?".',
+          "Pagamento confirmado no ato e o pedido já sai pra separação. Frete grátis em qualquer canto do país.",
       },
       {
-        title: "Seu catálogo é só seu",
+        title: "Loja feita do zero pela VYSO",
         description:
-          "Cada loja é isolada. Ninguém vê seus produtos, seus preços nem seus contatos.",
-      },
-    ],
-    plans: [
-      {
-        name: "Grátis",
-        price: "R$ 0",
-        period: "para sempre, sem prazo",
-        features: [
-          "Até 10 produtos",
-          "Catálogo com busca e setores",
-          "Botão de WhatsApp em tudo",
-          'Rodapé "feito com vyso.app"',
-        ],
-      },
-      {
-        name: "Pro",
-        price: "R$ 49",
-        period: "/mês, no cartão",
-        description: "Todo cadastro começa com 7 dias de Pro liberados.",
-        featured: true,
-        features: [
-          "Produtos ilimitados",
-          "Sem marca da plataforma",
-          "Cor da sua marca no catálogo",
-          "Relatório de conversas geradas",
-          "Suporte no WhatsApp",
-        ],
+          "Vitrine, carrinho, checkout, estoque, trocas e painel são código próprio. O mesmo que a gente entrega, rodando no nosso negócio.",
       },
     ],
     cta: {
-      label: "Criar catálogo grátis",
-      href: "https://vyso-catalogo-web.vercel.app/",
+      label: "Visitar a loja",
+      href: "https://vyso.com.br/",
     },
   },
 ];
@@ -848,7 +909,7 @@ export const services: Service[] = [
   {
     title: "Sites & Landing Pages",
     description:
-      "Páginas que carregam rápido, convertem e passam autoridade — do design ao deploy.",
+      "Páginas que carregam rápido, convertem e passam autoridade, do design ao deploy.",
     icon: "LayoutTemplate",
   },
   {
@@ -927,12 +988,12 @@ export const supportFeatures = [
 export type SupportFeatureId = (typeof supportFeatures)[number]["id"];
 
 export const supportSection = {
-  kicker: "04 — Suporte",
+  kicker: "04 / Suporte",
   heading: "Site no ar é *manutenção*, não sorte.",
   description:
     "Seu site monitorado, atualizado e com ajustes contínuos por um valor fixo no mês. Precisa de mais que manutenção? A gente conversa e monta o escopo junto.",
   /** Letra miúda no fim da seção — as ressalvas que evitam mal-entendido depois. */
-  note: "Assinatura mensal, sem fidelidade — cancela quando quiser. O domínio é pago à parte, direto no registrador: a gente cobre até R$ 40 dele na primeira mensalidade, e o que passar disso fica por sua conta. Nos planos sob consulta, o escopo e o valor a gente fecha no WhatsApp antes de qualquer cobrança.",
+  note: "Assinatura mensal, sem fidelidade. Cancela quando quiser. O domínio é pago à parte, direto no registrador: a gente cobre até R$ 40 dele na primeira mensalidade, e o que passar disso fica por sua conta. Nos planos sob consulta, o escopo e o valor a gente fecha no WhatsApp antes de qualquer cobrança.",
 };
 
 export const supportPlans: SupportPlan[] = [
@@ -1000,7 +1061,7 @@ export const supportPlans: SupportPlan[] = [
     },
     ctaLabel: "Entrar em contato",
     whatsappMessage:
-      "Oi, Kawan! Cheguei pelo site da VYSO 👋\n\nQuero entender o plano de *Suporte + Página de vendas* — tenho uma oferta pra colocar no ar.",
+      "Oi, Kawan! Cheguei pelo site da VYSO 👋\n\nQuero entender o plano de *Suporte + Página de vendas*, tenho uma oferta pra colocar no ar.",
     stripeLink: "",
   },
   {
@@ -1011,7 +1072,7 @@ export const supportPlans: SupportPlan[] = [
     quote: true,
     priceNote: "Manutenção a partir de R$ 60/mês",
     tagline:
-      "Quando o gargalo não é o site — é o processo que roda por trás dele.",
+      "Quando o gargalo não é o site, é o processo que roda por trás dele.",
     includes: [
       "hospedagem",
       "uptime",
@@ -1030,7 +1091,7 @@ export const supportPlans: SupportPlan[] = [
     },
     ctaLabel: "Entrar em contato",
     whatsappMessage:
-      "Oi, Kawan! Cheguei pelo site da VYSO 👋\n\nQuero conversar sobre *sistemas e automações* — tenho um processo que precisa sair do manual.",
+      "Oi, Kawan! Cheguei pelo site da VYSO 👋\n\nQuero conversar sobre *sistemas e automações*, tenho um processo que precisa sair do manual.",
     stripeLink: "",
   },
 ];
@@ -1044,7 +1105,7 @@ export const immersive = {
 };
 
 export const contact = {
-  kicker: "07 — Contato",
+  kicker: "07 / Contato",
   heading: "Tem um projeto? A VYSO *entrega*.",
   description:
     "Chama a gente e transforma sua ideia num produto digital de verdade. Resposta rápida.",

@@ -21,7 +21,7 @@ const TARGETS = [
   { file: 'travel-buena-vista', url: 'https://travel-buena-vista.vercel.app/', viewport: 'desktop' },
   { file: 'barbearia-imperador', url: 'https://barbearia-imperador-mooca.vercel.app/', viewport: 'desktop' },
   { file: 'kfm-web', url: 'https://kfm-web.vercel.app/', viewport: 'desktop' },
-  { file: 'vyso-catalogo', url: 'https://vyso-catalogo-web.vercel.app/', viewport: 'desktop', dismiss: 'Entendi' },
+  { file: 'vyso-loja', url: 'https://vyso.com.br/', viewport: 'desktop', dismiss: 'aceitar todos' },
 ]
 
 // scale 2 pra não sair borrado em tela retina; o mockup ainda reduz a imagem.
