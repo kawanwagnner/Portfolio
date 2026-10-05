@@ -60,7 +60,7 @@ export function Founder() {
               src={founder.photo}
               alt={founder.name}
               loading="lazy"
-              className="aspect-[4/5] w-full object-cover"
+              className="aspect-[4/5] w-full object-cover object-[58%_center]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
             {/* selo no rodapé da foto */}

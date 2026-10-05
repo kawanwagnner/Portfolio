@@ -38,7 +38,8 @@ export function Navbar() {
   /** Âncoras (#sobre, #contato…) só existem na home — fora dela, volta pra home no hash. */
   const handleNav = (href: string) => {
     setOpen(false)
-    if (pathname !== '/') {
+    // a /v2 é uma home também: as âncoras existem nela
+    if (pathname !== '/' && pathname !== '/v2') {
       navigate(`/${href}`)
       return
     }

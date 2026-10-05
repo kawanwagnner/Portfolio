@@ -6,6 +6,7 @@ import { WhatsAppFab } from '@/components/shared/WhatsAppFab'
 import Home from '@/pages/Home'
 import ProjectsIndex from '@/pages/ProjectsIndex'
 import ProjectCase from '@/pages/ProjectCase'
+import HomeV2 from '@/pages/HomeV2'
 
 /**
  * Troca de rota → topo da página.
@@ -37,6 +38,8 @@ export default function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            {/* experimento em tema claro: só por URL, fora do menu e do Google */}
+            <Route path="/v2" element={<HomeV2 />} />
             <Route path="/projetos" element={<ProjectsIndex />} />
             <Route path="/projetos/:slug" element={<ProjectCase />} />
             <Route path="*" element={<Navigate to="/" replace />} />

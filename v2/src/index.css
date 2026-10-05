@@ -341,3 +341,68 @@
     transform: rotate(360deg);
   }
 }
+
+/* ============================================================
+   Tema claro (experimento da rota /v2)
+   A classe vai no <html> enquanto a pessoa está na /v2 (ver pages/HomeV2.tsx),
+   então navbar, rodapé e botões acompanham. Os componentes usam os tokens,
+   e só o que tinha cor escura fixa ganha override aqui.
+   ============================================================ */
+:root.theme-light {
+  --background: 240 25% 98%; /* ~#F9F9FC */
+  --foreground: 232 28% 12%; /* ~#171A2B */
+
+  --card: 0 0% 100%;
+  --card-foreground: 232 28% 12%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 232 28% 12%;
+
+  /* Índigo um tom mais fechado: o #6366F1 puro fica no limite de contraste em branco */
+  --primary: 239 70% 58%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 239 70% 58%;
+  --accent-foreground: 0 0% 100%;
+  --ember: 260 70% 60%;
+
+  --secondary: 235 30% 95%;
+  --secondary-foreground: 232 28% 12%;
+
+  --muted: 235 25% 95%;
+  --muted-foreground: 230 12% 38%;
+
+  --border: 232 20% 89%;
+  --input: 232 20% 89%;
+  --ring: 239 70% 58%;
+
+  color-scheme: light;
+}
+
+:root.theme-light .glass {
+  background: hsl(0 0% 100% / 0.94);
+}
+:root.theme-light .bg-grid {
+  background-image:
+    linear-gradient(to right, hsl(232 20% 89% / 0.7) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(232 20% 89% / 0.7) 1px, transparent 1px);
+}
+:root.theme-light .text-ember {
+  background-image: linear-gradient(100deg, hsl(239 70% 52%) 0%, hsl(260 70% 56%) 100%);
+}
+:root.theme-light .ember-glow {
+  background: radial-gradient(
+    circle,
+    hsl(var(--accent) / 0.12) 0%,
+    hsl(var(--ember) / 0.06) 38%,
+    transparent 72%
+  );
+}
+:root.theme-light .btn-ember {
+  box-shadow: 0 8px 24px -10px hsl(var(--accent) / 0.55);
+}
+:root.theme-light ::-webkit-scrollbar-track {
+  background: hsl(240 25% 98%);
+}
+:root.theme-light ::-webkit-scrollbar-thumb {
+  background: hsl(232 14% 80%);
+}

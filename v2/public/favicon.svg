@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    path { stroke: #000; }
+    /* Aba escura (Chrome/Firefox no tema escuro): V branco, senão some. */
+    @media (prefers-color-scheme: dark) { path { stroke: #fff; } }
+  </style>
+  <path d="M8 8 L32 56 L56 8" fill="none" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
+</svg>

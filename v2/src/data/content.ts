@@ -60,7 +60,7 @@ export const founder = {
   name: "Kawan Wagnner",
   role: "Founder & Software Engineer",
   bio: "Por trás da VYSO tem um dev que trata cada projeto como negócio, não só como código. Entendendo o problema, planejando a solução e construindo algo que realmente faça sentido.",
-  photo: "/img/kawan.webp", // 48KB (convertido do PNG 1.8MB, sem perda visível)
+  photo: "/img/kawan.webp", // foto trocada em 05/10/2026 (640x640, no notebook)
 };
 
 // O que a VYSO usa pra entregar — front, back, mobile, banco e infra,

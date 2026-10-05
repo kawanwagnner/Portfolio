@@ -258,3 +258,13 @@ node scripts/preview-shot.mjs produtos 1440 1900          # confere uma seção 
 - **Navbar** some ao rolar pra baixo e volta ao rolar pra cima (limiar de 8px, sempre visível nos primeiros 80px, travada com o menu do celular aberto).
 - **WhatsApp flutuante** sempre na tela, em qualquer largura, verde oficial. Antes era só celular e só depois do herói.
 - Pendente: **Search Console** (verificar vyso.store e mandar o sitemap) e trocar a foto do Founder pela nova que o Kawan mandou no chat (o arquivo não chegou ao disco).
+- **Favicon** é o mesmo da loja vyso.com.br (`public/favicon.svg`, V preto que vira branco em aba escura, mais PNG 32 e apple-touch-icon). Fonte: `vyso-ecommerce-web/public`.
+- **Foto do Founder** trocada (`public/img/kawan.webp`, 640×640, no notebook); enquadramento `object-[58%_center]` no recorte 4:5.
+
+## /v2: experimento em tema claro (05/10/2026)
+
+- Rota `/v2` (`pages/HomeV2.tsx`), só por URL: fora do menu, `noindex`, `Disallow: /v2` no robots e fora do sitemap. O site principal não muda.
+- Tema claro por padrão, escuro como opção (botão redondo no canto inferior esquerdo, lembrado em `localStorage` `vyso:v2-theme`). A classe `theme-light` vai no `<html>` enquanto a rota está aberta, então navbar, rodapé e WhatsApp acompanham. Tokens em `index.css`, bloco `:root.theme-light`; o índigo é um tom mais fechado (`239 70% 58%`) porque o #6366F1 puro fica no limite de contraste em branco.
+- Herói novo (`sections/HeroV2.tsx`): sem o V de partículas. Foto e nome do Kawan, frase em primeira pessoa ("Eu construo o site, a loja ou o sistema do seu negócio."), quatro linhas do que ele entrega, CTA de orçamento no WhatsApp e "Ver N projetos". À direita, colagem com prints reais de três cases (`SHOWCASE`), cada um abrindo o case.
+- Ordem: herói, projetos, serviços, produtos, suporte, sobre, founder, contato.
+- Se aprovar: trocar `Home` por `HomeV2` na rota `/`, decidir se o claro vira padrão do site inteiro e apagar a rota de teste.
