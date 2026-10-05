@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
+import { WhatsAppIcon } from '@/components/shared/WhatsAppIcon'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X, Instagram, MessageCircle } from 'lucide-react'
+import { Menu, X, Instagram, Moon, Sun } from 'lucide-react'
+import { useTheme } from '@/lib/theme'
 import { Logo } from '@/components/shared/Logo'
 import { brand, nav, navBarra, socials, whatsapp } from '@/data/content'
 import { cn } from '@/lib/utils'
@@ -10,6 +12,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [open, setOpen] = useState(false)
+  const { theme, toggle } = useTheme()
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
@@ -38,8 +41,7 @@ export function Navbar() {
   /** Âncoras (#sobre, #contato…) só existem na home — fora dela, volta pra home no hash. */
   const handleNav = (href: string) => {
     setOpen(false)
-    // a /v2 é uma home também: as âncoras existem nela
-    if (pathname !== '/' && pathname !== '/v2') {
+    if (pathname !== '/') {
       navigate(`/${href}`)
       return
     }
@@ -73,7 +75,9 @@ export function Navbar() {
           className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight"
         >
           <Logo className="h-7 text-accent" />
-          <span className="hidden sm:inline">{brand.name.split(' ')[0]}</span>
+          {/* Nome junto da logo também no celular (a barra ficava vazia só com o V).
+              Some só abaixo de 340px, tela de relógio, pra caber os botões. */}
+          <span className="hidden min-[340px]:inline">{brand.name.split(' ')[0]}</span>
         </a>
 
         {/* Desktop: só os itens de venda — o menu inteiro fica no rodapé e no
@@ -96,6 +100,15 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={theme === 'light' ? 'Usar tema escuro' : 'Usar tema claro'}
+            title={theme === 'light' ? 'Tema escuro' : 'Tema claro'}
+            className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition-colors hover:border-accent/50 hover:text-accent sm:h-9 sm:w-9"
+          >
+            {theme === 'light' ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+          </button>
           {/* O botão sempre visível da página é a conversa, não o "seguir": o
               visitante já vem do Instagram. O perfil continua a um clique, mas
               como ícone — quem quer seguir procura, quem quer contratar não. */}
@@ -114,7 +127,7 @@ export function Navbar() {
             rel="noreferrer"
             className="btn-ember hidden items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all sm:inline-flex"
           >
-            <MessageCircle className="h-4 w-4" />
+            <WhatsAppIcon className="h-4 w-4" />
             {whatsapp.cta}
           </a>
           <button
@@ -156,7 +169,7 @@ export function Navbar() {
               rel="noreferrer"
               className="btn-ember mt-1 flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
               {whatsapp.cta}
             </a>
             <a

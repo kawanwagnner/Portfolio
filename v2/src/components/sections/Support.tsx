@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
+import { WhatsAppIcon } from '@/components/shared/WhatsAppIcon'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   Check,
   X,
-  MessageCircle,
   ArrowUpRight,
   ChevronLeft,
   ChevronRight,
@@ -25,7 +25,7 @@ function PlanCard({ plan, index }: { plan: SupportPlan; index: number }) {
   return (
     <Reveal
       delay={index * 0.08}
-      className="w-[86vw] shrink-0 snap-start sm:w-[64vw] md:w-[48vw] lg:w-[31%]"
+      className="w-[80vw] shrink-0 snap-start sm:w-[64vw] md:w-[48vw] lg:w-[31%]"
     >
       <div
         className={cn(
@@ -116,7 +116,7 @@ function PlanCard({ plan, index }: { plan: SupportPlan; index: number }) {
                 : 'border border-border bg-background/60 hover:border-accent/50 hover:text-accent'
             )}
           >
-            <MessageCircle className="h-4 w-4" />
+            <WhatsAppIcon className="h-4 w-4" />
             {plan.ctaLabel}
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" />
           </a>
@@ -274,7 +274,7 @@ export function Support() {
         </div>
 
         <Reveal delay={0.2}>
-          <p className="mt-9 max-w-2xl font-mono-tag text-xs leading-relaxed text-muted-foreground">
+          <p className="mt-9 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:font-mono-tag sm:text-xs">
             {supportSection.note}
           </p>
         </Reveal>

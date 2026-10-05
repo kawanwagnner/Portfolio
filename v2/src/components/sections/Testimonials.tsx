@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, Gift, MessageCircle, Play, Quote } from 'lucide-react'
+import { WhatsAppIcon } from '@/components/shared/WhatsAppIcon'
+import { motion, useInView } from 'framer-motion'
+import { ChevronLeft, ChevronRight, Gift, Play } from 'lucide-react'
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
@@ -51,7 +53,7 @@ function VideoFrame({ t }: { t: Testimonial }) {
 
 function Card({ t }: { t: Testimonial }) {
   return (
-    <figure className="flex w-[16.5rem] shrink-0 snap-start flex-col gap-4 sm:w-[18rem]">
+    <figure className="w-[16.5rem] shrink-0 snap-start sm:w-[18rem]">
       {t.video ? (
         <VideoFrame t={t} />
       ) : (
@@ -65,23 +67,13 @@ function Card({ t }: { t: Testimonial }) {
           />
         </div>
       )}
-      <figcaption className="flex flex-col gap-2 px-1">
-        <blockquote className="flex gap-2 text-sm leading-relaxed text-foreground/90">
-          <Quote className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-          <span>{t.quote}</span>
-        </blockquote>
-        <div>
-          <p className="text-sm font-semibold text-foreground">{t.name}</p>
-          <p className="text-xs text-muted-foreground">{t.context}</p>
-        </div>
-      </figcaption>
     </figure>
   )
 }
 
 function ReferralCard() {
   return (
-    <figure className="flex w-[16.5rem] shrink-0 snap-start flex-col gap-4 sm:w-[18rem]">
+    <figure className="w-[16.5rem] shrink-0 snap-start sm:w-[18rem]">
       <div className={FRAME}>
         <img
           src={referral.image}
@@ -91,13 +83,96 @@ function ReferralCard() {
           className="h-full w-full object-cover"
         />
       </div>
-      <figcaption className="px-1">
-        <p className="text-sm font-semibold text-foreground">Indique e ganhe</p>
-        <p className="text-xs text-muted-foreground">
-          {referral.reward} {referral.rewardLabel}
-        </p>
-      </figcaption>
     </figure>
+  )
+}
+
+/** Tempo de cada trecho da animação dos passos, em segundos. */
+const STEP_DOT = 0.35
+const STEP_LINE = 0.6
+
+/**
+ * Os três passos da indicação ligados por uma linha que vai se preenchendo:
+ * acende o 1, a linha corre até o 2, acende o 2, corre até o 3. Dispara uma vez,
+ * quando o bloco entra na tela. No computador os passos ficam lado a lado e a
+ * linha corre na horizontal; no celular eles empilham e a linha desce.
+ * Cada passo desenha o próprio trecho até o seguinte, então a geometria não
+ * depende de medir nada.
+ */
+function ReferralSteps() {
+  const ref = useRef<HTMLOListElement>(null)
+  const inView = useInView(ref, { once: true, amount: 0.6 })
+  const steps = referral.steps
+  // início de cada etapa: ponto i acende, depois a linha i corre
+  const dotAt = (i: number) => i * (STEP_DOT + STEP_LINE)
+  const lineAt = (i: number) => dotAt(i) + STEP_DOT
+  const ease = [0.65, 0, 0.35, 1] as const
+
+  return (
+    <ol ref={ref} className="grid gap-7 border-t border-accent/15 pt-7 sm:grid-cols-3 sm:gap-8">
+      {steps.map((s, i) => {
+        const last = i === steps.length - 1
+        return (
+          <li key={s.title} className="relative flex gap-3 sm:flex-col sm:gap-4">
+            {!last && (
+              <>
+                {/* trilho + preenchimento, horizontal (sm+) */}
+                <span
+                  aria-hidden
+                  className="absolute left-9 top-[0.8rem] hidden h-0.5 w-[calc(100%-2.25rem+2rem-0.5rem)] overflow-hidden rounded-full bg-border sm:block"
+                >
+                  <motion.span
+                    className="block h-full w-full origin-left rounded-full bg-gradient-to-r from-accent to-[hsl(var(--ember))]"
+                    initial={{ scaleX: 0 }}
+                    animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
+                    transition={{ duration: STEP_LINE, delay: lineAt(i), ease }}
+                  />
+                </span>
+                {/* trilho + preenchimento, vertical (celular) */}
+                <span
+                  aria-hidden
+                  className="absolute left-[0.8rem] top-9 h-[calc(100%-2.25rem+1.75rem-0.5rem)] w-0.5 overflow-hidden rounded-full bg-border sm:hidden"
+                >
+                  <motion.span
+                    className="block h-full w-full origin-top rounded-full bg-gradient-to-b from-accent to-[hsl(var(--ember))]"
+                    initial={{ scaleY: 0 }}
+                    animate={inView ? { scaleY: 1 } : { scaleY: 0 }}
+                    transition={{ duration: STEP_LINE, delay: lineAt(i), ease }}
+                  />
+                </span>
+              </>
+            )}
+
+            <motion.span
+              className="relative z-10 grid h-7 w-7 shrink-0 place-items-center rounded-full font-mono-tag text-xs"
+              initial={{ backgroundColor: 'hsl(var(--accent) / 0.15)', color: 'hsl(var(--accent))', scale: 1 }}
+              animate={
+                inView
+                  ? {
+                      backgroundColor: 'hsl(var(--accent) / 1)',
+                      color: 'hsl(var(--accent-foreground))',
+                      scale: [1, 1.25, 1],
+                    }
+                  : undefined
+              }
+              transition={{ duration: STEP_DOT, delay: dotAt(i), ease: 'easeOut' }}
+              style={{ boxShadow: '0 0 0 4px hsl(var(--background))' }}
+            >
+              {i + 1}
+            </motion.span>
+
+            <motion.span
+              initial={{ opacity: 0.45 }}
+              animate={inView ? { opacity: 1 } : undefined}
+              transition={{ duration: STEP_DOT, delay: dotAt(i) }}
+            >
+              <span className="block text-sm font-semibold text-foreground">{s.title}</span>
+              <span className="block text-sm leading-relaxed text-muted-foreground">{s.description}</span>
+            </motion.span>
+          </li>
+        )
+      })}
+    </ol>
   )
 }
 
@@ -134,8 +209,6 @@ export function Testimonials() {
     if (!el) return
     el.scrollBy({ left: dir * Math.min(el.clientWidth * 0.8, 600), behavior: 'smooth' })
   }
-
-  const steps = referral.steps
 
   return (
     <section id="depoimentos" className="relative overflow-hidden py-20 md:py-24">
@@ -212,24 +285,12 @@ export function Testimonials() {
                 rel="noreferrer"
                 className="btn-ember inline-flex shrink-0 items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
               >
-                <MessageCircle className="h-4 w-4" />
+                <WhatsAppIcon className="h-4 w-4" />
                 {referral.cta}
               </a>
             </div>
 
-            <ol className="grid gap-5 border-t border-accent/15 pt-7 sm:grid-cols-3 sm:gap-8">
-              {steps.map((s, i) => (
-                <li key={s.title} className="flex gap-3">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-accent/15 font-mono-tag text-xs text-accent">
-                    {i + 1}
-                  </span>
-                  <span>
-                    <span className="block text-sm font-semibold text-foreground">{s.title}</span>
-                    <span className="block text-sm leading-relaxed text-muted-foreground">{s.description}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
+            <ReferralSteps />
           </div>
         </Reveal>
       </div>

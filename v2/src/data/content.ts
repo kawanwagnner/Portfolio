@@ -48,8 +48,9 @@ export const about = {
   ],
   stats: [
     { value: "15+", label: "Projetos no ar" },
-    { value: "3+", label: "Anos codando" },
-    { value: "100%", label: "Foco no resultado" },
+    { value: "4+", label: "Anos codando" },
+    // @vyso.store tinha 4.538 em 05/10/2026. Atualizar quando passar de 5 mil.
+    { value: "4,5k", label: "Seguidores no Instagram" },
   ],
 };
 
@@ -857,7 +858,7 @@ export interface Product {
 }
 
 export const productsSection = {
-  kicker: "03 / Produtos",
+  kicker: "04 / Produtos",
   heading: "O que a VYSO *vende pronto*.",
   description:
     "Fora o sob medida, a VYSO toca negócio próprio. A loja roda no mesmo código que a gente entrega pra cliente.",
@@ -981,7 +982,7 @@ export interface FaqItem {
  * Só entra aqui o que for verdade; prazo e preço não têm número inventado.
  */
 export const faqSection = {
-  kicker: "04 / Dúvidas",
+  kicker: "03 / Dúvidas",
   heading: "O que todo cliente pergunta *antes de fechar*.",
   description:
     "Se a sua dúvida não está aqui, manda no WhatsApp. Você fala direto com quem vai construir.",

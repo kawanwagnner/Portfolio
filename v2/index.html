@@ -13,7 +13,15 @@
     <meta name="description" content="A VYSO cria sites, lojas virtuais, apps e sistemas sob medida para pequenos e médios negócios. Você fala direto com quem constrói, sem agência e sem intermediário. Projetos reais, do problema ao resultado." />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Kawan Wagnner" />
-    <meta name="theme-color" content="#0b0b12" />
+    <meta name="theme-color" content="#f9f9fc" />
+    <!-- Tema antes do primeiro paint (mesma regra de src/lib/theme.ts): claro por padrão -->
+    <script>
+      try {
+        if (localStorage.getItem('vyso:theme') !== 'dark') document.documentElement.classList.add('theme-light')
+      } catch (e) {
+        document.documentElement.classList.add('theme-light')
+      }
+    </script>
     <link rel="canonical" href="https://vyso.store/" />
 
     <!-- Open Graph / prévia de link -->

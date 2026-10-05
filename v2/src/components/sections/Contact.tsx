@@ -1,4 +1,7 @@
-import { Instagram, Mail, Github, MessageCircle, ArrowUpRight, type LucideIcon } from 'lucide-react'
+import { Fragment } from 'react'
+import { WhatsAppIcon } from '@/components/shared/WhatsAppIcon'
+import { Instagram, Mail, Github, ArrowUpRight, } from 'lucide-react'
+import type { ComponentType } from 'react'
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
@@ -8,7 +11,7 @@ interface Channel {
   label: string
   value: string
   href: string
-  icon: LucideIcon
+  icon: ComponentType<{ className?: string }>
 }
 
 export function Contact() {
@@ -19,7 +22,7 @@ export function Contact() {
       label: 'WhatsApp',
       value: whatsapp.display,
       href: socials.whatsapp,
-      icon: MessageCircle,
+      icon: WhatsAppIcon,
     },
     { label: 'Instagram', value: '@vyso.store', href: socials.instagram, icon: Instagram },
     { label: 'E-mail', value: contact.email, href: `mailto:${contact.email}`, icon: Mail },
@@ -64,9 +67,9 @@ export function Contact() {
               href={socials.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="btn-ember group mt-9 inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold"
+              className="btn-ember group mt-9 inline-flex w-full justify-center sm:w-auto items-center gap-2 rounded-full px-7 py-4 text-[0.95rem] font-semibold sm:py-3.5 sm:text-sm"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
               {contact.ctaLabel}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
@@ -102,8 +105,15 @@ export function Contact() {
                       </span>
                       {/* Quebra em vez de truncar: reticências num e-mail ou
                           num @ escondem justamente o que a pessoa veio copiar. */}
-                      <span className="block break-words font-display text-base font-semibold transition-colors group-hover:text-accent md:text-lg">
-                        {c.value}
+                      {/* <wbr> antes de @ e depois de /: no celular o e-mail e o GitHub
+                          quebravam no meio da palavra ("gmai / l.com"). */}
+                      <span className="block font-display text-base font-semibold transition-colors group-hover:text-accent md:text-lg">
+                        {c.value.split(/(?=@)|(?<=\/)/).map((piece, k) => (
+                          <Fragment key={k}>
+                            {k > 0 && <wbr />}
+                            {piece}
+                          </Fragment>
+                        ))}
                       </span>
                     </span>
                     <ArrowUpRight className="relative h-5 w-5 shrink-0 -translate-x-1 text-muted-foreground opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-accent group-hover:opacity-100" />

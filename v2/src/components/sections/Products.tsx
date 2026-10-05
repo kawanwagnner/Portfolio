@@ -82,12 +82,12 @@ function ProductBlock({ product }: { product: Product }) {
             </p>
           </Reveal>
 
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} className="self-stretch sm:self-auto">
             <a
               href={product.cta.href}
               target="_blank"
               rel="noreferrer"
-              className="btn-ember group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-all"
+              className="btn-ember group inline-flex w-full justify-center sm:w-auto items-center gap-2 rounded-full px-7 py-4 text-[0.95rem] font-semibold transition-all sm:py-3.5 sm:text-sm"
             >
               {product.cta.label}
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

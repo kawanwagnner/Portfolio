@@ -272,3 +272,19 @@ node scripts/preview-shot.mjs produtos 1440 1900          # confere uma seção 
 - **Ícone do WhatsApp com centro óptico**: medido no navegador, a caixa do desenho já cai no centro exato, mas o rabinho do balão pesa à esquerda. `translate-x-[4%] -translate-y-[3%]` centraliza o anel.
 - **Depoimentos** (`sections/Testimonials.tsx`, dados `testimonials`/`referral` no content.ts, âncora `#depoimentos`, logo depois dos projetos; kickers renumerados até 08). Tudo tirado dos destaques do Instagram @vyso.store em 05/10/2026 com Playwright logado (perfil em scratchpad, não versionado): vídeo da Amanda Mendes (3 partes de 60 s juntadas com o áudio certo pelo horário de gravação, 540×960, ~10 MB em `public/video`, só baixa no play), print do Valdemir no LinkedIn com o WhatsApp da Amanda, print do Dom da Barbearia Imperador e o card "Indique e ganhe". Texto dos prints transcrito sem edição.
 - **Indicou, ganhou**: R$ 100 por indicação que virar cliente, 3 passos e botão de WhatsApp com mensagem pronta. Fonte: story "Indique e ganhe" do destaque Projetos.
+
+## 05/10/2026 (tarde): a /v2 virou a home oficial
+
+- **Home = layout da antiga /v2.** `pages/Home.tsx` com o herói novo (`sections/Hero.tsx`; o herói do V de partículas foi apagado). `/v2` redireciona pra `/`. Ordem: herói, projetos, depoimentos, dúvidas, produtos, suporte, sobre, founder, contato (kickers 01 a 08).
+- **Tema claro por padrão no site inteiro, escuro como opção** do visitante: botão lua/sol no menu (celular e computador). `lib/theme.ts` + script no `<head>` do index.html que aplica a classe antes do primeiro paint (mesma chave `vyso:theme`; mudou um, mude o outro).
+- **Celular é o público principal.** Regras aplicadas:
+  - Botão principal ocupa a largura toda abaixo de `sm` (alinha com o texto, alvo grande na zona do polegar); no computador volta pro tamanho do conteúdo, à esquerda.
+  - Projetos na home viram carrossel de arrastar abaixo de `sm` (`carrosselNoCelular`), área da imagem com altura fixa e resumo em 3 linhas, com "Arraste pro lado" e "Ver todos".
+  - Herói no celular: só o print da loja, em cima do texto. A colagem de 3 prints é do `sm` pra cima.
+  - Benefícios do herói em uma coluna, frases curtas que cabem numa linha, check sem círculo de fundo.
+  - Nome VYSO junto da logo no menu, some só abaixo de 340px.
+  - Planos de suporte com 80vw no celular pro próximo espiar; e-mail e GitHub do contato só quebram em `@` e `/`.
+- **Ícone do WhatsApp** (`shared/WhatsAppIcon.tsx`) em todo link que abre o WhatsApp; nunca o balão genérico do lucide.
+- **Depoimentos só com o print/vídeo**, sem legenda embaixo (texto fica no `alt`). Passos do "Indicou, ganhou" com linha de progresso animada (horizontal no computador, vertical no celular).
+- Selo do cartão da foto do Founder usa a logo do menu, sem fundo. Números da seção Sobre: 15+ projetos, 4+ anos codando, 4,5k seguidores no Instagram (@vyso.store tinha 4.538 em 05/10/2026). O botão do Instagram no Founder mostra o número também.
+- `og-image.jpg` refeita com o herói novo em tema claro.

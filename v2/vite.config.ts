@@ -64,7 +64,7 @@ function seoPages(): Plugin {
       await writeFile(path.join(outDir, 'sitemap.xml'), sitemap)
       await writeFile(
         path.join(outDir, 'robots.txt'),
-        `User-agent: *\nAllow: /\nDisallow: /v2\n\nSitemap: ${SITE_URL}/sitemap.xml\n`
+        `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`
       )
     },
   }

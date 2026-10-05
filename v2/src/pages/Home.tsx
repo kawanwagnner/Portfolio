@@ -1,33 +1,27 @@
 import { Hero } from '@/components/sections/Hero'
-import { Marquee } from '@/components/sections/Marquee'
+import { Projects } from '@/components/sections/Projects'
+import { Testimonials } from '@/components/sections/Testimonials'
+import { Faq } from '@/components/sections/Faq'
+import { Products } from '@/components/sections/Products'
+import { Support } from '@/components/sections/Support'
 import { About } from '@/components/sections/About'
 import { Founder } from '@/components/sections/Founder'
-import { Projects } from '@/components/sections/Projects'
-import { Products } from '@/components/sections/Products'
-import { Faq } from '@/components/sections/Faq'
-import { Testimonials } from '@/components/sections/Testimonials'
-import { Support } from '@/components/sections/Support'
 import { Contact } from '@/components/sections/Contact'
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, useSectionTitle, useSeo } from '@/lib/seo'
 
 /** Fora do componente: o hook observa de novo se a referência mudar. */
-const SECTION_IDS = ['hero', 'projetos', 'depoimentos', 'produtos', 'duvidas', 'suporte', 'sobre', 'founder', 'contato']
+const SECTION_IDS = ['hero', 'projetos', 'depoimentos', 'duvidas', 'produtos', 'suporte', 'sobre', 'founder', 'contato']
 
 /**
- * Ordem de venda: prova antes de discurso.
+ * Home. Layout que nasceu como experimento na /v2 e virou o oficial em
+ * 05/10/2026: tema claro por padrão (escuro no botão do menu, ver lib/theme.ts).
  *
- * Quem chega da bio do Instagram dá poucos segundos ao site — nesse tempo ele
- * precisa ver TRABALHO, não manifesto. Por isso os projetos vêm logo depois do
- * herói, seguidos do que a VYSO vende (serviços) e de quanto custa (suporte).
- * Só então entra o institucional (A VYSO / Founder), que fecha a confiança de
- * quem já se interessou — em vez de gastar as primeiras telas de quem ainda não.
- *
- * Produtos vem logo depois dos cases pelo mesmo motivo: quem acabou de ver que
- * a casa entrega é quem está pronto pra ouvir que existe algo pronto pra usar
- * hoje, sem orçamento. Serviço é sob medida; produto é assinatura.
- *
- * Os números dos kickers (01 —, 02 — …) seguem esta ordem: mexeu aqui, renumere
- * em `data/content.ts` (e o de Serviços, que é literal no próprio componente).
+ * Ordem pensada pra quem chega pra contratar, quase sempre pelo celular:
+ * herói que diz quem faz e o quê, projetos logo em seguida (prova antes de
+ * discurso), depoimentos (o cliente ficou feliz?), dúvidas que travam o
+ * fechamento, o produto próprio, preço do suporte, e só então quem está por
+ * trás. Os números dos kickers (01 /, 02 / …) seguem esta ordem: mexeu aqui,
+ * renumere em `data/content.ts`.
  */
 export default function Home() {
   useSeo({ title: DEFAULT_TITLE, description: DEFAULT_DESCRIPTION, path: '/' })
@@ -36,18 +30,13 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Marquee />
       <Projects />
       <Testimonials />
-      <Products />
       <Faq />
+      <Products />
       <Support />
       <About />
       <Founder />
-      {/* <Immersive /> — fora da home: ~590px que só afirmavam "somos bons", e o
-          CTA dela apenas rolava até o contato, que já vem logo abaixo. O
-          componente segue em components/sections/Immersive.tsx; pra trazer de
-          volta é só descomentar. */}
       <Contact />
     </>
   )

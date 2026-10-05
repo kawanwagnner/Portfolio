@@ -1,4 +1,5 @@
 import { Instagram, ArrowUpRight } from 'lucide-react'
+import { Logo } from '@/components/shared/Logo'
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
@@ -43,6 +44,7 @@ export function Founder() {
               >
                 <Instagram className="h-4 w-4" />
                 @vyso.store
+                <span className="font-normal text-muted-foreground">· 4,5 mil seguidores</span>
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
@@ -66,9 +68,8 @@ export function Founder() {
             {/* selo no rodapé da foto */}
             <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl border border-white/10 bg-background/85 px-4 py-3">
               <span className="font-display text-sm font-bold">{founder.name}</span>
-              <span className="grid h-7 w-7 place-items-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
-                V
-              </span>
+              {/* mesma logo do menu, sem fundo */}
+              <Logo className="h-5 text-accent" />
             </div>
           </div>
         </Reveal>

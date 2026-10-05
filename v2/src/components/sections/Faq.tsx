@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { WhatsAppIcon } from '@/components/shared/WhatsAppIcon'
 import { AnimatePresence, motion } from 'framer-motion'
-import { MessageCircle, Plus } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
@@ -112,14 +113,14 @@ export function Faq() {
           <Reveal delay={0.1}>
             <p className="max-w-sm text-muted-foreground">{faqSection.description}</p>
           </Reveal>
-          <Reveal delay={0.15}>
+          <Reveal delay={0.15} className="self-stretch sm:self-auto">
             <a
               href={socials.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="btn-ember inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+              className="btn-ember inline-flex w-full justify-center sm:w-auto items-center gap-2 rounded-full px-6 py-4 text-[0.95rem] font-semibold sm:py-3 sm:text-sm"
             >
-              <MessageCircle className="h-4 w-4" />
+              <WhatsAppIcon className="h-4 w-4" />
               Tirar uma dúvida no WhatsApp
             </a>
           </Reveal>

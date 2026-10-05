@@ -27,10 +27,13 @@ export function ProjectCard({
   project,
   part,
   index,
+  compacto = false,
 }: {
   project: Project
   part?: CasePart
   index: number
+  /** No carrossel do celular: resumo cortado em 3 linhas. */
+  compacto?: boolean
 }) {
   const parts = getCaseParts(project)
   const lead = part ?? parts[0]
@@ -59,7 +62,7 @@ export function ProjectCard({
           texto. Aparelho 9:19 é quase o dobro da altura de um browser 16:10: o
           celular fica menor que na página do case pra não estourar a linha, mas
           aparece inteiro. */}
-      <div className="relative flex flex-1 items-center overflow-hidden px-6 pb-2 pt-12">
+      <div className={cn('relative flex items-center overflow-hidden px-6 pb-2 pt-12', compacto ? 'h-64 flex-none sm:h-auto sm:flex-1' : 'flex-1')}>
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -75,7 +78,7 @@ export function ProjectCard({
             url={live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
             fallbackLabel={project.client}
             fallbackLogo={project.logo}
-            className={cn('mx-auto', mockup === 'phone' && 'max-w-[11rem]')}
+            className={cn('mx-auto', mockup === 'phone' && (compacto ? 'max-w-[6.5rem] sm:max-w-[11rem]' : 'max-w-[11rem]'))}
           />
         </div>
       </div>
@@ -95,7 +98,9 @@ export function ProjectCard({
           </div>
         </div>
 
-        <p className="text-sm leading-relaxed text-muted-foreground">{summary}</p>
+        <p className={cn('text-sm leading-relaxed text-muted-foreground', compacto && 'line-clamp-3 sm:line-clamp-none')}>
+          {summary}
+        </p>
 
         <div className="flex flex-wrap gap-2">
           {project.tags.map((t) => (
@@ -173,7 +178,10 @@ function entriesFor(tab: (typeof TABS)[number]['key'], fatiar: boolean): Entry[]
  * porque lá o card é vitrine de cliente — a AL virando dois cards lê como
  * projeto repetido, não como dois sistemas.
  */
-export function ProjectGroups({ fatiar = true }: { fatiar?: boolean } = {}) {
+export function ProjectGroups({
+  fatiar = true,
+  carrosselNoCelular = false,
+}: { fatiar?: boolean; carrosselNoCelular?: boolean } = {}) {
   // Abre em "Todos": é a visão em que cada cliente aparece uma vez só. Abrindo
   // em Desktop/Web, a primeira coisa que o visitante via era a AL fatiada em
   // dois cards (loja e painel), com cara de projeto repetido. Fatiar continua
@@ -236,9 +244,18 @@ export function ProjectGroups({ fatiar = true }: { fatiar?: boolean } = {}) {
           min-content do card (o print manda no tamanho), estourando a tela no celular —
           dava pra arrastar a página pro lado. grid-cols-* do Tailwind é minmax(0,1fr),
           e é o minmax(0,…) que segura a coluna dentro da tela. */}
+      {/* Na home, abaixo de `sm`, a grade vira carrossel de arrastar: oito cards
+          empilhados davam quase 5 mil pixels de rolagem antes da próxima seção,
+          e a maior parte do público chega pelo celular. O card seguinte espia na
+          borda pra deixar claro que tem mais. Do `sm` pra cima, grade normal. */}
       <motion.div
         layout
-        className="mx-auto grid w-full grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        className={cn(
+          'mx-auto w-full gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3',
+          carrosselNoCelular
+            ? 'no-scrollbar -mx-6 flex w-auto items-start snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-2 sm:mx-auto sm:w-full sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0'
+            : 'grid grid-cols-1'
+        )}
         role="tabpanel"
       >
         <AnimatePresence mode="popLayout">
@@ -250,13 +267,32 @@ export function ProjectGroups({ fatiar = true }: { fatiar?: boolean } = {}) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.35, delay: (i % 3) * 0.05, ease: [0.22, 1, 0.36, 1] }}
-              className={cn(active === 'all' && project.featured && 'sm:col-span-2 lg:col-span-1')}
+              className={cn(
+                active === 'all' && project.featured && 'sm:col-span-2 lg:col-span-1',
+                carrosselNoCelular && 'w-[82%] shrink-0 snap-start sm:w-auto'
+              )}
             >
-              <ProjectCard project={project} part={part} index={projects.indexOf(project)} />
+              <ProjectCard
+                project={project}
+                part={part}
+                index={projects.indexOf(project)}
+                compacto={carrosselNoCelular}
+              />
             </motion.div>
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {carrosselNoCelular && (
+        <div className="-mt-4 flex items-center justify-between gap-4 sm:hidden">
+          <span className="font-mono-tag text-[0.7rem] uppercase tracking-wider text-muted-foreground">
+            Arraste pro lado · {items.length} projetos
+          </span>
+          <Link to="/projetos" className="inline-flex items-center gap-1 text-sm font-semibold text-accent">
+            Ver todos <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </div>
+      )}
     </div>
   )
 }
@@ -283,7 +319,7 @@ export function Projects() {
       </div>
 
       {/* Na home o card é vitrine de cliente: um card por projeto, sempre. */}
-      <ProjectGroups fatiar={false} />
+      <ProjectGroups fatiar={false} carrosselNoCelular />
     </section>
   )
 }
