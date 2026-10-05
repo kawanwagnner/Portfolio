@@ -247,9 +247,11 @@ export function Hero() {
                 {total} projetos no portfólio
               </span>
             </span>
-            {/* rabisco de três traços, como na referência */}
-            <svg viewBox="0 0 28 24" aria-hidden className="h-6 w-7 shrink-0 self-start text-accent">
-              <path d="M6 9 3 3M14 7l1-6M20 12l6-3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            {/* Rabisco de destaque, como na referência: três traços saindo em leque
+                de um ponto no canto do texto, na diagonal pra cima e pra direita,
+                feito uma aspa. Encostado no canto superior direito do texto. */}
+            <svg viewBox="0 0 28 28" aria-hidden className="-ml-1 -mt-5 h-7 w-7 shrink-0 self-start text-accent">
+              <path d="M4.1 18.3L7.2 6.7 M7.9 20.6L16.9 12.6 M9.9 24.6L20.7 22.7" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
             </svg>
           </motion.div>
         </div>
