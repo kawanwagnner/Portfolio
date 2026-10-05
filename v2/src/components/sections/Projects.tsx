@@ -78,7 +78,10 @@ export function ProjectCard({
             url={live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
             fallbackLabel={project.client}
             fallbackLogo={project.logo}
-            className={cn('mx-auto', mockup === 'phone' && (compacto ? 'max-w-[6.5rem] sm:max-w-[11rem]' : 'max-w-[11rem]'))}
+            // Celular 9:19 com 6.75rem de largura dá a mesma altura do browser 16:10 do
+            // card ao lado (~230px). Com 11rem ele ficava 120px mais alto e esticava a
+            // linha inteira da grade.
+            className={cn('mx-auto', mockup === 'phone' && 'max-w-[6.5rem] sm:max-w-[6.75rem]')}
           />
         </div>
       </div>
@@ -253,7 +256,7 @@ export function ProjectGroups({
         className={cn(
           'mx-auto w-full gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3',
           carrosselNoCelular
-            ? 'no-scrollbar -mx-6 flex w-auto items-start snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-2 sm:mx-auto sm:w-full sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0'
+            ? 'no-scrollbar -mx-6 flex w-auto items-start sm:items-stretch snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-6 px-6 pb-2 sm:mx-auto sm:w-full sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0'
             : 'grid grid-cols-1'
         )}
         role="tabpanel"

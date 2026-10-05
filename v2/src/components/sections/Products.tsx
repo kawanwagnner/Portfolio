@@ -96,13 +96,22 @@ function ProductBlock({ product }: { product: Product }) {
         </div>
 
         <Reveal delay={0.1}>
-          <Mockup
-            variant="browser"
-            src={product.cover}
-            alt={`Tela do ${product.name}`}
-            url={product.mockupUrl}
-            fallbackLabel={product.name}
-          />
+          {/* O print também leva pro produto: é onde o dedo vai primeiro no celular. */}
+          <a
+            href={product.cta.href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`Abrir ${product.mockupUrl}`}
+            className="group block rounded-xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          >
+            <Mockup
+              variant="browser"
+              src={product.cover}
+              alt={`Tela do ${product.name}`}
+              url={product.mockupUrl}
+              fallbackLabel={product.name}
+            />
+          </a>
         </Reveal>
       </div>
 

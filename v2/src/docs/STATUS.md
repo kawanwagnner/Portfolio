@@ -258,7 +258,7 @@ node scripts/preview-shot.mjs produtos 1440 1900          # confere uma seção 
 - **Navbar** some ao rolar pra baixo e volta ao rolar pra cima (limiar de 8px, sempre visível nos primeiros 80px, travada com o menu do celular aberto).
 - **WhatsApp flutuante** sempre na tela, em qualquer largura, verde oficial. Antes era só celular e só depois do herói.
 - Pendente: **Search Console** (verificar vyso.store e mandar o sitemap) e trocar a foto do Founder pela nova que o Kawan mandou no chat (o arquivo não chegou ao disco).
-- **Favicon** é o mesmo da loja vyso.com.br (`public/favicon.svg`, V preto que vira branco em aba escura, mais PNG 32 e apple-touch-icon). Fonte: `vyso-ecommerce-web/public`.
+- **Favicon** do portfólio é o V índigo em data URI no `index.html` (voltou em 05/10/2026: o pedido era o ícone da loja como LOGO do projeto VYSO Loja, não como favicon do site). A logo do case `vyso-loja` é `img/logos/vyso-loja.webp`, o ícone 192px da loja vyso.com.br.
 - **Foto do Founder** trocada (`public/img/kawan.webp`, 640×640, no notebook); enquadramento `object-[58%_center]` no recorte 4:5.
 
 ## /v2: experimento em tema claro (05/10/2026)

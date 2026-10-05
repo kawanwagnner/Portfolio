@@ -177,6 +177,8 @@ export const projects: Project[] = [
     client: "VYSO",
     year: "2026",
     category: "E-commerce",
+    // ícone da própria loja vyso.com.br (V branco no quadrado preto)
+    logo: "/img/logos/vyso-loja.webp",
     summary:
       "A loja própria da marca: roupas e acessórios com frete grátis, Pix na hora e cartão em 12x. Carrinho, checkout, trocas, recuperação de venda e painel, tudo código da casa.",
     intro:
