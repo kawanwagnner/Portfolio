@@ -131,11 +131,14 @@ export function ProjectCard({
           {summary}
         </p>
 
-        <div className={cn('flex gap-2', compacto ? 'flex-nowrap overflow-hidden sm:flex-wrap' : 'flex-wrap')}>
+        {/* Tag nunca quebra por dentro ("REACT / NATIVE", "E- / COMMERCE") nem é
+            cortada na borda: inteira numa linha, e o que não cabe desce. No
+            celular a tag é um pouco menor pra caber mais por linha. */}
+        <div className="flex flex-wrap gap-1.5 sm:gap-2">
           {project.tags.map((t) => (
             <span
               key={t}
-              className="rounded-full border border-border bg-background/85 px-2.5 py-0.5 font-mono-tag text-[0.7rem] uppercase tracking-wider text-muted-foreground"
+              className="shrink-0 whitespace-nowrap rounded-full border border-border bg-background/85 px-2 py-0.5 font-mono-tag text-[0.65rem] uppercase tracking-wide text-muted-foreground sm:px-2.5 sm:text-[0.7rem] sm:tracking-wider"
             >
               {t}
             </span>
