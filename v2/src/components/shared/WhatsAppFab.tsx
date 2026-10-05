@@ -39,7 +39,11 @@ export function WhatsAppFab() {
       }}
       className="fixed right-5 z-[90] grid h-14 w-14 place-items-center rounded-full text-white sm:right-6 sm:h-[3.75rem] sm:w-[3.75rem]"
     >
-      <WhatsAppIcon className="h-7 w-7 sm:h-8 sm:w-8" />
+      {/* Centro óptico, não geométrico. Medido no navegador: a caixa do desenho
+          já cai no centro exato do botão, mas o rabinho do balão pesa embaixo à
+          esquerda e o ícone parece torto. 4% pra direita e 3% pra cima põem o
+          anel do balão no meio, que é onde o olho procura o centro. */}
+      <WhatsAppIcon className="h-7 w-7 translate-x-[4%] -translate-y-[3%] sm:h-8 sm:w-8" />
     </motion.a>
   )
 }

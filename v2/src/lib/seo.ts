@@ -79,7 +79,7 @@ export const SECTION_TITLES: Record<string, string> = {
   hero: DEFAULT_TITLE,
   projetos: 'Projetos entregues | VYSO',
   produtos: 'VYSO Loja, nosso e-commerce próprio | VYSO',
-  servicos: 'Serviços: sites, lojas e sistemas | VYSO',
+  duvidas: 'Dúvidas frequentes: prazo, contrato e nota fiscal | VYSO',
   suporte: 'Planos de suporte e manutenção | VYSO',
   sobre: 'Sobre a VYSO',
   founder: 'Kawan Wagnner, fundador da VYSO',

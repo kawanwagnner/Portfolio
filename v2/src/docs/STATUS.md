@@ -268,3 +268,5 @@ node scripts/preview-shot.mjs produtos 1440 1900          # confere uma seção 
 - Herói novo (`sections/HeroV2.tsx`): sem o V de partículas. Foto e nome do Kawan, frase em primeira pessoa ("Eu construo o site, a loja ou o sistema do seu negócio."), quatro linhas do que ele entrega, CTA de orçamento no WhatsApp e "Ver N projetos". À direita, colagem com prints reais de três cases (`SHOWCASE`), cada um abrindo o case.
 - Ordem: herói, projetos, serviços, produtos, suporte, sobre, founder, contato.
 - Se aprovar: trocar `Home` por `HomeV2` na rota `/`, decidir se o claro vira padrão do site inteiro e apagar a rota de teste.
+- **FAQ no lugar de Serviços** (`sections/Faq.tsx`, dados `faq`/`faqSection` no content.ts, âncora `#duvidas`, item "Dúvidas" no menu). A seção "Qualidade de agência, agilidade de freela" saiu por ser genérica; "O que a VYSO faz?" é a primeira pergunta e já abre. Tem JSON-LD FAQPage. Os dados `services` ficaram no content.ts sem uso.
+- **Ícone do WhatsApp com centro óptico**: medido no navegador, a caixa do desenho já cai no centro exato, mas o rabinho do balão pesa à esquerda. `translate-x-[4%] -translate-y-[3%]` centraliza o anel.

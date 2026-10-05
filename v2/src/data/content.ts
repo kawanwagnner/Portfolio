@@ -905,6 +905,82 @@ export interface Service {
   icon: string; // nome do ícone lucide-react
 }
 
+export interface FaqItem {
+  question: string;
+  /** Parágrafos da resposta. */
+  answer: string[];
+  /** Lista opcional depois do primeiro parágrafo. */
+  bullets?: string[];
+}
+
+/**
+ * Perguntas frequentes. Substituiu a seção de serviços ("Qualidade de agência,
+ * agilidade de freela"), que o Kawan achou genérica: o que a VYSO faz virou a
+ * primeira pergunta, e o resto responde o que trava o fechamento.
+ * Só entra aqui o que for verdade; prazo e preço não têm número inventado.
+ */
+export const faqSection = {
+  kicker: "03 / Dúvidas",
+  heading: "O que todo cliente pergunta *antes de fechar*.",
+  description:
+    "Se a sua dúvida não está aqui, manda no WhatsApp. Você fala direto com quem vai construir.",
+};
+
+export const faq: FaqItem[] = [
+  {
+    question: "O que a VYSO faz?",
+    answer: ["Tecnologia sob medida pra pequeno e médio negócio, do primeiro rascunho ao projeto no ar:"],
+    bullets: [
+      "Sites institucionais e páginas de venda",
+      "Lojas virtuais com Pix, cartão e frete",
+      "Sistemas, apps e painéis pra tocar a operação",
+      "Automações e integrações que tiram o trabalho manual",
+      "Manutenção e evolução de site que já existe",
+    ],
+  },
+  {
+    question: "Vocês emitem nota fiscal?",
+    answer: ["Sim. Emitimos nota fiscal em todos os projetos."],
+  },
+  {
+    question: "Tem contrato?",
+    answer: [
+      "Sim. Todo projeto tem contrato, com escopo, prazo e valor por escrito. Ele protege as duas partes: você sabe exatamente o que vai receber, e a gente sabe exatamente o que precisa entregar.",
+    ],
+  },
+  {
+    question: "Em quanto tempo fica pronto o meu projeto?",
+    answer: [
+      "Depende do projeto, porque tudo aqui é feito sob medida. Antes de começar, a gente define o escopo com você de forma objetiva, sem item vago, e combina a data de entrega. A meta é sempre entregar o mais rápido possível sem abrir mão da qualidade.",
+    ],
+  },
+  {
+    question: "Como funciona a página de vendas em 24 horas?",
+    answer: [
+      "Antes de fechar qualquer acordo, a gente monta um protótipo da sua página pra você ver se faz sentido pro seu negócio.",
+      "Fechou, esse protótipo vira a base da entrega: estrutura, seções e textos já estão de pé, falta só o acabamento. É por reaproveitar essa base que dá pra entregar em até 24 horas.",
+    ],
+  },
+  {
+    question: "Já tenho um site. Vocês assumem?",
+    answer: [
+      "Sim. A gente avalia o que existe, diz com franqueza o que vale manter e o que precisa refazer, e assume a manutenção ou a evolução a partir daí.",
+    ],
+  },
+  {
+    question: "E depois que o projeto fica pronto?",
+    answer: [
+      "Você não fica sozinho. Os planos de suporte cuidam de hospedagem, domínio, segurança, backups e ajustes do mês, a partir de R$ 60 por mês, sem fidelidade.",
+    ],
+  },
+  {
+    question: "Atendem fora de São Paulo?",
+    answer: [
+      "Sim. O atendimento é todo online, pelo WhatsApp e por chamada, então a distância não muda nada no projeto.",
+    ],
+  },
+];
+
 export const services: Service[] = [
   {
     title: "Sites & Landing Pages",
@@ -1154,7 +1230,7 @@ export const nav = [
   { label: "Início", href: "#hero" },
   { label: "Projetos", href: "#projetos", barra: true },
   { label: "Produtos", href: "#produtos", barra: true },
-  { label: "Serviços", href: "#servicos", barra: true },
+  { label: "Dúvidas", href: "#duvidas", barra: true },
   { label: "Suporte", href: "#suporte", barra: true },
   { label: "A VYSO", href: "#sobre" },
   { label: "Founder", href: "#founder" },
