@@ -1,7 +1,8 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { WhatsAppIcon } from '@/components/shared/WhatsAppIcon'
 import { motion } from 'framer-motion'
-import { ArrowDown, ArrowUpRight, Check } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Check, ChevronRight, ExternalLink } from 'lucide-react'
 import { Mockup } from '@/components/shared/Mockup'
 import { founder, getCaseParts, projects, socials } from '@/data/content'
 
@@ -29,6 +30,77 @@ function scrollTo(id: string) {
 }
 
 /**
+ * Prints do herói no celular: carrossel de arrastar, um card por projeto, com
+ * o endereço do site e o ícone de abrir no topo e a seta pro próximo. Segue a
+ * referência que o Kawan mandou em 05/10/2026. Do sm pra cima vale a colagem.
+ */
+function MobileShowcase({ items }: { items: (typeof projects)[number][] }) {
+  const track = useRef<HTMLDivElement>(null)
+  const [atEnd, setAtEnd] = useState(false)
+
+  useEffect(() => {
+    const el = track.current
+    if (!el) return
+    const update = () => setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 8)
+    update()
+    el.addEventListener('scroll', update, { passive: true })
+    return () => el.removeEventListener('scroll', update)
+  }, [])
+
+  const next = () => {
+    const el = track.current
+    const card = el?.firstElementChild as HTMLElement | null
+    if (el && card) el.scrollBy({ left: card.offsetWidth + 12, behavior: 'smooth' })
+  }
+
+  return (
+    <div className="relative -mx-6 sm:hidden">
+      <div ref={track} className="no-scrollbar flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-px-6 px-6 pb-3">
+        {items.map((p, i) => {
+          const lead = getCaseParts(p)[0]
+          const url = lead.live?.replace(/^https?:\/\//, '').replace(/\/$/, '') ?? p.title
+          return (
+            <Link
+              key={p.slug}
+              to={`/projetos/${p.slug}`}
+              aria-label={`Ver o case ${p.title}`}
+              className="w-[84%] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-card shadow-[0_18px_40px_-24px_hsl(232_40%_20%/0.45)]"
+            >
+              <span className="flex items-center justify-between gap-3 px-4 py-2.5">
+                <span className="truncate text-sm text-muted-foreground">{url}</span>
+                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border bg-background text-muted-foreground">
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </span>
+              </span>
+              <span className="block aspect-[16/10] overflow-hidden bg-secondary">
+                {lead.cover && (
+                  <img
+                    src={lead.cover}
+                    alt={`Tela do projeto ${p.title}`}
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    className="h-full w-full object-cover object-top"
+                  />
+                )}
+              </span>
+            </Link>
+          )
+        })}
+      </div>
+      {!atEnd && (
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Próximo projeto"
+          className="absolute right-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-border bg-card text-foreground shadow-lg"
+        >
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      )}
+    </div>
+  )
+}
+
+/**
  * Herói da home (era o experimento da /v2, oficializado em 05/10/2026).
  *
  * O da home usa um V de partículas: bonito, mas não diz nada sobre o que se
@@ -46,14 +118,15 @@ export function Hero() {
     <section id="hero" className="relative overflow-hidden bg-background pb-16 pt-24 md:pb-24 md:pt-36">
       <div aria-hidden className="ember-glow absolute -right-40 top-10 -z-0 h-[36rem] w-[36rem]" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
+      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
         {/* ── Texto ─────────────────────────────────────────── */}
-        <div className="flex flex-col items-start gap-6">
+        <div className="flex min-w-0 flex-col items-start gap-6">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease }}
-            className="flex items-center gap-3 rounded-full border border-border bg-card py-1.5 pl-1.5 pr-4 shadow-sm"
+            // só do sm pra cima; no celular o fundador vai pra linha de baixo dos botões
+            className="hidden items-center gap-3 rounded-full border border-border bg-card py-1.5 pl-1.5 pr-4 shadow-sm sm:flex"
           >
             <img
               src={founder.photo}
@@ -92,11 +165,13 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.18, ease }}
-            className="hidden flex-col gap-2 sm:flex"
+            className="flex flex-col gap-2.5"
           >
             {OFFER.map((item) => (
-              <li key={item} className="flex items-center gap-2.5 whitespace-nowrap text-[0.95rem] text-foreground/85">
-                <Check className="h-4 w-4 shrink-0 text-accent" strokeWidth={2.75} />
+              <li key={item} className="flex items-center gap-3 whitespace-nowrap text-[0.95rem] text-foreground/85 max-[359px]:text-[0.85rem]">
+                <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent/10 text-accent">
+                  <Check className="h-3.5 w-3.5" strokeWidth={3} />
+                </span>
                 {item}
               </li>
             ))}
@@ -127,29 +202,76 @@ export function Hero() {
               <ArrowDown className="h-4 w-4" />
             </button>
           </motion.div>
+
+          {/* Celular: o fundador desce pra cá, alinhado à esquerda, no formato da
+              referência (fotos sobrepostas, duas linhas e o rabisco). No lugar das
+              três pessoas e do "+50 negócios", só o que é verdade: a foto do Kawan
+              e a logo de dois clientes, e quantos projetos estão no portfólio. */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease }}
+            className="flex items-center gap-3 text-left sm:hidden"
+          >
+            {/* Logos dos clientes atrás, foto do Kawan na frente. A logo vai INTEIRA
+                dentro do círculo (contain) sobre a cor de fundo dela: cortada pelo
+                círculo e pela sobreposição, o "KFM" virava "KFI". */}
+            <span className="flex shrink-0 -space-x-2.5">
+              {[
+                { src: '/img/logos/kfm.webp', bg: '#fd8ede' },
+                { src: '/img/logos/vyso-loja.webp', bg: '#000000' },
+              ].map((l, k) => (
+                <span
+                  key={l.src}
+                  className="flex h-10 w-10 items-center justify-start overflow-hidden rounded-full pl-[5px] ring-2 ring-background"
+                  style={{ backgroundColor: l.bg, zIndex: k + 1 }}
+                >
+                  {/* encostada à esquerda: os 10px da direita ficam sob o círculo seguinte */}
+                  <img src={l.src} alt="" width={24} height={24} className="h-6 w-6 object-contain" />
+                </span>
+              ))}
+              <img
+                src={founder.photo}
+                alt=""
+                width={40}
+                height={40}
+                className="relative h-10 w-10 rounded-full object-cover ring-2 ring-background"
+                style={{ zIndex: 3 }}
+              />
+            </span>
+            <span className="min-w-0 leading-tight">
+              <span className="block truncate text-sm font-semibold text-foreground">
+                {founder.name} <span className="font-normal text-muted-foreground">· fundador</span>
+              </span>
+              <span className="block truncate text-xs text-muted-foreground">
+                {total} projetos no portfólio
+              </span>
+            </span>
+            {/* rabisco de três traços, como na referência */}
+            <svg viewBox="0 0 28 24" aria-hidden className="h-6 w-7 shrink-0 self-start text-accent">
+              <path d="M6 9 3 3M14 7l1-6M20 12l6-3" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+            </svg>
+          </motion.div>
         </div>
 
         {/* ── Prova: prints reais, cada um abre o case ─────────── */}
-        {/* No celular a prova vem DEPOIS do texto: a primeira tela precisa ter
-            quem é, o que faz e o botão do WhatsApp sem rolar (print em cima
-            empurrava tudo pra baixo e ficava colado no menu). Logo abaixo, os
-            três prints em leque. No lg a colagem volta pra direita. */}
+        {/* Celular: carrossel de prints depois do texto (MobileShowcase).
+            sm pra cima: a colagem de três prints, à direita no lg. */}
+        <MobileShowcase items={showcase} />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease }}
-          className="relative mx-auto w-full max-w-xl lg:max-w-none"
+          className="relative mx-auto hidden w-full max-w-xl sm:block lg:max-w-none"
         >
-          <div className="relative h-[13.5rem] min-[400px]:h-[15rem] sm:h-auto sm:aspect-[5/4]">
+          <div className="relative aspect-[5/4]">
             {showcase.map((p, i) => {
               const lead = getCaseParts(p)[0]
               // trás pra frente: o primeiro do SHOWCASE fica por cima
-              // Celular: leque, a loja no centro e as outras duas inclinadas atrás,
-              // só a do centro com etiqueta. sm pra cima: a colagem de sempre.
               const layer = [
-                'absolute left-1/2 top-3 z-30 w-[70%] -translate-x-1/2 sm:left-0 sm:top-[18%] sm:w-[78%] sm:translate-x-0',
-                'absolute left-0 top-9 z-20 w-[52%] -rotate-6 opacity-90 sm:left-auto sm:right-0 sm:top-0 sm:w-[62%] sm:rotate-0 sm:opacity-95',
-                'absolute right-0 top-9 z-10 w-[52%] rotate-6 opacity-90 sm:right-[4%] sm:top-auto sm:bottom-0 sm:w-[56%] sm:rotate-0',
+                'absolute left-0 top-[18%] z-30 w-[78%]',
+                'absolute right-0 top-0 z-20 w-[62%] opacity-95',
+                'absolute right-[4%] bottom-0 z-10 w-[56%] opacity-90',
               ][i]
               return (
                 <Link
@@ -169,7 +291,7 @@ export function Hero() {
                       priority={i === 0}
                     />
                   </div>
-                  <span className={`${i > 0 ? 'hidden sm:block' : ''} absolute -bottom-3 left-4 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-sm transition-colors group-hover:border-accent/50 group-hover:text-accent`}>
+                  <span className={`absolute -bottom-3 left-4 rounded-full border border-border bg-card px-3 py-1 text-xs font-semibold text-foreground shadow-sm transition-colors group-hover:border-accent/50 group-hover:text-accent`}>
                     {p.title}
                   </span>
                 </Link>
