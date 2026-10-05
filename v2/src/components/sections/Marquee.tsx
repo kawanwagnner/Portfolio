@@ -23,7 +23,7 @@ export function Marquee() {
         >
           {items.map((item, i) => (
             <span key={i} className="flex shrink-0 items-center gap-8">
-              <span className="font-display text-lg font-semibold text-foreground/80 sm:text-2xl md:text-3xl">
+              <span className="font-display text-lg font-semibold text-foreground/90 sm:text-2xl md:text-3xl">
                 {item}
               </span>
               <span className="text-lg text-accent md:text-2xl">✦</span>

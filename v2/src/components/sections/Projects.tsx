@@ -62,11 +62,14 @@ export function ProjectCard({
           texto. Aparelho 9:19 é quase o dobro da altura de um browser 16:10: o
           celular fica menor que na página do case pra não estourar a linha, mas
           aparece inteiro. */}
-      {/* Área da imagem com altura FIXA em todo card: a do celular no tamanho
-          original (11rem) define a medida, e os prints de navegador ficam centrados
-          nela. Assim o card do app não sai mais alto que os outros e o modelo do
-          aparelho não muda. */}
-      <div className="relative flex h-[25.5rem] flex-none items-center overflow-hidden px-6 pb-2 pt-12">
+      {/* Palco do mockup: absorve a altura extra da linha (flex-1). No carrossel do
+          celular tem altura fixa, pra todos os cards ficarem iguais. */}
+      <div
+        className={cn(
+          'relative flex items-center overflow-hidden px-6 pb-2 pt-12',
+          compacto ? 'h-64 flex-none sm:h-auto sm:flex-1' : 'flex-1'
+        )}
+      >
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -75,15 +78,37 @@ export function ProjectCard({
           }}
         />
         <div className="relative mx-auto w-full transition duration-500 group-hover:-translate-y-1 group-hover:scale-[1.02]">
-          <Mockup
-            variant={mockup ?? 'browser'}
-            src={cover}
-            alt={title}
-            url={live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
-            fallbackLabel={project.client}
-            fallbackLogo={project.logo}
-            className={cn('mx-auto', mockup === 'phone' && 'max-w-[11rem]')}
-          />
+          {mockup === 'phone' ? (
+            /* Celular: renderizado no tamanho ORIGINAL (11rem) e reduzido por escala,
+               como uma imagem. Borda, raio e entalhe do aparelho têm medida fixa:
+               diminuir a largura deixava o modelo torto. Escala 0,65 = altura do
+               print de navegador do card ao lado; 0,55 no carrossel do celular.
+               A caixa de fora tem o tamanho JÁ reduzido, porque escala não muda o
+               espaço que o elemento ocupa no layout. */
+            <div className="relative mx-auto h-[12.1rem] w-[6.05rem] sm:h-[14.3rem] sm:w-[7.15rem]">
+              <div className="absolute left-1/2 top-1/2 w-[11rem] -translate-x-1/2 -translate-y-1/2 scale-[0.55] sm:scale-[0.65]">
+                <Mockup
+                  variant="phone"
+                  src={cover}
+                  alt={title}
+                  url={live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+                  fallbackLabel={project.client}
+                  fallbackLogo={project.logo}
+                  className="mx-auto max-w-[11rem]"
+                />
+              </div>
+            </div>
+          ) : (
+            <Mockup
+              variant={mockup ?? 'browser'}
+              src={cover}
+              alt={title}
+              url={live?.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+              fallbackLabel={project.client}
+              fallbackLogo={project.logo}
+              className="mx-auto"
+            />
+          )}
         </div>
       </div>
 
@@ -102,11 +127,11 @@ export function ProjectCard({
           </div>
         </div>
 
-        <p className={cn('text-sm leading-relaxed text-muted-foreground', compacto && 'line-clamp-3 sm:line-clamp-none')}>
+        <p className={cn('text-sm leading-relaxed text-muted-foreground', compacto && 'line-clamp-3 min-h-[4.6rem] sm:line-clamp-none sm:min-h-0')}>
           {summary}
         </p>
 
-        <div className="flex flex-wrap gap-2">
+        <div className={cn('flex gap-2', compacto ? 'flex-nowrap overflow-hidden sm:flex-wrap' : 'flex-wrap')}>
           {project.tags.map((t) => (
             <span
               key={t}
@@ -303,7 +328,7 @@ export function ProjectGroups({
 
 export function Projects() {
   return (
-    <section id="projetos" className="relative mx-auto max-w-6xl px-6 py-20 md:py-24">
+    <section id="projetos" className="relative mx-auto max-w-6xl px-6 py-12 sm:py-20 md:py-24">
       <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex flex-col gap-5">
           <Reveal>

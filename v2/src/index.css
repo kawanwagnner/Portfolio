@@ -369,7 +369,8 @@
   --secondary-foreground: 232 28% 12%;
 
   --muted: 235 25% 95%;
-  --muted-foreground: 230 12% 38%;
+  /* 30% (era 38%): texto de apoio mais escuro no fundo branco, ~9:1 de contraste */
+  --muted-foreground: 230 14% 30%;
 
   --border: 232 20% 89%;
   --input: 232 20% 89%;

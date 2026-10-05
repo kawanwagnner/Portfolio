@@ -7,7 +7,7 @@ import { founder, socials } from '@/data/content'
 
 export function Founder() {
   return (
-    <section id="founder" className="relative overflow-hidden py-20 md:py-24">
+    <section id="founder" className="relative overflow-hidden py-12 sm:py-20 md:py-24">
       <div
         aria-hidden
         className="ember-glow pointer-events-none absolute -right-24 top-10 -z-10 h-[32rem] w-[32rem]"

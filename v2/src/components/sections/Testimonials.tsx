@@ -15,7 +15,12 @@ import {
 import { cn } from '@/lib/utils'
 
 /** Moldura de story: mesma proporção dos prints (720×1180). */
-const FRAME = 'aspect-[720/1180] w-full overflow-hidden rounded-2xl border border-border bg-card'
+/**
+ * Moldura sem proporção fixa: cada print aparece INTEIRO, na proporção dele
+ * (o Kawan pediu: nada cortado). O vídeo é 9:16, e o pôster dele também.
+ */
+const FRAME = 'w-full overflow-hidden rounded-2xl border border-border bg-card'
+const VIDEO_FRAME = 'aspect-[9/16] w-full overflow-hidden rounded-2xl border border-border bg-black'
 
 function VideoFrame({ t }: { t: Testimonial }) {
   // O vídeo tem ~10 MB: só baixa quando a pessoa toca no play.
@@ -28,7 +33,7 @@ function VideoFrame({ t }: { t: Testimonial }) {
         controls
         autoPlay
         playsInline
-        className={cn(FRAME, 'bg-black object-cover')}
+        className={cn(VIDEO_FRAME, 'object-contain')}
       />
     )
   }
@@ -37,9 +42,9 @@ function VideoFrame({ t }: { t: Testimonial }) {
       type="button"
       onClick={() => setPlaying(true)}
       aria-label={`Assistir o depoimento de ${t.name}`}
-      className={cn(FRAME, 'group relative block')}
+      className={cn(VIDEO_FRAME, 'group relative block')}
     >
-      <img src={t.image} alt="" loading="lazy" className="h-full w-full object-cover" />
+      <img src={t.image} alt="" loading="lazy" className="h-full w-full object-contain" />
       <span className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
       <span className="absolute left-1/2 top-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/95 text-black shadow-xl transition-transform duration-300 group-hover:scale-110">
         <Play className="ml-1 h-7 w-7 fill-current" />
@@ -63,7 +68,7 @@ function Card({ t }: { t: Testimonial }) {
             alt={`Print do depoimento de ${t.name}: ${t.quote}`}
             loading="lazy"
             draggable={false}
-            className="h-full w-full object-cover"
+            className="block h-auto w-full"
           />
         </div>
       )}
@@ -80,7 +85,7 @@ function ReferralCard() {
           alt="Indique e ganhe: R$ 100 por indicação que se tornar cliente da VYSO"
           loading="lazy"
           draggable={false}
-          className="h-full w-full object-cover"
+          className="block h-auto w-full"
         />
       </div>
     </figure>
@@ -211,7 +216,7 @@ export function Testimonials() {
   }
 
   return (
-    <section id="depoimentos" className="relative overflow-hidden py-20 md:py-24">
+    <section id="depoimentos" className="relative overflow-hidden py-12 sm:py-20 md:py-24">
       <div aria-hidden className="ember-glow absolute -left-40 top-24 -z-10 h-[30rem] w-[30rem]" />
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -248,7 +253,7 @@ export function Testimonials() {
       {/* trilho alinhado à coluna do site, mas sangrando até a borda direita */}
       <div
         ref={track}
-        className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2"
+        className="no-scrollbar mt-12 flex items-start snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2"
         style={{
           paddingInline: 'max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem))',
           scrollPaddingInline: 'max(1.5rem, calc((100vw - 72rem) / 2 + 1.5rem))',

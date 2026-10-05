@@ -97,7 +97,7 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section id="duvidas" className="relative overflow-hidden py-20 md:py-24">
+    <section id="duvidas" className="relative overflow-hidden py-12 sm:py-20 md:py-24">
       <FaqJsonLd />
       <div aria-hidden className="ember-glow absolute -right-40 top-16 -z-10 h-[30rem] w-[30rem]" />
       <div className="mx-auto grid max-w-6xl gap-12 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">

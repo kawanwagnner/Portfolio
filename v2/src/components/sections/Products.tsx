@@ -57,7 +57,8 @@ function ProductBlock({ product }: { product: Product }) {
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div className="flex flex-col items-start gap-6">
           {product.badge && (
-            <Reveal>
+            // centralizado no celular, à esquerda com o texto no computador
+            <Reveal className="self-center sm:self-auto">
               <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/[0.08] px-3.5 py-1.5 font-mono-tag text-[0.65rem] uppercase tracking-[0.16em] text-accent">
                 <Sparkles className="h-3.5 w-3.5" />
                 {product.badge}
@@ -177,7 +178,7 @@ function ProductBlock({ product }: { product: Product }) {
  */
 export function Products() {
   return (
-    <section id="produtos" className="relative overflow-hidden py-20 md:py-24">
+    <section id="produtos" className="relative overflow-hidden py-12 sm:py-20 md:py-24">
       <div aria-hidden className="ember-glow absolute -left-40 top-24 -z-10 h-[30rem] w-[30rem]" />
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">

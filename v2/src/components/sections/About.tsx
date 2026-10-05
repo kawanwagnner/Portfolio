@@ -6,7 +6,7 @@ import { about, skills } from '@/data/content'
 
 export function About() {
   return (
-    <section id="sobre" className="relative mx-auto max-w-6xl px-6 py-20 md:py-24">
+    <section id="sobre" className="relative mx-auto max-w-6xl px-6 py-12 sm:py-20 md:py-24">
       <Reveal>
         <Kicker>{about.kicker}</Kicker>
       </Reveal>
@@ -28,7 +28,7 @@ export function About() {
 
           {/* Skills como lista técnica (não pills genéricas) */}
           <Reveal delay={0.2}>
-            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-4 font-mono-tag text-sm text-foreground/80">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-4 font-mono-tag text-sm text-foreground/90">
               {skills.map((s) => (
                 <span key={s} className="inline-flex items-center gap-2">
                   <span className="text-accent">/</span>

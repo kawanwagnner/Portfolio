@@ -115,7 +115,7 @@ export function Hero() {
   const total = projects.length
 
   return (
-    <section id="hero" className="relative overflow-hidden bg-background pb-16 pt-[7.5rem] md:pb-24 md:pt-36">
+    <section id="hero" className="relative overflow-hidden bg-background pb-8 pt-[7.5rem] sm:pb-16 md:pb-24 md:pt-36">
       <div aria-hidden className="ember-glow absolute -right-40 top-10 -z-0 h-[36rem] w-[36rem]" />
 
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
@@ -168,7 +168,7 @@ export function Hero() {
             className="flex flex-col gap-2.5"
           >
             {OFFER.map((item) => (
-              <li key={item} className="flex items-center gap-3 whitespace-nowrap text-[0.95rem] text-foreground/85 max-[359px]:text-[0.85rem]">
+              <li key={item} className="flex items-center gap-3 whitespace-nowrap text-[0.95rem] text-foreground/95 max-[359px]:text-[0.85rem]">
                 <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-accent/10 text-accent">
                   <Check className="h-3.5 w-3.5" strokeWidth={3} />
                 </span>
@@ -218,12 +218,14 @@ export function Hero() {
                 círculo e pela sobreposição, o "KFM" virava "KFI". */}
             <span className="flex shrink-0 -space-x-2.5">
               {[
-                { src: '/img/logos/kfm.webp', bg: '#fd8ede' },
-                { src: '/img/logos/vyso-loja.webp', bg: '#000000' },
+                // KFM encostada à esquerda (o "KFM" é largo, centrado o "M" some)
+                { src: '/img/logos/kfm.webp', bg: '#fd8ede', centro: false },
+                // V centralizado: a foto cobre um pouco da borda, mas o V fica no meio
+                { src: '/img/logos/vyso-loja.webp', bg: '#000000', centro: true },
               ].map((l, k) => (
                 <span
                   key={l.src}
-                  className="flex h-10 w-10 items-center justify-start overflow-hidden rounded-full pl-[5px] ring-2 ring-background"
+                  className={`flex h-10 w-10 items-center overflow-hidden rounded-full ring-2 ring-background ${l.centro ? 'justify-center' : 'justify-start pl-[5px]'}`}
                   style={{ backgroundColor: l.bg, zIndex: k + 1 }}
                 >
                   {/* encostada à esquerda: os 10px da direita ficam sob o círculo seguinte */}
