@@ -13,7 +13,7 @@ export function Marquee() {
   return (
     <div
       ref={ref}
-      className="relative flex items-center overflow-hidden pb-2 pt-20 md:pb-3 md:pt-32"
+      className="relative flex items-center overflow-hidden"
     >
       {/* Banda reta, ocupando a largura toda da viewport */}
       <div className="marquee-wrap relative w-full border-y border-border bg-card/50 py-5 md:py-6">

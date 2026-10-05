@@ -115,12 +115,12 @@ export function Hero() {
   const total = projects.length
 
   return (
-    <section id="hero" className="relative overflow-hidden bg-background pb-16 pt-24 md:pb-24 md:pt-36">
+    <section id="hero" className="relative overflow-hidden bg-background pb-16 pt-[7.5rem] md:pb-24 md:pt-36">
       <div aria-hidden className="ember-glow absolute -right-40 top-10 -z-0 h-[36rem] w-[36rem]" />
 
       <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
         {/* ── Texto ─────────────────────────────────────────── */}
-        <div className="flex min-w-0 flex-col items-start gap-6">
+        <div className="flex min-w-0 flex-col items-start gap-5 sm:gap-6">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -181,13 +181,13 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.24, ease }}
-            className="flex w-full flex-col items-stretch gap-3 pt-1 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center"
+            className="flex w-full flex-col items-stretch gap-2.5 sm:w-auto sm:gap-3 sm:pt-1 sm:flex-row sm:flex-wrap sm:items-center"
           >
             <a
               href={socials.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="btn-ember group inline-flex justify-center items-center gap-2 rounded-full px-7 py-3.5 text-[0.95rem] font-semibold whitespace-nowrap max-[359px]:px-4 max-[359px]:text-[0.85rem]"
+              className="btn-ember group inline-flex justify-center items-center gap-2 rounded-full px-7 py-3 text-[0.9rem] font-semibold whitespace-nowrap sm:py-3.5 sm:text-[0.95rem] max-[359px]:px-4 max-[359px]:text-[0.85rem]"
             >
               <WhatsAppIcon className="h-4 w-4" />
               Pedir orçamento no WhatsApp
@@ -196,7 +196,7 @@ export function Hero() {
             <button
               type="button"
               onClick={() => scrollTo('projetos')}
-              className="inline-flex justify-center items-center gap-2 rounded-full border border-border bg-card px-6 py-3.5 text-[0.95rem] font-semibold text-foreground transition-colors hover:border-accent/50"
+              className="inline-flex justify-center items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-[0.9rem] font-semibold text-foreground sm:py-3.5 sm:text-[0.95rem] transition-colors hover:border-accent/50"
             >
               Ver {total} projetos
               <ArrowDown className="h-4 w-4" />
@@ -205,8 +205,8 @@ export function Hero() {
 
           {/* Celular: o fundador desce pra cá, alinhado à esquerda, no formato da
               referência (fotos sobrepostas, duas linhas e o rabisco). No lugar das
-              três pessoas e do "+50 negócios", só o que é verdade: a foto do Kawan
-              e a logo de dois clientes, e quantos projetos estão no portfólio. */}
+              três pessoas e do "+50 negócios", só o que é verdade: a foto do Kawan,
+              a logo de dois clientes e os 15+ projetos em produção. */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -244,7 +244,8 @@ export function Hero() {
                 {founder.name} <span className="font-normal text-muted-foreground">· fundador</span>
               </span>
               <span className="block truncate text-xs text-muted-foreground">
-                {total} projetos no portfólio
+                {/* mesmo número da seção Sobre (about.stats: 15+ projetos no ar) */}
+                Mais de 15 projetos em produção
               </span>
             </span>
             {/* Rabisco de destaque, como na referência: três traços saindo em leque

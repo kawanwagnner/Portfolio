@@ -1,4 +1,5 @@
 import { Hero } from '@/components/sections/Hero'
+import { Marquee } from '@/components/sections/Marquee'
 import { Projects } from '@/components/sections/Projects'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { Faq } from '@/components/sections/Faq'
@@ -30,6 +31,8 @@ export default function Home() {
   return (
     <>
       <Hero />
+      {/* faixa infinita como divisória entre o herói e os projetos */}
+      <Marquee />
       <Projects />
       <Testimonials />
       <Faq />

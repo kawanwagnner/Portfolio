@@ -26,16 +26,17 @@ export const hero = {
   splineScene: "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode",
 };
 
-// Ticker cinético abaixo do herói.
+// Faixa infinita entre o herói e os projetos. Só o que a VYSO entrega de
+// fato, em palavra de cliente (as frases de efeito antigas saíram).
 export const marquee = [
-  "Soluções digitais",
+  "Sites",
+  "Lojas virtuais",
+  "Sistemas sob medida",
   "Automação de processos",
-  "Aplicações Web",
-  "Sites de alta conversão",
-  "Tecnologia com propósito",
   "Landing pages",
-  "Entrega que impulsiona",
-  "Design com intenção",
+  "Painéis de gestão",
+  "Pix e cartão",
+  "Integrações",
 ];
 
 export const about = {
