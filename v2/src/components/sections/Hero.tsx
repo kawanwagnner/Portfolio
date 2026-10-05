@@ -245,7 +245,7 @@ export function Hero() {
               </span>
               <span className="block truncate text-xs text-muted-foreground">
                 {/* mesmo número da seção Sobre (about.stats: 15+ projetos no ar) */}
-                Mais de 15 projetos em produção
+                +15 projetos em produção
               </span>
             </span>
             {/* Rabisco de destaque, como na referência: três traços saindo em leque
