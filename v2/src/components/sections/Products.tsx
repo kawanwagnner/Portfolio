@@ -1,4 +1,4 @@
-import { ArrowUpRight, Check, Sparkles } from 'lucide-react'
+import { ArrowUpRight, Check, Truck } from 'lucide-react'
 import { Reveal } from '@/components/shared/Reveal'
 import { Kicker } from '@/components/shared/Kicker'
 import { AccentText } from '@/components/shared/AccentText'
@@ -59,8 +59,10 @@ function ProductBlock({ product }: { product: Product }) {
           {product.badge && (
             // centralizado no celular, à esquerda com o texto no computador
             <Reveal className="self-center sm:self-auto">
-              <span className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/[0.08] px-3.5 py-1.5 font-mono-tag text-[0.65rem] uppercase tracking-[0.16em] text-accent">
-                <Sparkles className="h-3.5 w-3.5" />
+              {/* Linha simples com ícone de caminhão. A pílula com borda, fundo
+                  tingido, brilho e mono em caixa alta tinha cara de gerado por IA. */}
+              <span className="inline-flex items-center gap-2 text-sm font-semibold text-accent">
+                <Truck className="h-4 w-4" strokeWidth={2.25} />
                 {product.badge}
               </span>
             </Reveal>
