@@ -5,12 +5,13 @@ import { Founder } from '@/components/sections/Founder'
 import { Projects } from '@/components/sections/Projects'
 import { Products } from '@/components/sections/Products'
 import { Faq } from '@/components/sections/Faq'
+import { Testimonials } from '@/components/sections/Testimonials'
 import { Support } from '@/components/sections/Support'
 import { Contact } from '@/components/sections/Contact'
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, useSectionTitle, useSeo } from '@/lib/seo'
 
 /** Fora do componente: o hook observa de novo se a referência mudar. */
-const SECTION_IDS = ['hero', 'projetos', 'produtos', 'duvidas', 'suporte', 'sobre', 'founder', 'contato']
+const SECTION_IDS = ['hero', 'projetos', 'depoimentos', 'produtos', 'duvidas', 'suporte', 'sobre', 'founder', 'contato']
 
 /**
  * Ordem de venda: prova antes de discurso.
@@ -37,6 +38,7 @@ export default function Home() {
       <Hero />
       <Marquee />
       <Projects />
+      <Testimonials />
       <Products />
       <Faq />
       <Support />

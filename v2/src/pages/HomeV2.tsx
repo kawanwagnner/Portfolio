@@ -3,6 +3,7 @@ import { Moon, Sun } from 'lucide-react'
 import { HeroV2 } from '@/components/sections/HeroV2'
 import { Projects } from '@/components/sections/Projects'
 import { Faq } from '@/components/sections/Faq'
+import { Testimonials } from '@/components/sections/Testimonials'
 import { Products } from '@/components/sections/Products'
 import { Support } from '@/components/sections/Support'
 import { About } from '@/components/sections/About'
@@ -10,7 +11,7 @@ import { Founder } from '@/components/sections/Founder'
 import { Contact } from '@/components/sections/Contact'
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, useSectionTitle, useSeo } from '@/lib/seo'
 
-const SECTION_IDS = ['hero', 'projetos', 'duvidas', 'produtos', 'suporte', 'sobre', 'founder', 'contato']
+const SECTION_IDS = ['hero', 'projetos', 'depoimentos', 'duvidas', 'produtos', 'suporte', 'sobre', 'founder', 'contato']
 const THEME_KEY = 'vyso:v2-theme'
 type Theme = 'light' | 'dark'
 
@@ -57,6 +58,7 @@ export default function HomeV2() {
     <>
       <HeroV2 />
       <Projects />
+      <Testimonials />
       <Faq />
       <Products />
       <Support />

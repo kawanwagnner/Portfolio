@@ -39,7 +39,7 @@ export const marquee = [
 ];
 
 export const about = {
-  kicker: "05 / A VYSO",
+  kicker: "06 / A VYSO",
   // A palavra entre *asteriscos* recebe o acento.
   heading: "Antes do código, existe o *negócio*.",
   paragraphs: [
@@ -54,7 +54,7 @@ export const about = {
 };
 
 export const founder = {
-  kicker: "06 / Founder",
+  kicker: "07 / Founder",
   // *acento* numa palavra
   tagline: "Tecnologia que resolve. Pessoas que *confiam*.",
   name: "Kawan Wagnner",
@@ -857,7 +857,7 @@ export interface Product {
 }
 
 export const productsSection = {
-  kicker: "02 / Produtos",
+  kicker: "03 / Produtos",
   heading: "O que a VYSO *vende pronto*.",
   description:
     "Fora o sob medida, a VYSO toca negócio próprio. A loja roda no mesmo código que a gente entrega pra cliente.",
@@ -905,6 +905,67 @@ export interface Service {
   icon: string; // nome do ícone lucide-react
 }
 
+/**
+ * Depoimentos reais, tirados do destaque "Depoimentos" do Instagram
+ * @vyso.store (stories capturados em 05/10/2026). Texto transcrito do print,
+ * sem edição, pra leitor de tela e pro Google. Não inventar depoimento.
+ */
+export interface Testimonial {
+  name: string;
+  /** Quem é e onde o depoimento foi dado. */
+  context: string;
+  quote: string;
+  image: string;
+  /** Depoimento em vídeo: `image` vira o pôster. */
+  video?: string;
+}
+
+export const testimonialsSection = {
+  kicker: "02 / Depoimentos",
+  heading: "Quem contratou *indica*.",
+  description:
+    "Prints e vídeo de clientes reais, do jeito que chegaram no WhatsApp, no LinkedIn e no Instagram.",
+};
+
+export const testimonials: Testimonial[] = [
+  {
+    name: "Amanda Mendes",
+    context: "Cliente, em vídeo no Instagram",
+    quote: "Coisa boa de verdade a gente indica de olhos fechados!",
+    image: "/img/depoimentos/amanda-poster.webp",
+    video: "/video/depoimento-amanda.mp4",
+  },
+  {
+    name: "Valdemir Gonçalves",
+    context: "Avaliação de 5 estrelas no LinkedIn",
+    quote:
+      "Foi um projeto inteiramente novo, o mesmo demonstrou uma desenvoltura quanto ao serviço prestado, como também um vasto interesse. Com certeza eu indico o trabalho do Kawan!",
+    image: "/img/depoimentos/valdemir-amanda.webp",
+  },
+  {
+    name: "Dom, Barbearia Imperador",
+    context: "No WhatsApp, na entrega do site",
+    quote: "Muito bom o atendimento, sempre solícito. Acredito que essa parceria será muito benéfica.",
+    image: "/img/depoimentos/barbearia-imperador.webp",
+  },
+];
+
+/** Programa de indicação, igual ao story "Indique e ganhe" do Instagram. */
+export const referral = {
+  title: "Indicou, *ganhou*.",
+  reward: "R$ 100",
+  rewardLabel: "por indicação que virar cliente",
+  image: "/img/depoimentos/indique-e-ganhe.webp",
+  steps: [
+    { title: "Você indica", description: "Indique a VYSO pra alguém que precisa de site, loja ou sistema." },
+    { title: "A pessoa fecha", description: "Quando ela fecha o projeto com a gente." },
+    { title: "Você ganha", description: "Você recebe R$ 100 como recompensa." },
+  ],
+  cta: "Quero indicar alguém",
+  message:
+    "Oi, Kawan! Cheguei pelo site da VYSO 👋\n\nQuero indicar uma pessoa que precisa de site ou sistema.",
+};
+
 export interface FaqItem {
   question: string;
   /** Parágrafos da resposta. */
@@ -920,7 +981,7 @@ export interface FaqItem {
  * Só entra aqui o que for verdade; prazo e preço não têm número inventado.
  */
 export const faqSection = {
-  kicker: "03 / Dúvidas",
+  kicker: "04 / Dúvidas",
   heading: "O que todo cliente pergunta *antes de fechar*.",
   description:
     "Se a sua dúvida não está aqui, manda no WhatsApp. Você fala direto com quem vai construir.",
@@ -1064,7 +1125,7 @@ export const supportFeatures = [
 export type SupportFeatureId = (typeof supportFeatures)[number]["id"];
 
 export const supportSection = {
-  kicker: "04 / Suporte",
+  kicker: "05 / Suporte",
   heading: "Site no ar é *manutenção*, não sorte.",
   description:
     "Seu site monitorado, atualizado e com ajustes contínuos por um valor fixo no mês. Precisa de mais que manutenção? A gente conversa e monta o escopo junto.",
@@ -1181,7 +1242,7 @@ export const immersive = {
 };
 
 export const contact = {
-  kicker: "07 / Contato",
+  kicker: "08 / Contato",
   heading: "Tem um projeto? A VYSO *entrega*.",
   description:
     "Chama a gente e transforma sua ideia num produto digital de verdade. Resposta rápida.",
@@ -1229,6 +1290,7 @@ export const nav = [
   // são institucionais — quem chega quer ver trabalho, preço e contato.
   { label: "Início", href: "#hero" },
   { label: "Projetos", href: "#projetos", barra: true },
+  { label: "Depoimentos", href: "#depoimentos" },
   { label: "Produtos", href: "#produtos", barra: true },
   { label: "Dúvidas", href: "#duvidas", barra: true },
   { label: "Suporte", href: "#suporte", barra: true },

@@ -78,6 +78,7 @@ export function useSeo(input: SeoInput) {
 export const SECTION_TITLES: Record<string, string> = {
   hero: DEFAULT_TITLE,
   projetos: 'Projetos entregues | VYSO',
+  depoimentos: 'Depoimentos de clientes | VYSO',
   produtos: 'VYSO Loja, nosso e-commerce próprio | VYSO',
   duvidas: 'Dúvidas frequentes: prazo, contrato e nota fiscal | VYSO',
   suporte: 'Planos de suporte e manutenção | VYSO',
