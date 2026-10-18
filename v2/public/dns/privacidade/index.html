@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VYSO DNS · Política de Privacidade</title>
+<style>
+  body { margin: 0; background: #000; color: #F4F4FA; font: 16px/1.6 system-ui, sans-serif; }
+  main { max-width: 680px; margin: 0 auto; padding: 48px 20px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  h2 { font-size: 18px; margin-top: 32px; color: #CFCAFF; }
+  p, li { color: #C9C9D6; }
+  small { color: #8B8BA3; }
+  a { color: #7B6FFF; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Política de Privacidade do VYSO DNS</h1>
+  <small>Atualizada em 18 de outubro de 2026</small>
+
+  <h2>Resumo</h2>
+  <p>O VYSO DNS não coleta, não armazena fora do seu aparelho, não vende e não compartilha dados pessoais. Não há cadastro, conta, anúncio nem análise de uso. O app é publicado pela VYSO (CNPJ 64.561.405/0001-81).</p>
+
+  <h2>Como o app funciona</h2>
+  <p>O app usa o recurso de VPN do Android apenas localmente, sem servidor remoto. Só as consultas de DNS (os nomes dos sites e serviços que o celular tenta acessar) passam pelo filtro. O restante do tráfego não entra na VPN.</p>
+  <p>Cada consulta é comparada, no próprio aparelho, com as listas de bloqueio que você ligou. Se o domínio está na lista, a conexão é barrada. Se não está, a consulta segue para um resolvedor de DNS público (Cloudflare 1.1.1.1 ou Google 8.8.8.8), exatamente como acontece em qualquer celular. O uso desses resolvedores segue as políticas de privacidade da <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare</a> e do <a href="https://policies.google.com/privacy">Google</a>.</p>
+
+  <h2>Checagem de versão</h2>
+  <p>Quando é aberto, o app baixa um pequeno arquivo em <a href="https://vyso.store/dns/versao.json">vyso.store/dns/versao.json</a> que informa a versão mínima suportada, para avisar quando é preciso atualizar. Nenhum dado seu é enviado nessa consulta; como em qualquer acesso a um site, a hospedagem recebe apenas o endereço IP da conexão.</p>
+
+  <h2>O que fica no aparelho</h2>
+  <ul>
+    <li>Contadores de bloqueios (hoje e total)</li>
+    <li>Os últimos domínios bloqueados, para exibir na tela</li>
+    <li>Suas preferências (listas ligadas, notificação discreta, religar no boot)</li>
+  </ul>
+  <p>Esses dados nunca saem do celular. Você pode zerar os contadores no app ou apagar tudo desinstalando o app.</p>
+
+  <h2>Permissões</h2>
+  <ul>
+    <li><b>VPN:</b> para receber as consultas de DNS e filtrá-las no aparelho</li>
+    <li><b>Notificações:</b> para mostrar que a proteção está ligada</li>
+    <li><b>Iniciar com o sistema:</b> para religar a proteção depois de reiniciar, se ela estava ligada</li>
+    <li><b>Internet:</b> para repassar as consultas permitidas ao resolvedor de DNS</li>
+  </ul>
+
+  <h2>Crianças</h2>
+  <p>O app não é direcionado a menores de 13 anos e não coleta dados de ninguém.</p>
+
+  <h2>Contato</h2>
+  <p>Dúvidas: <a href="mailto:kawanwagnner7@gmail.com">kawanwagnner7@gmail.com</a></p>
+  <p><small>VYSO · Kawan Wagnner</small></p>
+</main>
+</body>
+</html>
