@@ -3,5 +3,13 @@
   "buildCommand": "cd v2 && npm install && npm run build",
   "outputDirectory": "v2/dist",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.vyso.store" }],
+      "destination": "https://vyso.store/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

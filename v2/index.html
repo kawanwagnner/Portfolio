@@ -86,11 +86,10 @@
       rel="stylesheet"
     />
 
-    <!-- Marca oficial (mesmo path do public/logo.svg, em índigo) -->
-    <link
-      rel="icon"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-16 -16 297 321'><path fill='%236366F1' d='M0 0L75 2L171 211L138 289Z M192 0L265 2L187 174L151 97Z'/></svg>"
-    />
+    <!-- Marca oficial em arquivo: o Google não aceita favicon em data: URI -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   </head>
   <body>
