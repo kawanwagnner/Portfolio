@@ -820,7 +820,7 @@ export const projects: Project[] = [
       "Lista de festa feita à mão sempre esquece alguém e vira caça de mensagem no WhatsApp. O convite dos 17 da Andreza resolveu isso com um site fechado por senha: quem entra confirma com nome e WhatsApp, e a lista se monta sozinha, pronta pra baixar em planilha.",
     mockup: "phone",
     cover: "/img/cases/andreza-17.webp",
-    gallery: ["/img/cases/andreza-17-confirmado.webp", "/img/cases/andreza-17-lista.webp"],
+    gallery: ["/img/cases/andreza-17-senha.webp", "/img/cases/andreza-17-confirmado.webp", "/img/cases/andreza-17-lista.webp"],
     tags: ["React", "NestJS", "Confirmação"],
     services: ["Produto & fluxo", "Design UI/UX", "Back-end", "Painel administrativo", "Deploy"],
     stack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "NestJS", "Prisma", "PostgreSQL"],
