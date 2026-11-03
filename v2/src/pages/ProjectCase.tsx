@@ -160,7 +160,7 @@ export default function ProjectCase() {
                 rel="noreferrer"
                 className="btn-ember inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
               >
-                Ver no ar <ArrowUpRight className="h-4 w-4" />
+                {part.liveCta ?? 'Ver no ar'} <ArrowUpRight className="h-4 w-4" />
               </a>
             ) : null}
             {part.repo && (

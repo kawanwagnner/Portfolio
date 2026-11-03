@@ -13,6 +13,7 @@
 
 ## 📌 Onde paramos
 
+- **03/11/2026: entraram dois cases.** **VYSO DNS** (2º da lista, logo depois da VYSO Loja; mockup de celular, prints da Play em `img/cases/vyso-dns*.webp`, botão "Ver na Play Store" pelo campo novo `liveCta`) e **Andreza 17** (convite com confirmação de presença, antes da VG Facilities). O convite da Andreza roda em **modo demonstração** no próprio repo `andreza-17` (senha 0000 escrita na tela, dados só no navegador, `src/lib/demo.ts`; `VITE_DEMO=false` volta a usar a API). Aquela Vercel não é ligada ao GitHub: deploy com `vercel --prod`.
 - Site **V2 da VYSO** funcionando de ponta a ponta, buildando limpo (`npm run build` ✓, `typecheck` ✓).
 - Branch `main` **publicada** (`git push` em dia) — o que está commitado está no ar.
 - Última coisa feita: **nova ordem dos projetos** — Barbearia Imperador e Travel Buena Vista subiram pro topo (posições 3 e 4), VG Facilities foi pro fim da lista. A ordem sai direto do array `projects` em `src/data/content.ts`; a dupla AL Modular + AL Esquadrias segue na frente porque a AL Modular é `featured` (ocupa 2 colunas do grid).

@@ -13,9 +13,11 @@ Transformo problemas reais de negócio em software que fica no ar: sites que con
 | Projeto | O que é |
 |---|---|
 | **VYSO Loja** | A loja própria da marca: roupas e acessórios com frete grátis, Pix na hora e cartão em 12x. Carrinho no servidor, recuperação de carrinho abandonado, avaliações verificadas, devoluções com etiqueta reversa e estorno pelo painel — [vyso.com.br](https://vyso.com.br/) |
+| **VYSO DNS** | App Android publicado na Play Store: firewall de DNS no próprio celular, que barra malware, golpes e telemetria sem servidor nenhum — [ver na Play Store](https://play.google.com/store/apps/details?id=com.vyso.dns) |
 | **AL Modular Esquadrias** | E-commerce de esquadrias de alumínio (B2C): catálogo com variações, carrinho, Pix e cartão em 12x, mais o painel de gestão da loja — almodularesquadrias.com.br |
 | **AL Esquadrias** | App B2B de catálogo e acompanhamento de obra: o cliente solicita, recebe a proposta, paga e acompanha a própria obra por 1 ano |
 | **ONG Nova História** | Site de uma ONG que trabalha com crianças, feito pra converter emoção em doação — [ver site](https://ong-nova-historia.vercel.app/) |
+| **Andreza 17** | Convite de aniversário com senha e confirmação de presença: o convidado se cadastra sozinho e a aniversariante tem um painel com a lista e planilha — [ver site](https://andreza-17.vercel.app/) (senha 0000) |
 | **VG Facilities** | Site de empresa de facilities e segurança patrimonial — [ver site](https://vg-facilities.vercel.app/) |
 
 > Projetos entregues via consultoria não são listados, por sigilo contratual.

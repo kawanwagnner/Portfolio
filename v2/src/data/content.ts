@@ -118,6 +118,8 @@ export interface CasePart {
   services: string[];
   stack: string[];
   live?: string;
+  /** Texto do botão de `live`. Padrão: "Ver no ar". */
+  liveCta?: string;
   /**
    * Mostra a URL de `live` só como texto, sem botão nem link. Pra site que
    * está no ar mas parado (sem produto, sem uso): quem quiser ver vai ter que
@@ -250,6 +252,71 @@ export const projects: Project[] = [
       { value: "0 erros", label: "em teste de carga com 100 compradores simultâneos" },
       { value: "61 ms", label: "de resposta da API no p95, sob carga" },
       { value: "12x", label: "no cartão, ou Pix na hora, com frete grátis" },
+    ],
+  },
+  {
+    // Primeiro app da casa na Play Store. Fica logo depois da loja porque é o
+    // outro case em que a VYSO é o cliente, e o único publicado em loja de app.
+    slug: "vyso-dns",
+    title: "VYSO DNS",
+    client: "VYSO",
+    year: "2026",
+    category: "App Android",
+    logo: "/img/logos/vyso-dns.webp",
+    summary:
+      "Firewall de DNS pro celular todo: barra malware, golpes e telemetria de fabricante antes da conexão acontecer. Sem servidor, sem conta, publicado na Play Store.",
+    intro:
+      "Bloqueador de anúncio e rastreador costuma pedir uma de duas coisas: root no celular ou que todo o seu tráfego passe pelo servidor de alguém. O VYSO DNS não pede nenhuma das duas. Ele filtra cada endereço que os apps tentam acessar direto no aparelho, com um botão pra ligar e um contador mostrando o que foi barrado.",
+    mockup: "phone",
+    cover: "/img/cases/vyso-dns.webp",
+    gallery: ["/img/cases/vyso-dns-desligado.webp", "/img/cases/vyso-dns-listas.webp"],
+    tags: ["React Native", "Kotlin", "Play Store"],
+    services: ["Produto & fluxo", "App Android", "Design UI/UX", "Publicação na Play Store"],
+    stack: ["React Native", "TypeScript", "Kotlin", "TurboModules", "VpnService", "EAS Build"],
+    live: "https://play.google.com/store/apps/details?id=com.vyso.dns",
+    liveCta: "Ver na Play Store",
+    objective: [
+      "Proteger o celular inteiro, não só o navegador, contra domínios de malware, phishing, golpe e telemetria de fabricante.",
+      "Fazer isso sem coletar nada: nenhum dado do usuário sai do aparelho, porque não existe servidor da VYSO no caminho.",
+    ],
+    challenge: [
+      "O Android não deixa um app comum mexer no DNS do sistema. O único caminho sem root é o VpnService, e a Play Store trata qualquer app que usa VPN com lupa: exige declaração, vídeo e justificativa, e reprova o que não estiver claro.",
+      "E bloquear demais quebra o celular. Lista agressiva derruba login, pagamento e app de banco, e o usuário desinstala no primeiro susto.",
+    ],
+    solution: [
+      "Uma VPN local, que roda só no aparelho e captura apenas as consultas de DNS. Domínio na lista recebe NXDOMAIN e a conexão nem começa; o resto segue pro 1.1.1.1 por fora do túnel, então a internet continua na velocidade normal.",
+      "O motor é nativo, em Kotlin: leitura dos pacotes, resposta DNS e a busca por domínio e subdomínio nas listas. A tela é React Native, falando com o nativo por TurboModule.",
+      "Duas listas com papel claro: Segurança (HaGeZi TIF e Native) vem ligada; Anúncios (StevenBlack e HaGeZi Pro) é opcional, ligada pelo usuário sabendo que algum site pode reclamar. O filtro sobe sozinho quando o celular reinicia.",
+    ],
+    highlights: [
+      "Um toque liga e desliga a proteção no celular todo",
+      "Contador do dia, total e a lista dos últimos domínios barrados",
+      "Bloqueia telemetria de Samsung, Xiaomi, Huawei, Oppo, Vivo e outros",
+      "Sem cadastro, sem anúncio e sem servidor: nada sai do aparelho",
+      "Liga sozinho quando o celular reinicia",
+      "Aprovado na revisão de VpnService da Google Play",
+    ],
+    process: [
+      {
+        title: "Motor antes de tela",
+        description:
+          "Primeiro o túnel e a resposta DNS em Kotlin, testados com domínio real sendo barrado. A interface veio depois, em cima de um motor que já funcionava.",
+      },
+      {
+        title: "Listas com critério",
+        description:
+          "Segurança ligada de fábrica, anúncio como escolha do usuário. Quebrar o app do banco de alguém custa mais caro que deixar passar um banner.",
+      },
+      {
+        title: "Revisão da Play",
+        description:
+          "Declaração de VpnService como firewall do dispositivo, vídeo do fluxo e política de privacidade publicada. Aprovado e no ar na versão 1.4.",
+      },
+    ],
+    results: [
+      { value: "Play Store", label: "publicado em produção, aprovado na revisão de VPN" },
+      { value: "0 servidores", label: "toda a filtragem acontece no aparelho" },
+      { value: "1 toque", label: "pra proteger o celular todo" },
     ],
   },
   {
@@ -736,6 +803,69 @@ export const projects: Project[] = [
       { value: "44 produtos", label: "organizados em 7 setores" },
       { value: "24 por vez", label: "carregamento pensado pra rede ruim" },
       { value: "0 dev", label: "pra mudar preço, produto ou horário" },
+    ],
+  },
+  {
+    // Convite de aniversário com lista de presença. Roda em modo demonstração
+    // (senha 0000 escrita na tela, dados só no navegador) desde que a festa
+    // passou e a API saiu do ar: ver src/lib/demo.ts no repo andreza-17.
+    slug: "andreza-17",
+    title: "Andreza 17",
+    client: "Andreza · festa de 17 anos",
+    year: "2026",
+    category: "Convite & Confirmação",
+    summary:
+      "Convite digital com senha e confirmação de presença: cada convidado se cadastra sozinho e a aniversariante acompanha a lista no próprio painel.",
+    intro:
+      "Lista de festa feita à mão sempre esquece alguém e vira caça de mensagem no WhatsApp. O convite dos 17 da Andreza resolveu isso com um site fechado por senha: quem entra confirma com nome e WhatsApp, e a lista se monta sozinha, pronta pra baixar em planilha.",
+    mockup: "phone",
+    cover: "/img/cases/andreza-17.webp",
+    gallery: ["/img/cases/andreza-17-confirmado.webp", "/img/cases/andreza-17-lista.webp"],
+    tags: ["React", "NestJS", "Confirmação"],
+    services: ["Produto & fluxo", "Design UI/UX", "Back-end", "Painel administrativo", "Deploy"],
+    stack: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "NestJS", "Prisma", "PostgreSQL"],
+    live: "https://andreza-17.vercel.app/",
+    objective: [
+      "Trocar a lista feita à mão por um cadastro que o próprio convidado faz, sem ninguém ser esquecido.",
+      "Dar à aniversariante uma lista só dela, com quem vem, quem não vem e o contato de cada um.",
+    ],
+    challenge: [
+      "Convite é coisa particular: o site não podia ficar aberto pra qualquer um, mas também não podia pedir conta, e-mail ou cadastro antes de mostrar a festa.",
+      "E gente confirma, desconfirma e confirma de novo. Sem cuidado, a mesma pessoa vira três linhas na lista e a contagem mente.",
+    ],
+    solution: [
+      "Um portão de quatro dígitos na entrada, conferido no servidor e com limite de tentativas. Passou dele, o convite abre inteiro: contagem regressiva, detalhes, galeria e a confirmação no fim.",
+      "A confirmação é só nome e WhatsApp, e o telefone é a chave: a pessoa pode voltar e mudar a resposta sem duplicar nada. O endereço não fica no site; vai por WhatsApp depois que a pessoa confirma.",
+      "Em /lista, a Andreza vê quem confirmou, chama cada um no WhatsApp, remove quem precisar e baixa ou importa a lista em planilha ou CSV.",
+    ],
+    highlights: [
+      "Convite fechado por senha de 4 dígitos",
+      "Confirmação com nome e WhatsApp, sem conta nem e-mail",
+      "Mudar a resposta não duplica: o WhatsApp é a chave",
+      "Painel da aniversariante com contagem, contato e remoção",
+      "Exporta e importa planilha (XLSX) e CSV",
+      "Endereço enviado só por WhatsApp, fora do site",
+    ],
+    process: [
+      {
+        title: "Lista antes de vitrine",
+        description:
+          "O que precisava funcionar no dia era a lista. A API com senha, confirmação e painel veio primeiro; o convite foi montado em cima.",
+      },
+      {
+        title: "Convite com cara de festa",
+        description:
+          "Contagem regressiva, tipografia de convite impresso e animação de entrada, pensados pro celular, que é onde o link chega.",
+      },
+      {
+        title: "No ar, inclusive depois da festa",
+        description:
+          "Front na Vercel, API e banco no Railway. Passada a festa, o site segue no ar em modo demonstração, com a senha escrita na tela pra quem quiser testar.",
+      },
+    ],
+    results: [
+      { value: "0 listas", label: "feitas à mão: cada convidado se cadastrou sozinho" },
+      { value: "1 painel", label: "com contato, contagem e planilha pra aniversariante" },
     ],
   },
   {
